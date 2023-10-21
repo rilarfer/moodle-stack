@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Potential_response_trees/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Potential response trees - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Potential response trees";
+        var mkdocs_page_input_path = "Authoring\\Potential_response_trees.md";
+        var mkdocs_page_url = "/Authoring/Potential_response_trees/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Potential response trees</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="potential-response-trees">Potential response trees</h1>
+<p>The potential response tree is the algorithm which establishes the mathematical properties of the student's answer and assigns outcomes. For examples of how to use this, see the entry on <a href="/AbInitio/Authoring_quick_start_3.md">improving feedback</a> in the quick start guide.</p>
+<h2 id="when-is-the-tree-used">When is the tree used?</h2>
+<p>Each potential response tree relies on one or more of the <a href="../Inputs/">inputs</a>. STACK automatically detects which elements are needed in the <a href="../Answer_Tests/">answer tests</a> or <a href="../Variables/#Feedback_variables">feedback variables</a>. The first time a student submits an input it is validated. The second time it is submitted it is available for assessment by a potential response tree. Only when all inputs upon which a tree relies are valid and submitted will the tree be traversed.</p>
+<h2 id="before-the-tree-is-traversed">Before the tree is traversed</h2>
+<p>Each potential response tree can set Maxima's level of <a href="../../CAS/Simplification/">simplification</a>. Before the tree is traversed the <a href="../Variables/#Feedback_variables">feedback variables</a> are evaluated. The feedback variables may depend on the values of the <a href="../Variables/#Question_variables">question variables</a> and the <a href="../Inputs/">inputs</a>. The values of these variables are available to the <a href="../Answer_Tests/">answer tests</a> and all <a href="../CASText/">CASText</a> fields within the tree, for example the feedback could be built using these variables.</p>
+<p>Notes:</p>
+<ol>
+<li>
+<p>You cannot define a feedback variable with the same name as an input.  For example, if your input is <code>ans1</code> then it is tempting to define a feedback variable <code>ans1:exdowncase(ans1)</code> to ensure it is in lower case.  Do not do this!  Please use a different variable name.  This is because in some situations the answer test will choose to take the raw value of <code>ans1</code> exactly as the student typed it.  Any redefinition will interfere with this process.</p>
+</li>
+<li>
+<p>If one of the feedback variables throws an error then this will not stop the PRT executing.  If there is an error, this will be flagged in the response summary as <code>[RUNTIME_FV_ERROR]</code> (fv here means feedback variables).  See notes on <a href="../Error_trapping/">error trapping</a> for advice on how to use this.</p>
+</li>
+</ol>
+<h2 id="traversing-the-tree">Traversing the tree</h2>
+<p>A potential response tree (technically an acyclic directed graph) consists of an arbitrary number of linked nodes we call potential responses.</p>
+<p>In each node two expressions are compared using a specified <a href="../Answer_Tests/">answer tests</a>, and the result is either <code>true</code> or <code>false</code>. A corresponding branch of the tree has the opportunity to each of the following.</p>
+<ol>
+<li>Adjust the score, (e.g. assign a value, add or subtract a value).  Scores can be floating point numbers or variables defined elsewhere (e.g. question variables/feedback variables).</li>
+<li>Add written feedback specifically for the student</li>
+<li>Generate an "<a href="./#Answer_note">answer note</a>", used by the teacher for evaluative assessment</li>
+<li>Nominate the next node, or end the process.</li>
+<li>Any runtime error during traversing the tree will cause an error.  This error will stop further exectution of the tree, and students will see a runtime error message.  This will be flagged in the response summary as <code>[RUNTIME_ERROR]</code>.  If you have statements likely to throw an error you should evaluate them in the feedback variables first. See notes on <a href="../Error_trapping/">error trapping</a> for advice on how to use this.</li>
+</ol>
+<h2 id="outcomes">Outcomes</h2>
+<p>The outcomes are</p>
+<ol>
+<li>The raw score</li>
+<li>The penalty for this attempt</li>
+<li><a href="../Feedback/">Feedback</a> to the student (see below for full details)</li>
+<li>An answer note</li>
+</ol>
+<h3 id="question-value-question_value">Question Value {#Question_value}</h3>
+<p>The potential response tree itself is expected to return a numerical raw score between (0) and (1). This number is multiplied by the question value before being returned to the student as <a href="../Feedback/">feedback</a> or recorded in the database.</p>
+<h3 id="answer-note-answer_note">Answer note {#Answer_note}</h3>
+<p>The answer note is a tag which is key for reporting purposes. It is designed to record the outcome of each answer test and the unique path through the tree. This is automatically generated, but can be changed to something meaningful. When looking for identical paths through the tree we have to do so, regardless of which random numbers were selected in this variant of the question given to a particular student.  Hence, this string may not depend on any of the variables.</p>
+<p>The answer note is the concatenation of each answer note from the <a href="../Answer_Tests/">answer tests</a> and then the corresponding true/false branch.  This note provides a record of the result of applying each test and the route taken through the tree.</p>
+<p>This field is given a default value automatically and is used for <a href="../Reporting/">reporting</a> students' work.</p>
+<p>This field may not be empty and for each node in a tree the string must be unique.</p>
+<p>Do not use <code>;</code>, <code>|</code> charaters in your answer note.  These characters are used to split the response summary in the reporting scripts.</p>
+<h2 id="scores-and-penalties">Scores and penalties</h2>
+<p>A score is generated by each potential response tree.  Because the tree is only traversed when all inputs are valid, the score is only generated for a valid attempt.</p>
+<p>If a score is generated it is based only on the current values of the inputs.  This means that it is not based on either (1) previous values of the inputs, or (2) the number of previous attempts.  (Requests have been made to enable attempt number to be available, but this has not been implemented 
+yet.)</p>
+<p>If a score is generated then a penalty is also generated. The penalty system is designed to encourage students to make repeated attempts in a formative setting.  For example, a student is asked to find  ( \int x^2, \mathrm{d}x).  </p>
+<p>Attempt 1:  ( x^3/3).  Score (=0), Penalty (=0.1), Feedback: "You have missed a constant of integration."</p>
+<p>Attempt 2:  ( x^3/3+c).  Score (=1), Penalty (=0), Feedback: "Well done."</p>
+<p>Overall, the potential response tree returns the current score minus total penalties so far, in this example (0.9).  This is multiplied by the "Question value" set in the potential response tree.  These are summed across all potential response trees.</p>
+<p>In this example, some colleagues would prefer to give partial credit for missing a constant of integration rather than zero marks and a penalty.  In a formative setting, where students have an opportunity to have another attempt, the penalty system has been found to be an effective way to encourage students to have another attempt and to read the feedback.  In an examination, where no feedback is available and so further attempts are not made, different choices need to be made and partial credit would be more appropriate than a zero mark.</p>
+<ul>
+<li>The penalty is given a default value in the question.  This is a mandatory field; the default for STACK is 0.1.  </li>
+<li>Penalties are cumulative, but the student will be given the maximum possible mark.  I.e. while they accumulate penalties they are never worse off by repeatedly attempting the question.  In particular, if the student in the above example makes another attempt and scores (0) they will retain their mark of (0.9).  This is to encourage students to have another go in a formative setting.  STACK generates a list of penalty adjusted scores for each attempt, and takes the maximum. </li>
+<li>The penalty can be assigned a different value in the nodes of the potential response tree. This means, e.g., the teacher can assign a cumulative penalty 
+for a particular answer. </li>
+<li>The penalties are also controlled at a quiz level by the "question behaviours" mechanism for the quiz.  Hence, if you set the behaviour as "Adaptive mode (no penalties)" the penalty assigned will be ignored when the question is used by students in the quiz.</li>
+</ul>
+<h2 id="formative-potential-response-trees">Formative potential response trees</h2>
+<p>The outcomes of score, penalty, feedback and note are always produced.  Normally, whether this information should be shown to a student is a function of the quiz, and in Moodle the question behaviour.  It should not be set at the level of an individual question.</p>
+<p>There are rare, but important, situations where we need a purely formative PRT.</p>
+<p>E.g. Imagine a questions with inputs A, and B.</p>
+<ol>
+<li>Input A has a dedicated PRT to establish if it is correct.</li>
+<li>Input B has a dedicated PRT to establish if it is correct.</li>
+<li>There is an additional PRT which depends on both A &amp; B.  This gives formative feedback to the student, e.g. "try a more interesting combination of answers next time!" but is of no consequence to the correctness of A &amp; B.</li>
+</ol>
+<p>With a formative potential response tree, there is no general feedback such as "Correct answer well done".  There is never a mark (and marks for this PRT do not contribute to the question, or completeness of an answer).</p>
+<h2 id="response-tree-feedback-feedbackstyle">Response tree feedback: feedbackstyle</h2>
+<p>The feedback created by PRTs has the following parts concatenated together.</p>
+<pre><code>[Generic feedback] [Runtime errors] [PRT generated feedback] [Score ?]
+</code></pre>
+<p>The <code>[Generic feedback]</code> is a question level option, e.g. "Standard feedback for correct", to provide consistency accross a question. By default the <code>[Generic feedback]</code> contains both an initial symbol, and a language sentence.  The current "correct" default is</p>
+<p><span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.</p>
+<p>How PRT feedback is displayed is controlled by the PRT option <code>feedbackstyle</code> as follows.  Note the Generic feedback might include the symbol, if you retain the default.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Options</th>
+<th>Symbol</th>
+<th>Generic feedback</th>
+<th>Errors</th>
+<th>PRT feedback</th>
+<th>Score ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Formative</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No (PRT does not contribute to score)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Standard</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Respects quiz setting</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Compact</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Symbol only</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the "Compact" PRT feedback uses <code>&lt;span&gt;</code> tags and not <code>&lt;div&gt;</code>.  This allows inclusion inline, without new paragraphs settings.  However, <code>&lt;span&gt;</code> tags cannot contain a block level element, such as a <code>&lt;div&gt;</code> or <code>&lt;p&gt;</code>. So, if you include a block level element in your PRT feedback then the browser may "spit this out" and misplace the feedback. Also, MathJax may not display mathematics correctly on the page when there is an HTML errror such as this.  If you use the "Compact" feedback, please author only minimal PRT feedback with no block level HTML elements.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

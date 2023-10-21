@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Answer_Tests/String/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>String matching - STACK</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "String matching";
+        var mkdocs_page_input_path = "Authoring\\Answer_Tests\\String.md";
+        var mkdocs_page_url = "/Authoring/Answer_Tests/String/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">String matching</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="string-matching">String matching</h1>
+<p>On rare occasions string matching is useful.</p>
+<p>A much more useful feature is the <a href="../../../Topics/Levenshtein_distance/">Damerau-Levenshtein distance</a>.</p>
+<p>Since student's expressions are, by default, not permitted to contain spaces you will probably need to make use of the string input type.</p>
+<h3 id="atstring">ATString</h3>
+<p>This test performs a string match ignoring leading and trailing white space which are stripped from all answers, using PHP's trim() function.</p>
+<h3 id="atstringsloppy">ATStringSloppy</h3>
+<p>This test removes spaces, newlines and tabs and then performs a string match.</p>
+<h3 id="atsregexp">ATSRegExp</h3>
+<p>This test uses Maxima's <code>regex_match</code> function.</p>
+<ul>
+<li>Both arguments to the test must be Maxima strings.  If you have a general expression, turn it into a string in the feedback variables with Maxima's <code>string</code> function.</li>
+<li>The first argument should be the string, and the second argument should be the pattern to match.</li>
+<li>It yields true if the pattern is matched anywhere within the student answer and false otherwise. Testing for full equality of the answer string can be achieved via regex anchoring by use of <code>^</code> or <code>$</code>.</li>
+<li>Don't forget to escape within the pattern strings as needed. Note that there is a function <code>string_to_regex()</code> that will handle escaping of characters that would otherwise have meaning in the pattern. Also remember that you need to escape the backslashes like normal in Maxima-strings.  That is to say, if you want to use <code>\s</code> in a pattern you need to double up the backslashes. For example <code>"(Alice|Bob)\\s+went\\s+to\\s+the\\s+(bank|market)"</code>.</li>
+<li>One can read more about the patterns posible from <a href="http://ds26gte.github.io/pregexp/index.html">here</a>. Case-insensitivity may be something worth noting there.</li>
+</ul>
+<p>For example, write a STACK question with the following question variables.</p>
+<pre><code>s1:"(Alice|Bob)\\s+went\\s+to\\s+the\\s+(bank|market)";
+s2:"Alice went to the market";
+s3:"Bob       went to the    bank";
+</code></pre>
+<p>Then</p>
+<ol>
+<li>Use the string input (<code>ans1</code>) with teacher's answer <code>s2</code>.</li>
+<li>In the PRT use the node <code>ATSRegExp(ans1, s1)</code>.  This will use the pattern in the string <code>s1</code> against the student's answer.</li>
+</ol>
+<p>This will match both strings <code>s2</code> and <code>s3</code>, and many others.</p>
+<h3 id="regex_match_exactp"><code>regex_match_exactp</code></h3>
+<p>STACK also provides a helper function <code>regex_match_exactp(regex, str)</code> to check if the string equals the pattern matched by the regular expression.</p>
+<pre><code>Regex           String      Result
+(aaa)*(b|d)c    aaaaaabc    true
+(aaa)*(b|d)c    dc          true
+(aaa)*(b|d)c    aaaaaaabc   false
+(aaa)*(b|d)c    cca         false
+</code></pre>
+<p>Currently this is not provided as a separate answer test so you will need to use this predicate in the question variables and check the result against the expected value, or supply the predicate as an argument to an answer test.</p>
+<p>For example, using the question variables above you can define the following in the feedback variables.</p>
+<pre><code>sa:regex_match_exactp(s1, ans1);
+</code></pre>
+<p>Then you can use the <code>AlgEquiv</code> answer test to check the result is true/false, e.g. <code>ATAlgEquiv(sa, true)</code>.</p>
+<p><code>(RegExp)</code> <strong>NOTE:</strong> this test was removed in STACK version 4.3.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

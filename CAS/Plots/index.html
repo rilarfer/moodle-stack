@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Plots/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Plots and graphics in STACK questions. - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Plots and graphics in STACK questions.";
+        var mkdocs_page_input_path = "CAS\\Plots.md";
+        var mkdocs_page_url = "/CAS/Plots/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Plots and graphics in STACK questions.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="plots-and-graphics-in-stack-questions">Plots and graphics in STACK questions.</h1>
+<p>Plots and graphics can be placed into any of the <a href="../../Authoring/CASText/">CASText</a> fields.</p>
+<p>The main way to create plots with the core STACK commands is using Maxima.  As of version 4.0, the tags <code>{#...#}</code> provide the possibility to interact with 3rd party scripts.  If you have examples of this, please contact the developers.  This page is about core supported functionality.</p>
+<h2 id="plot-plot">plot() {#plot}</h2>
+<p>In STACK, the <code>plot</code> command has been defined to be a wrapper for Maxima's <code>plot2d</code> command.  The wrapper makes sure that an image file is given an appropriate name, file location, and that Maxima returns a URL to the user giving the image.  Not all of the features of <code>plot2d</code> are available through <code>plot</code>.  </p>
+<p>Try, for example, the following in the question stem.</p>
+<pre><code>{@plot(x^2,[x,-1,1])@}
+</code></pre>
+<p>You can add a second variable to control the axes.</p>
+<pre><code>plot(x^2,[x,-1,1],[y,0,2])
+</code></pre>
+<p>However, Maxima will not always allow you to get the axes you want (this is a bug in Maxima). To get many plots in one window, we need to define a list of expressions.</p>
+<pre><code>plot([x^2,sin(x)],[x,-1,1])
+</code></pre>
+<p>This can be done with Maxima's <code>makelist</code> command</p>
+<pre><code>(p(k):=x^k,pl:makelist(p(k),k,1,5),plot(pl,[x,-1,1]))
+</code></pre>
+<p>Notes:</p>
+<ul>
+<li>Currently STACK has <code>gnuplot</code> return a basic SVG image.</li>
+<li>Only a very few of Maxima's <code>plot_options</code> are respected by <code>plot</code>, mainly for security reasons.  (<code>plot</code> calls an external command <code>gnuplot</code> which writes to the server filesystem.)</li>
+<li>The <code>draw</code> package is currently not supported.</li>
+<li>To change the size of the image use the Maxima variable <code>size</code>, e.g. <code>plot(x^2,[x,-1,1],[size,250,250])</code>.</li>
+<li>By default plots are surrounded by the <code>&lt;div class="stack_plot"&gt;</code>.  This puts whitespace around a plot, and places the plot in the centre of the screen.  To suppress this <code>div</code> use the option <code>[plottags,false]</code>.</li>
+</ul>
+<h2 id="traditional-axes">Traditional axes</h2>
+<p>Note: this example only works with newer versions of Maxima (and not before 5.31.3).</p>
+<p>A traditional plot with the axes in the middle can be generated by the following.</p>
+<pre><code>{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1], [box, false], [yx_ratio, 1], [axes, solid], [xtics, -2, 0.5, 2],[ytics, -2, 0.5, 2])@}
+</code></pre>
+<h2 id="labels">Labels</h2>
+<p>The <code>ylabel</code> command rotates its argument through 90 degrees.  If you want a horizontal label on the (y)-axis you will need to use the <code>label</code> command instead.</p>
+<pre><code>{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1], [label,["y",-2.5,0.25]])@}
+</code></pre>
+<h2 id="grid">Grid</h2>
+<p>The grid is controlled by the maxima command <code>grid2d</code> (newer versions of Maxima only).  Compare the following.</p>
+<pre><code>{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1], grid2d)@}
+{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1])@}
+</code></pre>
+<h2 id="options">Options</h2>
+<p>The following <code>plot</code> options are currently supported by STACK.   If you would like to expand the range of options available please contact the developers.</p>
+<pre><code>[xlabel, ylabel, label, legend, color, style, point_type, nticks, logx, logy, axes, box, plot_realpart, yx_ratio, xtics, ytics, ztic, grid2d],
+</code></pre>
+<p>Please see Maxima's documentation for more information on these options.  Note that the <code>draw</code> package is currently not supported.</p>
+<p>Notes on some of the options.</p>
+<ul>
+<li>The default in Maxima is to include a legend consisting of a <code>string</code> representation of the plot.  In STACK this is turned off by default.  To switch it back on, use the command <code>[legend, true]</code>.  Any other value of the option <code>legend</code> will respect the original command.</li>
+</ul>
+<h2 id="alternate-text-for-an-image-alt-tag-alttext">Alternate text for an image (alt tag) {#alttext}</h2>
+<p>The default alternate text for an image (img alt tag) generated by a plot command such as</p>
+<pre><code>plot(x^2,[x,-2,2]);
+</code></pre>
+<p>is "STACK auto-generated plot of x^2 with parameters [[x,-2,2]]".  If your question asks students to "give an algebraic expression which describes this curve" then you will need to set alternative text which does not include the answer.</p>
+<p>To set a specific alt tag, pass an equation <code>[alt,"..."]</code> as an argument to the plot function.</p>
+<pre><code>plot(x^2,[x,-2,2],[alt,"Hello world"]);
+</code></pre>
+<p>If you would like an expression as part of this then try</p>
+<pre><code>p:sin(x);
+plot(p,[x,-2,2],[alt,sconcat("Here is ",string(p))]);
+</code></pre>
+<h2 id="language-strings">Language strings</h2>
+<p>Note, you cannot put language strings directly into the alt-text.  E.g. the following will not be translated.</p>
+<pre><code>{@plot(x^2,[x,-2,2],[alt,"[[lang code='en,other']]A quadratic curve[[/lang]][[lang code='no']]En kvadratisk kurve[[/lang]]"])@}
+</code></pre>
+<p>You can define a castext element in the question variables which does get translated, e.g.</p>
+<pre><code>altlbls: castext("[[lang code='en,other']]A quadratic curve[[/lang]][[lang code='no']]En kvadratisk kurve[[/lang]]");
+</code></pre>
+<p>and then use this in the castext:</p>
+<pre><code>{@plot(x^2,[x,-2,2],[alt,altlbls])@}
+</code></pre>
+<p>This technique can be put into other language dependent plot variables.  E.g.</p>
+<pre><code>xlabeltrans: castext("[[lang code='en,other']]Independent variable[[/lang]][[lang code='no']]Uavhengig variabel[[/lang]]");
+ylabeltrans: castext("[[lang code='en,other']]Dependent variable[[/lang]][[lang code='no']]Avhengig variabel[[/lang]]");
+</code></pre>
+<p>Then in the castext <code>{@plot(x*sin(1/x),[x,-1,2],[xlabel,xlabeltrans],[ylabel,ylabeltrans])@}</code></p>
+<h2 id="a-catalogue-of-plots">A catalogue of plots</h2>
+<p>The following CASText gives representative examples of the plot2d features supported by STACK's plot command.  Cut and paste it into the CASchat script.  Beware that these are likely to cause a timeout on the CAS if you try them all at once.</p>
+<pre><code>&lt;h3&gt;Basic plot&lt;/h3&gt;
+{@plot(x^2,[x,-2,2])@}
+The following plot tests the option to explicitly test the alt-text.
+{@plot(x^3,[x,-3,3], [alt,"What is this function?"])@}
+&lt;h3&gt;Multiple graphs, clips the \(y\) values&lt;/h3&gt;
+{@plot([x^3,exp(x)],[x,-2,2],[y,-4,4])@}
+&lt;h3&gt;With and without a grid&lt;/h3&gt;
+{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1], grid2d)@}
+{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1])@}
+&lt;h3&gt;Discrete plots&lt;/h3&gt;
+Basic discrete plot.
+{@plot([discrete,[[0,0],[1,1],[0,2]]])@}
+Points: by default the points are too large!
+{@plot([discrete,[[0,0], [1,1], [1.5,(1.5)^2]]],[x,-2,2],[style, [points]],[point_type, bullet])@}
+{@plot([discrete,[[0,0], [1,1], [1.5,(1.5)^2]]],[x,-2,2],[style, [points, 1]],[point_type, bullet])@}
+Notice the size of the points is controlled by the second argument in the list `[points, 1]`.  This is documented in Maxima under "Plot option: style".  A more complicated example is below.
+{@plot([[discrete,[[0,0], [1,1], [1.5,(1.5)^2]]],[discrete,[[0,0.1], [0.75,1], [1.25,1.5]]]],[style, [points, 1, red, 1 ], [points, 1.5, blue, 1]])@}
+Combination of discrete plots with normal plots.
+{@plot([x^2, [discrete,[ [0,0], [1,1], [0,2]]]],[x,-2,2])@}
+{@plot([x^2, [discrete,[ [0,0], [1,1], [1.5,(1.5)^2]]]],[x,-2,2],[style, lines, [points, 1]],[point_type, bullet])@}
+{@plot([[discrete,[[30,7]]], -0.4*x+19],[x,0,60],[y,0,20],[style, points, lines], [color, red, blue],[point_type, asterisk])@}
+{@plot([[discrete,[[10, 0.6], [20, 0.9], [30, 1.1], [40, 1.3], [50, 1.4]]], 2*%pi*sqrt(l/980)], [l,0,50],[style, points, lines], [color, red, blue],[point_type, asterisk])@}
+Using different point styles.
+{@plot([[discrete, [[10, .6], [20, .9], [30, 1.1],[40, 1.3], [50, 1.4]]],[discrete, [[11, .5], [15, .9], [25, 1.2],[40, 1.3], [50, 1.4]]]],[style, points],[point_type,circle,square],[color,black,green])@}
+&lt;h3&gt;Parametric plots&lt;/h3&gt;
+{@plot([parametric, cos(t), sin(3*t), [t,0,2*%pi]], [nticks, 500])@}
+&lt;h3&gt;Setting non-trivial options: labels on the axes and legend&lt;/h3&gt;
+{@plot([x^2/(1+x^2),diff(x^2/(1+x^2),x)],[x,-1,2],[legend,true])@}
+{@plot(x*sin(1/x),[x,-1,2],[xlabel,"Independent variable"],[ylabel,"Dependent variable"],[legend,"This is a plot"])@}
+&lt;h3&gt;Log scale for y-axis, with red colour&lt;/h3&gt;
+{@plot(exp(3*s),[s, -2, 2],[logy], [color,red])@}
+&lt;h3&gt;Turn off the box, grid and the axes&lt;/h3&gt;
+Default options
+{@plot([parametric, (exp(cos(t))-2*cos(4*t)-sin(t/12)^5)*sin(t), (exp(cos(t))-2*cos(4*t)-sin(t/12)^5)*cos(t), [t, -8*%pi, 8*%pi]], [nticks, 100])@}
+&lt;tt&gt;[axes, false]&lt;/tt&gt;
+{@plot([parametric, (exp(cos(t))-2*cos(4*t)-sin(t/12)^5)*sin(t), (exp(cos(t))-2*cos(4*t)-sin(t/12)^5)*cos(t), [t, -8*%pi, 8*%pi]], [nticks, 100], [axes,false])@}
+&lt;tt&gt;[box, false]&lt;/tt&gt;
+{@plot([parametric, (exp(cos(t))-2*cos(4*t)-sin(t/12)^5)*sin(t), (exp(cos(t))-2*cos(4*t)-sin(t/12)^5)*cos(t), [t, -8*%pi, 8*%pi]], [nticks, 100], [box,false])@}
+&lt;h3&gt;Putting the axes in the middle&lt;/h3&gt;
+{@plot([x^2/(1+x^2),2*x/(1+x^2)^2], [x, -2, 2], [y,-2.1,2.1], [box, false], [yx_ratio, 1], [axes, solid], [xtics, -2, 0.5, 2],[ytics, -2, 0.5, 2])@}
+</code></pre>
+<h2 id="piecewise-functions">Piecewise functions</h2>
+<p>A piecewise function can be defined with <code>if</code> statements.</p>
+<pre><code>/* Piecewise function at x0, with discontinuity. */
+f0:x^3
+f1:sin(x)
+x0:2
+pg1:if x&lt;(x0-1/1000) then f0 else if x&lt;x0+1/1000 then 5000 else f1;
+</code></pre>
+<p>Notes:</p>
+<ol>
+<li>Do not use functions, but instead have the conditional statement return an <em>expression</em>.  This seems odd, but Maxima's plot command plots expressions not functions.</li>
+<li>Note the use of a small gap to create a discontinuous graph.  If you want a larger gap, that is fine as well.</li>
+</ol>
+<p>Now use the CASText:</p>
+<pre><code>{@plot(pg1,[x,(x0-5),(x0+5)],[y,-10,10])@}
+</code></pre>
+<p>For a discontinuous function, with the endpoints circled etc. try adding some of the following options.</p>
+<pre><code>f0:x^3
+f1:sin(x)
+x0:2
+pg1:if x&lt;(x0-1/1000) then f0 else if x&lt;x0+1/1000 then 5000 else f1;
+ps:[style, lines, points, points];
+pt:[point_type,circle,circle,bullet];
+pc:[color, blue,red,blue];
+</code></pre>
+<p>Now use the CASText:</p>
+<pre><code>{@plot([pg1, [discrete,[ [x0,ev(f0,x=x0)], [x0,ev(f1,x=x0)]]], [discrete,[ [x0,ev((f0+f1)/2,x=x0)]]] ], [x,(x0-5),(x0+5)], [y,-10,10], ps, pt, pc)@}
+</code></pre>
+<h2 id="graph-theory">Graph theory</h2>
+<p>It is possible to plot simple <a href="../../Topics/Discrete_mathematics/">discrete graphs</a> directly using STACK's <code>plot</code> command by building a combination of discrete and line plots.</p>
+<h2 id="implicit_plot-implicit">implicit_plot()  {#implicit}</h2>
+<p>In Maxima</p>
+<pre><code>load("implicit_plot");
+implicit_plot(x^2+y^2=x^2*y^2+1,[x,-2,2],[y,-2,2]);
+</code></pre>
+<p>generates a plot of an implicit function.</p>
+<p>Maxima's <code>implicit_plot()</code> function does not respect the plot options, and we cannot place the resulting plot files in the correct places.
+Hence, STACK does not currently support implicit plots.</p>
+<h2 id="html">HTML</h2>
+<p>Note also that images can be included as HTML.  It is easiest to place your image somewhere on the internet and include a URL in the body of your STACK question.</p>
+<h2 id="bode-plots">Bode plots</h2>
+<p>Maxima has a very basic package for bode diagrams, try <code>load(bode)</code> in a Maxima session.  This is not a supported package, so instead you can create Bode diagrams directly with code such as the following.</p>
+<pre><code>/* Define two functions to do the plotting */
+bose_gain(f,r):=block([p,w], p:plot(20*log(abs( apply(f,[%i*w]) ))/log(10), [w, r[2],r[3]], [logx]), return(p) );
+bose_phase(f,r):=block([p,w], p:plot(  carg(  apply(f,[%i*w]))*180/%pi, [w, r[2],r[3]], [logx]), return(p) );
+/* Define a transfer function */
+H(s):=100*(1+s)/((s+10)*(s+100));
+
+/* Produce the graphs */
+gain: bose_gain(H,[w,1/1000,1000]);
+phase:bose_phase(H,[w,1/1000,1000]);
+</code></pre>
+<h2 id="see-also">See also</h2>
+<p><a href="../#reference">Maxima reference topics</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

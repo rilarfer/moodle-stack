@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Subscripts/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Subscripts - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Subscripts";
+        var mkdocs_page_input_path = "CAS\\Subscripts.md";
+        var mkdocs_page_url = "/CAS/Subscripts/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Subscripts</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="atoms-subscripts-and-fine-tuning-the-latex-display">Atoms, subscripts and fine tuning the LaTeX display</h2>
+<p>Everything in Maxima is either an <em>atom</em> or an <em>expression</em>. Atoms are either an integer number, float, string or a name.  You can use the predicate <code>atom()</code> to decide if its argument is an atom.  Expressions have an <em>operator</em> and a list of <em>arguments</em>. Note that the underscore symbol is <em>not</em> an operator.  Thus <code>a_1</code> is an atom in maxima. Hence, the atoms <code>a1</code> and <code>a_1</code> are not considered to be algebraically equivalent.  If you would like to consolidate subscripts in students' input see the documentation on <a href="../../Authoring/Inputs/">extra options</a>.  Also note that since the underscore is not an operator, an expression such as <code>(a_b)_c</code> is not valid Maxima syntax, but <code>a_b_c</code> is a valid name for an atom.</p>
+<p>You can change the TeX output for an atom with Maxima's <code>texput</code> command.  E.g. <code>texput(blob, "\\diamond")</code> will display the atom <code>blob</code> as ( \diamond ).  If you place <code>texput</code> commands in the question variables, this affects the display everywhere in the question including the inputs.  E.g. if a student types in <code>blob</code> then the validation feedback should say something like "your last answer was: ( \diamond )".</p>
+<p>Display with subscripts is a subtle and potentially confusing issue because subscript notation in mathematics has many different uses.  For example,</p>
+<ol>
+<li>Subscripts denote a function of the natural numbers, e.g. when defining terms in a sequence (a_1, a_2, a_3).  That is the subscript denotes function application.  (a_n = a(n)).</li>
+<li>Subscripts denote differentiation, e.g. ( x_t ) is the derivative of (x ) with respect to (t).</li>
+<li>Subscripts denote coordinates in a vector, in ( \vec{v} = (v_1, v_2, \cdots, v_n)  ).</li>
+</ol>
+<p>There are many other possible uses for subscripts, especially in other subjects e.g. in physics or <a href="../../Reference/Actuarial/">actuarial studies</a>.</p>
+<p>Because Maxima considers subscripted expressions to be atoms, the default TeX output of an atom <code>V_alpha</code> from Maxima is ( {\it V_alpha} ) (literally <code>{\it V\_alpha}</code>) and not ( V_{\alpha} ) as a user might expect.  For this reason STACK intercepts and redefines how atoms with the underscore are displayed.  In particular STACK (but not core Maxima) takes an atom <code>A_B</code>, applies the <code>tex()</code> command to <code>A</code> and <code>B</code> separately and concatenates the result using subscripts.  For example, if you define</p>
+<pre><code>texput(A, "{\\mathcal A}");
+texput(B, "\\diamond");
+</code></pre>
+<p>then <code>A_B</code> is now displayed as ({{{\mathcal A}}_{\diamond}}).</p>
+<p>Below are some examples.</p>
+<table>
+<thead>
+<tr>
+<th>Maxima code</th>
+<th>Maxima's <code>tex()</code> command (raw output and displayed)</th>
+<th>STACK  (raw output and displayed)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A_B</code></td>
+<td><code>{\it A\_B}</code> ({\it A_B})</td>
+<td><code>{{A}_{B}}</code> ( {{A}_{B}} )</td>
+</tr>
+<tr>
+<td><code>A[1]</code></td>
+<td><code>A_{1}</code> ( A_{1})</td>
+<td><code>{A_{1}}</code> ( {A_{1}} )</td>
+</tr>
+<tr>
+<td><code>A1</code></td>
+<td><code>A_{1}</code> ( A_{1} )</td>
+<td><code>{A_{1}}</code> ( {A_{1}} )</td>
+</tr>
+<tr>
+<td><code>A_1</code></td>
+<td><code>A_{1}</code> ( A_{1} )</td>
+<td><code>{A_{1}}</code> ( {A_{1}} )</td>
+</tr>
+<tr>
+<td><code>A_x1</code></td>
+<td><code>{\it A\_x}_{1}</code> ( {\it A_x}_{1} )</td>
+<td><code>{{A}_{x_{1}}}</code> ( {{A}_{x_1}} )</td>
+</tr>
+<tr>
+<td><code>A_BC</code></td>
+<td><code>{\it A\_BC}</code> ( {\it A_BC} )</td>
+<td><code>{{A}_{{\it BC}}}</code> ( {{A}_{{\it BC}}} )</td>
+</tr>
+<tr>
+<td><code>A_alpha</code></td>
+<td><code>{\it A\_alpha}</code> ( {\it A_alpha})</td>
+<td><code>{{A}_{\alpha}}</code> ( {{A}_{\alpha}} )</td>
+</tr>
+<tr>
+<td><code>A_B_C</code></td>
+<td><code>{\it A\_B\_C}</code> ( {\it A_B_C} )</td>
+<td><code>{{{A}_{B}}_{C}}</code> ( {A_B}_C )</td>
+</tr>
+<tr>
+<td><code>x_t(1)</code></td>
+<td><code>{\it x\_t}\left(1\right)</code> ( {\it x_t}\left(1\right) )</td>
+<td><code>{{\it x\_t}\left(1\right)}</code> ( {{\it x_t}\left(1\right)} )</td>
+</tr>
+<tr>
+<td><code>A[1,2]</code></td>
+<td><code>A_{1,2}</code> ( A_{1,2} )</td>
+<td><code>{A_{1,2}}</code> ( {A_{1,2}} )</td>
+</tr>
+</tbody>
+</table>
+<p>Notes</p>
+<ol>
+<li>in the above examples three different expressions (atoms <code>A1</code>, <code>A_1</code> and the expression <code>A[1]</code>) generate the same tex code <code>A_{1}</code> ( A_{1}), and so are indistinguishable at the display level.</li>
+<li>The expression <code>x_t(1)</code> refers to the function <code>x_t</code> which is not an atom, and hence STACK's logic for displaying atoms with underscores does not apply (by design).  If you want to display a function name including a subscript you can explicitly use, e.g. <code>texput(x_t, "x_t");</code> to control the display, this is just not done automatically.</li>
+</ol>
+<p>One situation where this design is not satisfactory is when you want to use both of the atoms <code>F</code> and <code>F_1</code> but with different display. For example <code>F</code> should display as ({\mathcal F}) but <code>F_1</code> should display as ( F_1 ).  Such a situation is not hard to imagine, as it is often considered good style to have things like ( F_1 \in {\mathcal F}).  The above design always splits up the atom <code>F_1</code> into <code>F</code> and <code>1</code>, so that the atom <code>F_1</code> will display as  ({\mathcal F}_1).  (This is actually what you normally expect, especially with the Greek letter subscripts.)  To avoid this problem the logic which splits up atoms containing an underscore checks the texput properties list. If an entry has been made for a specific atom then STACK's display logic uses the entry, and does not split an atom over the underscore.  In the above example, use the following texput commands.</p>
+<pre><code>texput(F, "{\\mathcal F}");
+texput(F_1, "{F_1}");
+</code></pre>
+<p>With this code <code>F</code> displays as ({\mathcal F}), the atom <code>F_1</code> displays as ( F_1 ), and every subscript will display with calligraphic, e.g. <code>F_alpha</code> displays as ({\mathcal F}_{\alpha}).  There is no way to code the reverse logic, i.e. define a special display only for the unique atom <code>F</code>.</p>
+<p>Note that the <a href="../../Topics/Units/">scientific units</a> code redefines and then assumes that symbols represent units.  E.g. <code>F</code> is assumed to represent Farad, and all units are typeset in Roman type, e.g. ( \mathrm{F} ) rather than the normal ( F ). This is typically the right thing to do, but it does restrict the number of letters which can be used for variable names in a particular question.  To overcome this problem you will have to redefine some atoms with texput.  For example,</p>
+<pre><code>stack_unit_si_declare(true);
+texput(F_a, "F_a");
+</code></pre>
+<p>will display the atom <code>F_a</code> as (F_a), i.e. not in Roman.  If you <code>texput(F, "F")</code> the symbol <code>F</code> is no longer written in Roman, as you would expect from units.  This may be sensible if Farad could not possibly appear in context, but students might type a range of subscripted atoms involving <code>F</code>.</p>
+<p>The use of texput is global to a question. There is no way to display a particular atom differently in different places (except perhaps in the feedback variables, which is currently untested: assume texput is global).</p>
+<p>How would you generate the tex like ( A_{1,2} )?  STACK's <code>sequence</code> command (see below) does output its arguments separated by a comma, so <code>sequence(1,2)</code> is displayed as ( {1,2} ), however the Maxima command <code>A_sequence(1,2)</code> refers to the function <code>A_sequence</code>, (since the underscore is not an operator).  Hence STACK's logic for splitting up <em>atoms</em> containing the underscore does not apply.  (In any case, even if the display logic did split up function names we would still have the issue of binding power to sort out, i.e. do we have the atom with parts <code>A</code> and <code>sequence(1,2)</code> or the function named <code>A</code> and <code>sequence</code>?)  To create an output like ( A_{1,2} ) you have no option but to work at the level of display.  Teachers can create an inert function which displays using subscripts.</p>
+<pre><code>texsub(a,b)
+</code></pre>
+<p>is typeset as ({a}_{b}) i.e. <code>{a}_{b}</code> in LaTeX.  For example,</p>
+<ul>
+<li><code>texsub(A, sequence(1,2))</code> will display as ({{A}_{1, 2}}),</li>
+<li>with simplification off, <code>texsub(F,1-2)</code> will be displayed as ({F}_{1-2}).</li>
+</ul>
+<p>Note that the process of converting <code>theta_07</code> into the intermediate <code>texsub</code> form internally results in the <code>texsub(theta,7)</code> which removes the leading zero.  This is a known issue, for which a work around is to directly use <code>texput(theta_07, "{{\\theta}_{07}}")</code> or <code>texsub(theta,"07")</code>.  The second option does not produce optimal LaTeX, since it uses TeX <code>mbox</code>, e.g. <code>{{\theta}_{\mbox{07}}}</code>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

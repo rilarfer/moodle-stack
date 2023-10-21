@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Installation/Optimising_Maxima/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Optimising Maxima - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Optimising Maxima";
+        var mkdocs_page_input_path = "Installation\\Optimising_Maxima.md";
+        var mkdocs_page_url = "/Installation/Optimising_Maxima/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Optimising Maxima</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="optimising-maxima">Optimising Maxima</h1>
+<p>There are several ways to reduce the access and execution time of this CAS which can prove useful for scaling. They have the potential to greatly speed up STACK, and are required on a production server.  It is particularly important on a Linux system to compile the Maxima code.</p>
+<p>The instructions for both CLISP and SBCL have been tested and work in STACK 3.  As of November 2020, these are working with all versions between Maxima 5.36.1 and Maxima 5.44.0.</p>
+<p>The procees of creating an optimised Maxima image is now automated.  This should be built automatically when installing STACK, and on upgrade.  However, you should use the plugin healthcheck script to confirm you have a fully working system.</p>
+<p>For developers the code to automatically generate the LISP images is described below.</p>
+<h2 id="terminating-runaway-lisps">Terminating runaway LISPS</h2>
+<p>It is relatively easy for students to inadvertently generate an answer which takes Maxima a very long time to evaluate.  Typically this arises from where Maxima needs to expand out the brackets by comparing <code>(x-a)^59999</code> with a similar expression.  It is very hard to ensure this kind of calculation is impossible so in general this situation will arise from time to time.  The PHP scripts have a timeout, but on Linux systems you can also ensure the underlying LISP process is killed off using <code>timeout</code> command in Linux.  This is particularly valuable for production systems where stability is essential.</p>
+<ol>
+<li>Check that your Linux has the <code>timeout</code> command.  Because this is not standard we have not included this mechanism by default.</li>
+<li>Make sure STACK is working.</li>
+<li>Set the CAS connection timeout variable as normal in the STACK settings.  E.g. you might choose 5 seconds</li>
+<li>
+<p>Use the following Maxima command</p>
+<p>timeout --kill-after=6s 6s maxima</p>
+</li>
+</ol>
+<p>It is important that the timeout time is <em>longer</em> than the CAS connection timeout.  That way, PHP gives up first and degrades gracefully.  The OS then kills the process later.  If you choose the timeout to be the same or less, PHP may not have gathered enough data to degrade gracefully.  </p>
+<p>The above can be used with either a direct Maxima connection, or with the image created as described below.</p>
+<h2 id="compiled-lisp">Compiled Lisp</h2>
+<p><a href="../../CAS/Maxima/">Maxima</a> can be run with a number of different <a href="http://maxima.sourceforge.net/lisp.html">Lisp implementations</a>.
+Although CLISP is the most portable - due to being interpreted - other Lisps can give faster execution.</p>
+<h2 id="create-maxima-image">Create Maxima Image</h2>
+<p>Lisp is able to save a snapshot of its current state to a file. This file can then be used to restart Lisp, and hence Maxima, in exactly that state. This optimization involves creating a snapshot of Lisp with Maxima and all the STACK code loaded, which can speed up launch times by an order of magnitude on Linux. This tip was originally provided Niels Walet.</p>
+<p>The principle is to save an image of Maxima running with STACK libraries already loaded then run this directly.  The healthcheck page contains a link at the bottom "Create Maxima Image".  We strongly recommend you use the automated option to create a Maxima image.</p>
+<h2 id="create-maxima-image-by-hand">Create Maxima Image by hand</h2>
+<p>These steps should not be needed.  Our goal is to do this automatically.  If your OS and Maxima version do not work, please contact the developers with details and we will try to automate this process.</p>
+<p>For reference:</p>
+<ul>
+<li>Check your Maxima Lisp with <code>maxima --list-avail</code> to see what versions of Maxima and which Lisp you have.  This information is available through the healthcheck page.</li>
+<li>Load Maxima, using switches for the particular version you want, e.g. <code>maxima -l CLISP -u 5.19.2</code> or <code>maxima --use-version=5.40.1</code>.</li>
+</ul>
+<h3 id="gcl">GCL</h3>
+<p>This is the default Lisp used by most of the binary distributions, and therefore the Lisp which you are most likely to have.</p>
+<ul>
+<li>Get STACK working with Platform type set to 'Linux'. Run the health-check. It is important to do this every time you upgrade your version.</li>
+</ul>
+<pre><code>    load(&quot;&lt;path&gt;/maximalocal.mac&quot;);
+    :lisp (si::save-system &quot;/path/to/moodledata/stack/maxima-optimised&quot;)  
+    quit();
+</code></pre>
+<ul>
+<li>Go into the STACK settings and set Platform type to 'Linux (Optimised)'.</li>
+<li>Set Maxima command to.</li>
+</ul>
+<pre><code>    /path/to/moodledata/stack/maxima-optimised  -eval '(cl-user::run)'
+</code></pre>
+<h3 id="clisp">CLISP</h3>
+<p><a href="http://clisp.cons.org/impnotes/image.html">Save an image in CLISP</a>.</p>
+<ul>
+<li>Get STACK working with Platform type set to 'Linux'. Run the health-check. It is important to do this every time you upgrade your version.</li>
+<li>We assume you have CLISP. Type <strong>locate lisp.run</strong> to find the path(s) for the next step. You might need to run the command as root, and if you get no results try doing a <strong>sudo updatedb</strong>.</li>
+<li>Within Maxima, type the following lines to create an image and exit.</li>
+</ul>
+<pre><code>    load(&quot;&lt;path&gt;/maximalocal.mac&quot;);
+    load(&quot;&lt;path&gt;/stackmaxima.mac&quot;);
+    :lisp (ext:saveinitmem &quot;/path/to/moodledata/stack/maxima-optimised.mem&quot; :init-function #'user::run)
+    quit();
+</code></pre>
+<ul>
+<li>Go into the STACK settings and set Platform type to 'Linux (Optimised)'.</li>
+<li>Set Maxima command to.</li>
+</ul>
+<pre><code>    &lt;path&gt;/lisp.run -q -M &lt;path&gt;/maxima-optimised.mem
+</code></pre>
+<ul>
+<li>Click Save changes at the bottom of the settings page.</li>
+<li>Visit the healthcheck page, and clear the cache (if applicable), to make sure everything is still working.</li>
+</ul>
+<p>Access speed increases of between 2 and 9.5 times have been reported over the standard CLISP configurations.</p>
+<h3 id="sbcl">SBCL</h3>
+<p>If you are using STACK with SBCL (if you are using CentOS/SL5/RHEL with Maxima from EPEL),
+use the following to generate a standalone executable:</p>
+<ul>
+<li>Get STACK working with Platform type set to 'Linux'. Run the healthcheck. It is important to do this every time you upgrade your version.</li>
+<li>Go into your moodledata/stack folder as the current directory, and run Maxima.</li>
+<li>In Maxima, type the commands:</li>
+</ul>
+<pre><code>    load(&quot;maximalocal.mac&quot;);
+    :lisp (sb-ext:save-lisp-and-die &quot;maxima-optimised&quot; :toplevel #'run :executable t)
+</code></pre>
+<ul>
+<li>Go into the STACK settings and set the Platform to 'Linux (Optimised)'.</li>
+<li>You should be able to leave Maxima command blank.</li>
+<li>Click save changes at the bottom of the settings page.</li>
+<li>Visit the healthcheck page, and clear the cache (if applicable), to make sure everything is still working.</li>
+</ul>
+<h3 id="other-lisps">Other Lisps</h3>
+<p>The following web pages have more information for a few types of Lisp: <a href="http://stackoverflow.com/questions/25046/lisp-executable">http://stackoverflow.com/questions/25046/lisp-executable</a> and
+<a href="http://code.google.com/p/lispbuilder/wiki/StandAloneExecutables#Defining_a_Startup_Function">http://code.google.com/p/lispbuilder/wiki/StandAloneExecutables#Defining_a_Startup_Function</a></p>
+<h2 id="putting-maxima-on-other-servers">Putting Maxima on other servers</h2>
+<p>Running Maxima on a separate server dedicated to the task is more secure. We believe it also
+improves performance because the server can start up Maxima processes in advance
+so they are all ready and waiting to compute some CAS with zero delay.</p>
+<p>See a <a href="http://github.com/maths/stack_util_maximapool">Maxima pool</a> has been implemented to do this.  See <a href="https://github.com/maths/stack_util_maximapool/blob/master/README.md">https://github.com/maths/stack_util_maximapool/blob/master/README.md</a></p>
+<h2 id="optimisation-results">Optimisation results</h2>
+<p>The following data was gathered by CJS on 23/9/2012 using Maxima 5.28.0 with CLISP 2.49 (2010-07-07) on a Linux server.</p>
+<p>Running the PHP testing suites we have the following data, where all times are in seconds. The second line, in italics, is time per test.</p>
+<table>
+  <tr>
+    <th align="left">CAS setting</th>
+    <th align="left">Answertest (460 tests)</th>
+    <th align="left">Inputs (257 tests)</th>
+  </tr>
+  <tr>
+    <td>Linux</td>
+    <td>517.8672<br> <i>1.1258</i>  </td>
+    <td>208.85655<br> <i>0.81267</i>  </td>
+  </tr>
+  <tr>
+    <td>Mature cache <br>(with Linux)</td>
+    <td>0.92644 <br> <i>0.00201</i> </td>
+    <td>13.9798<br> <i>0.0544</i> </td>
+  </tr>
+  <tr>
+    <td>Linux (optimised)</td>
+    <td>95.16954<br> <i>0.20689</i>  </td>
+    <td>20.89807<br> <i>0.08132</i>  </td>
+  </tr>
+  <tr>
+    <td>Mature cache <br>(when optimised)</td>
+    <td>0.90839 <br> <i>0.00197</i> </td>
+    <td>1.48648<br> <i>0.00578</i> </td>
+  </tr>
+</table>
+
+<p>However, not all tests result in a CAS call.  So, to estimate this we subtract the overhead time for a mature cache (which is essentially time for database/PHP processing) from the raw time and divide by the number of CAS calls.  We have the following time per CAS call estimates.</p>
+<table>
+<thead>
+<tr>
+<th>CAS setting</th>
+<th>Answertest (438 calls)</th>
+<th>Inputs (204 calls)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td>1.180</td>
+<td>0.955</td>
+</tr>
+<tr>
+<td>Linux (optimised)</td>
+<td>0.215</td>
+<td>0.095</td>
+</tr>
+</tbody>
+</table>
+<p>The optimised version saves a considerable amount of time, representing a significant performance improvement in the critical step of just under a second per call.  Well worth the effort (&amp; maintenance) to reward ratio.  It is likely that using a compiled version of LISP would result in further considerable savings.</p>
+<p>However, it isn't entirely clear to me at this point why the input tests with a mature cache using the default Linux connection takes over 13 seconds.  This seems anomalous.</p>
+<p>The following data was gathered by CJS on 10/10/2012 using Maxima 5.28.0 with CLISP 2.49 and SBCL 1.0.58-1.el6, both on the same Linux server.  The table gives time in seconds to run the answer tests (462 tests).</p>
+<table>
+<thead>
+<tr>
+<th>Maxima version</th>
+<th>Linux</th>
+<th>Linux optimised</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLISP 2.49</td>
+<td>652.3</td>
+<td>117.76314</td>
+</tr>
+<tr>
+<td>SBCL 1.0.58-1.el6</td>
+<td>1570.6</td>
+<td>118.39215</td>
+</tr>
+</tbody>
+</table>
+<p>With both lisp versions, the optimisation gives a significant performance gain and there is very little difference between the times of the optimised versions.</p>
+<h2 id="cas-on-linux">CAS on Linux</h2>
+<p>The tests above use Maxima through the PHP interface.  To gauge the overhead from the CAS itself we ran the following tests on the same server using Maxima 5.28.0 with CLISP 2.49.</p>
+<pre><code>model name: Intel(R) Xeon(R) CPU, E3113  @ 3.00GHz
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Linux</th>
+<th>Time for 100 cycles (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start Maxima and quit</td>
+<td>43</td>
+</tr>
+<tr>
+<td>Start STACK  and quit</td>
+<td>124</td>
+</tr>
+<tr>
+<td>Process AtAlgEquiv</td>
+<td>133</td>
+</tr>
+</tbody>
+</table>
+<p>Without optimising Linux, compared to processing one AtAlgEquiv, there is approximately 93% overhead in starting the maxima process.</p>
+<table>
+<thead>
+<tr>
+<th>Optimised Linux</th>
+<th>Time for 100 cycles (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start STACK and quit</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Process AtAlgEquiv</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Process 100 AtAlgEquiv</td>
+<td>104</td>
+</tr>
+<tr>
+<td>Process 100 plot</td>
+<td>117</td>
+</tr>
+</tbody>
+</table>
+<p>The PHP processing time is almost insignificant against the time it takes to initiate and use the CAS.</p>
+<p>With the optimised Linux we have reduced the loading time, and the loading overhead considerably.  A single ATAlgEquiv request takes about 0.04s.  Asking for 100 ATAlgEquiv requests in a single session take 0.0092s per request.  Asking for 100 plot commands takes 1.05s per plot - which is rather slow (plots undertake a large number of floating point calculations).
+The overhead times for loading Maxima might be reduced, and smoothed out by using the Maxima pool, see <a href="http://github.com/maths/stack_util_maximapool">http://github.com/maths/stack_util_maximapool</a> for an implementation of this.  The computation times are difficult to reduce.</p>
+<p>Memory appears to be modest: the optimised Linux takes about 15Mb of memory per process.</p>
+<h1 id="compiling-a-maxima-image">Compiling a Maxima image</h1>
+<p>The following was tested in March 2016 on CENTOS.  It is for compiling a Maxima image.  Really this is mostly for developers.</p>
+<pre><code>sudo yum install sbcl texinfo rpm-build
+cd ~
+wget http://dl.fedoraproject.org/pub/fedora/linux/updates/22/SRPMS/m/maxima-5.36.1-2.fc22.src.rpm
+rpm -i maxima-5.36.1-2.fc22.src.rpm
+cd rpmbuild
+rpmbuild -ba SPECS/maxima.spec
+cd RPMS/x86_64
+sudo yum remove maxima
+sudo yum install maxima-runtime-sbcl-5.36.1-2.el6.x86_64.rpm maxima-5.36.1-2.el6.x86_64.rpm
+</code></pre>
+<p>The following was tested in March 2016 on Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-79-generic x86_64) (Trusty). Install dependencies:</p>
+<pre><code>sudo apt-get -y install clisp texinfo
+</code></pre>
+<p>Then run:</p>
+<pre><code>cd ~
+wget -O maxima_source.tar.gz http://sourceforge.net/projects/maxima/files/Maxima-source/5.36.1-source/maxima-5.36.1.tar.gz/download
+tar zxvf maxima_source.tar.gz
+cd maxima-5.36.1
+./configure --with-clisp
+make --silent
+sudo make install --silent
+maxima --list-avail
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

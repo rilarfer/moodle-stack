@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/STACK-Maxima_sandbox/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>STACK - Maxima Sandbox - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "STACK - Maxima Sandbox";
+        var mkdocs_page_input_path = "CAS\\STACK-Maxima_sandbox.md";
+        var mkdocs_page_url = "/CAS/STACK-Maxima_sandbox/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">STACK - Maxima Sandbox</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="stack-maxima-sandbox">STACK - Maxima Sandbox</h1>
+<p>It is very useful when authoring questions to be able to test out Maxima code on your local machine in the same environment in which STACK uses <a href="../Maxima/">Maxima</a> on your server. That is to say, to run a desktop version of Maxima with the local settings and STACK specific functions loaded.  You can copy the Maxima code from the question testing page into the sandbox for offline testing and debugging of a question.  This is also used in <a href="../../Authoring/Reporting/">reporting</a> and analysis of students' responses. To do this you will need to load the libraries of Maxima functions specific to STACK. You may also want to copy some of your local settings from the server to your local machine to ensure an identical setup, but this is not strictly necessary for most purposes.</p>
+<p>The first step is to install wxMaxima on your local machine (http://maxima.sourceforge.net/).</p>
+<h3 id="getting-the-stack-libraries">Getting the STACK libraries</h3>
+<p>You will need to download the STACK files onto your local machine.  Download all the STACK files from GitHub (git clone or as a .zip).  E.g. try <code>https://github.com/maths/moodle-qtype_stack/archive/master.zip</code> </p>
+<p>The only files you need to run the sandbox are contained within the directory</p>
+<pre><code>stack/maxima/
+</code></pre>
+<p>This directory also contains the wxMaxima file <code>sandbox.wmx</code> which is the "sandbox" interface file. Your goals are (i) to set Maxima's path so it can find all the files you have downloaded, and (ii) to load the file</p>
+<pre><code>stack/maxima/stackmaxima.mac
+</code></pre>
+<p>Copy <code>sandbox.wmx</code> somewhere you can find it later and edit this file to reflect the location of the above file on your local machine.  </p>
+<p>On a Microsoft operating system, if you place the all the files (i.e. clone or unzip the download) into </p>
+<pre><code>c:/tmp/stackroot
+</code></pre>
+<p>the <code>sandbox.wmx</code> should work without further adjustment.  </p>
+<p>Otherwise open <code>sandbox.wmx</code> with wxMaxima and follow the further instructions it contains to setup the path for Maxima.  <strong>Note, the backslash character <code>\</code> is a control character so you will need to edit the path to replace the <code>\</code> with <code>/</code> in wxMaxima.</strong> Execute the sandbox file with wxMaxima when you have updated the settings with <code>cell &gt; Evaluate all cells</code>.  If you see something like the following you have set this up correctly (version numbers will vary).</p>
+<pre><code>[ STACK-Maxima started, library version 2022022300 ]
+</code></pre>
+<p>You can test this out by using, for example, the <code>rand()</code> function.</p>
+<pre><code>rand(matrix([5,5],[5,5]));
+</code></pre>
+<p>to create a pseudo-random matrix.  If <code>rand</code> returns unevaluated, then you have not loaded the libraries correctly.</p>
+<p>An alternative approach on a Microsoft operating system is to copy the contents of (a working) <code>sandbox.wmx</code> file into a</p>
+<pre><code>%USERPROFILE%/Maxima/stacklocal.mac
+</code></pre>
+<p>Using <code>load("stacklocal")</code> in any worksheet will load the STACK environement.</p>
+<h3 id="using-the-answer-tests">Using the answer tests</h3>
+<p>Please make sure you read the page on <a href="../../Authoring/Answer_Tests/">answer tests</a> first.</p>
+<p>Informally, the answer tests have the following syntax</p>
+<pre><code>[Errors, Result, FeedBack, Note] = AnswerTest(StudentAnswer, TeacherAnswer, Opt)
+</code></pre>
+<p>actually the results returned in Maxima are</p>
+<pre><code>[Valid, Result, FeedBack, Note] = AnswerTest(StudentAnswer, TeacherAnswer, Opt)
+</code></pre>
+<p>Errors are echoed to the console, and are trapped by another mechanism.  The valid field is used to render an attempt invalid, not wrong.</p>
+<p>To call an answer test directly from Maxima, you need to use the correct function name.   For example, to call the algebraic equivalence (AlgEquiv) answer test you need to use</p>
+<pre><code>ATAlgEquiv(x^2+2,x*(x+1));
+</code></pre>
+<p>The values returned are actually in the form</p>
+<pre><code>[true,false,"",""]
+</code></pre>
+<p>Feedback is returned in the form of a language tag which is translated later. For example,</p>
+<pre><code>(%i1) ATInt(x^2,x*(x+1),x);
+(%o1) [true,false,"ATInt_generic. ",
+       "stack_trans('ATInt_generic' , !quot!\\[2\\,x+1\\]!quot!  , !quot!\\(x\\)!quot!  , !quot!\\[2\\,x\\]!quot! ); "]
+</code></pre>
+<p>If you just want to decide if two expressions are considered to be algebraically equivalent, then use</p>
+<pre><code>algebraic_equivalence(ex1,ex2);
+</code></pre>
+<p>This is the function the answer test <code>ATAlgEquiv</code> uses without all the wrapper of a full answer test.</p>
+<h3 id="useful-tips">Useful tips</h3>
+<p>STACK turns off the traditional two-dimensional display, which we can turn back on with the following command.</p>
+<pre><code>display2d:true;
+</code></pre>
+<h2 id="setting-maximas-global-path-microsoft">Setting Maxima's Global Path (Microsoft)</h2>
+<p>Setting the path in Maxima is a problem on a Microsoft platform.  Maxima does not deal well with spaces in filenames, for example.  The simplest solution is to create a directory</p>
+<pre><code>C:/maxima
+</code></pre>
+<p>and add this to Maxima's path.  Place all Maxima files in this directory, so they will then be seen by Maxima.
+For Maxima 5.43.2, edit, or create, the file</p>
+<pre><code>C:/Program Files/maxima-5.43.2/share/maxima/5.43.2/share/maxima-init.mac
+</code></pre>
+<p>ensure it contains the following lines, possibly modified to reflect the directory you have chosen</p>
+<pre><code>file_search_maxima:append([sconcat("C:/maxima/###.{mac,mc}")],file_search_maxima)$
+file_search_lisp:append([sconcat("C:/maxima/###.{lisp}")],file_search_lisp)$
+</code></pre>
+<p>Other versions of Maxima are similar.</p>
+<h2 id="reflecting-the-settings-on-your-server">Reflecting the settings on your server</h2>
+<p>The healtcheck page (Moodle admin access only) displays the contents of the Maxima configuration file which is written to the sever.  This contains Maxima commands to update the path (which you probably don't want to copy) and also the function <code>STACK_SETUP(ex)</code> which configures your particular version of STACK.  You may want to replace <code>STACK_SETUP(ex)</code> in the sandbox with <code>STACK_SETUP(ex)</code> from the Moodle server. For most users this should not be needed, and is most useful for advanced debugging where significant differences between versions matters.</p>
+<p>It is more important to match the version of the STACK code you downloaded from github with the version you have on your server.  The STACK documentation page on your server gives the version number of the STACK code at the bottom of the documentation front page.  For example</p>
+<pre><code>https://stack-demo.maths.ed.ac.uk/demo/question/type/stack/doc/doc.php/
+</code></pre>
+<p>shows the version of the STACK code the demo site is running.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Running_question_tests_other_site/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Bulk testing on your site - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Bulk testing on your site";
+        var mkdocs_page_input_path = "Developer\\Running_question_tests_other_site.md";
+        var mkdocs_page_url = "/Developer/Running_question_tests_other_site/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Bulk testing on your site</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bulk-testing-on-your-site">Bulk testing on your site</h1>
+<p>You can bulk test all question tests on all variants of all question by using the bulk-test script.  This is available from the quetion setting page or from the "adminui" page</p>
+<pre><code>[...]/question/type/stack/adminui/index.php
+</code></pre>
+<p>User require capability <code>qtype/stack:usediagnostictools</code>.</p>
+<h1 id="running-question-tests-for-questions-on-other-sites-command-line">Running question tests for questions on other sites (command line)</h1>
+<p>You can bulk test all question tests on all variants of all question by using the command line bulk-test script contained in the <code>cli</code> directory as follows:</p>
+<pre><code>php bulktestall.php
+</code></pre>
+<p>Since you have command line access to the development server you will need to edit this line</p>
+<pre><code>$DB-&gt;connect('live.database.host.name', 'read_only_user', 'pa55w0rd', 'live_database_name', 'mdl_', $CFG-&gt;dboptions);
+</code></pre>
+<p>to specify the remote database.  Then run the command line script (perhaps using something like screen to allow this to run in the background while you logout) with the <code>remote</code> option.</p>
+<pre><code>php bulktestall.php --remote
+</code></pre>
+<h1 id="running-question-tests-for-questions-on-other-sites-web">Running question tests for questions on other sites (web)</h1>
+<p>When you upgrade to a new version of STACK, it would be reassuring to know beforehand
+whether there is any change in behaviour in STACK which will affect your existing questions.</p>
+<p>After you have done the upgrade, it is easy to run the question tests in bulk, using the
+link on the STACK plugin admin screen. However, with a bit of hackery, it is possible to
+run the code from the new STACK release (with a few modifications) on your development server,
+but have it open a read-only connection to your live database, in order to load the questions
+and their corresponding tests.</p>
+<p>The following patch is provided as-is. It will probably require tinkering with to work in any
+given situation.</p>
+<pre><code>diff --git a/bulktest.php b/bulktest.php
+index 7974af2..a6614f2 100644
+--- a/bulktest.php
++++ b/bulktest.php
+@@ -29,13 +29,14 @@ require_once($CFG-&gt;libdir . '/questionlib.php');
+ require_once(__DIR__ . '/locallib.php');
+ require_once(__DIR__ . '/stack/utils.class.php');
+ require_once(__DIR__ . '/stack/bulktester.class.php');
++require_once(__DIR__ . '/stack/cas/connectorhelper.class.php');
+
+
+ // Get the parameters from the URL.
+ $contextid = required_param('contextid', PARAM_INT);
+
+ // Login and check permissions.
+-$context = context::instance_by_id($contextid);
++$context = context_system::instance();
+ require_login();
+ require_capability('qtype/stack:usediagnostictools', $context);
+ $PAGE-&gt;set_url('/question/type/stack/bulktest.php', array('contextid' =&gt; $context-&gt;id));
+@@ -50,8 +51,8 @@ if ($context-&gt;contextlevel == CONTEXT_MODULE) {
+     $PAGE-&gt;set_cm($cm, $DB-&gt;get_record('course', array('id' =&gt; $cm-&gt;course), '*', MUST_EXIST));
+ }
+
+-// Create the helper class.
+-$bulktester = new stack_bulk_tester();
++// Cache the connection settings.
++stack_connection_helper::make();
+
+ // Release the session, so the user can do other things while this runs.
+ \core\session\manager::write_close();
+@@ -60,9 +61,25 @@ $bulktester = new stack_bulk_tester();
+ echo $OUTPUT-&gt;header();
+ echo $OUTPUT-&gt;heading($title);
+
++// Connect to other database.
++$bulktestrealdb = $DB;
++if (!$DB = moodle_database::get_driver_instance($CFG-&gt;dbtype, $CFG-&gt;dblibrary)) {
++    throw new dml_exception('dbdriverproblem', &quot;Unknown driver $CFG-&gt;dblibrary/$CFG-&gt;dbtype&quot;);
++}
++$DB-&gt;connect('live.database.host.name', 'read_only_user', 'pa55w0rd', 'live_database_name', 'mdl_', $CFG-&gt;dboptions);
++
++$context = context::instance_by_id($contextid);
++
++// Create the helper class.
++$bulktester = new stack_bulk_tester();
++
+ // Run the tests.
+ list($allpassed, $failing) = $bulktester-&gt;run_all_tests_for_context($context);
+
+ // Display the final summary.
+ $bulktester-&gt;print_overall_result($allpassed, $failing);
++
++// Switch back to the read DB.
++$DB = $bulktestrealdb;
++
+ echo $OUTPUT-&gt;footer();
+diff --git a/bulktestindex.php b/bulktestindex.php
+index 3d5eafa..f84b4bd 100644
+--- a/bulktestindex.php
++++ b/bulktestindex.php
+@@ -38,13 +38,20 @@ $PAGE-&gt;set_url('/question/type/stack/adminui/bulktestindex.php');
+ $PAGE-&gt;set_context($context);
+ $PAGE-&gt;set_title(stack_string('bulktestindextitle'));
+
+-// Create the helper class.
+-$bulktester = new stack_bulk_tester();
+-
+ // Display.
+ echo $OUTPUT-&gt;header();
+ echo $OUTPUT-&gt;heading(stack_string('replacedollarsindex'));
+
++// Connect to other database.
++$realdb = $DB;
++if (!$DB = moodle_database::get_driver_instance($CFG-&gt;dbtype, $CFG-&gt;dblibrary)) {
++    throw new dml_exception('dbdriverproblem', &quot;Unknown driver $CFG-&gt;dblibrary/$CFG-&gt;dbtype&quot;);
++}
++$DB-&gt;connect('live.database.host.name', 'read_only_user', 'pa55w0rd', 'live_database_name', 'mdl_', $CFG-&gt;dboptions);
++
++// Create the helper class.
++$bulktester = new stack_bulk_tester();
++
+ echo html_writer::start_tag('ul');
+ foreach ($bulktester-&gt;get_stack_questions_by_context() as $contextid =&gt; $numstackquestions) {
+     echo html_writer::tag('li', html_writer::link(
+@@ -53,6 +60,9 @@ foreach ($bulktester-&gt;get_stack_questions_by_context() as $contextid =&gt; $numstac
+ }
+ echo html_writer::end_tag('ul');
+
++// Switch back to the read DB.
++$DB = $realdb;
++
+ if (has_capability('moodle/site:config', context_system::instance())) {
+     echo html_writer::tag('p', html_writer::link(
+             new moodle_url('/question/type/stack/bulktestall.php'), stack_string('bulktestrun')));
+diff --git a/stack/cas/connectorhelper.class.php b/stack/cas/connectorhelper.class.php
+index 40ef26e..d8ba3e1 100644
+--- a/stack/cas/connectorhelper.class.php
++++ b/stack/cas/connectorhelper.class.php
+@@ -78,6 +78,11 @@ abstract class stack_connection_helper {
+                 throw new stack_exception('stack_cas_connection: Unknown platform ' . self::$config-&gt;platform);
+         }
+
++        global $bulktestrealdb;
++        if (!empty(($bulktestrealdb))) {
++            // Use the real db as the cache for performance.
++            return new stack_cas_connection_db_cache($connection, $debuglog, $bulktestrealdb);
++        }
+         switch (self::$config-&gt;casresultscache) {
+             case 'db':
+                 global $DB;
+</code></pre>
+<p>As an example of the kind of tinkering that might be required, and the time I devised this patch,
+the new version of STACK had a database change, which had not yet been applied to our live database.
+Therefore, I had to tweak the question loading code as follows:</p>
+<pre><code>diff --git a/questiontype.php b/questiontype.php
+index 6dcc96d..02c4354 100644
+--- a/questiontype.php
++++ b/questiontype.php
+@@ -348,7 +348,7 @@ class qtype_stack extends question_type {
+         $question-&gt;inputs = $DB-&gt;get_records('qtype_stack_inputs',
+                 array('questionid' =&gt; $question-&gt;id), 'name',
+                 'name, id, questionid, type, tans, boxsize, strictsyntax, insertstars, ' .
+-                'syntaxhint, syntaxattribute, forbidwords, allowwords, forbidfloat, requirelowestterms, ' .
++                'syntaxhint, 0 AS syntaxattribute, forbidwords, allowwords, forbidfloat, requirelowestterms, ' .
+                 'checkanswertype, mustverify, showvalidation, options');
+
+         $question-&gt;prts = $DB-&gt;get_records('qtype_stack_prts',
+@@ -403,7 +403,7 @@ class qtype_stack extends question_type {
+                 'strictSyntax'    =&gt; (bool) $inputdata-&gt;strictsyntax,
+                 'insertStars'     =&gt; (int) $inputdata-&gt;insertstars,
+                 'syntaxHint'      =&gt; $inputdata-&gt;syntaxhint,
+-                'syntaxAttribute' =&gt; $inputdata-&gt;syntaxattribute,
++                'syntaxAttribute' =&gt; '0',
+                 'forbidWords'     =&gt; $inputdata-&gt;forbidwords,
+                 'allowWords'      =&gt; $inputdata-&gt;allowwords,
+                 'forbidFloats'    =&gt; (bool) $inputdata-&gt;forbidfloat,
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

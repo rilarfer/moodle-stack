@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/CASText/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>CASText - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CASText";
+        var mkdocs_page_input_path = "Authoring\\CASText.md";
+        var mkdocs_page_url = "/Authoring/CASText/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CASText</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="castext">CASText</h1>
+<h2 id="introduction">Introduction</h2>
+<p>CASText is CAS-enabled text.  CASText is simply HTML into which LaTeX mathematics and CAS commands can be embedded. These CAS commands are executed before the question is displayed to the user. <em>Use only simple LaTeX mathematics structures</em>. Only a small part of core LaTeX is supported.</p>
+<p>Many of the fields in a STACK question, such as the question text, are of this type.</p>
+<p>Information about <a href="http://www.w3schools.com/html/">Basic HTML</a> is available elsewhere.</p>
+<p>Currently STACK does not process the LaTeX itself.  It is displayed on the user's browser in a variety of ways, such as using <a href="http://http://www.mathjax.org/">MathJax</a>.   If you do not know how to use LaTeX, some simple examples are given in the <a href="../Author_FAQ/">author FAQ</a>.</p>
+<ul>
+<li>Anything enclosed between <code>\( .... \)</code> symbols is treated as an <em>inline equation</em>, as is the case with normal LaTeX.</li>
+<li>Anything enclosed between matching <code>\[</code> and <code>\]</code> is treated as a <em>displayed equation</em>, in the centre of a new line.</li>
+<li>We do not support the use of dollar symbols such as <code>$...$</code> and <code>$$...$$</code> for denoting LaTeX mathematics environments.  See the notes on <a href="./#currency">currency</a> below and also the page on <a href="../../Installation/Mathjax/#delimiters">MathJax</a> for more information.</li>
+<li>Don't use LaTeX text formatting features such as <code>\\</code>, instead use the HTML versions.</li>
+<li>Anything enclosed between <code>{@</code> and <code>@}</code> delimiters is evaluated by the CAS and replaced by the LaTeX representing the result.  Some notes.</li>
+<li>By default this is displayed as an <em>inline equation</em>.  This is analogous to using LaTeX symbols. Note however, that you don't need to use <code>\({@ stuff @}\)</code>, and that <code>{@ stuff @}</code> is sufficient.</li>
+<li>To get a displayed equation centred on a line of its own, you must use <code>\[{@ stuff @}\]</code>, as in LaTeX.</li>
+<li>The outer <code>{}</code> characters of <code>{@ stuff @}</code> will be left in the output to ensure that the output is considered as a single group by LaTeX.</li>
+<li>Anything enclosed between <code>{#</code> and <code>#}</code> delimiters is evaluated by the CAS and replaced by the Maxima representing the result. Basically, raw values usable in other tools or examples on how to input the value.</li>
+<li>If the Maxima variable <code>x</code> is a string then <code>{@x@}</code> produces the string contents without quote marks or LaTeX environment, while <code>{#x#}</code> produces the string contents enclosed by quote marks.</li>
+<li>If you want comma separated values without the list brackets then use <code>{@stack_disp_comma_separate( list )@}</code>.  This function turns a list into a string representation of its arguments, without braces.</li>
+<li>Multiple CAS expressions may appear in a single LaTeX equation, as needed.  For example <code>\[  \frac{@p@}{@q@} \]</code>.  Note that many problems are <em>best solved</em> at the level of the CAS, e.g. by defining a variable <code>p/q</code> in the CAS, not at the level of display.  This is a design decision which needs experience to resolve efficiently in each case.  For an example of this, see the example <a href="../../CAS/Matrix/#Showing_working">showing working</a>.</li>
+</ul>
+<p>Here is an example</p>
+<pre><code>The derivative of {@sin(1/(1+x^2))@} is
+\[ \frac{\mathrm{d}}{\mathrm{d}x} \sin \left( \frac{1}{x^2+1} \right) = {@diff(sin(1/(1+x^2)),x)@} \]
+You can input this as &lt;code&gt;{#diff(sin(1/(1+x^2)),x)#}&lt;/code&gt;
+</code></pre>
+<h2 id="variables-variables">Variables ##   {#Variables}</h2>
+<p>CASText may depend on variables previously defined in the <a href="../Variables/#Question_variables">question variables</a> field.</p>
+<p>Where the CASText appears in the fields of a <a href="../Potential_response_trees/">potential response trees</a>,
+the variables in the <a href="../Variables/#Feedback_variables">feedback variables</a> may also be included.</p>
+<p>To control whether or not the CAS expressions are simplified, see the details about <a href="../../CAS/Simplification/#selective-simplification">selective simplification</a>.</p>
+<h2 id="question-text-question_text">Question text {#question_text}</h2>
+<p>The question text what the student actually sees.  This was called "question text" in previous versions.</p>
+<p>It is a slightly modified form of CAS text.  To allow a student to answer a question you must include an <a href="../Inputs/">inputs</a> in the question text. For example, students need a box into which their answer will be put.</p>
+<p>To place an <a href="../Inputs/">input</a> into the question enclose the name of the <a href="../../CAS/Maxima/">Maxima</a> variable to which the student's answer is assigned between inside the following tag.  If the student's answer is going to be assigned to the variable <code>ans1</code> then use the tag <code>[[input:ans1]]</code>.  You will also be required to place a corresponding tag to indicate the position of any validation feedback (whether or not this is shown to the student): <code>[[validation:ans1]]</code>.  You can use any legitimate variable name.</p>
+<ul>
+<li>When the question is created this is replaced with the appropriate <a href="../Inputs/">input</a>.</li>
+<li>When the student answers, this variable name is available to each <a href="../Potential_response_trees/">potential response trees</a>.</li>
+<li>Inputs are created and deleted by adding appropriate tags to the question text.  Therefore, beware if you delete the tags as this will also delete the input from the question.</li>
+</ul>
+<p>To place another potential response tree in the question just choose a sensible name and add in a tag <code>[[feedback:prt1]]</code>.  </p>
+<ul>
+<li>These tags are replaced by appropriate feedback as necessary.  Note, if you add the feedback to the question text this will always be shown by the STACK question, regardless of the quiz settings.  You may prefer to place the tags in the "specific feedback" block of the editing form.  Availability of the specific feedback is controlled by the Moodle quiz settings.  There is some compromise here between the ability to position the feedback tags anywhere in the question text (e.g. next to a particular input) and control over when it is shown.  This is most difficult in questions with many parts.  For a single part question we recommend you use the specific feedback block.</li>
+<li>Tags can be moved anywhere within the question text.</li>
+<li>Do <strong>not</strong> place feedback tags within LaTeX equations!</li>
+<li>PRTs are created and deleted by adding appropriate tags to the question text.  Therefore, beware if you delete the tags as this will also delete the PRT from the question, which may result in lost work.</li>
+<li>Some sites use a database which is not case sensitive (!), so please ensure tags differ by more than case sensitivity.  E.g. avoid <code>[[input:ans_m]]</code> and <code>[[input:ans_M]]</code> in questions.  Similarly with feedback tags.  Because most databases are case sensitive we do not check for this issue.</li>
+</ul>
+<h2 id="general-feedbackworked-solution-general_feedback">General feedback/Worked solution {#general_feedback}</h2>
+<p>General feedback (called "worked solution" in previous versions) is shown to the student after they have attempted the question. Unlike feedback, which depends on the response the student gave, the same general feedback text is shown to all students.</p>
+<p>The general feedback may depend on any question variables, but may <em>not</em> depend on any of the inputs.
+While this design decision is restrictive, it is a deliberate separation of feedback
+which should be done via potential response trees, from a model solution to this
+problem which can be written before a question is deployed.</p>
+<h2 id="castext-and-currency-currency">CASText and currency {#currency}</h2>
+<p>It is common to want to use the dollar sign for currency.  However, this conflicts with the use of the dollar sign for delimiters for mathematics.  For this reason we discourage the use of dollars to delimit mathematics in STACK.</p>
+<ul>
+<li>If you are using dollars for currency then you must protect them with a backslash, i.e. <code>\$</code>, otherwise the CASText validation will fail.</li>
+</ul>
+<h2 id="facts">Facts</h2>
+<p>STACK has an in-built formula sheet.  This used to be called a "hints" system, but the word hint is used elsewhere in Moodle so this is now called "facts".  Parts of this can be added to CASText using the <a href="../Fact_sheets/">fact sheet</a></p>
+<h2 id="reference-materials">Reference materials</h2>
+<p>HTML and LaTeX are needed for authoring STACK questions, and some basic reference materials is give elsewhere.</p>
+<ul>
+<li>Some basic <a href="../../Reference/HTML/">HTML</a> examples.</li>
+<li>Some basic <a href="../../Reference/Latex/">LaTeX</a> examples.</li>
+<li>There is a specific page for <a href="../../Reference/Actuarial/">actuarial notation</a>.</li>
+</ul>
+<h2 id="castext-generating-functions">CASText generating functions</h2>
+<p>If a CASText area is to include several copies of repeatative content, for instance several versions of some text (or a SVG graphic) containing 
+different parameters, it is possible to define a CASText generating function within the Question variables using the STACK function <code>castext</code>.</p>
+<p>For example, within the <a href="../Variables/">Question variables</a> section, define</p>
+<pre><code>explanation(x,y):=castext("Substituting {@x@} into the expression gives {@y@}.");
+</code></pre>
+<p>This can then be used several times within any CASText area:</p>
+<pre><code>[[ comment ]] Generated text [[/ comment ]]
+{@explanation(a,b)@}
+{@explanation(c,d)@}
+</code></pre>
+<h4 id="notes">Notes</h4>
+<ul>
+<li>The argument of castext must be a single atomic string, not a reference to one but a static string value.</li>
+<li>Since Maxima does not require new lines to be escaped, new lines can be started within the <code>castext</code> string argument.</li>
+<li>Care needs to be taken with any quotation marks within the castext argument. For HTML attributes within such text, use <code>'...'</code> .</li>
+<li>Two castext objects can be joined with <code>castext_concat()</code></li>
+</ul>
+<h2 id="google-charts">Google Charts</h2>
+<p>The <a href="http://code.google.com/apis/chart/">Google charts</a> API can be used to create a URL based on the random variables.</p>
+<p><img alt="" src="http://chart.apis.google.com/chart?cht=v&amp;chs=200x100&amp;chd=t:100,100,0,50&amp;chdl=A|B" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

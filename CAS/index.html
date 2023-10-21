@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>CAS - STACK</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CAS";
+        var mkdocs_page_input_path = "CAS\\index.md";
+        var mkdocs_page_url = "/CAS/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">CAS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#maxima-in-stack-reference">Maxima in STACK {#reference}</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#developer-information-and-other-topics-developer">Developer information, and other topics {#developer}</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">CAS</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="maxima-and-computer-algebra-use-in-stack">Maxima and computer algebra use in STACK</h1>
+<p>STACK uses the computer algebra system (CAS) <a href="Maxima/">Maxima</a> and a graphical desktop interface like <a href="http://andrejv.github.com/wxmaxima/">wxMaxima</a> can be helpful for ofline editing, including a <a href="STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> for testing question code on the desktop.</p>
+<p>Computer algebra systems are most often designed for either the research mathematician, or the student <em>to do calculations</em>. For the purposes of assessment our calculation <em>establish some relevant properties</em> of the students' answers.  Establishing properties in this way, and on the basis of this creating outcomes such as feedback, is something particular to assessment systems. Such properties include things like</p>
+<ul>
+<li>is the expression algebraically equivalent to the correct answer?</li>
+<li>is the expression fully simplified?</li>
+<li>is the expression written a particular conventional form, (e.g. factored, partial fraction)?</li>
+<li>are all the numbers in the expression written as fractions in the lowest terms?</li>
+</ul>
+<h2 id="maxima-in-stack-reference">Maxima in STACK {#reference}</h2>
+<ul>
+<li><a href="Predicate_functions/">Predicate functions</a>, which are useful to test expressions.</li>
+<li><a href="Numbers/">Numbers</a>, including floating point and complex numbers.</li>
+<li><a href="Simplification/">Simplification</a> can be switched on and off in Maxima.</li>
+<li><a href="Inequalities/">Inequalities</a>.</li>
+<li><a href="Matrix/">Matrices and vectors</a>.</li>
+<li><a href="Statistics/">Statistics</a>.</li>
+<li><a href="Random/">Randomly generated objects</a>.</li>
+<li><a href="Plots/">Plots</a> and graphics.</li>
+<li><a href="Buggy_rules/">Buggy rules</a> implements rules which are not always valid!</li>
+</ul>
+<h2 id="developer-information-and-other-topics-developer">Developer information, and other topics {#developer}</h2>
+<ul>
+<li>Setting up a <a href="STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> for testing code on the desktop.</li>
+<li><a href="../Installation/Optimising_Maxima/">Optimising Maxima</a>.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Authoring/" class="btn btn-neutral float-left" title="Autoría"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Developer/" class="btn btn-neutral float-right" title="Desarrollador">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Authoring/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Developer/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

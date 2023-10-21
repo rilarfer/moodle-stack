@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/CAS_evaluatable/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>The family tree of cas_evaluatables. - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The family tree of cas_evaluatables.";
+        var mkdocs_page_input_path = "Developer\\CAS_evaluatable.md";
+        var mkdocs_page_url = "/Developer/CAS_evaluatable/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The family tree of cas_evaluatables.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-family-tree-of-cas_evaluatables">The family tree of cas_evaluatables.</h1>
+<p>As of 4.3 the CAS evaluation engine has been replaced by a more modular
+version. Basically the old "cassession" class was replaced with a version
+that takes in objects that implement the cas_evaluatable interface, and 
+evaluates them. However, it does not extract values from the CAS unless
+those objects implement additional interfaces that receive those values.</p>
+<h1 id="the-core-interfaces">The core interfaces</h1>
+<h2 id="cas_evaluatable">cas_evaluatable</h2>
+<p>Anything that can generate a CAS-statement string, responds to a question
+about its validity, can tell some backreference information to be displayed
+in potential error messages, and provides a function that receives
+information about the success or failure of the statement.</p>
+<p>In general if one is only loading values into the CAS and does not need to
+extract those particular values then something implementing cas_evaluatable
+is probably the thing to use. And one can always add additional items to
+the session and those can then extract values if need be.</p>
+<p>In the old terms keyvals are closest to collections of cas_evaluatables
+as they are rarely extracted on their own.</p>
+<h2 id="cas_value_extractor-and-cas_latex_extractor">cas_value_extractor and cas_latex_extractor</h2>
+<p>These two expand the cas_evaluatable interface by requiring that the object
+provides means of receiving the value or its LaTeX representation. 
+The obvious use for these are any items one needs to bring back from CAS,
+note that while one can easily push every statement to CAS in containers
+implementing these it is wasteful to do so unless you actually use those 
+extracted values. What is wasted is bandwidth, processing power, and space
+in the cache all of which directly affect response time and the upkeep
+costs of the system.</p>
+<p>From the old model the things that best match these are CASText, getting
+the results of PRTs, and generating the LaTeX values for validation messages.</p>
+<h1 id="the-new-class-hierarchy-of-base-level-objects">The new class hierarchy of base level objects</h1>
+<p>As we rarely create new classes that implement those interfaces it is better
+to list the existing ones so that one can seek for a ready made solution.
+Note that not all of these will be in active use as other parts of the system
+are brought forward.</p>
+<h2 id="by-source">By source</h2>
+<p>In general cas_evaluatables are backed with an AST that the statement parser
+has generated from question code or student input and has been processed by
+multiple AST-filters and validators. But things are not always so, one might
+have large blocks of code that have been prevalidated and cached as raw 
+strings that one wants to directly load to the session, for example logic
+code that evaluates a whole PRT or a forest of them. For the latter task there
+exists a special class (<code>stack_secure_loader</code>) that does just that.</p>
+<p>When dealing with student sourced material one tends to use 
+the <code>stack_ast_container</code> class which provides complex maker functions that
+ensure that a raw string gets parsed correctly and goes through key filters
+in addition to whatever filter you may want to apply in the context of a particular input.
+In some cases one may also use that class for teacher sourced material but in general 
+<code>stack_ast_container_silent</code> is the better choice for such material as it
+does not generate return values and typically teacher sourced content is used
+in logic, and logic is not something that one needs to always show.</p>
+<h2 id="special-cases">Special cases</h2>
+<p>The old system had the concept of conditional casstrings in the block system
+of CASText, as CASText is one of those things that will be redone, and in 
+a way that it no longer needs conditional casstrings, we provide a separate
+type of cas_evaluatable for this task thus freeing others from having to check
+for conditions.</p>
+<h2 id="the-makers">The makers</h2>
+<p>There exists three different static maker functions in classes 
+<code>stack_ast_container_silent</code> and <code>stack_ast_container</code>. The logic is identical
+as they are only defined in former, but the result is different as they create 
+objects of classes type. So call they through the class you wish to use.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

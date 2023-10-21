@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Future_plans/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Future plans - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Future plans";
+        var mkdocs_page_input_path = "Developer\\Future_plans.md";
+        var mkdocs_page_url = "/Developer/Future_plans/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Future plans</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="future-plans">Future plans</h1>
+<p>Note, where the feature is listed as "(done)" means we have prototype code in the testing phase.</p>
+<h2 id="features-to-add-for-stack-45-or-later">Features to add for STACK 4.5 or later</h2>
+<h3 id="units-inputs">Units inputs</h3>
+<ul>
+<li>Conversion from Celsius to Kelvin?  What units to choose for degrees Celsius which don't conflict with Coulomb?</li>
+<li>Support for United States customary units?</li>
+<li>(Parser can do this) Add an option to validation to require compatible units with the teacher's answer, not just some units.</li>
+<li>Create a mechanism to distinguish between <code>m/s</code> and <code>m*s^-1</code>, both at validation and answer test levels.</li>
+<li>Create a mechanism to distinguish between <code>m/s/s</code> and <code>m/s^2</code>, both at validation and answer test levels.</li>
+<li>Add support for testing for error bounds in units.  E.g. <code>9.81+-0.01m/s^2</code>.  There is already CAS code for this, and the error bounds are an optional 3rd argument to <code>stackunits</code>.  This is currently only used to reject students' answers as invalid.</li>
+</ul>
+<h3 id="inputs">Inputs</h3>
+<ul>
+<li>Add new input types</li>
+<li>DragMath (actually, probably use JavaScript from NUMBAS instead here, or the MathDox editor).</li>
+<li>Sliders - do this via JSXGraph.</li>
+<li>It is very useful to be able to embed input elements in equations, and this was working in STACK 2.0. However is it possible with MathJax or other Moodle maths filters?
+  This might offer one option:  http://stackoverflow.com/questions/23818478/html-input-field-within-a-mathjax-tex-equation</li>
+<li>In the MCQ input type: Add choose N (correct) from M feature (used at Aalto).</li>
+<li>A new MCQ input type with a "none of these" option which uses JavaScript to degrade to an algebraic input: https://community.articulate.com/articles/how-to-use-an-other-please-specify-answer-option</li>
+<li>(Parser can do this) Add an option for "no functions" which will always insert stars and transform "x(" -&gt; "x*(" even when x occurs as both a function and a variable.</li>
+<li>Make the syntax hint CAS text, to depend on the question variables.</li>
+</ul>
+<h3 id="improve-the-editing-form">Improve the editing form</h3>
+<ul>
+<li>A button to remove a given PRT or input, without having to guess that the way to do it is to delete the placeholders from the question text.</li>
+<li>A button to add a new PRT or input, without having to guess that the way to do it is to add the placeholders to the question text.</li>
+<li>A button to save the current definition and continue editing. This would be a Moodle core change. See https://tracker.moodle.org/browse/MDL-33653.</li>
+<li>Add functionality to add a "warning" to the castext class.  Warnings should not prevent execution of the code but will stop editing.</li>
+</ul>
+<h3 id="other-ideas">Other ideas</h3>
+<ul>
+<li>Document ways of using JSXGraph  <code>http://jsxgraph.org</code> for better support of graphics.</li>
+<li>Better options for automatically generated plots.  (Aalto use of tikzpicture?)  (Draw package?)</li>
+<li>3D Graphics.  Can we use: https://threejs.org/</li>
+<li>Expand support for context variables, so variables and other functions will be considered as context variables as well.  This will expand the utility of <code>texput</code>.</li>
+<li>Implement "Banker's rounding" option which applies over a whole question, and for all answer tests.</li>
+<li>(Parser can do this) Implement "CommaError" checking for CAS strings.  Make comma an option for the decimal separator.</li>
+<li>(Parser can do this) Implement "BracketError" option for inputs.  This allows the student's answer to have only those types of parentheses which occur in the teacher's answer.  Types are <code>(</code>,<code>[</code> and <code>{</code>.  So, if a teacher's answer doesn't have any <code>{</code> then a student's answer with any <code>{</code> or <code>}</code> will be invalid.</li>
+<li>It would be very useful to have finer control over the validation feedback. For example, if we have a polynomial with answer boxes for the coefficients, then we should be able to echo back "Your last answer was..." with the whole polynomial, not just the numbers.</li>
+<li>Decimal separator, both input and output.</li>
+<li>
+<p>Check CAS/maxima literature on -inf=minf.</p>
+</li>
+<li>
+<p>add in support for pdf_binomial, in particular add in these test cases to <code>studentinput_test.php</code>.</p>
+<pre><code>array('pdf_binomial(n,m,p)', 'php_true', 'pdf_binomial(n,m,p)', 'cas_true', '{{m}\choose{n}}\cdot p^{n}\cdot {\left(1-p\right)}^{m-n}', '', ""),
+array('pdf_binomial(2,6,0.07)', 'php_true', 'pdf_binomial(6,2,0.07)', 'cas_true', '{{6}\choose{2}}\cdot 0.07^{2}\cdot {\left(1-0.07\right)}^{6-2}', '', ""),
+</code></pre>
+</li>
+<li>
+<p>(Done in Stateful) Introduce a variable so the maxima code "knows the attempt number". [Note to self: check how this changes reporting].  This is now being done with the "state" code in the abacus branch.</p>
+</li>
+</ul>
+<h2 id="answer-tests">Answer tests</h2>
+<ul>
+<li>Answer tests should be like inputs. We should return an answer test object, not a controller object.</li>
+<li>at-&gt;get_at_mark() really ought to be at-&gt;matches(), since that is how it is used.</li>
+</ul>
+<h2 id="features-that-might-be-attempted-in-the-future-possible-self-contained-projects">Features that might be attempted in the future - possible self-contained projects</h2>
+<ul>
+<li>Read other file formats into STACK.  In particular</li>
+<li>AIM</li>
+<li>WeBWorK, including the Open Problem Library:  http://webwork.maa.org/wiki/Open_Problem_Library</li>
+<li>Maple T.A. (underway: see https://github.com/maths/moodle-qformat_mapleta)</li>
+<li>WIRIS</li>
+<li>Possible Maxima packages:</li>
+<li>Better support for rational expressions, in particular really firm up the PartFrac and SingleFrac functions with better support.</li>
+<li>Auto deploy.  E.g. if the first variable in the question variables is a single a:rand(n), then loop a=0..(n-1).</li>
+<li>When validating the editing form, also evaluate the Maxima code in the PRTs, using the teacher's model answers.</li>
+</ul>
+<h2 id="reveal-block">"Reveal block"</h2>
+<p>The functionality we want to develop is a block in which the contents is revealed or hidden by JavaScript, depending on the value of a separate input.</p>
+<pre><code>[[ reveal input="ans1" value="true" ]]
+
+This will be shown if the value of "ans1" is true.
+
+[[ else if value="false" ]]
+
+[[ else ]]
+
+This will be shown otherwise. (optional)  Perhaps?
+
+[[/ reveal ]]
+</code></pre>
+<p>This implements a JavaScript listener on input "ans1", which reveals or hides the appropriate content.</p>
+<ol>
+<li>These blocks can be nested.</li>
+<li>Inputs can be inside reveal blocks (that is sort of the whole point!).  This works well with the new <code>EMPTYANSWER</code> functionality, allowing an input to expect not to be used in a correct response.</li>
+<li>What do we do about values of inputs inside the block, when the reveal condition fails and the block is hidden. Is this deleted with warning, or retained? (Option to block?)</li>
+<li>Only implement for true/false, or MCQ inputs to start with.</li>
+<li>What do we do about two reveal blocks listening to the same input?</li>
+<li>On page load, we need the JS to "do the right thing", i.e. interrogate each input and hide/reveal the content.</li>
+</ol>
+<p>An example question is included as samplequestions/reveal_block_example.xml</p>
+<p>In this example, we have only revealed the first level, which should be linked to ans1.  If this functionality were available and nested then we would add an MCQ checkbox input within the second reveal block, which is linked to reveal further inputs.</p>
+<h2 id="improvements-to-the-equiv-input-type">Improvements to the "equiv" input type</h2>
+<ul>
+<li>Improve spacing of comments, e.g. \intertext{...}?</li>
+<li>Auto identify what the student has done in a particular step.</li>
+</ul>
+<p>Model solutions.</p>
+<ul>
+<li>Follow a "model solution", and give feedback based on the steps used.  E.g. identify where in the students' solution a student deviates from the model solution.</li>
+<li>Develop a metric to measure the distance between expressions.  Use this as a measure of "step size" when working with expressions.</li>
+</ul>
+<p>Add mathematical support in the following order.</p>
+<ol>
+<li>Logarithms and simple logarithmic equations.</li>
+<li>Allow students to create and use functions of their own (currently forbidden).</li>
+<li>
+<p>Add a "Not equals" operator.  For example:</p>
+<p>infix("&lt;&gt;");
+p:x&lt;&gt;y;
+texput("&lt;&gt;","{\neq}", infix);
+tex(p);</p>
+</li>
+</ol>
+<h2 id="stack-custom-reports">STACK custom reports</h2>
+<p>Basic reports now work.</p>
+<ul>
+<li>Really ensure "attempts" list those with meaningful histories.  I.e. if possible filter out navigation to and from the page etc.</li>
+<li>Add better maxima support functions for off-line analysis.</li>
+</ul>
+<h2 id="suggestions-from-stack-professionals-network-9th-dec-2022">Suggestions from STACK Professionals Network, 9th Dec 2022</h2>
+<ul>
+<li>Text based potential response trees (would allow for easier copying of complicated trees, etc).</li>
+<li>Changes to preset feedback to certain answer tests which might be more appropriate for different audiences. Could a 'simplified' English language pack allow for this (future changes might allow this to be done on a question-by-question basis).</li>
+<li>Check for potential issues with default correct/incorrect feedback for different languages (defaults can already be set on the server level by a Moodle administrator).</li>
+<li>Metadata on language for questions.</li>
+<li>Tools for languge integrity (e.g. making it easier to identify what languages are in each question).</li>
+<li>Making sure Maxima knows the intended language (will allow for Maxima code to choose from the available languages).</li>
+<li>May want to have further discussions on how scores and penalties are handled (there is already a new feature in the latest version of STACK so that you can include functions in the "score" field.</li>
+<li>DONE: Compile some more detailed release notes for new version containing common issues with questions.</li>
+<li>MathJax sometimes stops rendering -- this is usually an issue with the html in the question text or something being added to the editor, but sometimes this is an intermittent issue, but this is probably not directly a STACK issue.</li>
+<li>Accessing Moodle via an LTI connection sometimes prompts students on Macs and old PCs to login with a password (which they don't have) when they click on a quiz. This isn't a direct STACK issue, but it would be a good idea to raise this on Moodle support forums.</li>
+<li>DONE:  Improve the question tests page (now "STACK question dashboard") -- make sure most useful features are highlighted. For example, make it more clear when a specific variant is being considered, and when all variants are being looked at. After an individual variant is undeployed, it still shows test information for this seed on the page, requiring a few extra clicks to switch to a different seed (though that makes it easier to restore that seed if you accidently undeploy it).</li>
+<li>Forcing editor choice to prevent errors caused by editors which add in html tags (make sure it is clear to users why we do this).</li>
+<li>Consider prioritising the STACK API? Documentation on this definately needs to be improved. Volunteers are probably needed to help out on this.</li>
+<li>We should probably have a discussion for which individual questions are best to promote STACK.</li>
+</ul>
+<p>Good to document know-how and communicate this to avoid problems on updates, and to generate new suggestions. New folders can be added in doc/en -- small suggestions can go straight into master, more complete changes should be discussed with the group.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Census/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Maxima identifier census - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Maxima identifier census";
+        var mkdocs_page_input_path = "Developer\\Census.md";
+        var mkdocs_page_url = "/Developer/Census/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Maxima identifier census</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="maxima-identifier-census">Maxima identifier census</h1>
+<p>The Maxima identifier census is a new part of STACK starting from version 4.3
+the point of this census is to keep track of new Maxima features and their
+presence in versions of Maxima. Basically, we can use some function and flag if
+and only if its present in a reasonable number of recent Maxima versions and
+we drop STACKs support of older versions.</p>
+<p>In addition to helping developers identify features that are not necessarily
+available in relevant Maxima versions the census data is also used to build
+the security-map i.e. a list of identifiers that should not be modified,
+accessed or called by students or teachers. The same list also describes safe
+identifiers so that we can identify situations where function names are used as
+variables or common constants are being redefined.</p>
+<h2 id="the-census-and-security-files">The census and security files</h2>
+<p>Currently, the data can be found from JSON files under <code>/stack/cas/</code> the census
+in its raw form is in <code>base-identifier-map.json</code> and the <a href="../Security_map/">security-map</a> is In
+<code>security-map.json</code>. The census file lists identifiers and their usage types
+and the versions of Maxima those usages have been present in the documentation.
+The security file gives meta-data about selected identifiers, that meta-data
+typically consists of keys like <code>function</code>, <code>operator</code>, or <code>variable</code> that have
+values of <code>s</code>, <code>f</code>, and <code>?</code> first one meaning that students can use that
+identifier in that way and the second one meaning that no one can use that in
+that way the last one signals that the identifier is not yet forbidden and that
+teachers may allow students to use it if they so wish. Other meta-data tends to
+focus on classification e.g. functions that can be used to apply or map other
+function on values have their own meta-data flag <code>mapfunction</code>.</p>
+<h2 id="updating-the-files">Updating the files</h2>
+<p>The process of updating the census file is as follows:</p>
+<ol>
+<li>
+<p>Acquire the source code of the new Maxima version you want to include in
+    the census. For example 'maxima-5.42.0.tar.gz' and unpack it somewhere.</p>
+<p><code>cd /tmp/
+ mkdir maximatemp
+ cd maximatemp
+ tar xvf ~/Downloads/maxima-5.42.0.tar.gz</code></p>
+</li>
+<li>
+<p>Extract the identifiers from the documentation that comes with that source,
+    and store them to a file.</p>
+<p><code>cd /tmp/maximatemp/maxima-5.42.0/doc/info
+ grep '^ \-\- .*: .*' -shI * | grep -v 'an error. To debug' &gt; /tmp/maximatemp/identifiers-5.42.0.txt</code></p>
+</li>
+<li>
+<p>Use STACKs update script to read in that file. Make sure that you give
+    the correct version number.</p>
+<p><code>cd $MOODLE
+ php question/type/stack/cli/maximaidentifierupdater.php --version=5.42.0 --data=/tmp/maximatemp/identifiers-5.42.0.txt</code></p>
+</li>
+<li>
+<p>Also call the update script for the security map. The script will read
+    the data updated in the previous step and include any new identifiers to
+    the security map. Calling, this script should also be done if you manually
+    modify the security-map as the script ensure that the map is in alphabetical
+    order and indented in the expected way.</p>
+<p><code>cd $MOODLE
+ php question/type/stack/cli/maximasecuritymapupdater.php</code></p>
+</li>
+<li>
+<p>Remember to commit the changes to those JSON files to the GIT.</p>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

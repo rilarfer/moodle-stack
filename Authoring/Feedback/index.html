@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Feedback/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Feedback - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Feedback";
+        var mkdocs_page_input_path = "Authoring\\Feedback.md";
+        var mkdocs_page_url = "/Authoring/Feedback/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Feedback</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="feedback">Feedback</h1>
+<p>The purpose of STACK is to assess students' answers to mathematical questions,
+and on the basis of the properties we establish to assign <em>feedback</em>.</p>
+<p>This document describes the ways STACK provides feedback to students. It will not go into much depth on creating the feedback, which is documented under <a href="../Potential_response_trees/">potential response trees</a>.</p>
+<h2 id="types-of-assessment">Types of assessment</h2>
+<ul>
+<li><em>Formative assessment</em> is to support and inform students' learning.
+  Feedback here could be <em>qualitative</em>, e.g. written comments tailored to the student's answer and designed to help them improve their performance on the task.</li>
+<li><em>Summative assessment</em> is to establish the achievement of the student.
+  In mathematics, summative feedback is most often <em>quantitative</em>,  either a mark or a percentage.</li>
+<li><em>Evaluative assessment</em> is to measure the effectiveness of the teaching or the
+  assessment of students.  Such assessments could have quality enhancement or quality audit functions.
+  See <a href="../Reporting/">reporting</a>. The ability to automatically generate data about an individual student or
+  across a cohort is one particular strength of CAA, potentially enabling regular, detailed evaluative assessment.</li>
+</ul>
+<p>In STACK multi-part questions there is a complete separation between two important components.</p>
+<ol>
+<li>a list of <a href="../Inputs/">inputs</a></li>
+<li>a list of <a href="../Potential_response_trees/">potential response trees</a></li>
+</ol>
+<p>Specific feedback is associated with each input and each potential response tree.  Typically, it is placed in the <code>Specific feedback</code> section, as that gives Moodle more control over when it is shown. However, the feedback tags can be positioned anywhere within the <a href="../CASText/#question_text">question text</a>.</p>
+<h2 id="validation">Validation</h2>
+<p>Before an input is available to a <a href="../Potential_response_trees/">potential response trees</a>,
+it must be validated.  In particular, at each attempt, each input is assigned a status.</p>
+<ol>
+<li>NULL, which indicates the field has not been previously given a value by the student,
+   or the field is now empty since the student has deleted an answer.</li>
+<li>new, indicates an answer has not been validated or assessed, but has been changed from a previous attempt.</li>
+<li>invalid, which indicates that the field is not valid.</li>
+<li>valid, a response which is valid but not scored.</li>
+<li>score.  In this case, the answer is available to any potential response tree requiring it.</li>
+</ol>
+<p>Normally a student will view a displayed form of their expression and submit it again.  This default behaviour is inappropriate for multiple choice/selection interactions, and can be changed for each input using the option "Student must verify".  Whether the student's answer is echoed back and shown is controlled by a separate option "Show the validation".  Validation errors are always shown.</p>
+<p>Whether a string entered by the student is valid or invalid does not depend on the question. I.e. there <em>should</em> be a consistent mechanism for what constitutes a syntactically valid expression. However, in practice things are not quite so clean!  Some <a href="../Inputs/#Input_options">input options</a> do affect validity, such as <em>forbid floats</em>.   Some symbols, e.g. (i) and (j) change meaning in different contexts, e.g. (\sqrt{-1}) or vector components.  See details about <a href="../Options/">options</a>.</p>
+<h1 id="potential-response-trees">Potential response trees</h1>
+<p>Each <a href="../Potential_response_trees/">potential response tree</a> returns three outcomes:</p>
+<ol>
+<li>a numerical score,</li>
+<li>text for the students,</li>
+<li>an <a href="../Potential_response_trees/#Answer_note">answer note</a> for use by the teacher during <a href="../Reporting/">reporting</a>.</li>
+</ol>
+<p>These correspond approximately to summative, formative and evaluative functions of assessment respectively.
+The <a href="../CASText/#General_feedback">general feedback</a> (known as worked solution in previous versions) is fixed and may not depend on the student's answers.
+Hence it is not considered to be feedback to the student's work in the strict sense.  However, it remains a very useful outcome for students.</p>
+<p>The amount of feedback available in each question is governed by the question behaviours.</p>
+<h2 id="numerical-score">Numerical score</h2>
+<p>Each potential response tree calculates a numerical score between 0 and 1.  This is then multiplied by the <a href="../Potential_response_trees/#Question_value">question value</a> for each potential response tree.  The final score for the question is the sum over all potential response trees.</p>
+<p>The numerical scores are assembled by traversing each potential response tree.</p>
+<ul>
+<li>Each branch of each node can add, subtract or set an absolute, score.</li>
+<li>The outcome at the end should be between 0 and 1.  If the score, (s), lies outside this range it is taken to be ( \min(\max(s,0),1) ) to bring it within range, then it is scaled by multiplying by the <a href="../Potential_response_trees/#Question_value">question value</a> for that potential response tree.</li>
+<li>A "penalty" may also set in the potential response tree for this attempt. Normally the penalty field in each branch of the potential response tree is empty, in which case the question level penalty value is used.  However, these fields are useful to <em>remove</em> any penalty for this outcome, by setting it to zero explicitly.</li>
+<li>After the whole tree has been traversed, if the score is 1 then the penalty is always assigned to 0.</li>
+</ul>
+<p>STACK adjusts the score for each potential response tree, based on the number of valid, different attempts.  The penalty scheme deducts from the score a small amount (default is (0.1=10\%)) for each different and valid attempt which is not completely correct.   It is designed to <em>reward persistence and diligence</em> when students initially get a question wrong, but they try again.</p>
+<p>It works in the following way. For each attempt (k), we let</p>
+<ul>
+<li>(s_k) be the score from the potential response tree.</li>
+<li>(p_k) be the "penalty" as follows:</li>
+<li>If (s_k=1) then (p_k=0), else</li>
+<li>If the penalty (p) set in the <em>last branch</em> traversed before exiting the potential response tree is not <code>NULL</code> then (p_k=p), else</li>
+<li>(p_k) is the penalty set in the question options, (default (0.1=10\%) ).</li>
+</ul>
+<p>The default penalty scheme takes the <em>maximum</em> score for each attempt, so that by accruing further penalties a student may never be worse off.</p>
+<p>To be specific</p>
+<ol>
+<li>Let ( (s_i,p_i) ) for (i=1,\cdots n) be the list of scores and penalties for a particular potential response tree, for each different valid attempt.</li>
+<li>The score for attempt (k) is defined to be</li>
+</ol>
+<p>[ \mbox{Question value} \times \max\left{ s_i-\sum_{j=1}^i p_j,\ i=1,\cdots k \right}.]</p>
+<p>Notice that this is purely a function of a list of (score, penalty) pairs.</p>
+<p>The score for that attempt is the sum of the marks for each potential response tree once penalties have been deducted from each tree.</p>
+<h2 id="text-for-the-student">Text for the student</h2>
+<p>The text-based feedback for students is a concatenation of the following elements.</p>
+<ul>
+<li><em>Answer test feedback.</em> Many of the <a href="../Answer_Tests/">answer tests</a> generate feedback of their own. This can be suppressed using the quiet option. While this feedback is often not needed, it would be very difficult for the teacher to re-create this.</li>
+<li><em>Bespoke feedback.</em> Each branch of the <a href="../Potential_response_trees/">potential response trees</a> generates some feedback.</li>
+<li><em>Generic feedback.</em> Once the <a href="../Potential_response_trees/">potential response trees</a> has been traversed and all feedback assigned, the score is used to generate some generic feedback. If the raw score equals (0) then the default feedback is <em>Incorrect answer</em>.   If the raw score equals (1) then the default feedback is <em>Correct answer, well done</em>. Otherwise the generic feedback is <em>Your answer is partially correct</em>.  These strings can be modified in the <a href="../Options/">options</a>.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

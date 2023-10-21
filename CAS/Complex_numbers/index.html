@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Complex_numbers/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Complex Numbers in STACK - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Complex Numbers in STACK";
+        var mkdocs_page_input_path = "CAS\\Complex_numbers.md";
+        var mkdocs_page_url = "/CAS/Complex_numbers/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Complex Numbers in STACK</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="complex-numbers-in-stack">Complex Numbers in STACK</h1>
+<p>Complex numbers, especially the display of complex numbers, is a surprisingly subtle issue.   This is because there is some genuine ambiguity in whether (a+\mathrm{i}\, b) is a single object or the sum of two parts.  In mathematics we use this ambiguity to our advantage, but in online assesment we need to be more precise.  There are also issues of unary minus, e.g. <em>not</em> displaying (1 + (-2)\mathrm{i}). Similarly we typically do <em>not</em> display numbers like (0+1\mathrm{i}), unless of course we want to at which point we need the option to do so!</p>
+<p>The general rules when displaying a complex number in Cartesian form "(a+\mathrm{i}\, b)" are</p>
+<ol>
+<li>the real part should always appear to the left of the imaginary part;</li>
+<li>(i) (or whatever symbol is being used for the imaginary unit) should appear on the right of its coefficient if and only if the coefficient is a numerical value. By numerical value, we mean something like (2\sqrt{2}\pi) but not things like ( a \pi ), even if ( a ) is a constant.</li>
+</ol>
+<p>Some examples:</p>
+<ul>
+<li><code>3+2*%i</code> should display as (3+2\,\mathrm{i}).</li>
+<li><code>3-%i</code> should display as (3-\mathrm{i}).</li>
+<li><code>-a+b*%i</code> should display as (-a+\mathrm{i}\,b).</li>
+<li><code>-b*%i</code> should display as (-\mathrm{i}\,b) (not normally as (0-\mathrm{i}\,b)).</li>
+</ul>
+<p>STACK provides two functions, one which simplifies and one which does not.</p>
+<ol>
+<li><code>display_complex(ex)</code> takes an expression <code>ex</code> and tries to display this as a complex number obeying the above rules.  In particular, this function makes use of Maxima's <code>realpart</code> and <code>imagpart</code> function to split up <code>ex</code> into real and imaginary parts.  To do this it must assume <code>simp:true</code>, and so the real and imaginary part will be simplified.  For example, <code>display_complex(1+2*%i/sqrt(2))</code> is displayed as (1+\sqrt{2}\,\mathrm{i}).  If you really want (1+\frac{2}{\sqrt{2}}\,\mathrm{i}) then you will need to use the non-simplifying alternative below.  This function respects normal conventions, e.g. when <code>realpart</code> returns zero this function will not print (0+2\,\mathrm{i}), it just prints (2\,\mathrm{i}), etc.  </li>
+<li><code>disp_complex(a, b)</code> assumes <code>a</code> is the real part and <code>b</code> is the imaginary part (no checking is done).  This function (mostly) does not simplify its arguments.  So <code>disp_complex(0, 2)</code> will appear as (0+2\,\mathrm{i}); <code>disp_complex(2/4, 1)</code> will appear as (\frac{2}{4}+1\,\mathrm{i}); and <code>disp_complex(2, 2/sqrt(2))</code> will appear as (2+\frac{2}{\sqrt{2}}\,\mathrm{i}).  Use the atom <code>null</code> if you do not want to print a zero for the real part, or print one times the imaginary part.  <code>disp_complex(null, 2)</code> will appear as (2\,\mathrm{i}) and <code>disp_complex(null, null)</code> will appear as just (\mathrm{i}).  Think of <code>null</code> as a non-printable unit (additive or multiplicative).</li>
+</ol>
+<p>There is one exception.  In order to pull out a unary minus to the front, <code>disp_complex(a, b)</code> will simplify <code>b</code> if <code>b</code> is not a number and it contains a unary minus.  So, for example <code>disp_complex(a, (-b^2)/b)</code> is displayed (a-\mathrm{i}\,b).  (We <em>might</em> be able to fix this but this edge case requires disproportionate effort: ask the developers if this is essential).</p>
+<p>You cannot use these functions to display complex numbers in this form (\frac{\mathrm{i}}{2}), both these function will always display as (\frac{1}{2}\,\mathrm{i}).</p>
+<p>Display respects the multiplication sign used elsewhere within expressions, so that you may have (\frac{2\cdot \pi}{3}\,\mathrm{i}) rather than (\frac{2\, \pi}{3}\,\mathrm{i}).</p>
+<p>Note that the function <code>display_complex(ex)</code> returns the inert form <code>disp_complex(a, b)</code>.  The expression <code>disp_complex(a, b)</code> is an "inert form", which is only used to fine-tune the display.  This function is not actually defined and so Maxima always returns it unevaluated.  To remove the intert form from an expression, which is needed to manipulate this further, use <code>remove_disp_complex</code>, e.g., with the following.</p>
+<pre><code>p1:disp_complex(a, b);
+p2:ev(p1, disp_complex=remove_disp_complex);
+</code></pre>
+<p>(Because <code>null</code> has two different meanings within an expression it isn't sufficient to just define <code>disp_complex(ex1, ex2) := ex1+ex2*%i</code>.)</p>
+<p>There are occasions when you will need to explicitly add brackets to the displayed form of a complex number, e.g. to emphasise it is a single entity.  To add brackets there is a further "inert form" <code>disp_parens</code> which does nothing but add parentheses when the expression is displayed with the <code>tex()</code> function.  For example,</p>
+<pre><code>p1:disp_parens(display_complex(1+%i))*x^2+disp_parens(display_complex(1-%i));
+</code></pre>
+<p>will display as (\left( 1+\mathrm{i} \right)\cdot x^2+\left( 1-\mathrm{i} \right)).  To remove these inert forms evaluate</p>
+<pre><code>p2:ev(p1, disp_complex=remove_disp_complex, disp_parens=lambda([ex],ex));
+</code></pre>
+<p>You must remove inert forms before expressions are evaluated by the potential response tree, for example in the feedback variables.  For example, <code>disp_complex(a, b)</code> is not algebraically equivalent to <code>a+b*%i</code>.</p>
+<h2 id="polar-forms">Polar forms</h2>
+<p>A complex number written as (r e^{i\theta}) is in <em>polar form</em>.  The Maxima function <code>polarform</code> re-writes a complex number in this form, however with <code>simp:false</code> it does not simplfy the expressions for the modulus (r) or argument (\theta) (in STACK). Attempting to re-simplify the expression only returns the number to Cartesian form!</p>
+<p>As a minimal example, try the following.</p>
+<pre><code>simp:false;
+p1:polarform(1+%i);
+p2:ev(polarform(1+%i), simp);
+p3:ev(p2, simp);
+</code></pre>
+<p>First we have <code>p1</code> is  ( \left(\left(1\right)^2 + \left(1\right)^2\right)^{{{1}\over{2}}}\,e^{i\,{\rm atan2}\left(1 , 1\right)} ). Of course, we really need some simplification of the (r) and the (\theta) values.</p>
+<p>Notice the difference between <code>p2</code>: (\sqrt{2}\,e^{{{i\,\pi}\over{4}}}), and <code>p3</code>: (\sqrt{2}\,\left({{i}\over{\sqrt{2}}}+{{1}\over{\sqrt{2}}}\right)) (which of course is not even (1+i) either!).</p>
+<p>The problem is that in this case <code>ev( ... , simp)</code> is not <em>idempotent</em>, (i.e. ( \mbox{simplify}(\mbox{simplify}(ex)) \neq \mbox{simplify}(ex) ) in all cases) and the PHP-maxima connection inevitibly passes an expression to and from Maxima multiple times.  If <code>simp:true</code> then we get multiple simplifications, in this example back to <code>p3</code>.</p>
+<p>Instead, use <code>polarform_simp</code> to rewrite the expression in polar form, and do some basic simplification of (r) and (\theta).</p>
+<pre><code>simp:false;
+p1:polarform_simp(1+%i);
+</code></pre>
+<p>returns <code>p1</code> as (\sqrt{2}\,e^{\frac{i\,\pi}{4}}).</p>
+<p>Here are some design choices.</p>
+<ol>
+<li>Positive numbers are returned as real numbers, not as (r e^{i \times 0}).  E.g. <code>polarform_simp(3)</code> is (3).</li>
+<li>If (r=1) then this is not displayed. E.g. <code>polarform_simp(1/sqrt(2)*(-1+%i))</code> is (e^{\frac{3\,i\,\pi}{4}}).</li>
+</ol>
+<p>If question level simplification is on, then the value will probably get re-simplified to Cartesian form.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

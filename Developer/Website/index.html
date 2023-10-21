@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Website/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Updating the Online Docs - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Updating the Online Docs";
+        var mkdocs_page_input_path = "Developer\\Website.md";
+        var mkdocs_page_url = "/Developer/Website/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Updating the Online Docs</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="updating-the-online-docs">Updating the Online Docs</h1>
+<p>The STACK documentation is available online on <a href="https://docs.stack-assessment.org/en/">docs.stack-assessment.org</a>. The docs are automatically built whenever this repository is pushed to. This documentation details how to update the styling of the online docs.</p>
+<h4 id="what-is-not-covered-in-this-document">What is not covered in this document</h4>
+<p>Instructions for updating the main website <a href="https://www.stack-assessment.org">www.stack-assessment.org</a>. The main website is built in the <a href="https://github.com/maths/stack-web">stack-web</a> repository, and has <a href="https://github.com/maths/stack-web/blob/master/README.md">its own documentation</a>.</p>
+<h2 id="framework">Framework</h2>
+<p>The website is built using <a href="https://www.mkdocs.org/">MkDocs</a>, a static site generator which converts STACK documentation, within the <code>/doc</code> directory, into HTML files and pushes them to the <code>gh-pages</code> branch. The website structure mirrors the file structure: the file <code>doc/en/Authoring/Answer_Tests/index.md</code> will be available on <code>docs.stack-assessment.org/en/Authoring/Answer_tests/</code>. Every sub-folder has an <code>index.md</code> file that will take that folder's name on the website: <code>doc/en/Authoring/index.md</code> will be available on <code>docs.stack-assessment.org/en/Authoring/</code>.</p>
+<p>MkDocs is configured in the <code>mkdocs.yml</code> file. MkDocs has a full list of <a href="https://www.mkdocs.org/user-guide/configuration/">available configuration options</a>. MkDocs can either generate the navigation bar automatically, or accept a custom navigation configuration in the <code>nav</code> variable. The online docs uses the first option. The advantage is that new files are automatically added to the navigation bar when they are added to the repository. The disadvantage is that we cannot tweak the navigation bar manually. The online docs get around this with a number of workarounds.</p>
+<p>MkDocs cannot display MathJax out-of-the-box, so we use the markdown extension <a href="https://github.com/mitya57/python-markdown-math">mdx_math</a>, specified in <code>mkdocs.yml</code>, with the variable <code>extra_javascript</code> set to include MathJax.</p>
+<p>MkDocs can accept a third-party theme, and the main STACK website uses the <a href="https://squidfunk.github.io/mkdocs-material/">Material Theme</a>, mainly for its better search display and adaptive structure.</p>
+<p>The site is hosted by <a href="https://pages.github.com/">GitHub Pages</a> from the <code>gh-pages</code> branch. A workflow under <code>.github</code> ensures that MkDocs runs its command <code>mkdocs gh-deploy</code> every time the repository is pushed to, which rebuilds the website and pushes the built HTML piles to the <code>gh-pages</code> branch. This overrides all the files currently in the <code>gh-pages</code> branch, so <strong>you must never edit files directly in the <code>gh-pages</code> branch</strong>.</p>
+<h2 id="stack-specific-workarounds">STACK-specific Workarounds</h2>
+<p>The online docs use a number of workarounds to make MkDocs compatible with the STACK docs.</p>
+<h4 id="dealing-with-the-structure-of-the-docs">Dealing with the structure of the docs</h4>
+<p>MkDocs expects a single folder to contain all the website files, starting with an <code>index.md</code> file that is to be the landing page. However, STACK's docs have a different structure: <code>doc</code> contains the <code>content</code> folder, and the two language folders where the documentation is provided. The landing page is under <code>en/index.md</code>.</p>
+<p>To work around this, we set <code>doc</code> to be the location of the docs, and use the plugin <a href="https://pypi.org/project/mkdocs-exclude/">mkdocs-exclude</a> to unwanted files from the navigation, such as <code>/de</code> and <code>en/Site_map.md</code>. We then use the plugin <a href="https://pypi.org/project/mkdocs-redirects/">mkdocs-redirects</a> to redirect the non-existing <code>index.md</code> file to the true landing page <code>en/index.md</code>. The effect of this is that <a href="https://docs.stack-assessment.org">docs.stack-assessment.org</a> will always redirect to <a href="https://docs.stack-assessment.org/en/">docs.stack-assessment.org/en/</a>.</p>
+<p>We also update the sidebar navigation, such that it does not show the <code>en</code> directory. This is done by overriding Material's <code>nav-item</code> partial in the <code>site_overrides/partials/</code> directory. </p>
+<h4 id="dealing-with-the-theme">Dealing with the theme</h4>
+<p>The online docs make a number of custom changes to the Material theme.</p>
+<ul>
+<li>We use the basic MkDocs search algorithm, by including a script in the <code>{% block config %}</code> block under <code>site_overrides/main.html</code></li>
+<li>In <code>site_overrides/partials/logo.html</code> we customise how the STACK logo is shown. This is necessary, since the STACK logo is not square.</li>
+<li>We add a custom footer in the <code>{% block footer %}</code> block under <code>site_overrides/main.html</code>. In here we copy Material's primary and secondary sidebar classes, such that the footer collapses when the sidebar navigation and search bar does. It was necessary to make an identical copy of the <code>md-sidebar--primary</code> class called <code>md-sidebar--primary_footer</code>, to avoid the sidebar breaking when zoomed.</li>
+</ul>
+<h2 id="updating-the-documentation">Updating the documentation</h2>
+<p>When you change the documentation, the website automatically updates as well. This introduces some new limitations to the sort of elements that can be included in the documentation. This is documented in the <a href="../Documentation/">Documentation</a> file.</p>
+<h3 id="updating-the-style">Updating the style</h3>
+<p>The online docs uses a custom <a href="https://github.com/maths/moodle-qtype_stack/blob/master/doc/custom.css">CSS stylesheet</a> which you can edit. This stylesheet builds upon the stylesheets of MkDocs and Material.</p>
+<p>You can also edit the theme directly. Any file in the <code>site_overrides</code> folder will override files of the same name in <a href="https://github.com/squidfunk/mkdocs-material/tree/master/material">Material's directory</a>. The <code>main.html</code> file is designed to make it easy to override some <a href="https://squidfunk.github.io/mkdocs-material/customization/#overriding-blocks">predetermined blocks</a>, but sometimes it is necessary to override files directly. Notice we directly override some of <a href="https://github.com/squidfunk/mkdocs-material/tree/master/material/partials">Material's partials</a>.</p>
+<h2 id="testing-the-website-locally">Testing the website locally</h2>
+<p>Before adding major style changes to the online docs, you are encouraged to test your changes locally. For this, you will need to install MkDocs and all the required extensions.</p>
+<ol>
+<li><a href="https://www.mkdocs.org/">Install MkDocs</a>, including its requirements.</li>
+<li>Install Material with <code>pip install mkdocs-material</code></li>
+<li>Install the markdown extension with <code>pip install https://github.com/mitya57/python-markdown-math/archive/master.zip</code></li>
+<li>Install the exclude plugin with <code>pip install mkdocs-exclude</code></li>
+<li>Install the redirect plugin with <code>pip install mkdocs-redirects</code></li>
+</ol>
+<p>You can run a local version of the website with the command <code>mkdocs serve</code>. This will make your local version available on the IP <code>http://127.0.0.1:8000/</code>.</p>
+<p>Please test that your changes work on:</p>
+<ul>
+<li>The following browsers: Chrome, Firefox, Safari, Edge.</li>
+<li>The following sizes: Computer, tablet, mobile. Chrome's "inspect" tool works well for this.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

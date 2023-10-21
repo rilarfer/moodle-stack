@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Serving_out_data/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Serving out data - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Serving out data";
+        var mkdocs_page_input_path = "Authoring\\Serving_out_data.md";
+        var mkdocs_page_url = "/Authoring/Serving_out_data/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Serving out data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="serving-out-data">Serving out data</h1>
+<p>In some contexts one wants to generate random data for the students to act on, depending on the ammount of data and whether one expects the students to transfer it to other tools for processing the methods used for serving that data data out vary. Here are some examples.</p>
+<h2 id="html-tables">HTML-tables</h2>
+<p>If you only have a small amount of data you may simply print out a table of it and let the students copy-paste it from there. When doing this one will want to avoid LaTeX representations as those may case trouble for students try to copy-paste things. Here is an example of using CASText <code>foreach</code>-blocks to iterate and output an aray of data:</p>
+<pre><code>[[comment]]This just defines the data for this sample, you may use one coming from your question-vars.[[/comment]]
+[[define data=&quot;(rand(zeromatrix(4,3)+100)-50)/10.0&quot;/]]
+
+&lt;table&gt;
+[[foreach row=&quot;args(data)&quot;]]
+    &lt;tr&gt;[[foreach cell=&quot;row&quot;]]&lt;td&gt;{#cell#}&lt;/td&gt;[[/foreach]]&lt;/tr&gt;
+[[/foreach]]
+&lt;/table&gt;
+
+&lt;p&gt;More control is available. You could tune the style of the values without affecting copy paste too much.&lt;/p&gt;
+&lt;table&gt;
+[[foreach row=&quot;args(data)&quot;]]
+    &lt;tr&gt;[[foreach cell=&quot;row&quot;]]
+        &lt;td&gt;
+        [[if test=&quot;cell &lt; 0&quot;]]&lt;span style=&quot;color:red;&quot;&gt;[[/if]]
+        {#cell#}
+        [[if test=&quot;cell &lt; 0&quot;]]&lt;/span&gt;[[/if]]
+        &lt;/td&gt;
+        [[/foreach]]&lt;/tr&gt;
+[[/foreach]]
+&lt;/table&gt;
+</code></pre>
+<h2 id="raw-maxima-code">Raw Maxima code</h2>
+<p>Should you want to just give out Maxima code for use in Maxima or similar enough syntax you may simply use the <code>{#...#}</code> injection instead of <code>{@...@}</code> and it will output the raw form which is again copy-pastable. However, this does not work well with large amounts of data as the line may become quite long and even selecting it may prove problematic.</p>
+<h2 id="file-transfer">File transfer</h2>
+<p>Since 4.4 STACK has allowed the author to construct text-files that can be downloaded and that contain freeform CASText constructed in the questions session with the questions seed, thus allowing unique random output for the students. This functionality will server everything out as plain text unless the defined name of the file ends with <code>.csv</code>. The primary limitation, for this feature is that it only works in the question-text, it may not be used anywhere else and it will never support adaptation to current student inputs.</p>
+<p>How it works is that you wrap whatever you want the file to contain in a <code>[[textdownload]]</code> block, for that block a single parameter <code>name</code> must be defined and that will define the name suggested when saving this file. Whatever is inside that block will be rendered as normal CASText, however nothing defined in the CASText outside that block can affect it, which may cause some confusion, just repeat those defines inside the block if you use such things. The block will then get replaced with an URL from which the file can be downloaded, you will probably want to place that URL into a link or some such construct.</p>
+<p>As an example, using the new function that generates CSV-strings from data we can write as follows:</p>
+<pre><code>/* Define these in question variables: */
+lab: [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;];
+data: makelist([rand(322)/100.0,rand(600)/100.0,rand(300)/100.0], i, 50);
+</code></pre>
+<pre><code>[[comment]]Use them like this in the question-text.[[/comment]]
+Load the data from 
+&lt;a href=&quot;[[textdownload name=&quot;data.csv&quot;]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]&quot;&gt;this file&lt;/a&gt; and ...
+</code></pre>
+<p>That function returns a string and it takes in the data as a matrix or a list of lists and labels as a list. If no labels are necessary use <code>false</code>. Also you can use <code>stackfltfmt</code> to control the representation of pure floats in the data. Just in case you meet trouble <code>labels</code> is a keyword that cannot be used which is a shame when defining labels.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Maxima_packages/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Adding support for Maxima packages - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Adding support for Maxima packages";
+        var mkdocs_page_input_path = "Developer\\Maxima_packages.md";
+        var mkdocs_page_url = "/Developer/Maxima_packages/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Adding support for Maxima packages</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="adding-support-for-maxima-packages">Adding support for Maxima packages</h1>
+<p>Local code, or links to local libraries, can be placed in <code>maxima\local.mac</code>.</p>
+<p>Maxima has a very wide range of optional packages.  Some of these write to the server file system, and so we do not permit question authors to load arbitrary packages into Maxima.  Instead the developers maintain a "whitelist" of packages.</p>
+<p>There is currently no support for a question by question loading of packages.  This may be included in the future, subject to demand/need.  Currently there is a site-wide option to load packages.</p>
+<p>Adding in support for additional Maxima packages needs to be done by a developer on the server.</p>
+<ol>
+<li>The list of supported packages is defined <code>stack/cas/installhelper.class.php</code> in the setting</li>
+</ol>
+<p><code>public static $maximalibraries = '...';</code></p>
+<ol>
+<li>The default settings are defined in </li>
+</ol>
+<p><code>qtype_stack | maximalibraries</code></p>
+<p>It is probably sensible to make the default to load <em>all</em> the available packages, so new installations can see what is supported. </p>
+<ol>
+<li>Just because the package is loaded into Maxima does not mean that STACK users will be permitted to use the function names in questions.</li>
+<li>STACK only allows student users to input a certain restricted list of commands.</li>
+<li>STACK allows teachers to use a much wider list of commands, and to define functions of their own.  However unless a function has been checked, it is likely the teacher will <em>not</em> be permitted to use this.  We periodically work through all the function names in all maxima packages and add these to the variable <code>security-map.json</code>.</li>
+</ol>
+<p>Some notes.</p>
+<ol>
+<li>The developers welcome proposals for support of packages.  Mostly we haven't needed them ourselves, and so didn't add them yet!  Where individual functions are needed, it is sometimes better just to always load the package anyway rather than adding it as a site-wide option.  One historic reason for having site-wide options was to ensure back compatibility with older versions of Maxima.</li>
+<li>Some packages do make Maxima significantly slower to load and run.  We will check this before allowing a particular package.  (This is a good reason to allow question to load packages of course...)</li>
+<li>Beware of new global variables, changes/side effects in other functions.</li>
+</ol>
+<h2 id="maxima-graph-theory-package">Maxima graph theory package</h2>
+<p>For use with STACK, Maxima needs to connect to the web server (PHP scripts) and this is actually done by passing text files back and forward.  So every expression to the CAS, and every result back, must have a simple string format.</p>
+<p>Some of the contributed packages, including the very nice graph theory package, have developed their own internal representation for mathematical objects.  For example,</p>
+<pre><code>gf_set_data(2,x^4+x+1);
+</code></pre>
+<p>returns</p>
+<pre><code>"Structure [GF-DATA]"
+</code></pre>
+<p>As of Nov 2020, the STACK developers have not investigated what a "Structure [GF-DATA]" is or how that could be communicated between PHP and Maxima!  By way of contrast a simple polynomial x^4+x+1 has an internal (LISP) tree structure of</p>
+<pre><code>((MPLUS SIMP) 1 $X ((MEXPT SIMP) $X 4))
+</code></pre>
+<p>which you can read this as</p>
+<p>((+) 1 x ((^) x 4)</p>
+<p>We must have some kind of string like that to communicate and STACK basically uses the Maxima <code>string</code> command to do this.  It is very likely that without re-writing the internals of the graph theory package it is not compatible with the way we connect to Maxima.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

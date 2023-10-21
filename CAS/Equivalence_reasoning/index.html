@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Equivalence_reasoning/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reasoning by equivalence - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reasoning by equivalence";
+        var mkdocs_page_input_path = "CAS\\Equivalence_reasoning.md";
+        var mkdocs_page_url = "/CAS/Equivalence_reasoning/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reasoning by equivalence</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reasoning-by-equivalence">Reasoning by equivalence</h1>
+<p><strong>NOTE: Reasoning by equivalence was introduced in STACK 3.6.  This area of STACK is still under active development, and features and behaviour may change significantly in future versions, subject to trials with students and feedback from colleagues.</strong></p>
+<p>We currently provide support for </p>
+<ul>
+<li>basic single variable polynomials,</li>
+<li>very simple inequalities,</li>
+<li>simple simultaneous equations.</li>
+</ul>
+<p>There is no support for algebraic manipulations involving logarithms and trig functions although individual examples may work.</p>
+<p>Wider support is intended for future versions. A simple <a href="../../Authoring/Equivalence_reasoning/">getting started with equivalence reasoning guide</a> can be found elsewhere.</p>
+<h2 id="what-is-reasoning-by-equivalence-and-this-input-type">What is reasoning by equivalence and this input type?</h2>
+<p>Reasoning by equivalence is a particularly important activity in elementary algebra.<br />
+It is an iterative formal symbolic procedure where algebraic expressions, or terms within an expression, 
+are replaced by an equivalent until a "solved" form is reached.
+An example of solving a quadratic equation is shown below.
+[\begin{array}{cc} \  &amp; x^2-x=30 &amp; \
+\color{green}{\Leftrightarrow} &amp; x^2-x-30=0 &amp; \
+\color{green}{\Leftrightarrow} &amp; \left(x-6\right)\cdot \left(x+5\right)=0 \
+\color{green}{\Leftrightarrow} &amp; x-6=0\lor x+5=0 \
+\color{green}{\Leftrightarrow} &amp; x=6\lor x=-5
+\end{array}]</p>
+<p>The point is that replacing an expression or a sub-expression in a problem by an equivalent expression provides a new problem having the same solutions.
+This input type enables us to capture and evaluate student's line-by-line reasoning, i.e. their steps in working, during this kind of activity.</p>
+<p>Reasoning by equivalence is very common in elementary mathematics.  It is either the entire task (such as when solving a quadratic)
+or it is an important part of a bigger problem.  E.g. proving the induction step is often achieved by reasoning by equivalence.  </p>
+<h2 id="how-do-students-use-this-input">How do students use this input?</h2>
+<p><a href="../../Students/Equivalence_reasoning/">Instructions for students</a>.</p>
+<p>In traditional practice students work line by line rewriting an equation until it is solved.<br />
+This input type is designed to capture this kind of working and evaluate it based on the assumption that each line should be equivalent to the previous one.<br />
+Instructions for students are <a href="../../Students/Equivalence_reasoning/">here</a>.  Some common observations about this form of reasoning are</p>
+<ol>
+<li>Students often use no logical connectives between lines.</li>
+<li>Students ignore the natural domain of an expression, e.g. in (\frac{1}{x}) the value (x=0) is excluded from the domain of definition.</li>
+<li>Operations which do not result in equivalence are often used, e.g. squaring both sides of an equation.</li>
+</ol>
+<p>This input type mirrors current common practice and does not expect students to indicate either logic or domains.<br />
+The input type itself will give students feedback on these issues.</p>
+<p>Note that students must use correct propositional logic connectives <code>or</code> and <code>and</code>.<br />
+E.g. their answer must be something correct such as <code>x=1 or x=2</code>, <em>not</em> something sloppy like <code>x=1 or 2</code> or <code>x=1,2</code>.<br />
+It certainly can't be something wrong such as <code>x=1 and x=2</code> which is often seen in written answers!</p>
+<p>Note that students may not take square roots of both sides of an equation.  This will be rejected because it is not equivalent!  Similarly, students may not cancel terms from both sides which may be zero.  As we require equivalence, students may not <em>multiply</em> either.  This will probably not correspond to students' expectations, and may take a bit of getting used to.</p>
+<p>But should students really use logical connectives?  Yes, I (CJS) believe they should but to require this from the input type now would be too big a step for students and their teachers. Students are already being expected to use connectives such as <code>and</code> and <code>or</code> correctly.  The input type uses these connectives and in the future options may be added to this input type which require students to be explicit about logical connectives, especially when we add support for implication in addition to equivalence.  As we gain confidence in teaching with equivalence reasoning, we will add more options to this input type.</p>
+<p><strong>If you have strong views on how this input type should behave, please contact the developers.</strong></p>
+<h2 id="validation-and-correctness">Validation and correctness</h2>
+<p>STACK carefully separates out <em>validation</em> of a student's answer from the <em>correctness</em>.
+This idea is encapsulated in the separation of validation feedback via the tags <code>[[validation]]</code> 
+which is tied to inputs, from the potential response trees which establish the mathematical properties.</p>
+<p>Each line of a student's answer must be a valid expression, just as with the algebraic input type.<br />
+However, sets, lists and matrices are not permitted in this input type.<br />
+The internal result is a <em>list</em> of expressions (equations or inequalities).</p>
+<h2 id="example-use-cases-for-this-input-type">Example use cases for this input type</h2>
+<ol>
+<li>
+<p>Reasoning by equivalence is the entire task.  The argument must be correct and the last line is the final answer.</p>
+</li>
+<li>
+<p>In a formative setting, we want immediate feedback on whether the argument consists of equivalent lines.  This feedback can be given</p>
+</li>
+<li>as the student types line by line, or</li>
+<li>at the end when they press "check".</li>
+</ol>
+<p>The ability to give feedback on the equivalence of adjacent lines as the student types their answer somewhat 
+blurs the distinction between validation and correctness, but in a way which is probably very useful to students.</p>
+<h2 id="notes-for-question-authors">Notes for question authors</h2>
+<ul>
+<li>The position of the validation tags, e.g. <code>[[validation:ans1]]</code> are ignored for this input type.  Validation feedback is always displayed next to the TextArea into which students type their answer.</li>
+<li>The teacher's answer and any syntax hint must be a list.  If you just pass in an expression strange behaviour may result.</li>
+<li>The input type works very much like the TextArea input type.  Internally, the student's lines are turned into a list.  If you want to use the "final answer" then use code such as <code>last(ans1)</code> in your potential response tree.</li>
+<li>If students type in an expression rather than an equation, the system will assume they forgot to add (=0) at the end and act accordingly.  This is displayed to the student.</li>
+</ul>
+<p>If the student starts their line with an <code>=</code> sign, this is accepted.  Teachers cannot use a prefix <code>=</code>.  In a worked solution the teacher must use the prefix function <code>stackeq</code>.  For example,</p>
+<pre><code>ta:[(x-1)^2,stackeq(x^2-2*x+1)]
+</code></pre>
+<p>Teachers must explicitly use the <code>nounor</code> and <code>nounand</code> commands, not the <code>and</code> and <code>or</code> logic.  For more details see the section on <a href="../Simplification/">simplification</a>.  For example, a worked solution might be</p>
+<pre><code>ta:[p=0,(v-n1)*(v-n2)=0,v-n1=0 nounor v-n2=0,v=n1 nounor v=n2]
+</code></pre>
+<h2 id="input-type-options">Input type options</h2>
+<p>To enter options for this input use the "extra options field".   Options should be a comma separated list of values only from the following list.</p>
+<p><code>hideequiv</code> does not display whether each line is equivalent to the next at validation time.</p>
+<p><code>hidedomain</code> does not display natural domain information.</p>
+<p><code>comments</code> allows students to include comments in their answer.  By default comments are not permitted as it breaks up the argument and stops automatic marking.</p>
+<p><code>firstline</code> takes the first line of the teacher's answer and forces the student to have this as the first line of the student's answer.  The test used is equality up to commutativity and associativity (EqualComAss answer test).</p>
+<p><code>assume_pos</code> sets the value of Maxima's <code>assume_pos</code> variable to be true.<br />
+If we <code>assume_pos</code> they any negative solutions will be ignored, whether or not they exist.  So (x=\pm 2) will now be equivalent to (x=2).<br />
+You might not want this equivalence.  In particular, this also has the effect of condoning squaring or rooting both sides of an equation.<br />
+For example (x^4=2) will now be equivalent to (x=2) (rather than (x=2 \vee x=-2)).<br />
+This is not the default, but is useful in situations where a student is rearranging an equation to a given subject, and all the variables are assumed to be positive.  Note, this option is only for the input type. You will also need to set this in the question options to also affect the answer test.</p>
+<p><code>assume_real</code> sets an internal flag to work over the real numbers.  If <code>true</code> then (x=1) will be considered equivalent to (x^3=1).  Note, this option is only for the input type. You will also need to set this in the question options to also affect the answer test.</p>
+<p><code>calculus</code> allows calculus operations in an argument.  Note, this option is only for the input type. You will also need to set this in the answer test options to also affect the answer test.  This is at a very early stage of development.<br />
+For example, constants of integration are not currently checked by this currently.</p>
+<p>If the syntax hint is just the keyword <code>firstline</code> then the first line of the <em>value</em> of the teacher's answer will appear as a syntax hint.<br />
+This enables a randomly generated syntax hint to appear in the box.</p>
+<h1 id="answer-tests">Answer tests</h1>
+<p>There are a number of answer tests which seek to establish whether a student's list of expressions are all equivalent.</p>
+<p>In these tests there is no concept of "step size" or any test that a student has worked in a sensible order.<br />
+The tests share code with the input type, and feedback from the test will be identical to that from the input when this is shown.</p>
+<p>You will also need to set options, as in the input type above, to get the answer tests to reflect the options set.
+The options supported are <code>assume_pos</code>, <code>assume_real</code>, and <code>calculus</code>.</p>
+<h3 id="equivreasoning">EquivReasoning</h3>
+<p>This test establishes that all the items in the list are equivalent, using algebraic equivalence.</p>
+<h3 id="equivfirst">EquivFirst</h3>
+<ol>
+<li>This test establishes that all the items in the list are equivalent, using algebraic equivalence.</li>
+<li>Test that the first line of the student's answer is equivalent to the first line of the teacher's answer up to commutativity and associativity (using the answer test EqualComAss.)</li>
+</ol>
+<p>To test the last line of an argument is in the correct form will require a separate node in the potential response tree.  To add this to the answer test gives too many possibilities.</p>
+<h1 id="natural-domains">Natural domains</h1>
+<p>The equivalence reasoning input tracks natural domains of expressions.  This is via the STACK's <code>natural_domain(ex)</code> function.  Natural domains are shown to students in the validation feedback.
+[ \begin{array}{lll} &amp;\frac{5\,x}{2\,x+1}-\frac{3}{x+1}=1&amp;{\color{blue}{{x \not\in {\left {-1 , -\frac{1}{2} \right }}}}}\cr \color{green}{\Leftrightarrow}&amp;5\,x\,\left(x+1\right)-3\,\left(2\,x+1\right)=\left(x+1\right)\,\left(2\,x+1\right)&amp; \end{array} ]
+At the moment STACK quietly condones silent domain enlargements such as in the above example.</p>
+<h1 id="repeated-roots">Repeated roots</h1>
+<p>There is general ambiguity about how to express multiplicity of roots.  If ((x-1)^2=0) is not equivalent to (x=1) then students need to indicate multiplicity of roots, but there appears to be no consensus on how this should be notated.</p>
+<p>The equation ( (x-3)^2 = 0 ) and the expression ( x=3 \mbox{ or } x=3) are considered to be equivalent, because they have the same roots with the same multiplicity.
+The expressions ( x=3 \mbox{ or } x=3) and ( x=3) have the same variety, but are not identical.
+This is, of course, slightly awkward since logical ``or'' is idempotent, and so ( x=3 \mbox{ or } x=3) and ( x=3) would be equivalent at a symbolic level.
+For this reason, STACK accepts (x=3) as equivalent to ((x-3)^2=0), but with an acknowledgement.
+[ \begin{array}{lll} &amp;\left(x-3\right)^3=0&amp; \cr \color{green}{\mbox{(Same roots)}}&amp;x=3&amp; \cr \end{array} ]</p>
+<h1 id="other-functions">Other functions</h1>
+<p>The maxima function <code>stack_disp_arg(ex, [showlogic, showdomain])</code> can be used to display a list of expressions <code>ex</code> in the same form as used in the input and answer tests.  This is useful for displaying the teacher's worked solution in the general feedback.  </p>
+<p>The second two arguments are optional.
+1. The boolean variable <code>showlogic</code> determines whether the equivalence symbols are shown.  For a worked solution you probably need to use the following:
+2. The boolean variable <code>showdomain</code> determines whether the natural domains are shown.</p>
+<p>For a worked solution you probably need to use the function</p>
+<pre><code>\[ {@stack_disp_arg(ta)@} \]
+</code></pre>
+<p>Without the equivalence symbols you use </p>
+<pre><code>\[ {@stack_disp_arg(ta, false)@} \]
+</code></pre>
+<p>With the equivalence symbols but without natural domains you use </p>
+<pre><code>\[ {@stack_disp_arg(ta, true, false)@} \]
+</code></pre>
+<h1 id="finding-a-step-in-working">Finding a step in working</h1>
+<p>It is relatively common to want students to take a "particular step" in their argument.  That is to say, to expect a particular intermediate expression to appear explicitly in their list of answers.</p>
+<p>For example, imagine you want students to "simplify" ( \log_5(25) ) to (2).  It is important to see evidence of the expression ( \log_5(5^2) ) in their answer.  The teacher's answer is, e.g.</p>
+<pre><code>ta:[lg(25,5),stackeq(lg(5^2,5)),stackeq(2*lg(5,5)),stackeq(2*1),stackeq(2)]
+</code></pre>
+<p>We want to accept </p>
+<pre><code>sa1:[lg(25,5),stackeq(lg(5^2,5)),stackeq(2)]
+</code></pre>
+<p>But reject</p>
+<pre><code>sa0:[lg(25,5),stackeq(2)]
+</code></pre>
+<p>Both of these are correct reasoning arguments, but the second is missing the desired step.</p>
+<p>To facilitate this search we provide the function <code>stack_equiv_find_step(ex, exl)</code>.  This looks for expression <code>ex</code> in the list <code>exl</code> using <code>ATEqualComAss</code>.  It returns the list of indices of the position.  If you just want to know if the expression is missing use the predicate <code>emptyp</code>.  Note, this function strips off <code>stackeq</code> before testing, so this function will find ( \log_5(5^2) ) in both <code>sa1</code> and <code>sa2</code> below.</p>
+<pre><code>sa2:[lg(25,5),lg(5^2,5),2]
+</code></pre>
+<h2 id="longer-term-plans">Longer term plans</h2>
+<ol>
+<li>Define (x\neq a) operator.  Needed to exclude single numbers from the domain.</li>
+<li>Define (x\in X) operator, for student use.</li>
+<li>Provide better tools for dealing with assessment, such as checking for particular steps.</li>
+<li>Provide better feedback to students about which steps they have taken and what goes wrong.</li>
+</ol>
+<p>In the long term, we may fully implement the ideas in the paper Sangwin, C.J. <strong>An Audited Elementary Algebra</strong> The Mathematical Gazette, July 2015.</p>
+<p>In the future students might also be expected to say what they are doing, e.g. ``add (a) to both sides", as well as just do it.  Quite how it does this, and the options available to the teacher is what is most likely to change.</p>
+<p>We would like to introduce the idea of a <em>model answer</em>.  STACK will then establish the extent to which the student's answer follows this model solution.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

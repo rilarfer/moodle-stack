@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Security_map/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Security map - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Security map";
+        var mkdocs_page_input_path = "Developer\\Security_map.md";
+        var mkdocs_page_url = "/Developer/Security_map/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Security map</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="security-map">Security-map</h2>
+<p>It is important that students do not evaluate expressions such as the following with the CAS :</p>
+<pre><code>system("rm /*");
+</code></pre>
+<p>for somewhat obvious reasons!  Hence, we need to restrict the availability of certain functions to users.  STACK "trusts" the teacher.  Therefore there are three levels of Maxima functions.</p>
+<ol>
+<li>Forbidden.  No string containing anything which might look like this should ever get near the CAS.</li>
+<li>Teacher.  Teacher's answers cannot contain these, but they are not a security risk.  Usually these have side effects within the Maxima code, e.g. setting a global variable which might cause problems later/elsewhere.</li>
+<li>Student.  Student's expressions can only contain these.</li>
+</ol>
+<p>Since STACK 4.3 the Maxima statement parser infrastruture uses a JSON file
+describing all identifiers of functions,  variables, constants, and operators
+and features we attach to them. The catalogue is stored in</p>
+<pre><code>stack/cas/security-map.json
+</code></pre>
+<p>This JSON file is being updated manually and through the data collected by 
+the <a href="../Census/">census</a> and can be extended freely to track new features 
+as things progress. This documentation section describes what is currently 
+being contained in that map.</p>
+<p>If a function from a maxima library is not in the security map then it is most likley
+that we have not reviewed it.  Please contact the developers.</p>
+<h3 id="units">Units</h3>
+<p>Note that the security-map does not define identifiers that are units and 
+based on the current design you should not declare them there. In 
+the current form if we are in units mode an overlay will be placed on top 
+of the security-map and that overlay will declare are identifers that are 
+units <code>mg</code>, <code>K</code>,... as <code>constant: 's'</code> meaning that they are constants that
+the student may use in their inputs as long as they are not declared 
+forbidden through the forbidden words mechanism.</p>
+<h2 id="features-currently-tracked">Features currently tracked</h2>
+<h3 id="security">Security</h3>
+<p>In security features we typically use values <code>"s"</code>, <code>"t"</code>, and<code>"f"</code>. <code>"s"</code> 
+declares that students may use this identifier in the specified way unless
+specifically forbidden with the forbidden words mechanism. <code>"t"</code> means that 
+by default only the author may use it but can specially allow it using 
+the allowed words mechanism. <code>"f"</code> means that for whatever reason not even 
+the author may use it.</p>
+<p><code>constant</code> is a feature declaring the security level at which a given 
+identifier is to be considered as a constant and can thus be only red and 
+never written to. This makes it so that you cannot write <code>%pi:4</code> but can 
+use <code>%pi</code> otherwise.</p>
+<p><code>evflag</code> is a feature declaring the security level at which a given 
+identifier is to be considered as an evaluation flag. Basically, wether 
+it can be used as a suffix to a statement <code>sqrt(3),numer</code> or as a paramter 
+to <code>ev(sqrt(3),numer=true)</code> and similar functions.</p>
+<p><code>function</code> is a feature declaring the security level at which a given 
+identifier is to be considered as a function name and can thus be called.</p>
+<p><code>keyword</code> is a feature declaring the security level at which a given 
+identifier is to be considered as a keyword that can be used one could use 
+it to declare that students may not use specific types of loops or other
+flow control features.</p>
+<p><code>operator</code> is a feature declaring the security level at which a given 
+operator is usable at. By operator we mean anything from <code>^</code> and <code>and</code> 
+to various brackets.</p>
+<p><code>variable</code> is a feature declaring the security level at which a given 
+identifier is to be considered as a variable and can thus be both written
+and red.</p>
+<p>In addition to those we also declare certain identifiers with 
+<code>globalyforbiddenfunction</code> or <code>globalyforbiddenvariable</code> in the cases where
+we might want to handle attempts to use them in a more serious manner.</p>
+<h3 id="nouns">Nouns</h3>
+<p>In the old system certain functions and operators were nounified to stop 
+the CAS from evaluating them and thus allow simpler assessment of 
+the original input form. For this we define features <code>nounfunction</code> and
+<code>nounoperator</code> that have the name of the matching nounified identifier.
+When processing student input functions and operators that have noun 
+variants are nounified unless specially requested to be kept as is. In 
+addition to the nounifying one may need to denounify and then we define
+<code>nounoperatorfor</code> or <code>nounfunctionfor</code> at the noun end.</p>
+<h3 id="aliases">Aliases</h3>
+<p><code>int(foo,x)</code> is equivalent to <code>integrate(foo,x)</code> which leads to issues 
+when using forbidden words and only forbidding <code>integrate</code> to deal with 
+this we now declare aliases as features for various identifiers so that 
+if you forbid one the others are also forbidden. We also use those aliases
+to map similar statements to use the same alias thus increasing 
+the likelihood of cache hits. Aliases like nouns are defined by usage 
+type e.g. <code>aliasfunction</code> feature tells that if some one uses a function 
+with this name it should be interpreted as a function call with the name 
+of this feature. <code>aliasvariable</code> does the same for both constants and
+variables. As it is often necessary to find all the aliases that point to
+a given identifier we also define features <code>aliasfunctions</code> and 
+<code>aliasvariables</code> that contain lists of such identifiers. Updating such 
+lists should be left to tools that make sure they are correct.</p>
+<p>Aliases often do not match the logical aliases present in the CAS instead
+they tend to map things so that they point to the version that is 
+shortest to minimise space usage, e.g. while some might think 
+<code>int =&gt; integrate</code> here we rather have <code>integrate =&gt; int</code>.</p>
+<p>The base alias is sent to the CAS.  This enables support for some unicode, 
+e.g. pi, which does not break the CAS.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Answer_Tests/Equivalence/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Equivalence - STACK</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Equivalence";
+        var mkdocs_page_input_path = "Authoring\\Answer_Tests\\Equivalence.md";
+        var mkdocs_page_url = "/Authoring/Answer_Tests/Equivalence/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Equivalence</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="equivalence-answer-tests">Equivalence answer tests</h2>
+<p>The prototype test is to establish if two expressions are <em>algebraically equivalent</em>.  This page documents this, and similar, equivalence tests.</p>
+<p>A crucial component in the assessment process the ability to decide if two expressions are equivalent.  It turns out there are many useful senses when trying to assess students' answers.</p>
+<p>Let us assume a teacher has asked a student to expand out ((x+1)^2) and the response they have from one student is (x^2+x+x+1). This is "correct" in the sense that it is algebraically equivalent to ((x+1)^2) and is in expanded form (actually two separate mathematical properties) but "incorrect" in the sense that the student has not <em>gathered like terms</em> by performing an addition (x+x). What about a response (2x+x^2+1)?  This is, arguably, better in the sense that the terms are gathered, but the student here did not <em>order</em> the terms to write their expression in canonical form. Hence, we need quite a number of different answer tests to establish equality in various senses of the word.</p>
+<p>This list is in approximate order of the size of the equivalence classes from most to least restrictive.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Description (see below for more details)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CasEqual</td>
+<td>Are the <a href="../../Trees/">parse trees</a> of the two expressions equal?</td>
+</tr>
+<tr>
+<td><a href="../Rule_based/">EqualComAss</a></td>
+<td>Are they equal up to commutativity and associativity of addition and multiplication, together with their inverses minus and division?</td>
+</tr>
+<tr>
+<td><a href="../Rule_based/">EqualComAssRules</a></td>
+<td>Are they equal up to commutativity, associativity and with optional rules such as (0\times x \rightarrow 0)?</td>
+</tr>
+<tr>
+<td>AlgEquivNouns</td>
+<td>Are they <em>algebraically equivalent</em>, preserving noun forms of operators, e.g. <code>diff</code>?</td>
+</tr>
+<tr>
+<td>AlgEquiv</td>
+<td>Are they <em>algebraically equivalent</em>?</td>
+</tr>
+<tr>
+<td>SubstEquiv</td>
+<td>Can we find a substitution of the variables of (ex_2) into (ex_1) which renders (ex_1) algebraically equivalent to (ex_2)?</td>
+</tr>
+<tr>
+<td>SameType</td>
+<td>Are the two expressions of the same <a href="../../../CAS/Maxima/#Types_of_object">types of object</a>?  Note that this test works recursively over the entire expression.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="algequiv-algequiv">AlgEquiv {#AlgEquiv}</h3>
+<p>This is the most commonly used test.  The pseudo code</p>
+<pre><code>If
+  simplify(ex1-ex2) = 0
+then
+  true
+else
+  false.
+</code></pre>
+<p>This test will work with a variety of <a href="../../../CAS/Maxima/#Types_of_object">types of object</a> of mathematical objects, including lists, sets, equations, inequalities and matrices.</p>
+<ul>
+<li>This test disregards whether <a href="../../../CAS/Simplification/">simplification</a> is switched on, it always fully simplifies all its arguments.</li>
+<li>Use <code>AlgEquiv(predicate(ex),true)</code> with <a href="../../../CAS/Predicate_functions/">predicate functions</a>.</li>
+</ul>
+<p>Note: exactly what it does depends on what objects are given to it.  In particular the pseudo code above only applies to expressions.  We cannot subtract one list or set from another, so we have to use other tests.</p>
+<p>For sets, the CAS tries to write the expression in a canonical form.  It then compares the string representations these forms to remove duplicate elements and compare sets.  This is subtly different from trying to simplify the difference of two expressions to zero.  For example, imagine we have ({(x-a)^{6000}}) and ({(a-x)^{6000}}).  One canonical form is to expand out both sides.  While this work in principal, in practice this is much too slow for assessment. </p>
+<p>Currently we do check multiplicity of roots, so that ( (x-2)^2=0) and ( x=2) are not considered to be equivalent.  Similarly (a^3b^3=0) is not (a=0 \mbox{ or } b=0).  This is a long-standing issue and we would need a separate test to ignore multiplicity of roots.</p>
+<p>Currently, ({-\frac{\sqrt{2}}{\sqrt{3}}}) and ({-\frac{2}{\sqrt{6}}}) are considered to be different.  If you want these to be considered the same, you need to write them in a canonical form.   Instead of passing in just the sets, use the answer test to compare the following.</p>
+<pre><code>ev(radcan({-sqrt(2)/sqrt(3)}),simp);
+ev(radcan({-2/sqrt(6)}),simp);
+</code></pre>
+<p>Why doesn't the test automatically apply <code>radcan</code>?  If we always did this, then ({(x-a)^{6000}}) and ({(a-x)^{6000}}) would be expanded out, which would break the system.  Since, in a given situation, we know a lot about what a student is likely to answer we can apply an appropriate form.   There isn't one rule which will work here, unfortunately.</p>
+<p>There are also some cases which Maxima can't establish as being equivalent.  For example [ \sqrt[3]{\sqrt{108}+10}-\sqrt[3]{\sqrt{108}-10} = 2.]  As Maxima code</p>
+<pre><code>(sqrt(108)+10)^(1/3)-(sqrt(108)-10)^(1/3)
+</code></pre>
+<p>This is Cardano's example from Ars Magna, but currently the AlgEquiv test cannot establish these are equivalent.  There are some other examples in the test suite which fail for mathematical reasons.  In cases like this, where you know you have a number, you may need to supplement the AlgEquiv test with another numerical test.</p>
+<p>We recommend you do <em>not</em> use algebraic equivalence testing for floating point numbers.  Instead use one of the <a href="../Numerical/">numerical tests</a>.  Examples of why algebraic equivalence fails when you might expect it to pass, e.g. <code>ATAlgEquiv(452,4.52*10^2)</code> (Maxima 5.44.0, November 2022), are given in the documentation on <a href="../../../CAS/Numbers/">numbers</a>.</p>
+<h3 id="equalcomass">EqualComAss</h3>
+<p>A particularly useful test is to establish that two expressions are equal up to commutativity and associativity of addition and multiplication, together with their inverses minus and division.  For example, under this test
+( x+y = y+x \mbox{ but } x+x \neq 2x).
+Please see the <a href="../Rule_based/">separate documentation</a>.</p>
+<h3 id="algequivnouns">AlgEquivNouns</h3>
+<p>Algebraic equivalence evaluates as much as possible, to try to establish equivalence.  This means, e.g. that <code>diff(y,x)</code> is always evaluated to (0).  If you use AlgEquivNouns then noun forms of operators are not evaluated, so <code>diff(y,x)</code> will be evaluated but <code>'diff(y,x)</code> and <code>noundiff(y,x)</code> will not.</p>
+<p>Even with this answer test <code>noundiff(y,x)</code> and <code>noundiff(y(x),x)</code> are different!</p>
+<p>Note, that logic nouns such as <code>nounand</code> are still evaluated by this test!  Sorry, but logical noun functions are dealt with internally in a very different way than Maxima noun functions such as <code>'diff(y,x)</code> and the parallel <code>noundiff</code>.  Use a different test, such as <code>EqualComAss</code>.</p>
+<p>It was the need to selectively evaluate some nouns but not others that led to the development of the <a href="../Rule_based/">rule-based answer tests</a> to deal with the need for these options in a coherent way.</p>
+<h3 id="casequal">CasEqual</h3>
+<p>The CAS returns the result of the simple Maxima command</p>
+<pre><code>if StudentAnswer=TeacherAnswer then true else false.
+</code></pre>
+<p>There is no explicit simplification here (unlike AlgEquiv).
+This test always assumes <a href="../../../CAS/Simplification/">simplification</a> is off, i.e. <code>simp:false</code>, regardless of any question settings.  If this is too strict, use <code>ev(ex,simp)</code> in the arguments to simplify them explicitly first.
+When simplification is off this test effectively tests whether the parse trees are identical. </p>
+<p>Please note, the behaviour of this test relies on the internal representation of expressions by Maxima, rather than an explicit mathematical property such as "equivalence".  Explicit properties should be tested in preference to using this test!</p>
+<h3 id="substequiv">SubstEquiv</h3>
+<p>Can we find a substitution of the variables of (ex_2) into (ex_1) which renders (ex_1) algebraically equivalent to (ex_2)?</p>
+<ul>
+<li>Because we have to test every possibility, the algorithm is factorial in the number of variables.  For this reason, the test only works for 4 or fewer variables.</li>
+<li>This test makes a substitution then uses AlgEquiv.</li>
+<li>If you add an answer test option (not required) in the form of a list of variables, these variables will be "fixed" during the comparison.  The list of variable is removed from both lists of the teacher's and student's variable lists before any comparison.</li>
+<li><code>ATSubstEquiv(x=A+B, x=a+b)</code> will match with <code>[A = a,B = b,x = x]</code>.</li>
+<li><code>ATSubstEquiv(x=A+B, x=a+b, [x])</code> will match with <code>[A = a,B = b]</code>.</li>
+<li><code>ATSubstEquiv(y=A+B, x=a+b, [x])</code> will not match since <code>x</code> in the teacher's answer is fixed here, but does not occur in the student's answer.</li>
+</ul>
+<p>The optional argument, which must be a list of variables, is useful if you want to establish that a student has used arbitrary constants in (A\sin(x)+B\cos(x)) but make sure (x) really stays as (x).</p>
+<h3 id="sysequiv">SysEquiv</h3>
+<p>The SysEquiv (system equivalence) test takes in two lists of polynomial equations in any number of variables and determines whether the two systems have the same set of solutions.
+This is done using the theory of Grobner bases to determine whether the ideals generated by the two systems are equal.
+As the test allows for polynomials in several variables, it can cope with the intersections of the conic sections, as well as a large number of geometrically interesting curves.</p>
+<ul>
+<li>This test does not check if the student actually "fully solved" the equations!  E.g. [ [x^2=1] \equiv [(x-1)\cdot (x+1)=0] ] under this test.</li>
+<li>This test disregards whether <a href="../../../CAS/Simplification/">simplification</a> is switched on, it only simplifies its arguments where required.
+This allows the test to list equations in feedback that the student has erroneously included in their system.</li>
+<li>You can allow the student to include "redundant assignments".  For example, if you have <code>[90=v*t,90=(v+5)*(t-1/4)]</code> but the student has <code>[d=90,d=v*t,d=(v+5)*(t-1/4)])</code> then the systems are not equivalent, becuase the student has an extra variable.  Use <code>stack_eval_assignments</code> to eliminate explicit assignments of the form <code>var=num</code> and evaluate the other expression in this context.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

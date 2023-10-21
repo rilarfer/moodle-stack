@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Reporting/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reporting - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reporting";
+        var mkdocs_page_input_path = "Authoring\\Reporting.md";
+        var mkdocs_page_url = "/Authoring/Reporting/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Reporting</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reporting">Reporting</h1>
+<p>Reviewing students' answers closes the learning cycle for teachers by allowing them to understand what students are doing. Basic reporting is undertaken through the Moodle quiz.  For example, lists of scores, etc. are available there.  The Moodle quiz also calculates basic statistics based on the numerical information.</p>
+<p>To review work in more detail we need to use two important parts of the question. Please read the following two entries before continuing with this article.</p>
+<ul>
+<li>The <a href="../Question_note/">question note</a>.</li>
+<li>The <a href="../Potential_response_trees/#Answer_note">answer note</a>.</li>
+</ul>
+<h2 id="moodle-quiz-features">Moodle quiz features</h2>
+<p>Most of the day to day reporting is done through the Moodle quiz features.</p>
+<p>For detailed reporting go to</p>
+<pre><code>Quiz administration -&gt; Results -&gt; Reporting
+</code></pre>
+<p>The "response" column shows the raw Maxima input value entered by the student and the validity status, e.g. "blank" (not reported), "invalid", "valid", "score".  The "response" column also shows the value of the <a href="../Potential_response_trees/#Answer_note">answer note</a> for each potential response tree.</p>
+<p>An example note is shown below.  In this question a student has answered with <code>(x-4)^6+c</code> for the input <code>ans1</code>.
+The potential response tree <code>prt1</code> has executed and the note is <code>ATInt_generic. | 1-0-F</code>.</p>
+<pre><code>ans1: (x-4)^6+c [score]; prt1: ATInt_generic. | 1-0-F
+</code></pre>
+<p>Notes:</p>
+<ol>
+<li>If the potential response tree does not execute it will be reported as <code>prt1: #</code> to indicate it exists but was not used.</li>
+<li>Reporting is stored in the database, so you may need to "regrade" attempts if you update the answer notes.</li>
+<li>You can download the responses for offline analysis.  Split over <code>;</code> to separate inputs and separate PRT answer notes.  Split the individual answer note over <code>|</code> to get the route through the tree, and the notes added by the answer tests.</li>
+</ol>
+<h2 id="individual-stack-item-analysis">Individual STACK item analysis</h2>
+<p>STACK has a bespoke basic reporting mechanism for analysing responses to questions.  To access the <em>Basic question use report</em> you need to navigate to the STACK question dashboard and choose "Analyze responses".  The report currently contains all attempts at the question, regardless of how many different quizzes the question appears in.</p>
+<p>The report makes use of the response summary.  (For developers, this is generated by <code>qtype_stack_question::summarise_response</code> in <code>question.php</code>.)</p>
+<p>The response summary is a string consisting of the following information.</p>
+<ul>
+<li>The "seed" for the question used, enabling attempts to be grouped by question variant.</li>
+<li>The Maxima string value of each input, and its status (blank, invalid, valid, score).</li>
+<li>The answernote generated by each potential response tree. <code>!</code> denotes a blank note, i.e. the PRT did not execute.</li>
+</ul>
+<p>Here is a raw response summary.</p>
+<pre><code> Seed: 254530683; ans1: 15180 [score]; ans2: 24360 [score]; prt1: # = 1 | prt1-1-T; prt2: # = 0 | prt2-1-F
+</code></pre>
+<p>Here we see the following.</p>
+<ul>
+<li>The report can be split over <code>;</code> into separate fields.
+  Within the PRTs the data can be split over <code>|</code>.</li>
+<li>The seed used in this example was 254530683.</li>
+<li>There are two inputs, each at the "score" state.</li>
+<li><code>ans1: 15180 [score]</code></li>
+<li><code>ans2: 24360 [score]</code></li>
+<li>There are two potential response trees</li>
+<li><code>prt1: # = 1 | prt1-1-T</code>  The <code>prt1</code> was activated, the score <code>#</code> returned was <code>1</code> and we see the answer note.</li>
+<li><code>prt2: # = 0 | prt2-1-F</code>  The <code>prt2</code> was activated, the score <code>#</code> returned was <code>0</code> and we see the answer note.</li>
+</ul>
+<p>The response summary contains a lot of information in a condensed way, and can only be understood with an appreciation of the question structure itself in STACK (inputs, prts, variants) and the individual question.</p>
+<p>The report splits this information into the following, text-based, reports.</p>
+<ul>
+<li>Frequency of answer notes, for each PRT, regardless of which variant was used.  Useful to know the route through the tree.</li>
+<li>Frequency of answer notes, for each PRT, split by |, regardless of which variant was used.   Useful to understand the outcome at each node.</li>
+<li>Raw inputs, regardless of which variant was used.</li>
+<li>Raw inputs and PRT answer notes by variant.</li>
+<li>Raw data.</li>
+</ul>
+<p>This feature is new in STACK 4.3.  Comments and suggestions for improvements are very welcome.</p>
+<p>Note, the question summary is stored in a database and will not be updated if you subsequently edit the question.  If you wish to improve your question you will need to do a quiz "regrade" to update the basic question use report.</p>
+<h2 id="site-wide-usage">Site-wide usage</h2>
+<p>Moodle Admins can get stats on <a href="../../Developer/Local_Usage/">site-wide STACK usage</a>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Multiple_choice_questions/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Multiple choice questions - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Multiple choice questions";
+        var mkdocs_page_input_path = "Authoring\\Multiple_choice_questions.md";
+        var mkdocs_page_url = "/Authoring/Multiple_choice_questions/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Multiple choice questions</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="multiple-choice-questions">Multiple choice questions</h1>
+<p>The whole point of STACK is not to use multiple-choice questions, but instead to have the student enter an algebraic expression!  That said there are occasions where it is very useful, if not necessary, to use multiple-choice questions in their various forms.  STACK's use of a CAS is then very helpful to generate random variants of multiple-choice questions based on the mathematical values.</p>
+<p>This can also be one input in a multi-part randomly generated question. E.g. you might say "which method do you need to integrate ( \sin(x)\cos(x) )?" and give students the choice of (i) trig functions first, 
+(ii) parts, (iii) substitution, (iv) replace with complex exponentials.  (Yes, this is a joke: all these methods can be made to work here!)  Another algebraic input can then be used for the answer.</p>
+<p>Please read the section on <a href="../Inputs/">inputs</a> first.  If you are new to STACK please note that in STACK MCQs are <em>not</em> the place to start learning how to author questions.  Please look at the <a href="../Authoring_quick_start/">authoring quick-start guide</a>.</p>
+<p>Multiple choice input types return a CAS object which is then assessed by the potential response tree.  For this reason, these inputs do not provide "feedback" fields for each possible answer, as does the Moodle multiple choice input type.</p>
+<ul>
+<li>Checkbox inputs return a <em>list</em> of the CAS objects selected;</li>
+<li>Dropdown inputs and radio inputs return a single <em>expression</em>, which is the CAS object selected.</li>
+</ul>
+<p>The goal of these input types is to provide <em>modest</em> facilities for MCQ.  An early design decision was to restrict each of the possible answers to be a CAS expression.  In particular, we decided <em>NOT</em> to make each possible answer <a href="../CASText/">CASText</a>.  Adopting CASText would have provided more flexibility but would have significantly increased the complexity of the internal code. If these features are extensively used we will consider a different input type.</p>
+<h2 id="model-answer">Model answer</h2>
+<p>This input type uses the "model answer" both to input the teacher's answer and the other options. 
+In this respect, this input type is unique, and the "model answer" field does <em>not</em> contain just the teacher's model answer.  Constructing a correctly formed model answer is complex, and so this input type should be considered "advanced".  New users are advised to gain confidence writing questions with algebraic inputs first, and gain experience in using Maxima lists.</p>
+<p>The "model answer" must be supplied in a particular form as a list of lists <code>[[value, correct(, display)], ... ]</code>.</p>
+<ul>
+<li><code>value</code> is the value of the teacher's answer.</li>
+<li><code>correct</code> must be either <code>true</code> or <code>false</code>.  If it is not <code>true</code> then it will be considered to be <code>false</code>!</li>
+<li>(optional) <code>display</code> is another CAS expression to be displayed in place of <code>value</code>.  This can be a string value here, but it will be passed through the CAS if you choose the LaTeX display option below.  <code>display</code> is only used in constructing the question.  STACK will take <code>value</code> as the student's answer internally, regardless of what is set here.</li>
+</ul>
+<p>For example</p>
+<pre><code> ta:[[diff(p,x),true],[p,false],[int(p,x),false]]
+</code></pre>
+<p>At least one of the choices must be considered <code>correct</code>.  However, the <code>true</code> and <code>false</code> values are only used to construct the "teacher's correct answer".   You must still use a <a href="../Potential_response_trees/">potential response tree</a> to assess the student's answer as normal.</p>
+<p>STACK provides some helper functions</p>
+<ol>
+<li><code>mcq_correct(ta)</code> takes the "model answer" list and returns a list of values for which <code>correct</code> is true.</li>
+<li><code>mcq_incorrect(ta)</code> takes the "model answer" list and returns a list of values for which <code>correct</code> is false.</li>
+</ol>
+<p>Note, that the optional <code>display</code> field is <em>only</em> used when constructing the choices seen by the student when displaying the question.  The student's answer will be the <code>value</code>, and this value is normally displayed to the student using the validation feedback, i.e. "Your last answer was interpreted as...". A fundamental design principal of STACK is that the student's answer should be a mathematical expression, and this input type is no exception.  </p>
+<p>In situations where there is a significant difference between the optional <code>display</code> and the <code>value</code> which would be confusing, the only current option is to turn off validation feedback.  After all, this should not be needed anyway with this input type.  In the example above when a student is asked to choose the right method the <code>value</code> could be an integer and the display is some kind of string.  </p>
+<p>An example which includes the <code>display</code> option is</p>
+<pre><code>tacp:[[A, false, "A. Direct proof"],  [B, false, "B. Definition-chasing"], [C, false, "C. If and only if"], [D, false, "D. Exhaustive cases"], [E, false, "E. Induction"], [F, false, "F. Contrapositive"], [G, true, "G. Contradiction"]];
+</code></pre>
+<p>Note in this example the <code>value</code> of the student's answer will be a letter which is literally a Maxima variable name.  In this situation you can't really randomize the letters used easily.  (Not impossible with some cunning code, but a lot of work....)</p>
+<p>If you choose to use an integer, and randomly suffle the answers then the validation feedback would be confusing, since an integer (which might be shuffled) has no correspondence to the choices selected.  <em>This behaviour is a design decision and not a bug! It may change in the future if there is sufficient demand, but it requires a significant change in STACK's internals to have parallel "real answer" and "indicated answer". Such a change might have other unintended and confusing consequences.</em></p>
+<p>Normally we don't permit duplicate values in the values of the teacher's answer.  If the input type receives duplicate values STACK will throw an error.  This probably arises from poor randomization.  However it may be needed.  If duplicate entries are permitted use the display option to create unique value keys with the same display. <em>This behaviour is a design decision may change in the future.</em></p>
+<p>When STACK displays the "teacher's answer", e.g. after a quiz is due, this will be constructed from the <code>display</code> fields corresponding to those elements for which <code>correct</code> is <code>true</code>.  I.e. the "teacher's answer" will be a list of things which the student could actually select.  Whether the student is able to select more than one, or if more than one is actually included, is not checked.  The teacher must indicate at least one choice as <code>true</code>.  </p>
+<p>If you need "none of these" you must include this as an explicit option, and not rely on the student not checking any boxes in the checkbox type.  Indeed, it would be impossible to distinguish the active selection of "none of these" from a passive failure to respond to the question.</p>
+<p>If one of the responses is (x=1 \mbox{ or } x=2) then it is probably best to use <code>nounor</code> which is commutative and associative.  Do not use <code>or</code> which always simplifies its arguments.  In this example <code>x=1 or x=2</code> evaluates to <code>false</code>.</p>
+<p>HTML dropdowns cannot display LaTeX within the options.  This is a restriction of HTML/MathJax (not of STACK).  You can use HTML-entities within a string field.  For example </p>
+<pre><code>ta1:[[0,false,"n/a"],[1,true,"&amp;ge;"],[2,false,"&amp;le;"],[3,false,"="],[4,false,"?"]];
+</code></pre>
+<p>Note here that an integer will returned internally.</p>
+<p>Similarly, you can include logical symbols. For example</p>
+<pre><code>ta1:[[0, false, "&amp;#8658;"], [1, true, "&amp;#8656;"], [2, false, "&amp;#8660;"]];
+</code></pre>
+<p>will give a choice, e.g. a dropdown, from &#8658;, &#8656; and &#8660; and an integer will returned internally.</p>
+<pre><code>ta1:[[0, false, "&amp;#8704;"], [1, true, "&amp;#8707;"]];
+</code></pre>
+<p>will give a choice, e.g. a dropdown, from &#8704; and &#8707;.</p>
+<pre><code>ta1:[[0, true, "c &amp;#8712;"], [1, false, "c &amp;#8713;"]];
+</code></pre>
+<p>will give a choice, e.g. a dropdown, from "c &#8712;" and "c &#8713;".</p>
+<pre><code>ta1:[[N, false, "&amp;#8469;"], [Z, true, "&amp;#8484;"], [Q, false, "&amp;#8474;"], [R, false, "&amp;#8477;"], [C, false, "&amp;#8450;"]];
+</code></pre>
+<p>will give a choice between sets of numbers &#8469;, &#8484;, &#8474;, &#8477;, and &#8450;.</p>
+<h3 id="example-degree-of-a-polynomial">Example: degree of a polynomial</h3>
+<p>Here is an example where the teacher would like the student to state the degree of a polynomial using the adjectives, rather than a number.</p>
+<pre><code>pol:sum(rand_with_prohib(-9,9,[0])*x^k,k,0,1+rand(5));
+deg:hipow(pol,x);
+/* Use strings, and not keywords. */
+l1:["constant", "linear", "quadratic", "cubic", "quartic", "quintic"];
+/* Create a matching list of true/false values as to whether each option is correct. */
+a1:maplist(lambda([ex], is(ex=deg)), makelist(k,k,0,length(l1)));
+/* Basic answer list for MCQ in the correct format. This returns the string to the PRT. */
+ta1:zip_with("[",l1,a1);
+/* Since lists index at one, you need this for the correct answer! */
+tac:l1[deg+1];
+/* Returns the degree as the student's answer, not the word. */
+ta2:maplist(flatten, zip_with("[",makelist(k,k,0,length(l1)), zip_with("[",a1,l1)));
+/* Feedback can turn this into a word using indexing, e.g. l1[ans1+1] in the PRT. */
+</code></pre>
+<p>Either <code>ta1</code> or <code>ta2</code> can be used with the MCQ inputs, in this case dropdown probably makes most sense and checkbox least sense!  With the <code>ta2</code> option you probably want to hide the validation feedback.</p>
+<h2 id="internals">Internals</h2>
+<p>The dropdown and radio inputs return the <code>value</code>, but the checkbox type returns the student's answer as Maxima <code>list</code>,
+even if they have only chosen one option.</p>
+<p>The function <code>mcq_correct</code> returns a list, so for dropdown and radio you might need to take the <code>first</code> element when using this function to extract values from the list of teacher's answers.</p>
+<p>If, when authoring a question, you switch from radio/dropdown to checkboxes or back, you will probably break a PRT because of mismatched types.</p>
+<p>For the select and radio types the first option on the list will always be "Not answered".  This enables a student to retract an answer and return a "blank" response.</p>
+<p>For the checkbox type there is a fundamental ambiguity between a blank response and actively not selecting any of the provided choices, which indicates "none of the others".  Internally STACK has a number of "states" for a student's answer, including <code>blank</code>, <code>valid</code>, <code>invalid</code>, <code>score</code> etc.  A student who has not answered will be considered <code>blank</code>, which is different from invalid.  Potential response trees which rely on this input type will not activate until the state is <code>score</code>.</p>
+<p>To enable a student to indicate "none of the others", the teacher must add this as an explicit option in all MCQ types.  If you add an option "none of the others" then it will return the <code>value</code> of that selection: you could give this the value of <code>null</code>, for example, which is a Maxima atom.  We did not add support for a special internal "none of the others" because the teacher still needs to indicate whether this is the true or false answer to the question.  To support randomisation, this needs to be done as an option in the teacher's answer list.</p>
+<p>The radio and dropdown types always add a "not answered" option as the first option.  This allows a student to retract their choice, otherwise they will be unable to "uncheck" a radio button, which will be stored, validated and possibly assessed (to their potential detriment).  If you want to remove this then use the extra option <code>nonotanswered</code>, but keep in mind the possible effect when using the penalty scheme.</p>
+<p>If one of the items in the teacher's answer list is is the special variable name <code>notanswered</code>, and then default mesage <code>(No answer given)</code> will be replaced by the <code>display</code> value.  If no <code>display</code> value is given (and it is optional) then the original message will remain.  <code>notanswered</code> will not appear in the list of valid choices for a user and <code>value</code> for this input is ingored.</p>
+<h2 id="extra-options">Extra options</h2>
+<p>These input types make use of the "Extra options" field of the input type to pass in options.  These options are not case sensitive.<br />
+This must be a comma-separated list of values as follows, but currently the only option is to control the display of mathematical expressions.</p>
+<p>The way the items are displayed can be controlled by the following options.</p>
+<ul>
+<li><code>LaTeX</code> The default option is to use LaTeX to display the options, using an inline maths environment <code>\(...\)</code>.  This is probably better for radio and checkboxes.  It sometimes works in dropdowns, but not always and we need to test this in a wider variety of browsers.</li>
+<li><code>LaTeXdisplay</code> use LaTeX to display the options, using the display maths environment <code>\[...\]</code>.</li>
+<li><code>LaTeXinline</code> use LaTeX to display the options, using the inline maths environment <code>\(...\)</code>.</li>
+<li><code>LaTeXdisplaystyle</code> use LaTeX to display the options, using the inline maths environment and the displaystyle option <code>\(\displaystyle...\)</code>.</li>
+<li><code>casstring</code> does not use the LaTeX value, but just prints the casstring value in <code>&lt;code&gt;...&lt;/code&gt;</code> tags.</li>
+<li><code>nonotanswered</code> removes the ``Not answered'' option from radio and dropdown.  This is <em>not recommended</em> as it means a student has no opportunity to "uncheck" a radio button once selected.  They may wish not to answer, rather than save an incorrect answer.</li>
+</ul>
+<h2 id="randomly-shuffling-the-options">Randomly shuffling the options</h2>
+<p>To randomly shuffle the options create the list in the question variables and use the Maxima command <code>random_permutation</code> in the question variables.</p>
+<p>For example, the question variables might look like the following.</p>
+<pre><code>/* Create a list of potential answers. */
+p:sin(2*x);
+ta:[[diff(p,x),true],[p,false],[int(p,x),false],[cos(2*x)+c,false]];
+/* The actual correct answer.    */
+tac:diff(p,x)
+/* Randomly shuffle the list "ta". */
+ta:random_permutation(ta);
+/* Add in a "None of these" to the end of the list.  The Maxima value is the atom null. */
+tao:[null, false, "None of these"];
+ta:append(ta,[tao]);
+</code></pre>
+<p>These commands ensure (1) the substantive options are in a random order, and (2) that the <code>None of these</code> always comes at the end of the list. 
+Note, the value for the <code>None of these</code> is the CAS atom <code>null</code>.<br />
+In Maxima <code>null</code> has no special significance but it is a useful atom to use in this situation.</p>
+<p>As the Question Note, you might like to consider just taking the first item from each list, for example:</p>
+<pre><code>{@maplist(first,ta)@}.  The correct answer is {@tac@}.
+</code></pre>
+<p>This note stores both the correct answer and the order shown to the student without the clutter of the <code>true/false</code> values or the optional display strings.<br />
+Remember, random variants of a question are considered to be the same if and only if the question note is the same,
+so the random order must be part of the question note if you shuffle the options.</p>
+<h2 id="constructing-mcq-arrays-in-maxima">Constructing MCQ arrays in Maxima</h2>
+<p>It is not easy to construct MCQ arrays in Maxima.  This section contains some tips for creating them, using Maxima's <code>lambda</code> command.<br />
+Below is an example of a correctly constructed teacher's answer.</p>
+<pre><code>ta:[[x^2-1,true],[x^2+1,false],[(x-1)*(x+1),true],[(x-i)*(x+i),false]]
+</code></pre>
+<p>To create a list of correct answers you could use the function <code>mcq_correct(ta)</code>.  This essentially consists of the following code.</p>
+<pre><code>maplist(first, sublist(ta, lambda([ex], second(ex))));
+</code></pre>
+<p>The function <code>sublist</code> "filters" out those entries of <code>ta</code> for which the second element of the list is true.<br />
+We then "map" first onto these entries to pull out the value.<br />
+It is relatively simple to modify this code to extract the incorrect entries, the displayed forms of the correct entries etc.</p>
+<p>To go in the other direction, the first list <code>ta1</code> is considered "correct" and the second <code>ta2</code> is considered incorrect.</p>
+<pre><code>ta1:[x^2-1,(x-1)*(x+1)];
+ta1:maplist(lambda([ex],[ex, true]), ta1);
+ta2:[x^2+1,(x-i)*(x+i)];
+ta2:maplist(lambda([ex],[ex, false]), ta2);
+ta:append(ta1,ta2);
+/* If you want to shuffle the responses then use the next line. */
+ta:random_permutation(ta);
+</code></pre>
+<p>Also, you can use STACK's <code>rand_selection(L, n)</code> to select (n) different elements from the list (L).<br />
+Say you have the following list of wrong answers and you want to take only 3 out of 5.</p>
+<pre><code>ta2:[x^2,w^2,w^6,z^4,2*z^4];
+ta2:rand_selection(ta2, 3);
+/* Then, as before. */
+ta2:maplist(lambda([ex],[ex, false]), ta2);
+</code></pre>
+<p>Another way to create an MCQ answer list is to have Maxima decide which of the answers are true.<br />
+For example, in this question the student has to choose which of the answers are integers.</p>
+<pre><code>L:[1,4/2,3.0,2.7,1/4,%pi,10028];
+/* Map the appropriate predicate to the list to create the true/false list. */
+A:maplist(integerp,L);
+/* Note the use of zip_with together with the list constructing function "[". */
+ta:zip_with("[",L,A);
+/* If you want to shuffle the responses then use the next line. */
+ta:random_permutation(ta);
+</code></pre>
+<h2 id="mcq-helper-functions">MCQ helper functions</h2>
+<p>STACK has helper functions to create MCQ arrays in Maxima.</p>
+<pre><code>[ta, variant] = multiselqn(corbase, numcor, wrongbase, numwrong)
+</code></pre>
+<p>This function takes two lists <code>corbase</code> and <code>wrongbase</code> and two integers <code>numcor</code> and <code>numwrong</code>.<br />
+It randomly selects <code>numcor</code> from <code>corbase</code>, and <code>numwrong</code> from <code>wrongbase</code> and then creates the MCQ list <code>ta</code> with these selections, 
+and an answernote <code>variant</code>.</p>
+<p>The function returns a list with two arguments.<br />
+The first argument of the list is the MCQ array, the second is just the list of answers which is useful for the answer note.<br />
+Note, this function does use <code>random_permutation</code> internally to randomly order the random selections.</p>
+<p>For example, the following generates random expressions for an MCQ calculus question.  Note the use of <code>ev(...)</code> later to evaluate the derivative.</p>
+<pre><code>trg:rand([sin(p), cos(p)]);
+dtrg:diff(trg, p);
+wrongbase:[a*trg, 2*a*x*trg, -2*a*x*trg, ev(dtrg, p=2*a*x), 2*a*x*ev(dtrg, p=2*a*x)];
+p:a*x^2+b;
+wrongbase:ev(wrongbase); /* Now we have a value for p, the extra evaluation will use it. */
+ans:diff(ev(trg), x);
+multisel:multiselqn([ans], 1, wrongbase, 3);
+ta:multisel[1];
+variant:multisel[2];
+</code></pre>
+<p>In the above example there is only one correct answer, so we just select <code>1</code> from <code>[ans]</code>.
+This is fine, and we then choose three randomly generated wrong answers.</p>
+<p>This returns (for example) the values</p>
+<pre><code>ta = [[-2*a*x*cos(a*x^2+b),false],[-sin(2*a*x),false],[a*cos(a*x^2+b),false],[-2*a*x*sin(a*x^2+b),true]];
+variant = [-2*a*x*cos(a*x^2+b),-sin(2*a*x),a*cos(a*x^2+b),-2*a*x*sin(a*x^2+b)];
+</code></pre>
+<p>The following function does a similar job when we have MCQ display strings.</p>
+<pre><code>[ta, variant] = multiselqndisplay(corbase, numcor, wrongbase, numwrong)
+</code></pre>
+<p>For example, here the return values could be</p>
+<pre><code>ta = [[3,false,2*a*x*sin(a*x^2+b)],[2,false,a*sin(a*x^2+b)],[5,false,cos(2*a*x)],[1,true,2*a*x*cos(a*x^2+b)]]
+variant = [3,2,5,1]
+</code></pre>
+<p>The function <code>multiselqndisplay</code> automatically assigns numbers (1,\cdots, k) to the <code>corbase</code> entries, and then (k+1,\cdots, n) to the <code>wrongbase</code> entries so that the numbers returned by the input type uniquely map to the entries in the two lists regardless of which random variant is generated.  These numbers are useful internally, but not for students.</p>
+<p>The function <code>multiselqnalpha</code> automatically selects the appropriate number of correct and incorrect entries, permutes the list and then assigns strings <code>"(a)"</code>, <code>"(b)"</code>, <code>"(c)"</code> etc. in the correct order. The student's answer will thus be a list of strings (somewhat subverting the whole purpose of STACK in returning a genuine mathematical expression, but this has its place...).  </p>
+<pre><code>[ta, variant] = multiselqnalpha(corbase, numcor, wrongbase, numwrong, [dispstyle])
+</code></pre>
+<p>For example, here the return values (with inline maths) could be</p>
+<pre><code>ta = [["(a)",false,"&lt;b&gt;(a)&lt;/b&gt; \\(-2\\,a\\,x\\,\\sin \\left( a\\,x^2+b \\right)\\)"],["(b)",true,"&lt;b&gt;(b)&lt;/b&gt; \\(2\\,a\\,x\\,\\cos \\left( a\\,x^2+b \\right)\\)"],["(c)",false,"&lt;b&gt;(c)&lt;/b&gt; \\(\\cos \\left( 2\\,a\\,x \\right)\\)"],["(d)",false,"&lt;b&gt;(d)&lt;/b&gt; \\(2\\,a\\,x\\,\\cos \\left( 2\\,a\\,x \\right)\\)"]]
+variant = [-2*a*x*sin(a*x^2+b),2*a*x*cos(a*x^2+b),cos(2*a*x),2*a*x*cos(2*a*x)]
+</code></pre>
+<p>Notes</p>
+<ol>
+<li>The fifth optional argument to <code>multiselqnalpha</code> controls the display style of the LaTeX.  Use <code>"i"</code> (a string containing <code>i</code>) for inline, <code>"d"</code> for displayed and <code>"id"</code> for inline "displaystyle" (which is the default).</li>
+<li>Note that the "student's" answer will now be a <em>string</em> such as <code>"(a)"</code>.  When you construct the PRT you will not need to check against these strings, not the original CAS expressions.</li>
+<li>The <code>variant</code> retains the CAS statements, in order.</li>
+<li>Do not use <code>multiselqnalpha</code> in conjunction with the <code>shuffle</code> option.  There is no need as the selection are permuted, and it messes up the order of the choices for the student. </li>
+</ol>
+<h2 id="dealing-with-strings-in-mcq">Dealing with strings in MCQ</h2>
+<p>A likely situation is that a teacher wants to include a language string as one of the options for a student's answer in a multiple-choice question.</p>
+<p>Recall: <em>A fundamental design principal of STACK is that the student's answer should be a mathematical expression which can be
+manipulated by the CAS as a valid expression.</em> Students are very limited in the keywords they are permitted to use in an input type.<br />
+It is very likely that strings will contain keywords forbidden in student expressions.</p>
+<p>One option to overcome this is to do something like this as one option in the teacher's response:</p>
+<pre><code>[C, false, "(C) None of the other options"]
+</code></pre>
+<p>The optional display part of this input is displayed to the student.  Their answer is the (valid) CAS atom <code>C</code> which the PRT will deal with appropriately.</p>
+<p>To construct appropriate arrays use the <code>multiselqnalpha</code> function.</p>
+<p>The quotation marks will be removed from strings, and the strings will not be wrapped <code>&lt;code&gt;...&lt;/code&gt;</code> tags or LaTeX mathematics environments.</p>
+<p>Question authors should consider using the Moodle MCQ question type in addition to these facilities for purely text-based answers.</p>
+<p>You must protect characters within strings.  E.g. in</p>
+<pre><code>[A, true, "A. There exists \\(M\\) such that \\( |a_n| &amp;lt; M \\)."]
+</code></pre>
+<p>We have protected the backslash, and the inequality.</p>
+<p>The language strings are not CAStext, they are simply raw strings.  It is possible to construct strings which inlcude variable values using the <code>stack_disp</code> function.</p>
+<pre><code>[oc(-inf,a), false, sconcat("The half interval: ", stack_disp(oc(-inf,a),"i"))]
+</code></pre>
+<p>The argument <code>"i"</code> here displays the expression "inline", other options are <code>""</code> (you are responsible for maths environments), <code>"d"</code> (displayed), and <code>"di"</code> (inline but using displaystyle).  If you construct strings in this way the display of any equations will not respect the display options in the particular input since variables are typically defined in the question variables and the input options are not available at that point in the code base.</p>
+<h2 id="inline-castext-as-mcq-labels-castextlabels">Inline CASText as MCQ labels ## {#castextlabels}</h2>
+<p>Since 4.4 it has been possible to write more complex labels using inline CASText. Inline CASText is basically a static string value wrapped in special function call and how one would use it is as follows:</p>
+<pre><code>/* The old way of constructing a string: */
+[oc(-inf,a), false, sconcat("The half interval: ", stack_disp(oc(-inf,a),"i"))]
+/* Same using a inline CASText */
+[oc(-inf,a), false, castext("The half interval: {@oc(-inf,a)@}")]
+</code></pre>
+<p>You may write normal CASText syntax inside that string and it should behave exactly like it does in question-text or PRT feedback etc.. The only limitation at this time is that the list that includes these labels must be defined in the question-variables, you may not write inline CASText directly to the model answer field of the input. The <code>castext()</code>-function is not a real CAS-function it is converted to more complex logic at compile time and therefore it must receive a static string as its argument.</p>
+<p>The most obvious use case for inline CASText is to provide localisation inside MCQ labels in situatiosn where the mlang2-filter is not an option:</p>
+<pre><code>[true, true, castext("[[lang code='en']]Yes[[/lang]][[lang code='fi']]Kyllä[[/lang]]")]
+</code></pre>
+<h2 id="dealing-with-plots-in-mcq">Dealing with plots in MCQ</h2>
+<p>It is possible to use plots as the options in a STACK MCQ.  </p>
+<p>Recall again the MCQ are limited to legitimate CAS objects.<br />
+The <code>plot</code> command returns a string which is the URL of the dynamically generated image on the server.<br />
+The "value" of this can't be assessed by the potential response trees.<br />
+For this reason you must use the display option with plots and must only put the plot command in the display option. (Otherwise STACK will throw an error: this behaviour could be improved).<br />
+For example, to create a correct answer consisting of three plots consider the following in the question variables.</p>
+<pre><code>p1:plot(x,[x,-2,2],[y,-3,3])
+p2:plot(x^2,[x,-2,2],[y,-3,3])
+p3:plot(x^3,[x,-2,2],[y,-3,3])
+ta:[[1,true,p1],[2,false,p2],[3,false,p3]]
+</code></pre>
+<p>The actual CAS value of the answer returned will be the respective integer selected (radio or dropdown) or list of integers (checkbox).<br />
+The PRT can then be used to check the value of the integer (or list) as normal.  </p>
+<p>For this reason you will probably want to switch off the validation feedback ``your last answer was...".  </p>
+<p>Using a PRT is slight overkill, but it maintains the consistent internal design.</p>
+<h2 id="dealing-with-external-images-in-mcq">Dealing with external images in MCQ</h2>
+<p>It is also possible to embed the URL of an externally hosted image as the "display" field of an MCQ.<br />
+The string is not checked, and is also passed through the CAS.<br />
+This feature is fragile to being rejected as an invalid CAS object, and so is not recommended.  (This could also be improved...)</p>
+<p>For example, the question variables could be something like</p>
+<pre><code>i1:"&lt;img src='http://www.maths.ed.ac.uk/~csangwin/Pics/z1.jpg' /&gt;"
+i2:"&lt;img src='http://www.maths.ed.ac.uk/~csangwin/Pics/z2.jpg' /&gt;"
+i3:"&lt;img src='http://www.maths.ed.ac.uk/~csangwin/Pics/z3.jpg' /&gt;"
+ta:[[1,true,i1],[2,false,i2],[3,false,i3]]
+</code></pre>
+<h2 id="writing-question-tests">Writing question tests</h2>
+<p>Quality control of questions is important.  See the notes on <a href="../Testing/">testing</a> questions.  </p>
+<p>When entering test cases the question author must type in the CAS expression they expect to be the <code>value</code> of the student's answer (NOT the optional <code>display</code> field!).  For example, if the teacher's answer (to a checkbox) question is the following.</p>
+<pre><code> ta:[[x^2-1,true],[x^2+1,false],[(x-1)*(x+1),true],[(x-i)*(x+i),false]]
+</code></pre>
+<p>Then the following test case contains all the "true" answers.</p>
+<pre><code> [x^2-1,(x-1)*(x+1)]
+</code></pre>
+<p>There is currently minimal checking that the string entered by the teacher corresponds to a valid choice in the input type.  If your test case returns a blank result this is probably the problem.     </p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

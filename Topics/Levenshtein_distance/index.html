@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Topics/Levenshtein_distance/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Damerau-Levenshtein distance and strings - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Damerau-Levenshtein distance and strings";
+        var mkdocs_page_input_path = "Topics\\Levenshtein_distance.md";
+        var mkdocs_page_url = "/Topics/Levenshtein_distance/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Damerau-Levenshtein distance and strings</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="damerau-levenshtein-distance-and-strings">Damerau-Levenshtein distance and strings</h1>
+<p>The Damerau-Levenshtein (Levenshtein for short) distance is a metric, or edit distance, for measuring the difference between two strings. Informally, the Levenshtein distance is the minimum number of single-character edits (insertions, deletions, transition or substitutions) required to change one string into the other. It is named after <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Vladimir Levenshtein</a>.  Support for Levenshtein distance was added to STACK in 2022 by Achim Eichhorn and Andreas Helfrich-Schkarbanenko.</p>
+<p>The use of this distance automatically includes an element of spell checking, which is one of its significant advantages.  Indeed, the Levenshtein distance is widely used for spell checking and auto-complete.
+(See, e.g., F. J. Damerau, <em>A technique for computer detection and correction of spelling errors</em>, Communications of the ACM (7)3, March 1964 pp 171–176. <a href="https://doi.org/10.1145/363958.363994">https://doi.org/10.1145/363958.363994</a>)</p>
+<h2 id="basic-usage-example">Basic usage example</h2>
+<p>In STACK <code>levenshtein(s, t)</code> takes strings <code>s</code>, <code>t</code> to compare and returns an integer, the Levensthein distance between <code>s</code> and <code>t</code>.  This is basically the number of single-character edits.  For example <code>levenshtein("Add", "And")</code> gives 1, since one letter needs to be changed. <code>levenshtein("Add", "and")</code> gives 2, since two leters need to be changed.  Adding or removing letters are each a single edit, so that <code>levenshtein("Subtract", "Subtraction");</code> gives 3.</p>
+<p>Rather than using this "distance" a tolerance is defined by the normalised "Levenshtein similarity" between 0 (totally different) and 1 (identical).  The Maxima code for this function is simple enough to list here explicitly. </p>
+<pre><code> levenshtein_plv(s, t) := 1.0-levenshtein(s, t)/max(slength(s), slength(t));
+</code></pre>
+<p>For example "Add" and "Addition" have a distance of 5, and the longest string is 8, so <code>levenshtein_plv("Add", "Addition")</code> gives similarity of 0.375.</p>
+<p>These functions are part of STACK, not core Maxima, and so to use them you will need to make use of the <a href="../../CAS/STACK-Maxima_sandbox/">Maxima sandbox</a>.</p>
+<p>In a practical situation a teacher will likely have to specify a range of acceptable strings to ensure the student is sufficiently similar to something acceptable.</p>
+<h2 id="answer-test">Answer test</h2>
+<p>STACK provides an answer test based on the Levenshtein distance/similarity.  This test seeks to match the student's answer (a string) with two lists of strings and a numerical tolerance option. The first list (<code>allow</code>) is the list of acceptable strings.  The second list (<code>deny</code>) is the list of unacceptable strings.  By default, the test is case insensitive.</p>
+<p>When you test the student's answer the test finds the most similar string in <code>allow</code> and the most similar string in <code>deny</code> and the corresponding values of the normalised Levenshtein similarity.  The test seeks to ensure that</p>
+<ol>
+<li>the most similar string is within the <code>allow</code> list, and then that</li>
+<li>the similarity of the student's string to the most similar allow string is better than the specified tolerance.</li>
+</ol>
+<p>Notes on using the answer test in STACK.</p>
+<ol>
+<li>The first argument to the test (the "student's answer") must be a string.</li>
+<li>The second argument to the test (the "teacher's answer") must be a list in the form <code>[allow, deny]</code> where both <code>allow</code> and <code>deny</code> are themselves lists of strings.  The <code>allow</code> list must be non-empty, but the <code>deny</code> list could be empty.</li>
+<li>The option must be used.  Either give the numerical tolerance as a number, or a list of options.  The numerical tolerance must be the first element of the options list.</li>
+<li>By default the test is case-insensitive.  If you include the atom <code>CASE</code> in the list of options then the matching is case sensitive, potentially increasing the Levenshtein distance between strings.  E.g. use answer test option <code>[0.9, CASE]</code> for a case-senstive test with a tolerance of 0.9.</li>
+<li>By default this test consolidates whitespace, e.g. replaces tab and newline characters with a single space, trims whitespace from each end and separates with at most one space character.  If you include the atom <code>WHITESPACE</code> in the list of options then whitesapace is not consolidated.</li>
+</ol>
+<p>The current answer test provides feedback indicating which of the allow strings was most similar.  The test does not provide feedback indicating which of the deny strings was most similar, but if you can find a use-case which needs deny based feedback please contact the developers and we will add an option.</p>
+<p>The answernote records the most similar allow string, the most similar deny string and the corresoding tolerance values.  It is likley that a teacher will need to examine students' answers in the fist use cycle and fine tune the <code>allow</code>, <code>deny</code> and tolerance values (perhaps with a regrade) to reach an acceptable level of test reliability: the use of the tolerance means this test is not as objective as some other STACK assessments.</p>
+<p>It is likely this test will benefit from a wide range of text pre-processing options prior to the test being executed, e.g. using functions from Maxima's stringproc library.  For example</p>
+<ul>
+<li>remove (ignore) accents and diacritical marks</li>
+</ul>
+<p>At this point we do not propose to add these as options to the test itself as the pre-processing can be done in the feedback variables as required.  However, pre-processing does affect the feedback given by the test and so test options might be very useful.  If you create such processing functions and have compelling use-cases we would appreciate an opportinity to document, and support them as core functionality: please contact the developers.</p>
+<h2 id="advice-on-processing-strings-in-this-context">Advice on processing strings in this context.</h2>
+<ol>
+<li>To trim whitespace and full stops from each end of a string, you can define <code>sans1:strim(" .",ans1);</code> in the feedback variables.</li>
+<li>STACK provides a function <code>sremove_chars(rem, st)</code> which removes all occurances of each <em>character</em> in the string <code>rem</code> from the string <code>st</code>.  For example to remove all selected punctuation characters use <code>sremove_chars(".,!?", ans1)</code>.</li>
+<li>STACK provides a function <code>ssquish</code> which changes tabs and newlines to spaces; trips whitespace at the ends; and replaces multiple whitespaces with a single whitespace.</li>
+</ol>
+<h2 id="writing-a-stack-question">Writing a STACK question</h2>
+<p>Here is a very simple question using the Damerau-Levenshtein distance.  Define the question variables as follows.</p>
+<pre><code>allow1:["Completing the square", "Complete the square"];
+deny1:["Factoring", "Factorising", "Expanding", "Square"];
+p1:(x-1)^2-3;
+p0:expand(p1);
+ta:first(allow1);
+</code></pre>
+<p>Define the question text as</p>
+<pre><code>&lt;p&gt;What is the following transformation called? \[ {@p0@} \quad{\color{blue}\rightarrow}\quad {@p1@}\]&lt;/p&gt;
+&lt;p&gt;[[input:ans1]] [[validation:ans1]]&lt;/p&gt;
+</code></pre>
+<p>Then:</p>
+<ol>
+<li>The input <code>ans1</code> should be a string input, with <code>ta</code> as the teacher's answer.</li>
+<li>Decide if the students should validate and whether you want validation feedback (probably not).</li>
+<li>The PRT uses a single node and single answer test: <code>Levenshtein(ans1, [allow1,deny1], 0.8)</code> here 0.8 is the (somewhat arbitrary) similarity.</li>
+<li>Add in question tests, but remember the test cases should be entered as strings, e.g. <code>"complete square"</code>.</li>
+</ol>
+<p>With this set of allow strings we have <code>ans1:"complete square"</code> gives the following answer note from the potential response tree</p>
+<pre><code>ATLevenshtein_far: [[0.78947,"Complete the square"],[0.4,"Square"]].
+</code></pre>
+<p>The note <code>ATLevenshtein_far</code> means the closest string was in the allow list, but it was too far away.  The rest of the note means that the closest string found in <code>allow1</code> was "Complete the square" with similarity 0.78947. The closest string found in <code>deny1</code> was "Square" with similarity 0.4.  If you want to accept "complete square" as a correct answer you have two choices: (i) add it to <code>allow1</code>, or (ii) reduce the required similarity below 0.789.</p>
+<h2 id="stack-functions">STACK functions</h2>
+<p>You can test in other ways using the feedback variables and the following functions.</p>
+<p><code>levenshtein(s, t)</code> takes strings <code>s</code>, <code>t</code> to compare and returns an integer, the Levensthein distance between <code>s</code> and <code>t</code>.  This is basically the number of single-character edits.</p>
+<p><code>levenshtein_plv(s, t)</code> weights the levenshtein most similar between 0 (totally different) and 1 (identical).  In Maxima code this function is defined as</p>
+<pre><code> levenshtein_plv(s, t) := 1.0-levenshtein(s, t)/max(slength(s), slength(t));
+</code></pre>
+<p><code>levenshtein_compare_strings(needle, haystack)</code> looks for the string <code>needle</code> in the list of stings <code>haystack</code>.  It returns <code>[maxscore, index_haystack_found]</code> where <code>maxscore</code> is the value of the closest match and <code>index_haystack_found</code> is the index to the string found.  The <code>maxscore</code> is rounded to five decimal places to help with comparison of floats later.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

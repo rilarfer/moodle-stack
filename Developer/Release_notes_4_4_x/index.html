@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Release_notes_4_4_x/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Release notes for STACK 4.4.x - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Release notes for STACK 4.4.x";
+        var mkdocs_page_input_path = "Developer\\Release_notes_4_4_x.md";
+        var mkdocs_page_url = "/Developer/Release_notes_4_4_x/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Release notes for STACK 4.4.x</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="release-notes-for-stack-44x">Release notes for STACK 4.4.x</h1>
+<p>STACK version 4.4.0 was released in July 2022.  This was a major rewrite of the PRT and CASText systems, with a focus on performance and limitations of the previous systems.  This release has changed/tightened up some question authoring causing some problems with existing questions.  For this reason we have written these dedicated release notes.</p>
+<h3 id="issue-foreach-blocks-over-zero-length-lists">Issue: <code>[[ foreach ]]</code> blocks over zero length lists.</h3>
+<p><code>[[ foreach ]]</code> blocks over a list that happens to have length zero causes "text rendering error" if reference to the non-existent element is made, even though the loop is not run: e.g.</p>
+<pre><code>[[ foreach item="[]" ]]  {@item@}   [[/ foreach ]].
+</code></pre>
+<p>(Note without the <code>{@item@}</code> it runs fine.)</p>
+<p>Solution Protect loop with an <code>[[ if  ]]</code> block on the length of the list.</p>
+<h3 id="issue-bad-interaction-between-ordergreat-and-exdowncase">Issue: Bad interaction between <code>ordergreat</code> and <code>exdowncase</code></h3>
+<p>This is a more serious problem, see <a href="https://github.com/maths/moodle-qtype_stack/issues/887">https://github.com/maths/moodle-qtype_stack/issues/887</a> for updates.</p>
+<p>One solution is to test for <code>exdowncase(sans)=exdowncase(tans)</code> [not just <code>tans</code>].</p>
+<h3 id="issue-automatically-calculated-numerical-teachers-answer-might-now-include-brackets">Issue: Automatically calculated numerical teachers answer might now include brackets</h3>
+<p>Automatically calculated numerical teachers answer might now include brackets: ( -(3/8)), which is a problem if the input forbade brackets!, causing Question Test failure.</p>
+<p>Solution: Don't forbid input of brackets!</p>
+<h3 id="issue-when-selecting-function-names-from-a-list">Issue: when selecting function names from a list.</h3>
+<p>When using something like </p>
+<pre><code>func:rand([sin,cos,exp,ln]);
+is(equal(func,ln));
+</code></pre>
+<p>now returns unknown. Used to return true/false.</p>
+<p>Solution: First generate a random integer. Set <code>func</code> based on that, and test the value of the integer. (Not as neat!)</p>
+<h3 id="issue-mathjax">Issue: MathJax</h3>
+<p>Mathjax no longer likes   <code>\begin{pmatrix}{@xx@}\\{@yy@}\end{pmatrix}</code> in castext.</p>
+<p>Solution: make sure there is a space between <code>\\</code> and <code>{@yy@}</code>.  (Better!) Define the vector to be a maxima object and display that instead.</p>
+<h3 id="issue-cas-text-comments-delineated-with-are-rendered">Issue: CAS text comments delineated with /<em> ... </em>/ are rendered</h3>
+<p>Solution:  Use  <code>[[ comment ]] ... [ [/ comment ]]</code></p>
+<h3 id="issue-fatal-error-causing-an-exception-and-then-displaying-nothing">Issue: Fatal error causing an exception and then displaying nothing.</h3>
+<p>Solution: "tans" PRT node entry ended with semicolon: Delete the semi-colon!  We now have error trapping for this problem.</p>
+<h3 id="issue-taylor-now-returns-a-maxima-taylor-series-object">Issue: <code>taylor</code> now returns a maxima taylor series object</h3>
+<p><code>taylor</code> now returns a maxima taylor series object (as it should!) rather than a normal algebraic expression (as it did!) Solution use <code>expand(taylor( ... ) )</code> to get a normal algebraic object.
+(May then also need to set <code>powerdisp:true</code> to get the usual ordering of terms)</p>
+<p>This is one consequence of the single call to Maxima.  Previously there was some string input/output which lost the data type information.</p>
+<h3 id="issue-rounding-of-numerical-quantities">Issue: rounding of numerical quantities.</h3>
+<p>The answer test <code>AlgEquiv</code> now does not think floats are equivalent, even though they look identical when displayed in decimal.</p>
+<p>Solution: don't use the answer test <code>AlgEquiv</code> for floats, use a <a href="../../Authoring/Answer_Tests/Numerical/">numerical answertest</a> instead.</p>
+<p>This is one consequence of the single call to Maxima.  Previously there was some string input/output which created numerical rounding. This rounding no longer happens, causing the apparent problem.  Examples are given in the documentation on <a href="../../CAS/Numbers/">numbers</a> instead.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

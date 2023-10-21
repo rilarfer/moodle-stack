@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Releasing/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>STACK release process notes - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "STACK release process notes";
+        var mkdocs_page_input_path = "Developer\\Releasing.md";
+        var mkdocs_page_url = "/Developer/Releasing/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">STACK release process notes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="stack-release-process-notes">STACK release process notes</h1>
+<p>Note, these notes are designed for developers releasing a new version through the Moodle plugin database.  They are probably not useful for anyone else.</p>
+<p>Release needs to be done for the whole "set".  Do we increment the numbers of all components, e.g. behaviours, or just the qtype_stack?</p>
+<ul>
+<li>for key releases, we do them all.</li>
+<li>for bug fixes just the question type.</li>
+</ul>
+<h2 id="0-code-on-github">0. Code on github</h2>
+<p>The STACK code is stored on github, e.g. in <a href="https://github.com/maths/moodle-qtype_stack">https://github.com/maths/moodle-qtype_stack</a>. In general the code branches are arranged as follows.</p>
+<ul>
+<li>The <code>master</code> branch should always be either (i) an official release, (ii) contain minor but critical bug fixes, or (iii) contain updates to the docs.  The STACK documentation on <a href="https://docs.stack-assessment.org/">https://docs.stack-assessment.org/</a> auto-builds from the master branch, and so it is normal to update the docs between official releases.</li>
+<li>The <code>dev</code> branch normally contains features which will in the next release.  The <code>dev</code> branch should normally work out of the box, but expect unfinished features and bugs!  </li>
+<li>Development of new features often takes place in a specific branch named to correspond to an issue in the <a href="https://github.com/maths/moodle-qtype_stack/issues">github issue tracker</a>, normally forked from <code>dev</code>.  E.g. if you raise <a href="https://github.com/maths/moodle-qtype_stack/issues/802">issue 802</a> then code related to this can start life in a branch <code>iss802</code>.  If you put <code>#802</code> in the commit message then github will pick this up in the issue discussion.  New features can be merged back into <code>dev</code> before they are completely finished, but please do add documentation, unit tests etc. first and make sure we at least have consensus on the design!</li>
+</ul>
+<p>Unless you want to discuss something confidential with the developers, please do raise issues on github!</p>
+<h2 id="1-pre-release-checks">1. Pre-release checks</h2>
+<p>Check </p>
+<ul>
+<li>Readme.md</li>
+<li>Check docs </li>
+<li><a href="../Development_history/">development history</a> and <a href="../Development_track/">development track</a> <code>history/track</code>.</li>
+<li>Execute <code>php cli/answertests_docs.php</code> to update the static docs about answertests.</li>
+<li>Execute <code>doc/maintenance.php</code> to search for broken links etc.</li>
+<li>Run <code>php cli/unicode_data_process.php</code> to update unicode mappings.</li>
+<li>Run <code>php cli/ast_test_generator.php</code> to confirm if auto-generated tests have not changed.</li>
+<li>
+<p>Run Maxima unit tests of contributed packages by re-defining <code>stacklocation</code> and running <code>s_test_case.mac</code> in the sandbox.  E.g.</p>
+<p>stacklocation:"/var/www/html/m40/question/type/stack"$
+load("s_test_case.mac");</p>
+</li>
+<li>
+<p>Run PHP <a href="../Unit_tests/">unit tests</a>.</p>
+</li>
+<li>Run code checker.</li>
+</ul>
+<p>Version numbers</p>
+<ul>
+<li>version.php</li>
+<li>stackmaxima.mac</li>
+<li><code>MATURITY_STABLE</code>?</li>
+<li>Check both the Moodle versions, and the required number. (https://moodledev.io/general/releases)</li>
+</ul>
+<p>Commit all changes to git, e.g. "Update version number for the 4.4.3 release."</p>
+<h2 id="2-create-new-tag-with-version-name">2. Create new tag with version name</h2>
+<p>E.g. "v4.4.3".</p>
+<ul>
+<li>Push to GitHub.</li>
+<li>Push tags to GitHub </li>
+<li>Tortoise git: pulldown from push</li>
+<li>Linux: <code>git tag -a v4.4.3 -m "Update version number for the 4.4.3 release."</code></li>
+<li>Linux: <code>git push</code></li>
+<li>Linux: <code>git push --tags</code></li>
+</ul>
+<h2 id="3-moodle-plugins-database-entry-for-the-plugin">3. Moodle plugins database entry for the plugin</h2>
+<p>Add a new version to the Moodle plugins database entry for the plugin.</p>
+<ul>
+<li>
+<p>If version number does not appear in the dropdown, then upload it from GitHub.</p>
+</li>
+<li>
+<p>Version information</p>
+</li>
+<li>Upload zipfile</li>
+<li>GitHub</li>
+<li>Username = maths</li>
+<li>Choose appropriate plugin</li>
+<li>Choose tags</li>
+<li>Choose tag number</li>
+<li>Rename root directory +</li>
+<li>Fix README filename +</li>
+<li>Choose supported Moodle.</li>
+</ul>
+<p>Then check updated information on the form.</p>
+<p>(don't add "master" to branch info)</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

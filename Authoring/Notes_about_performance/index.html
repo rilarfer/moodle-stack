@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Notes_about_performance/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Notes about performance - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Notes about performance";
+        var mkdocs_page_input_path = "Authoring\\Notes_about_performance.md";
+        var mkdocs_page_url = "/Authoring/Notes_about_performance/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Notes about performance</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="notes-about-performance">Notes about performance</h1>
+<p>Authoring style may affect the performance of the questions—the technical performance in the form of response times and bandwidth usage. Of course, one could say many things about the pedagogical performance of questions, but that is something that this document skips.</p>
+<p>Some things have changed in 4.4, but most of this applies to all STACK materials.</p>
+<p>The further down you read this, the less likely it is to apply to normal usage.</p>
+<p>When we are talking about affecting the performance, in most cases, the effects are linear; adding more inputs means that we need to process more inputs, and the time used grows accordingly. The bits that matter are the non-linear ones, e.g. unknown execution lengths or filling the buffers with unused data might simply push things over some limit and increase the processing time unexpectedly.</p>
+<h2 id="deployed-variants-are-good">Deployed variants are good!</h2>
+<p>While not everyone uses them and not everyone needs to use them, they do improve performance and allow caching to work. They also allow one to visually inspect the randomised parameters and thus help detect wildly differing difficulty levels.</p>
+<p>If you are running on a truly large scale or if your servers cannot keep up, always look at <a href="../Deploying/">deployed variants</a> first.</p>
+<p>Just make your question notes informative, the prefered way is to show the question and the answer for this particular variant in short form; a simple parameter list may help, but it is often less than helpful.</p>
+<h2 id="randomisation-loops-are-really-bad">Randomisation loops are really bad!</h2>
+<p>If you need to randomise something and then select only the ones that match certain conditions, you will need to know that the loop will be repeated every time the question receives input, often more than once.</p>
+<p>So don't write anything like this:</p>
+<pre><code>foo: rand(.....);
+while not is_good(foo) do foo: rand(.....);
+</code></pre>
+<p>Not only is there a risk that some seed of the random number generator never leads to parameters that end up being "good", but that can also lead to wildly varying execution times and even timeouts. </p>
+<p>If you cannot write code that directly randomises a "good" result, you should use deployed variants and question-tests to pre-randomise and select only the cases where the randomisation is "good", the key is to use question-tests as the filter here.</p>
+<h2 id="big-strings-or-things-you-might-not-want-to-place-in-question-variables">Big strings or things you might not want to place in question-variables.</h2>
+<p>In the STACK question model, it is assumed that whatever is in the question-variables or in any other code/logic block is data and needs to be fully transferred into the CAS during all processing steps of the question; conversely, whatever is present in the question-text or other text content is assumed to be safe and not "data". We do special sidelining of such safe "not data" and don't send it all the way to CAS if we can avoid it, and it still rejoins the output once necessary.</p>
+<p>This means that if you place big strings on the logic side without actually using them there, you are probably wasting resources. If that text is intended as something to be outputted in the text itself then one should look at putting it into the text itself, maybe using <a href="../Question_blocks/">CASText features</a> that allow conditional inclusion if need be.</p>
+<p>Typically one can end up in this type of situation if one converts materials from other systems and chooses to build their output on the logic side. Sometimes people do image inclusions, either SVG or base64 style content and end up slowing their systems if they add too many of them.</p>
+<p>The issue is not only about the transfer of large strings or other content taking bandwith, cache space, and parsing resources but also about transferring things not needed. Those question variables are always included in the evaluation session even when that session would not actually render question-text e.g. when doing input-validation.</p>
+<h2 id="number-of-inputs-directly-affects-performance">Number of inputs directly affects performance.</h2>
+<p>Currently (pre input2), the number of inputs in a question affects the number of CAS sessions needed for the evaluation and validation of answers. In general, you will have to live with it, but if you happen to do extensive scripting on the client-side, you might want to know that it is only the number of inputs in the question model that matters, not the number of things you place into those inputs. So if you are pushing the limits, maybe map multiple client-side inputs into a few hidden actual inputs.</p>
+<h2 id="number-of-prts-affected-the-performance">Number of PRTs affected the performance.</h2>
+<p>If you have large numbers of PRTs and are not running 4.4 or later, you might gain significant performance boosts if you update to 4.4. In the earlier versions, every PRT was evaluated separately in their own CAS session, but now they get handled in a single session. Every new session always incurs a performance overhead, so joining them does give us some benefits.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

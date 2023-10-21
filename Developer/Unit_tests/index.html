@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Unit_tests/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Unit tests - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Unit tests";
+        var mkdocs_page_input_path = "Developer\\Unit_tests.md";
+        var mkdocs_page_url = "/Developer/Unit_tests/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Unit tests</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="unit-tests">Unit tests</h1>
+<p>Unit testing for STACK comes in the following three parts.</p>
+<ul>
+<li>PHP Unit tests,</li>
+<li>Maxima unit tests,</li>
+<li>Test scripts exposed to the question author.</li>
+</ul>
+<p>These three mechanisms aim to provide comprehensive testing of STACK.  The last category are a compromise, and are designed to expose the results of unit tests to question authors in a reasonably attractive manner to inform them of what each answer test is actually supposed to do.  Links to these tests are in the healthcheck page.</p>
+<p>STACK uses the moodle-ci continuous integration mechanism via github actions so that all unit tests are triggered when a commit is pushed to github.</p>
+<h1 id="php-unit-tests">PHP Unit tests</h1>
+<p>Moodle uses PHPUnit for its unit tests. Setting this up and getting it working is a bit of a pain, but you only have to follow the instructions in <a href="http://docs.moodle.org/dev/PHPUnit">the Moodle PHPUnit documentation</a> once to get it working.</p>
+<h2 id="stack-specific-set-up-steps">STACK-specific set-up steps</h2>
+<p>Once you have executed</p>
+<pre><code>php admin/tool/phpunit/cli/init.php
+</code></pre>
+<p>you need to edit the config.php file to add the following configuration
+information near the end, but before the <code>require_once(dirname(__FILE__) . '/lib/setup.php');</code>.
+Other options for the platform are <code>linux</code> and <code>linux-optimised</code>.</p>
+<pre><code>define('QTYPE_STACK_TEST_CONFIG_PLATFORM',        'linux');
+/* It is essential that the MAXIMAVERSION and MAXIMACOMMAND match.
+   That is, you must check that the command executed here really loads
+   the version specified in MAXIMAVERSION.  Some unit tests are version
+   dependent.  Do not use default.  */
+define('QTYPE_STACK_TEST_CONFIG_MAXIMAVERSION',   '5.42.0');
+define('QTYPE_STACK_TEST_CONFIG_MAXIMACOMMAND',   'maxima --use-version=5.42.0');
+define('QTYPE_STACK_TEST_CONFIG_MAXIMACOMMANDOPT',   '');
+define('QTYPE_STACK_TEST_CONFIG_MAXIMACOMMANDSERVER',   'http://pool.home:8080/MaximaPool/MaximaPool');
+define('QTYPE_STACK_TEST_CONFIG_CASTIMEOUT',      '20');
+define('QTYPE_STACK_TEST_CONFIG_MAXIMALIBRARIES', 'stats, distrib, descriptive, simplex');
+define('QTYPE_STACK_TEST_CONFIG_CASDEBUGGING',    '0');
+define('QTYPE_STACK_TEST_CONFIG_PLOTCOMMAND',     '');
+
+define('QTYPE_STACK_TEST_CONFIG_CASRESULTSCACHE', 'db');
+define('QTYPE_STACK_TEST_CONFIG_CASPREPARSE', 'true');
+</code></pre>
+<p>You should probably copy the settings from Admin -&gt; Plugins -&gt; Question types -&gt; STACK.
+However, you can use the flexibility to have different configurations of STACK
+for testing in order to test a new release of Maxima, for example.</p>
+<p>If you want to run just the unit tests for STACK, you can use the command</p>
+<pre><code>vendor/bin/phpunit --group qtype_stack
+</code></pre>
+<p>To make sure this keeps working, please annotate all test classes with</p>
+<pre><code>/**
+ * @group qtype_stack
+ * @covers class_name
+ */
+</code></pre>
+<p>To generate coverage reports you need to install xdebug.  Then modify php.ini configuration file to include xdebug.mode=coverage.</p>
+<p>Commands are</p>
+<pre><code>vendor/bin/phpunit --testsuite qtype_stack_testsuite --coverage-html folder-name 
+vendor/bin/phpunit question/type/stack/tests/test.php --coverage-html folder-name
+</code></pre>
+<p>(where folder-name is the folder that you want to contains the report)</p>
+<p>If, for some reason, you have the STACK code in your codebase, and you want to run other
+unit tests on a server without Maxima installed, then you will get an error when you
+try to install the PHPunit site. You can avoid that by putting</p>
+<pre><code>define('QTYPE_STACK_TEST_CONFIG_PLATFORM',        'none');
+</code></pre>
+<p>in your config.php file. This will prevent the install from trying to create maxima-optimised.
+It will also cause most of the STACK unit tests to be skipped.</p>
+<h2 id="stop-resetting-the-dataroot-directory">Stop resetting the dataroot directory.</h2>
+<p>In <code>[...]/moodle/lib/phpunit/classes/util.php</code> </p>
+<pre><code>public static function reset_all_data() {
+</code></pre>
+<p>Comment out the line (currently 253).</p>
+<pre><code>self::reset_dataroot();
+</code></pre>
+<p>This stops the unit tests from deleting the Maxima image files at each step.</p>
+<h2 id="making-the-tests-faster">Making the tests faster</h2>
+<p>The tests will be very slow, because the Moodle PHPUnit integration keeps resetting
+the database state between each test, so you get no benefit from the cache. To
+get around that problem, you can use the option to connect to a different database
+server for the cache. Modify the following to suit your system and put this near the end of your config.php file:</p>
+<p>Note you need to make sure the <code>QTYPE_STACK_TEST_CONFIG_CASRESULTSCACHE</code> variable is only defined once.</p>
+<pre><code>define('QTYPE_STACK_TEST_CONFIG_CASRESULTSCACHE',   'otherdb');
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBTYPE',    $CFG-&gt;dbtype);
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBLIBRARY', $CFG-&gt;dblibrary);
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBHOST',    $CFG-&gt;dbhost);
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBNAME',    $CFG-&gt;dbname);
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBUSER',    $CFG-&gt;dbuser);
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBPASS',    $CFG-&gt;dbpass);
+define('QTYPE_STACK_TEST_CONFIG_CASCACHEDBPREFIX',  $CFG-&gt;prefix);
+</code></pre>
+<p>To make sure the CAS cache is cleared after each unit test, revert back to the <code>db</code> settings for <code>QTYPE_STACK_TEST_CONFIG_CASRESULTSCACHE</code> as described above.  This will be slow...</p>
+<h1 id="other-configuration-issues">Other configuration issues</h1>
+<p>Moodle overrides the PHP debug message settings.  To see errors and warnings, go to</p>
+<pre><code>Site administration -&gt; Development -&gt; Debugging
+</code></pre>
+<p>and set the Debug messages option.</p>
+<h1 id="maxima-unit-tests">Maxima unit tests</h1>
+<p>Maxima has a unit testing framework called "rtest".  One complication is that we need to run tests with and without <a href="../../CAS/Simplification/">simplification</a>.  To help with this, a batch file is provided to run the unit tests.</p>
+<pre><code>\moodle\question\type\stack\stack\maxima\unittests_load.mac
+</code></pre>
+<p>To run this set up the <a href="../../CAS/STACK-Maxima_sandbox/">STACK-maxima-sandbox</a> and load STACK's libraries.  Then type</p>
+<pre><code>load("unittests_load.mac");
+</code></pre>
+<p>The output from these tests is written to <code>.ERR</code> files in <code>\moodle\question\type\stack\stack\maxima\</code>.</p>
+<p>Please note that currently, with simplification false, there are a number of false negative results.  That is tests appear to fail, but do not.  This is because rtest is not designed to run with simp:false, and so does not correctly decide whether things are really the "same" or "different".</p>
+<h1 id="timing-the-code">Timing the code.</h1>
+<p>Maxima has a range of functions for code profiling.  Put the following at the start of the file.</p>
+<pre><code>timer(all)$
+</code></pre>
+<p>This adds all user-defined functions to the timer list.  </p>
+<p>To time a single command</p>
+<pre><code>ev(timer_info(abs_replace), simp);
+</code></pre>
+<p>To profile all user-defined commands execute.</p>
+<pre><code>simp:true$
+T:timer_info()$
+</code></pre>
+<p>Find those commands actually called (based on T being the matrix above).</p>
+<pre><code>S:sublist(rest(args(T)),lambda([a], not(is(third(a)=0))));
+</code></pre>
+<p>Sort by functions called most often.</p>
+<pre><code>S:sort(S, lambda([a,b],third(a)&gt;third(b)));
+</code></pre>
+<p>Sort by the time/call</p>
+<pre><code>float_time(a):= if a=0 then 0 else first(args(a))$
+S:sort(S, lambda([a,b],float_time(second(a))&gt;float_time(second(b))));
+</code></pre>
+<h1 id="testing-ajax-specific-problems">Testing ajax specific problems.</h1>
+<p>You need to output values to the file system, as the display can't manage this.  For example,</p>
+<pre><code>file_put_contents("/tmp/log.txt", print_r($result, true));
+</code></pre>
+<h1 id="testing-the-updated-parser-in-stack-43">Testing the updated parser in STACK 4.3</h1>
+<p>In the STACK directory</p>
+<pre><code>php cli/casstringtester.php --string="0..1"
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

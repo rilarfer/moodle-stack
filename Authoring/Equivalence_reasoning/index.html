@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Equivalence_reasoning/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Getting started with equivalence reasoning - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Getting started with equivalence reasoning";
+        var mkdocs_page_input_path = "Authoring\\Equivalence_reasoning.md";
+        var mkdocs_page_url = "/Authoring/Equivalence_reasoning/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Getting started with equivalence reasoning</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="getting-started-with-equivalence-reasoning">Getting started with equivalence reasoning</h1>
+<p>This guide shows you how to write STACK questions using the line by line <a href="../../CAS/Equivalence_reasoning/">equivalence reasoning</a> input type.</p>
+<p>As an example, we want the students to expand the cubic ((x+2)^3) showing their working in a stepwise fashion, line by line.
+The student's response to this question will allow us to test their knowledge and competency in the following:</p>
+<ol>
+<li>Expanding brackets</li>
+<li>Simplifying by collecting like terms</li>
+</ol>
+<p>Therefore we need them to show their working. </p>
+<h2 id="minimal-working-question">Minimal working question</h2>
+<p>Create a new STACK question, give it a suitable name and then copy the following into the Question variables box:</p>
+<pre><code>p:(x+2)^3;
+taf:ev(expand(p),simp);
+ta:[(x+2)^3,stackeq((x+2)*(x+2)^2),stackeq((x+2)*(x^2+4*x+4)),stackeq(x^3+4*x^2+4*x+2*x^2+8*x+8),stackeq(taf)];
+</code></pre>
+<p>The first variable, <code>p</code>, is the expression in the question. The variable <code>taf</code> is the final model answer.
+The variable <code>ta</code> is a list containing each step we are expecting our students to express as they work towards the final answer:</p>
+<p>((x+2)^{3})</p>
+<p>(=(x+2)(x+2)^{2})</p>
+<p>(=(x+2)(x^{2}+4x+4))</p>
+<p>(=x^{3}+4x^{2}+4x+2x^{2}+8x+8)</p>
+<p>(=x^{3}+6x^{2}+12x+8)</p>
+<p>Notes:</p>
+<ul>
+<li>We use the CAS functions <code>expand()</code> and <code>ev(...,simp)</code> to simply the output of <code>expand()</code>, to determine the model answer. </li>
+<li>The special function <code>stackeq</code> is replaced by unary equals.  Maxima expects equality to be an infix (a=b) not unary prefix (=b), so STACK needs this special operator.  Students using the input area can just start a line with (=), but teachers cannot!</li>
+</ul>
+<p>In this context the teacher's answer and the student's answer is a list.  The whole answer is a single object, which we assess.</p>
+<p>Copy the following text into the Question text box:</p>
+<pre><code>Expand {@p@}, remembering to show your working.
+[[input:ans1]] [[validation:ans1]]
+</code></pre>
+<h3 id="setting-the-input-options">Setting the input options</h3>
+<p>Under the <code>Input:ans1</code> header specify <em>Equivalence reasoning</em> from the Input type drop-down and <code>ta</code> as the model answer.</p>
+<p>We want students to work through the expansion one line at a time, so let's include a hint. Copy the following into the Syntax hint box, within the <code>Input:ans1</code> header::</p>
+<pre><code>[(x+2)^3,stackeq(?)]
+</code></pre>
+<p>This is a list, and uses <code>stackeq</code>.</p>
+<p>For students in this context, it is probably sensible to "insert stars" and provide the most forgiving input syntax available, but that is optional.</p>
+<p>We need to tell STACK to compare the first line of the student's working to the first line of the question. This makes sure the student "answers the right question".
+Type <code>firstline</code> into the Extra options box within the <code>Input:ans1</code> header.
+This ensures a student's response will be invalid if they don't have the correct first line.</p>
+<p><code>firstline</code> can also be used in the Syntax hint box. The first line is then already written in the answer-field when the student opens the question.</p>
+<h3 id="setting-the-potential-response-tree">Setting the potential response tree</h3>
+<p>As a minimal potential response tree have one node, with </p>
+<pre><code>Answer test = EquivFirst
+SAns = ans1
+TAns = ta
+Auto-simplify = no
+</code></pre>
+<p>Note, the <code>Auto-simplify</code> field is not in the node of the PRT, but a PRT option.</p>
+<h3 id="setting-the-question-options">Setting the question options</h3>
+<p>Under the options section, turn off simplification by setting</p>
+<pre><code>Auto-simplify = no
+</code></pre>
+<p>Save the question.  This should be a minimal working question, so preview it and add in at least one question test.</p>
+<h2 id="more-specific-feedback">More specific feedback</h2>
+<p>At this point the question only checks</p>
+<ol>
+<li>Has the student started from the right expression, specifically is the first line of their argument equivalent to the first line of <code>ta</code> using <code>EqualComAss</code> test (commutativity and associativity)?</li>
+<li>Are all the lines in the student's answer algebraically equivalent?</li>
+</ol>
+<p>Clearly, more is needed for a complete sensible question.</p>
+<p>At this point please read the <a href="../../CAS/Equivalence_reasoning/">equivalence reasoning</a> input type documentation.</p>
+<h2 id="getting-to-the-right-place">Getting to the right place</h2>
+<p>We probably want the student to end up at the expression (x^{3}+6x^{2}+12x+8).</p>
+<p>To check is the student has reached this point, add another node to the PRT.  If node 1 is true (i.e. the student started in the correct place and didn't make a mistake) then connect to node 2.
+Node 2 should be set up as</p>
+<pre><code>SAns = last(ans1)
+TAns = last(ta)
+answer test = EqualComAss
+Auto-simplify = no
+</code></pre>
+<p>This node adds in feedback to check the student has reached the right place.</p>
+<p>Note, by using <code>EqualComAss</code> both (x^{3}+6x^{2}+12x+8) and (x^{3}+x^{2}6+8+12x) will be accepted.
+If you really want the term order as well, as in, (x^{3}+6x^{2}+12x+8) then you need to use <code>CasEqual</code> as the answer test instead.</p>
+<h2 id="what-is-a-legitimate-step">What is a legitimate step?</h2>
+<p>At this point, any expressions which are equivalent are considered to be a legitimate step.</p>
+<p>Clearly this is not entirely satisfactory.
+At this point in the development there is no concept of "a step" and indeed this appears to be very hard to define.
+In the future we will develop better tools for checking "step size", and any contributions in this direction are welcome.</p>
+<p>Teachers can check the students answer is long enough or not too long by looking at <code>length(ta)</code>.</p>
+<p>Teachers can check if specific expressions appear somewhere inside the student's answer.  To facilitate this search we provide the function <code>stack_equiv_find_step(ex, exl)</code>.  This looks for expression <code>ex</code> in the list <code>exl</code> using <code>ATEqualComAss</code>.  It returns the list of indices of the position.  If you just want to know if the expression is missing use the predicate <code>emptyp</code>.</p>
+<p>As an alternative you can check that the factored form exists somewhere in the student's answers using the following code in the <a href="../Variables/">feedback variables</a>.</p>
+<pre><code>foundfac:sublist(ans1,lambda([ex], equationp(ex) and is(rhs(ex)=0)));
+foundfac:ev(any_listp(lambda([ex], second(ATFacForm(lhs(ex),lhs(ex),x))), foundfac), simp);
+</code></pre>
+<p>At this stage there are few in-built features within STACK.  A lot is possible, but as the above example illustrates, this requires question authors to write more Maxima code than with other question types.</p>
+<p>This feature will be developed by use over the next few years.
+If you have experience, and views, on how this should work please contact the developers.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

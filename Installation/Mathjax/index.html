@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Installation/Mathjax/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Displaying mathematics for STACK in Moodle - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Displaying mathematics for STACK in Moodle";
+        var mkdocs_page_input_path = "Installation\\Mathjax.md";
+        var mkdocs_page_url = "/Installation/Mathjax/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Displaying mathematics for STACK in Moodle</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="displaying-mathematics-for-stack-in-moodle">Displaying mathematics for STACK in Moodle</h1>
+<p>STACK generates LaTeX code on the fly and expects to use a Moodle filter to convert this into something the user's browser will display.  For Moodle 2.7 or later, MathJax is distributed as a filter.  We strongly recommend using the Moodle MathJax filter.  One reason for adopting MathJax is that it aids <a href="../../Students/Accessibility/">accessibility</a>.</p>
+<h2 id="using-the-mathjax-filter">Using the MathJax filter</h2>
+<p>These are notes on configuring the MathJax filter options for use with STACK.</p>
+<ol>
+<li>Do not use "TeX filter compatibility" unless you want all equations to appear inline!</li>
+<li>To add support for <a href="../../Reference/Actuarial/">actuarial notation</a> you need to add the option 'enclose.js' to the extensions.  I.e. within the "MathJax configuration" text we need the following.   <pre><code>TeX: { extensions: ['enclose.js'] }
+</code></pre>
+</li>
+</ol>
+<h2 id="accessibility">Accessibility</h2>
+<p>The accessibility features supported by MathJax are given detailed <a href="http://www.mathjax.org/resources/articles-and-presentations/accessible-pages-with-mathjax/">here</a>.</p>
+<h2 id="adding-mathjax-to-additional-html">Adding MathJax to additional HTML</h2>
+<p>If the MathJax filter is not available then you can include it in the head of every page by adding additional HTML to every page.  We don't recommend you do this, but have retained this information in the documentation for completeness.</p>
+<h3 id="option-1-install-mathjax-locally">Option 1: install MathJax locally</h3>
+<p>A local installation may be preferable, e.g., if you want your STACK-equipped Moodle to work off-line, or if you want to try to speed up LaTeX rendering.</p>
+<ol>
+<li>Download <a href="http://www.mathjax.org/">MathJax</a></li>
+<li>Unpack the archive and rename folder to "mathjax".</li>
+<li>Place the mathjax folder in .../moodle/lib and set appropriate ownership, e.g., <code>chown -R root.root mathjax</code>.</li>
+<li>
+<p>Carry out the procedure in Option 1, editing the script above to reflect your path to MathJax. The last line can resemble the following:</p>
+<p><script type="text/javascript" src="http://localhost/moodle/lib/mathjax/MathJax.js?config=TeX-AMS_HTML"></script></p>
+</li>
+</ol>
+<h3 id="option-2-link-to-external-mathjax-setup">Option 2: link to external MathJax setup</h3>
+<p>As of August 2017, you can use an external CDN at <code>cdnjs.cloudflare.com</code>.</p>
+<ol>
+<li>Admin -&gt; Appearance -&gt; Additional HTML -&gt; Within HEAD</li>
+<li>
+<p>Put the following script in it and save</p>
+<p><script type="text/x-mathjax-config"> MathJax.Hub.Config({
+            MMLorHTML: { prefer: "HTML" },
+            tex2jax: {
+                displayMath: [['\[', '\]']],
+                inlineMath:  [['\(', '\)']],
+                processEscapes: true
+            },
+            TeX: { 
+            extensions: ['enclose.js'],
+            Macros: { pounds: '{\it\unicode{xA3}}', euro: '\unicode{x20AC}' }
+            }
+        });
+   </script>
+   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script></p>
+</li>
+</ol>
+<p>Please note the following.</p>
+<ul>
+<li>These settings enable only the strict LaTeX maths environments, and does not support the use of dollars;</li>
+<li>The <code>processEscapes</code> flag enables you to include a dollar symbol in mathematics environments with <code>\$</code>.</li>
+<li>The line <code>extensions: ['enclose.js'],</code> enables support for <a href="../../Reference/Actuarial/">actuarial notation</a>.</li>
+<li>The line <code>Macros: { pounds: '{\\it\\unicode{xA3}}', euro: '\\unicode{x20AC}' }</code> enables support for the UK pounds sign and the Euro symbol in LaTeX using <code>\pounds</code> and <code>\euro</code> macros respectively.  E.g. (\pounds) and (\euro).</li>
+</ul>
+<h3 id="what-about-dollar-mathematics-delimiters-delimiters">What about dollar mathematics delimiters? ###  {#delimiters}</h3>
+<p>Please note that we strongly discourage the use of dollar symbols for denoting LaTeX mathematics environments such as <code>$...$</code> and <code>$$...$$</code> for inline and displayed mathematics respectively.  As of STACK 4.0 use of dollars are officially unsupported.
+The reasons are (1) they do not match, which makes parsing more difficult, and (2) many courses use <a href="../../Authoring/CASText/#currency">currency</a> which needs this symbol and protecting it is always problematic.</p>
+<p>If you have extensive existing materials using these delimiters then we have scripts which will automatically convert them for you.  All fields within existing questions can be converted with the automatic scripts available from</p>
+<pre><code>Home &gt; Site administration &gt; Plugins &gt; Question types &gt; STACK
+</code></pre>
+<p>If you have ad-hoc text to convert then the CAS chat script <em>always</em> converts dollars into the forms <code>\( .... \)</code> and <code>\[ .... \]</code>.  You can test and edit the display of text in this window to see the conversion. </p>
+<p>If you really want to use dollars, MathJax can display them with the code</p>
+<pre><code>displayMath: [['$$', '$$'], ['\\[', '\\]']],
+inlineMath:  [['$',  '$' ], ['\\(', '\\)']],
+</code></pre>
+<p>Before deciding to support the use of dollars for mathematics on your site, please see the notes on the use of dollars for <a href="../../Authoring/CASText/#currency">currency</a>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

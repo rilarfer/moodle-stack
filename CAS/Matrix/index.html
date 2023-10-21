@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Matrix/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Matrices and vectors in STACK - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Matrices and vectors in STACK";
+        var mkdocs_page_input_path = "CAS\\Matrix.md";
+        var mkdocs_page_url = "/CAS/Matrix/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Matrices and vectors in STACK</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="matrices-and-vectors-in-stack">Matrices and vectors in STACK</h1>
+<p>This page documents the use of matrices in STACK.  There is a topics page for setting <a href="../../Topics/Linear_algebra/">linear algebra</a> STACK questions.</p>
+<h2 id="matrices">Matrices</h2>
+<p>Note that in Maxima, the operator <code>.</code> represents noncommutative multiplication and scalar product. The star <code>A*B</code> gives element-wise multiplication.</p>
+<p>The following functions are part of Maxima, but are very useful for us.</p>
+<pre><code>rowswap(m,i,j)
+rowadd(m,i,j,k)
+</code></pre>
+<p>Where <code>m[i]: m[i] + k * m[j]</code>.</p>
+<pre><code>rowmul(m,i,k)
+</code></pre>
+<p>Where <code>m[i]: k * m[i]</code>.
+And a function to compute reduced row echelon form</p>
+<pre><code>rref(m)
+</code></pre>
+<h2 id="assigning-individual-elements">Assigning individual elements</h2>
+<p>To assign values to individual elements, use the simple syntax such as the following.</p>
+<pre><code>m:matrix([1,1],[1,2])
+m[1,2]:3
+</code></pre>
+<p>Note also Maxima's <code>setelmx</code> function:</p>
+<pre><code>setelmx (&lt;x&gt;, &lt;i&gt;, &lt;j&gt;, &lt;M&gt;)
+</code></pre>
+<p>Assigns <code>&lt;x&gt;</code> to the <code>(&lt;i&gt;, &lt;j&gt;)</code>'th element of the matrix <code>&lt;M&gt;</code>, and returns the altered matrix. <code>&lt;M&gt; [&lt;i&gt;, &lt;j&gt;]: &lt;x&gt;</code> has the same effect, but returns <code>&lt;x&gt;</code> instead of <code>&lt;M&gt;</code>.</p>
+<h3 id="showing-working-showing-working">Showing working {#Showing-working}</h3>
+<p>It is quite common to want to show part of a matrix calculation "un-evaluated".  For example, the following is typical.</p>
+<p>[ \left[\begin{array}{cc} 1 &amp; 2 \ 4 &amp; 5 \ \end{array}\right] + \left[\begin{array}{cc} 1 &amp; -1 \ 1 &amp; 2 \ \end{array}\right] = \left[\begin{array}{cc} 1+1 &amp; 2-1 \ 4+1 &amp; 5+2 \  \end{array}\right] = \left[\begin{array}{cc} 2 &amp; 1 \ 5 &amp; 7 \ \end{array}\right] .]</p>
+<p>This is achieved, by having a question in which simplification is off, and we define the question variables as follows.</p>
+<pre><code>A:matrix([1,2],[4,5]);
+B:matrix([1,-1],[1,2]);
+C:apply(matrix,zip_with(lambda([l1,l2],zip_with("+",l1,l2)),args(A),args(B)));
+D:ev(C,simp);
+</code></pre>
+<p>Notice the use of <code>zip_with</code> which is not a core Maxima function, but is defined by STACK.
+The above equation is then generated by the CASText</p>
+<pre><code>\[ {@A@}+{@B@}={@C@}={@D@}.\]
+</code></pre>
+<p>A similar procedure is needed for showing working when multiplying matrices.   Here we need to loop over the matrices, for square matrices we use the following.</p>
+<pre><code>A:ev(rand(matrix([5,5],[5,5]))+matrix([2,2],[2,2]),simp);
+B:ev(rand(matrix([5,5],[5,5]))+matrix([2,2],[2,2]),simp);
+BT:transpose(B);
+C:zeromatrix (first(matrix_size(A)), second(matrix_size(A)));
+S:for a:1 thru first(matrix_size(A)) do for b:1 thru second(matrix_size(A)) do C[ev(a,simp),ev(b,simp)]:apply("+",zip_with("*",A[ev(a,simp)],BT[ev(b,simp)]));
+D:ev(C,simp);
+</code></pre>
+<p>Notice we need to simplify the arguments before we take indices of expressions.  This is one problem with <code>simp:false</code>.</p>
+<p>For non-square matrices we can use this.</p>
+<pre><code>A:ev(rand(matrix([5,5,5],[5,5,5]))+matrix([2,2,2],[2,2,2]),simp);
+B:transpose(ev(rand(matrix([5,5,5],[5,5,5]))+matrix([2,2,2],[2,2,2]),simp));
+TA:ev(A.B,simp);
+BT:transpose(B);
+C:zeromatrix (first(matrix_size(A)), second(matrix_size(B)));
+S:for a:1 thru first(matrix_size(A)) do for b:1 thru second(matrix_size(B)) do C[ev(a,simp),ev(b,simp)]:apply("+",zip_with("*",A[ev(a,simp)],BT[ev(b,simp)]));
+D:ev(C,simp);
+</code></pre>
+<p>Now it makes no sense to include the point wise multiplication of elements as a possible wrong answer.</p>
+<p>There must be a more elegant way to do this!</p>
+<h2 id="display-of-matrices-matrixparens">Display of matrices ## {#matrixparens}</h2>
+<p>You can set the type of parentheses used to surround matrices in a number of ways.  Firstly, the admin user should set the site default in the qtype_stack options page.</p>
+<p>For an individual question, the teacher can set the variable</p>
+<pre><code>lmxchar:"(";
+</code></pre>
+<p>in any of the usual places, e.g. in the question variables.</p>
+<p>To set the display of an individual matrix, <code>m</code> say, in CASText you can use</p>
+<pre><code>{@(lmxchar:"|", m)@}
+</code></pre>
+<p>Since <code>lmxchar</code> is a global setting in Maxima, you will have to set it back when you next display a matrix.  Not ideal, but there we are.</p>
+<p>Note, STACK only displays matrices with matching parentheses.  If you want something like
+[ f(x) = \left{ \begin{array}{cc} 1, &amp; x&lt;0 \ 0, &amp; x\geq 0 \end{array}\right.]
+then you will have to display the matrix without parentheses and sort out the mismatching parentheses in the CASText at the level of display.</p>
+<h2 id="vectors">Vectors</h2>
+<p>If you are trying to use the vector notation such as (3i+4j) you will probably want to redefine (i) to be an abstract symbol, not a complex number.
+More information on this is given under <a href="../Numbers/">Numbers</a>.</p>
+<p>Another way to do this is to create matrices as follows:</p>
+<pre><code>ordergreat(i,j,k);
+p:matrix([-7],[2],[-3]);
+q:matrix([i],[j],[k]);
+</code></pre>
+<p>Now we can use the dot product to create the vector.  The STACK function <code>texboldatoms</code> wraps all atomic variable names in the ephemeral function <code>stackvector</code>, which is typeset in bold.</p>
+<pre><code>v:texboldatoms(dotproduct(p,q));
+</code></pre>
+<p>If you turn the option "Multiplication sign" to none, this should display as
+[-7\,{\bf{i}}+2\,{\bf{j}}-3\,{\bf{k}}]
+Notice the use of the function <code>ordergreat</code>.  <code>ordergreat</code> can only be used once at the beginning of the question.</p>
+<p>The vector <code>stackvector(a)</code> and the atom <code>a</code> are different, and are not considered algebraically equivalent.  While students may type in <code>stackvector(a)</code> as an answer, they are likely to type in <code>a</code>.  The teacher can either (1) add in <code>stackvector</code> ephemeral forms to the student's answer in the feedback variables using <code>texboldatoms</code> or 92) remove all <code>stackvector</code> forms from the teacher's answer by using the <code>destackvector(ex)</code> function on their answer.  In the future we may have an option in the input to apply texboldatoms to student's expressions.</p>
+<p>The display of the ephemeral form of <code>stackvector</code> is controlled by the function <code>stackvectortex</code>, e.g. you can display vectors differently using the following examples.</p>
+<pre><code>stackvectortex(ex):= block(sconcat("{\\bf \\vec{", tex1(first(args(ex))), "}}"));
+stackvectortex(ex):= block(sconcat("{\\bf \\underline{", tex1(first(args(ex))), "}}"));
+</code></pre>
+<p>which should go in the question variables.</p>
+<p>Any <code>texput</code> commands in the question variables now become "context variables" and will be available to the inputs. So, if in the context of your question you would like a variable such as <code>x</code> to be considered as a vector and displayed as a vector you can add one of the following to the question variables.</p>
+<pre><code>texput(x, "\\mathbf{\\vec{x}}");
+texput(x, "\\mathbf{\\underline{x}}");
+</code></pre>
+<p>Whenever <code>x</code> is then displayed in any part of the question, including the student's input validation or feedback generated by the answer tests, we will have the updated tex for this atom.  E.g.</p>
+<pre><code>texput(x, "\\mathbf{\\vec{x}}");
+texput(y, "\\mathbf{\\vec{y}}");
+</code></pre>
+<p>and a student types in <code>a*x+b*y</code> then the tex output will be (a\cdot \mathbf{\vec{x}}+b\cdot \mathbf{\vec{y}}).</p>
+<h3 id="vector-cross-product">Vector cross product</h3>
+<p>The wedge product operator is denoted by the tilde <code>~</code>.  This is the <code>itensor</code> package.  This package is not normally loaded by STACK, and in any case the package takes lists and not matrices.  For convenience, the following function has been added which requires <code>3*1</code> matrices.  </p>
+<pre><code>crossproduct(a,b);
+</code></pre>
+<p>Another advantage of this function is the ability to return an un-simplified version with <code>simp:false</code>.</p>
+<h2 id="student-input">Student input</h2>
+<p>Students do find typing in matrices very tedious.  Some teachers have asked for a convenient notation such as</p>
+<pre><code>c(1,2,3)
+</code></pre>
+<p>for column vectors and</p>
+<pre><code>v(1,2,3,4)
+</code></pre>
+<p>For row vectors.  This is not a core part of STACK currently, but in individual questions you can convert such notation easily into mainstream Maxima using code such as the following.</p>
+<pre><code>ta1:c(1,2,3);
+ta2:v(1,2,3);
+vec_convert(sa) := if op(sa)=c then transpose(matrix(args(sa))) elseif op(sa)=v then matrix(args(sa));
+vec_convert(ta1);
+vec_convert(ta2);
+</code></pre>
+<p>Once converted into Matrices, the student's answer will be evaluated by PRTs as matrices.   Of course, this will not be reflected in the valuation.  If there is sufficient demand for this contact the developers.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

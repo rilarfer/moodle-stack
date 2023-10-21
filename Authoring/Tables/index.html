@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Tables/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Tables - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Tables";
+        var mkdocs_page_input_path = "Authoring\\Tables.md";
+        var mkdocs_page_url = "/Authoring/Tables/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Tables</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="tables">Tables</h1>
+<p>STACK provides an intert function <code>table</code> for typesetting mathematical tables, provided originally to typeset truth tables in <a href="../../Topics/Propositional_Logic/">Propositional Logic</a>.</p>
+<p>You can create a table directly.  Notice the first row is a heading row.</p>
+<pre><code>T0:table([x,x^3],[-1,-1],[0,0],[1,1],[2,8],[3,27]);
+</code></pre>
+<p>Really, the <code>table</code> operator does nothing (very much like a matrix).  Like a matrix, the arguments must be identical length lists.
+However, there are some special rules for the tex display.</p>
+<ol>
+<li>The first row is considered to be a heading, and a horizontal line is printed after the first row.</li>
+<li>There are vertical bars between internal columns of the table.</li>
+<li>There are currently no options for customising printing of borders, etc.</li>
+<li>You can highlight entries in the table using the command <code>texcolor("col", ex)</code>.  Note however, this will also underline any entries (as colour alone is poor accessibility practice.).</li>
+</ol>
+<p>The table <code>T0</code> is displayed as [ {\begin{array}{c|c} x &amp; x^3\ \hline -1 &amp; -1 \ 0 &amp; 0 \ 1 &amp; 1 \ 2 &amp; 8 \ 3 &amp; 27\end{array}} ].</p>
+<p><code>table_bool_abbreviate:true</code> is a boolean variable.  If set to <code>true</code> (the default) boolean entries <code>true/false</code> will be abbreviated to <code>T/F</code> respectively when creating the LaTeX for display, to keep the table small and tidy looking.  All other entries in the table are typeset normally.  This only affects the LaTeX display, and table entries remain boolean.</p>
+<p><code>table_zip_with(fn, T1, T2)</code> combines two tables, using the binary function <code>fn</code> (much as <code>zip_with</code> combines two lists).</p>
+<p>It is instructive to look at the code for <code>table_difference</code> which colours entries which differ in red.</p>
+<pre><code>table_difference(T1, T2) := table_zip_with(lambda([ex1,ex2], if ex1=ex2 then ex1 else texcolor("red", ex1)), T1, T2)$
+</code></pre>
+<p>This shows which elements of <code>T1</code> differ from the corresponding elements of <code>T2</code> by returning elements of <code>T1</code> coloured in red.</p>
+<p>If you want to identify which entries really are different then you could do something like the following.</p>
+<pre><code>table_zip_with(lambda([ex1,ex2], is(ex1=ex2)), T1, T2)
+</code></pre>
+<p>If you find yourself manipulating tables, the above funtion provides a starting point.  Please ask the developers to add anything you use regularly.</p>
+<h2 id="examples">Examples.</h2>
+<p>You can create a table via some code such as the following.  Notice the use of the list constructor function <code>"["</code> within the <code>zip_with</code> command.</p>
+<pre><code>vals:[-1,0,1,2,3];
+fn(ex):=ex^3;
+T0:apply(table, append([[x,fn(x)]], zip_with("[", vals, maplist(fn, vals))));
+</code></pre>
+<p>As a question variable, or directly within CAStext.</p>
+<pre><code>T1:truth_table(a implies b);
+T2:table_difference(truth_table(a xor b), truth_table(a implies b));
+</code></pre>
+<p>Here we have two tables <code>T1</code> is displayed as</p>
+<p>[ {\begin{array}{c|c|c} a &amp; b &amp; a\rightarrow b\ \hline \mathbf{F} &amp; \mathbf{F} &amp; \mathbf{T} \ \mathbf{F} &amp; \mathbf{T} &amp; \mathbf{T} \ \mathbf{T} &amp; \mathbf{F} &amp; \mathbf{F} \ \mathbf{T} &amp; \mathbf{T} &amp; \mathbf{T} \end{array}} ]
+and <code>T2</code> gives
+[ {\begin{array}{c|c|c} a &amp; b &amp; \color{red}{\underline{a\oplus b}}\ \hline \mathbf{F} &amp; \mathbf{F} &amp; \color{red}{\underline{\mathbf{F} }} \ \mathbf{F} &amp; \mathbf{T} &amp; \mathbf{T} \ \mathbf{T} &amp; \mathbf{F} &amp; \color{red}{\underline{\mathbf{T} }} \ \mathbf{T} &amp; \mathbf{T} &amp; \color{red}{\underline{\mathbf{F} }}\end{array}} ]
+Notice in both the effect of <code>table_bool_abbreviate:true</code>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

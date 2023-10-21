@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Question_blocks/Dynamic_blocks/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Dynamic blocks - STACK</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Dynamic blocks";
+        var mkdocs_page_input_path = "Authoring\\Question_blocks\\Dynamic_blocks.md";
+        var mkdocs_page_url = "/Authoring/Question_blocks/Dynamic_blocks/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Dynamic blocks</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="dynamic-blocks">Dynamic blocks</h1>
+<p>Dynamic blocks deal with dynamic content such as Javascript and JSXGraph</p>
+<h2 id="reveal-block">Reveal block</h2>
+<p>This block allows sections of text to be shown or hidden based on the value of an input.</p>
+<pre><code>[[reveal input=&quot;ans1&quot; value=&quot;true&quot;]]
+Text shown when the value of input `ans1` is `true`.
+[[/reveal]]
+</code></pre>
+<p>The block will only do singular direct string match, and so use of this block is most likely to be useful when combined with true/false or other multiple choice input types.  An example question using this feature is provided in the sample questions.</p>
+<p>There is currently no "else" clause available with this block.</p>
+<h3 id="interaction-with-mcq-input-types">Interaction with MCQ input types</h3>
+<p>The reveal block can be used in conjunction with <a href="../../Multiple_choice_questions/">MCQ</a> input types to provide an input, e.g. algebraic, for "other".  Here is a very minimal example.  Put the following in the question variables.</p>
+<pre><code>ta1:[[a,false],[b,false],[c,false],[d,false],[X,true,"Other"]];
+ta2:x^2;
+</code></pre>
+<p>Use the following question text.</p>
+<pre><code>[[input:ans1]] [[validation:ans1]]
+[[reveal input="ans1" value="5"]] [[input:ans2]] [[validation:ans2]] [[/reveal]]
+</code></pre>
+<ol>
+<li>Create input <code>ans1</code> as a radio input, with teacher's answer <code>ta1</code>.  Don't require or show validation.</li>
+<li>Create input <code>ans2</code> as an algebraic input, with teacher's answer <code>ta2</code>.  Use the extra option <code>allowempty</code>.</li>
+<li>In the PRT the first node should check <code>ans1=X</code> and, if so check that <code>ans2=ta2</code>.</li>
+</ol>
+<p>Notice that the reveal block has the condition <code>value="5"</code>, <em>not</em> <code>value="X"</code>.  This is because the reveal block executes client-side, using javascript, and the values of the options are simply numbered, and mapped back to Maxima values server-side.</p>
+<h2 id="hint-block">Hint block</h2>
+<p>This block allows sections of text to be shown or hidden with a press of an additional button.</p>
+<pre><code>[[hint title=&quot;button text&quot;]]
+Text shown when the button is pressed.
+[[/hint]]
+</code></pre>
+<p>Notes </p>
+<ol>
+<li>hint blocks can be nested.</li>
+<li>the content of the hint is styled within a <code>stack-hint-content</code> div tag.</li>
+</ol>
+<h2 id="jsxgraph-block">JSXGraph block</h2>
+<p>STACK supports inclusion of dynamic graphs using JSXGraph: <a href="http://jsxgraph.uni-bayreuth.de/wiki/">http://jsxgraph.uni-bayreuth.de/wiki/</a>. The key feature of this block is the ability to bind elements of the graph to inputs of the question. See the specific documentation on including <a href="../../JSXGraph/">JSXGraph</a> elements.</p>
+<pre><code>[[jsxgraph]]
+  // boundingbox:[left, top, right, bottom]
+  var board = JXG.JSXGraph.initBoard(divid, {boundingbox: [-3, 2, 3, -2], axis: true, showCopyright: false});
+  var f = board.jc.snippet('sin(1/x)', true, 'x', true);
+  board.create('functiongraph', [f,-3,3]);
+[[/jsxgraph]]
+</code></pre>
+<h2 id="jsstring-block">JSString block</h2>
+<p>A new feature in 4.4 is the <code>[[jsstring]]</code> which makes it simpler to produce JavaScript string values out of CASText content. This may be useful for example when generating labels in JSXGraph. The block takes its content and evaluates it as normal CASText and then excapes it as JavaScript string literal.</p>
+<pre><code>var label = [[jsstring]]{@f(x)=sqrt(x)@}[[/jsstring]];
+/* Would generate, without the need to manually escape things. */
+var label = &quot;\\({f\\left(x\\right)=\\sqrt{x}}\\)&quot;;
+</code></pre>
+<p>Note, this block is <em>not</em> designed to output Maxima expressins in JS format. For example, this block will not convert <code>x^2</code> into <code>x**2</code>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

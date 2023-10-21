@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Installation/LTI/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>About LTI - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "About LTI";
+        var mkdocs_page_input_path = "Installation\\LTI.md";
+        var mkdocs_page_url = "/Installation/LTI/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">About LTI</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="about-lti">About LTI</h1>
+<p>Learning Tools Interoperability (LTI) is a web services protocol which allows online learning systems to exchange information and interconnect.  It can be used to provide quizzes (containing STACK questions or not) to other learning systems, or to include quizzes within a Moodle system on which STACK is not installed.</p>
+<p>LTI is entirely separate from STACK, and the details of the protocol are available from the <a href="https://www.imsglobal.org/activity/learning-tools-interoperability">IMS Global</a> website.  LTI can be used to provide/consume a wide range of functionality beyond STACK quizzes.</p>
+<h1 id="installing-lti">Installing LTI</h1>
+<p>There are two sides to LTI: the provider and consumer.</p>
+<ol>
+<li>If you haven't installed STACK on your server, or use another learning management system, you will need to <em>consume</em> a service with STACK.  Moodle has an LTI consumer by default.  You don't need to add anything to Moodle to consume LTI.</li>
+<li>The LTI provider <code>local_ltiprovider</code> is an <a href="https://moodle.org/plugins/local_ltiprovider">optional plugin</a>.  If you intend to provide STACK questions as an LTI service you will need to install this.</li>
+</ol>
+<h1 id="providing-stack-quizzes">Providing STACK quizzes</h1>
+<p>This section describes how to use LTI to provide Moodle quizzes (e.g. containing STACK questions).  We assume you have written your quizzes as part of a Moodle course.</p>
+<h2 id="setting-up-a-moodle-course-as-a-service-for-learn">Setting up a Moodle course as a service for Learn</h2>
+<p>The Moodle LTI provider enables a wide range of possibilities.</p>
+<ul>
+<li>A single course is provided which contains a number of quizzes.</li>
+<li>The provided course is (normally) consumed by a single course in Learn.</li>
+<li>A single grade is provided to Learn.  All marks are recorded in the Moodle gradebook separately, and students should be able to access these.</li>
+<li>Students and teachers follow a single link from Learn.  The LTI protocol ensures this connection respects their respective level of permissions.</li>
+</ul>
+<p>If you would like more than one grade in Learn, then consider having more than one course on Moodle.  Students will be able to see their individual grades in Moodle (unless you disable access to the gradebook!), so it is likely to be sufficient for most purposes to return a single grade to Learn.  The difficulty with this is the lack of shared question banks.</p>
+<ol>
+<li>Login to the provider (STACK) directly with Moodle admin privileges and create a course as follows.<pre><code>Site administration -&gt; Courses -&gt; Manage courses and categories.
+</code></pre>
+</li>
+</ol>
+<p>Then choose "Create new course".
+2. Create the course with appropriate Course full name and Course short name.  These should be identical to those on Learn.</p>
+<pre><code>    Course format -&gt; Format -&gt; Topics format
+    Number of sections -&gt; 0
+</code></pre>
+<p>This creates the simplest possible course, with no section breakup.  All the quizzes will then appear as a list in this.  Other options are, of course, possible.
+   (If you just really want a single quiz, consider the "Single activity format").
+3. Delete all unnecessary elements, e.g. News.
+4. Add quizzes, etc., as required.  This does not need to be complete before the next step, but the course should be non-empty when it is exposed to avoid confusion.
+5. Now expose the course using the LTI provider.</p>
+<pre><code>   Course administration -&gt; LTI Provider -&gt; Add
+
+   Tool to be provided -&gt; Course
+
+   Layout and CSS -&gt; Hide page header, footer, left, right blocks.
+</code></pre>
+<p>Save changes.
+6. The "List of tools provided" will give the 'Tool name', 'Shared secret' and 'Launch URL'.  These will be needed by the LTI consumer.</p>
+<p>It is possible to expose an individual quiz, but then you need to consume the quiz.  It is easier to make one connection at the course level, than many LTI connections at the quiz level.</p>
+<h1 id="providing-clones-of-moodle-courses">Providing clones of Moodle courses</h1>
+<p>The University of Edinburgh uses a learning management system called "Learn".  We need to connect Learn up to Moodle to allow a wide variety of courses (on Learn) to use quizzes containing STACK (and other) questions.  We want each (Learn) course to have a private area on the Moodle server parallel to the course on Learn.</p>
+<p>We have developed an <a href="https://github.com/maths/enrol_lticoursetemplate">enrolement plugin</a>, <a href="https://github.com/maths/enrol_lticoursetemplate"><code>enrol_lticoursetemplate</code></a>, which provides an LTI service which enables users to <em>clone a course template</em> from a remote connection, automatically giving each teacher the ability to create a new clean course tied to their consumer content system.  This plugin removes the need to set up parallel courses in Moodle by hand.</p>
+<p><a href="https://github.com/maths/enrol_lticoursetemplate">Documention</a> on how to set up this plugin is available.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

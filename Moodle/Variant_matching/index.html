@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Moodle/Variant_matching/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Variant matching - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Variant matching";
+        var mkdocs_page_input_path = "Moodle\\Variant_matching.md";
+        var mkdocs_page_url = "/Moodle/Variant_matching/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Variant matching</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="variant-matching">Variant matching</h1>
+<p>This is a relatively advanced feature which links together random variables between questions in the Moodle quiz.</p>
+<p>Some teachers regularly want to create "random groups" with questions based on each other in which students might be presented with a set of questions that are all based on some common question variables.  This can be achieved with multi-input questions or variant matching.</p>
+<ol>
+<li>Multi-input questions keep all the information inside one STACK question.  This encapsulation is ideal for clarity of the relationship between parts/questions and sharing a single "STACK question", but questions quickly become complex to maintain.  When questions are only weakly linked this can also look strange.</li>
+<li>Variant matching allows separate questions to synchronise random variables.  However, the question author is now responsible for making sure their questions actually match!</li>
+</ol>
+<p><em>There is currently no way to formally record that two or more questions enjoy variant matching within the questions.</em>  In particular, there is no way two questions can share a fragment of question variables, question notes, or a pool of seeds!  This makes variant matching currently rather fragile for long-term support.</p>
+<p>To create matched variants, create two or more STACK questions in the normal way.</p>
+<ol>
+<li>Random variable generation must be identical for all questions.  The complete question variables need not be identical, but anything which affects randomisation must.  E.g. any randomisation can be in a block at the start of the question variables which can be copied between all questions.</li>
+<li>The "Random Group" field in each question must be non-empty and identical for all questions in each group sharing randomisation.</li>
+<li>Formally, question notes need not be identical for all questions.  We recommend they at least have one common element uniquely identifying all random variables which contribute to the random group!</li>
+<li><a href="../../Authoring/Deploying/">Deploy</a> variants of one question in the normal way.  This should ensure question notes not being deployed more than once (see point 2 above). </li>
+<li>Copy the list of seeds from one deployed questions to deploy all the other questions in the random group.</li>
+</ol>
+<p>If question notes are duplicated in a subsequent question this will not stop students using the question.
+Preventing duplicate question notes normally ensures statistics are grouped correctly.  Statistics are grouped by <em>variant</em>, which a teacher will actually want since the underlying variant will be a single member of the random group.</p>
+<h3 id="developer-notes">Developer notes</h3>
+<p>Internally a "variant" is matched to the integer seed.  <code>get_variants_selection_seed</code> is a Moodle-side feature syncing the seed we get from Moodle based on the group names we have in the questions.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

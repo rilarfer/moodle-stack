@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Inputs/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Inputs - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Inputs";
+        var mkdocs_page_input_path = "Authoring\\Inputs.md";
+        var mkdocs_page_url = "/Authoring/Inputs/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Inputs</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="inputs">Inputs</h1>
+<p>Inputs are the points at which the student interacts with the question.<br />
+The default (and prototype) is an HTML input box into which a student is expected to type an algebraic expression.</p>
+<ul>
+<li>Only the <a href="../CASText/#question_text">question text</a> may have inputs.</li>
+<li>Inputs are not required. Hence it is possible for the teacher to make a statement which asks for no response from the student, i.e. a rhetorical question.</li>
+<li>A question may have as many inputs as needed.</li>
+<li>Inputs can be positioned anywhere within the <a href="../CASText/#question_text">question text</a>. MathJax does not currently support the inclusion of inputs within equations.</li>
+<li>All inputs return a Maxima expression.  This might be just the student's answer (in the case of an algebraic input).  MCQ inputs also return a valid Maxima expression.</li>
+<li>In a multi-part question avoid having inputs which differ only by case sensitivity.  E.g. do not have <code>[[input:a]]</code> and <code>[[input:A]]</code> in the same question.  (Some database defaults have case insensitive unique keys (!) and in that case this will cause a database error.  See the <a href="../../Installation/">installation instructions</a>).</li>
+</ul>
+<p>The position of an input in the <a href="../CASText/#question_text">question text</a> is denoted by</p>
+<pre><code>[[input:ans1]]
+</code></pre>
+<p>Here <code>ans1</code> is the name of a <a href="../../CAS/Maxima/">Maxima</a> variable to which the student's answer is to be assigned.
+This must only be letters followed (optionally) by numbers, as in this example. No special characters are permitted.
+The input name cannot be more than 18 characters long.</p>
+<p>Feedback as to the syntactic validity of a response is positioned using a corresponding tag</p>
+<pre><code>[[validation:ans1]]
+</code></pre>
+<p>This tag must be included even if validation is suppressed with an option (see below) and is automatically generated after the input if it does not exist.</p>
+<p>We expose the exact behaviour of the validation by giving registered users access to STACK's test suite validation of student's answers.  This can be found on a live server at <code>https://stack-demo.maths.ed.ac.uk/demo/question/type/stack/adminui/studentinputs.php</code></p>
+<p>Each input may have a number of options and this is potentially complex area with a large range of possibilities.</p>
+<p>The basic idea is to reject things as "invalid" to stop students being penalized on a technicality.  This might be requiring an equation, or making floating-point numbers within an expression forbidden.</p>
+<h2 id="basic-options">Basic options</h2>
+<h3 id="students-answer-key-answer_key">Student's Answer Key ###  {#Answer_Key}</h3>
+<p>Every input must have a unique answer key.  This is set in the Question text using the following tag, where <code>ans1</code> is the variable name to which the student's answer is assigned.</p>
+<pre><code>[[input:ans1]]
+</code></pre>
+<p>Internally you can refer to the student's answer using the variable name <code>ans1</code> in the potential response tree, feedback variables and feedback text. The worked solution (general feedback) may not depend on the inputs.</p>
+<h3 id="model-answer-model_answer">Model answer ###  {#model_answer}</h3>
+<p><strong>This field is compulsory.</strong> Every input must have an answer, although this answer is not necessarily the unique correct answer, or even "correct"!  This value be displayed to the student as the correct answer.  We recommend you use a question variable for this field so it can be used in the other parts of the question, e.g. the potential response trees.</p>
+<h2 id="input-type">Input type</h2>
+<p>Currently STACK supports the following kinds of inputs.  These have a variety of options, as explained below.</p>
+<h4 id="algebraic-input">Algebraic input</h4>
+<p>The default: a form box into which a student is expected to type an algebraic expression.</p>
+<h4 id="numerical">Numerical</h4>
+<p>This input type <em>requires</em> the student to type in a number of some kind.  Any expression with a variable will be rejected as invalid.</p>
+<p>Note, some things (like forbid floats) can be applied to any numbers in an algebraic input; other tests (like require n decimal places) cannot and can only be applied to a single number in this input type.</p>
+<p>See the specific documentation for more information:  <a href="../Numerical_input/">Numerical input</a>.</p>
+<h4 id="scientific-units">Scientific units</h4>
+<p>The support for scientific units includes an input type which enables teachers to check units as valid/invalid. See the separate documentation for <a href="../../Topics/Units/">units</a>.</p>
+<h4 id="matrix">Matrix</h4>
+<p>The size of the matrix is inferred from the model answer.
+STACK then adds an appropriate grid of boxes (of size Box Size) for the student to fill in.
+This is easier than typing in <a href="../../CAS/Maxima/">Maxima</a>'s matrix command, but does give the game away about the size of the required matrix.</p>
+<p><em>The student may not fill in part of a matrix.</em>  If they do so, the remaining entries will be completed with <code>?</code> characters which render the attempt invalid. STACK cannot cope with empty boxes here.</p>
+<p>We cannot use the <code>EMPTYANSWER</code> tag for the teacher's answer with the matrix input, because the size of the matrix is inferred from the model answer.  If a teacher really wants a correct answer to be empty inputs then they must use a correctly formatted matrix with <code>null</code> values</p>
+<pre><code>ta:transpose(matrix([null,null,null]));
+</code></pre>
+<h4 id="text-area">Text area</h4>
+<p>This input allows the user to type in multiple lines, where each line must be a valid algebraic expression.  STACK passes the result to <a href="../../CAS/Maxima/">Maxima</a> as a list. Note, the teacher's answer and any syntax hint must be a list, of valid Maxima exprssions!  If you just pass in an expression strange behaviour may result.</p>
+<p>If the <code>allowempty</code> tag is used the student's answer will be <code>[EMPTYANSWER]</code> to ensure the type of the student's answer is always a list.</p>
+<h4 id="equivalence-reasoning-input">Equivalence reasoning input</h4>
+<p>The purpose of this input type is to enable students to work line by line and reason by equivalence.  See the specific documentation for more information:  <a href="../../CAS/Equivalence_reasoning/">Equivalence reasoning</a>.
+Note, the teacher's answer and any syntax hint must be a list!  If you just pass in an expression strange behaviour may result.</p>
+<p>If the <code>allowempty</code> tag is used the student's answer will be <code>[EMPTYANSWER]</code> to ensure the type of the student's answer is always a list.</p>
+<h4 id="truefalse">True/False</h4>
+<p>Simple drop down. A Boolean value is assigned to the variable name.</p>
+<p>If the teacher's correct answer should leave this blank (e.g. not answered at all) then use the tag <code>EMPTYANSWER</code>. (There are some edge cases where only some inputs are used in the correct answer to a question, so not answering is correct here).  If you use the extra option <code>allowempty</code> then empty answers are considered valid, and the value of this input is <code>EMPTYANSWER</code>.</p>
+<h4 id="dropdowncheckboxradio">Dropdown/Checkbox/Radio</h4>
+<p>The dropdown, checkbox and radio input types enable teachers to create <a href="../Multiple_choice_questions/">multiple-choice</a> questions.  See the separate documentation.</p>
+<h4 id="string-input">String input</h4>
+<p>This is a normal input into which students may type whatever they choose.  It is always converted into a Maxima string internally.
+Notes</p>
+<ol>
+<li>There is no way whatsoever to parse the student's string into a Maxima expression.  If you accept a string, then it will always remain a string! You can't later check for algebraic equivalence. The only tests available will be simple string matches, etc.</li>
+<li>An empty answer will be blank unless you use the <code>allowempty</code> option in which case the answer will be interpreted as an empty string, i.e. <code>""</code> rather than <code>EMPTYANSWER</code> as would be the case with other inputs.</li>
+<li>STACK does some sanitation on students' input within strings to stop students typing in HTML code.  For example, you may find that a string <code>"a&lt;b"</code> actually ends up in Maxima with the less-than sign inside the string changed into an html entity <code>&amp;lt;</code>, so your string inside Maxima becomes <code>"a&amp;lt;b"</code>.  In cases where string matches unexpectedly fail, look at the testing page to see what is actually being compared within the PRT and re-build the teacher's answer to match.</li>
+</ol>
+<h4 id="notes-input">Notes input</h4>
+<p>This input is a text area into which students may type whatever they choose.  It can be used to gather their notes or "working".  However, this input is always considered as "invalid", so that any potential response tree which relies on this input will never get evaluated!</p>
+<p>This input type can be used for</p>
+<ol>
+<li>surveys;</li>
+<li>answers which are not automatically marked, contributing to <a href="../../Moodle/Semi-automatic_Marking/">semi-automatic marking</a>.</li>
+</ol>
+<p>The notes input has a special extra option <code>manualgraded</code>, and the default option value is <code>manualgraded:false</code>.  If you specify <code>manualgraded:true</code> then the <em>whole STACK quesion</em> will require manual grading!</p>
+<h4 id="single-character">Single Character</h4>
+<p>A single letter can be entered.  This is useful for creating multiple-choice questions, but is not used regularly.</p>
+<h2 id="options">Options</h2>
+<h3 id="input-box-size-box_size">Input Box Size ### {#Box_Size}</h3>
+<p>The width of the input box.</p>
+<h3 id="insert-stars-insert_stars">Insert Stars ### {#Insert_Stars}</h3>
+<p>Insert Stars affect the way STACK treats the validation of CAS strings.</p>
+<p>Some patterns must always be wrong.  For example  <code>)(</code> must be missing a star, and so this pattern is always included.</p>
+<p>There are six options.</p>
+<ul>
+<li>Don't insert stars:  This does not insert <code>*</code> characters automatically.  If there are any pattern identified the result will be an invalid expression.</li>
+<li>Insert <code>*</code>s for implied multiplication.  If any patterns are identified as needing <code>*</code>s then they will automatically be inserted into the expression quietly.</li>
+<li>Insert <code>*</code>s assuming single character variable names.  In many situations we know that a student will only have single character variable names.  Identify variables in the student's answer made up of more than one character then replace these with the product of the letters.</li>
+<li>Note, the student's formula is interpreted and variables identified, so (\sin(ax)) will not end up as <code>s*i*n*(a*x)</code> but as <code>sin(a*x)</code>.</li>
+<li>Note, in interpreting the student's formula we build an internal tree in order to identify variable names and function names.  Hence (xe^x) is interpreted as ( (xe)^x ).  We then identify the variable name <code>xe</code> and replace this as <code>x*e</code>.  Hence, using this option we have <code>xe^x</code> is interpreted as <code>(x*e)^x</code> NOT as <code>x*e^x</code> which you might expect.  </li>
+</ul>
+<p>There are also additional options to insert multiplication signs for spaces.</p>
+<ul>
+<li>Insert stars for spaces only</li>
+<li>Insert stars for implied multiplication and for spaces</li>
+<li>Insert stars assuming single-character variable names and for spaces</li>
+</ul>
+<p>If a space is taken for multiplication what should we do with (\sin\ x)?  Currently this is transformed to (\sin \times x) and then rejected as invalid as you can't multiply the function name by its argument.  Use these latter options with caution: in the long run students are likely to need to use a strict syntax with machines, and letting them use spaces now might be a disservice.</p>
+<p>It is often very important to have some on-screen representation of multiplication, e.g. as a dot, so the student can see at the validation that <code>xe^x</code> is interpreted </p>
+<ol>
+<li>as ( (x\cdot e)^x) if we assume single character variable names, and</li>
+<li>as ( xe^x) if we just "Insert <code>*</code>s for implied multiplication".  The absence of the dot here is key.</li>
+</ol>
+<h3 id="syntax-hint-syntax_hint">Syntax Hint {#Syntax_Hint}</h3>
+<p>A syntax hint allows the teacher to give the student a pro-forma in the input box.
+This can include '?' characters.
+The syntax hint will appear in the answer box whenever this is left blank by the student.
+For example, rather than having to type</p>
+<pre><code>matrix([1,2],[3,4])
+</code></pre>
+<p>the teacher may want to provide an answer box which already contains the string</p>
+<pre><code>matrix([?,?],[?,?])
+</code></pre>
+<p>instead. The student then need only to edit this, to replace ?s with their values.
+This helps reduce syntax error problems with more difficult syntax issues.
+The ? may also be used to give partial credit. Of course it could also be used for general expressions such as:</p>
+<pre><code>x^2+?*x+1
+</code></pre>
+<h3 id="forbidden-words-forbidden_words">Forbidden words ### {#Forbidden_Words}</h3>
+<p>This is a comma-separated list of text strings which are forbidden in a student's answer.  If one of these strings is present then the student's attempt will be considered invalid, and no penalties will be given. This is an unsophisticated string match.</p>
+<p>Note, any question variable names used in the question variables are automatically forbidden (otherwise the student could potentially use the variable name you have defined, which might be the correct answer).  If you want to allow question variables, you must explicitly use the allowed words field, see below.</p>
+<p>Note that the string <code>*</code> is literally taken as <code>*</code> and is not a wild card.  Teachers may ask a student to calculate <code>2*3</code> and hence need to forbid multiplication in an answer.</p>
+<p>If you wish to forbid commas, then escape it with a backslash.</p>
+<p>There are groups of common keywords which you can forbid simply as</p>
+<ul>
+<li><code>[[BASIC-ALGEBRA]]</code> common algebraic operations such as <code>simplify</code>, <code>factor</code>, <code>expand</code>, <code>solve</code>, etc.</li>
+<li><code>[[BASIC-CALCULUS]]</code> common calculus operations such as <code>int</code>, <code>diff</code>, <code>taylor</code>, etc.</li>
+<li><code>[[BASIC-MATRIX]]</code> common matrix operations such as <code>transpose</code>, <code>invert</code>, <code>charpoly</code>, etc.</li>
+</ul>
+<p>If you have suggestions for more lists, or additional operations which should be added to the existing lists, please contact the developers.</p>
+<h3 id="allowed-words-allowed_words">Allowed words ### {#Allowed_Words}</h3>
+<p>By default, arbitrary function or variable names of more than two characters in length are not permitted.  This is a comma-separated list of function or variable names which are permitted in a student's answer.</p>
+<p>Note the allowed words permit the teacher to override some (but not all) of the strings which are considered to be invalid by default for student input.  For example, <code>Sin</code> (capital "S") has specific feedback.  If you need this in a question you have to allow it here.  Similarly <code>In</code> ("India November") is mistakenly used by students for the natural logarithm rather than <code>ln</code> ("Lima November").  Hence by default this triggers specific feedback.  You can allow <code>In</code> here.</p>
+<h3 id="forbid-floats-forbid_floats">Forbid Floats ### {#Forbid_Floats}</h3>
+<p>If set to <code>yes</code>, then any answer of the student which has a floating-point number
+will be rejected as invalid. Students sometimes use floating-point numbers when
+they should use fractions. This option prevents problems with approximations being used.</p>
+<h3 id="require-lowest-terms-require_lowest_terms">Require lowest terms ### {#Require_lowest_terms}</h3>
+<p>When this option is set to <code>yes</code>, any coefficients or other rational numbers in an
+expression, must be written in lowest terms.  Otherwise the answer is rejected as "invalid".
+This enables the teacher to reject answers, and not consider them further.  Note that at most one number
+can have a minus sign and two unary minus signs are considered to be something which should be cancelled.</p>
+<h3 id="check-students-answers-type-check_type">Check Students answer's type ### {#Check_Type}</h3>
+<p>If this option is set to <code>yes</code> then unless the student's expression is the same
+<a href="../../CAS/Maxima/#Types_of_object">Maxima</a> as the teacher's correct answer,
+then the attempt will be rejected as invalid.</p>
+<p>Type checking here is very simple, basically checking the student's answer is an equation, inequality, list, set, matrix to match that of the teacher.  The intention is not to be completely comprehensive, but to avoid obvious type mismatch.  E.g. this is very useful for ensuring the student has typed in an "equation", such as (y=mx+c)
+and not an expression such as (mx+c).  Remember, you can't compare an expression with an equation!</p>
+<p>Another useful way of avoiding this problem is to put a LaTeX string such as (y=) just before the input.  E.g.</p>
+<pre><code>\(y=\)[[input:ans1]].
+</code></pre>
+<h3 id="student-must-verify-student_must_verify">Student must verify ### {#Student_must_verify}</h3>
+<p>Specifies whether the student's input is presented back to them before scoring as part of a two-step validation process.<br />
+Typically the student's mathematical expression is displayed in traditional form.<br />
+This is useful for complex algebraic expressions but not needed for constrained input like <code>yes</code>/<code>no</code>.</p>
+<p>Experience strongly supports the use of this two-step verification process.<br />
+Errors will always be displayed and expressions with errors rejected as invalid. 
+Potential response trees will not execute with invalid input.</p>
+<p>The next option controls how the validation feedback is displayed. 
+Note, it is not possible to require a two-step validation but not show some validation feedback.</p>
+<h3 id="show-validation-show_validation">Show validation ### {#Show_validation}</h3>
+<p>Feedback to students is in two forms.</p>
+<ul>
+<li>feedback tied to inputs, in particular if the answer is invalid.</li>
+<li>feedback tied to each potential response tree.</li>
+</ul>
+<p>Setting this option displays any feedback from this input, including echoing back their expression in traditional two-dimensional notation.  Generally, feedback and verification are used in conjunction.  Errors will always be displayed.  In addition to simply displaying the student's expression, the teacher can display the list of variables which occurs in the expression.  From experience, this is helpful in letting students understand the idea of variable and to spot case insensitivity or wrong variable problems.</p>
+<p>The "compact" version removes most of the styling.  This is needed when the answer is part of a table.</p>
+<h3 id="extra-option-hideanswer">Extra option: hideanswer</h3>
+<p>Users are increasingly using inputs to store <em>state</em>, which makes no sense for a user to see.  For example, when using <a href="../JSXGraph/">JSXGraph</a> users transfer the configuration of the diagram into an input via JavaScript.  In many situations, it makes no sense for the student to see anything about this input.  The validation can be switched off with the regular "show validation" option, the input box itself can be hidden with JavaScript/CSS.  Putting <code>hideanswer</code> in the extra options stops displaying the "teacher's answer", e.g. at the end of the process.</p>
+<p>All input types should support this extra option.</p>
+<p>Do not use this option in questions in place of the normal quiz settings.</p>
+<h3 id="extra-option-allowempty">Extra option: allowempty</h3>
+<p>Normally a <em>blank</em>, i.e. empty, answer has a special status and are not considered "valid".  Hence, a PRT relying on an input left blank will not be traversed.  Answers consisting only of whitespace are also considered as empty.  The extra option <code>allowempty</code> allows the input to be empty.  Internally an empty answer will be replaced by the Maxima atom <code>EMPTYANSWER</code>.  Internally it is essential that the variable name of the input, (e.g. <code>ans1</code>) is really assigned a specific value. The teacher will need to deal with <code>EMPTYANSWER</code> tags in the PRT.</p>
+<p>We strongly recommend (with many years of experience) that teachers do not use this option without very careful thought!</p>
+<p>For example, if you don't want to give away how many answers you expect, then ask the student to provide a <em>set</em> of answers.  Another option is to use the "TextArea" input type.  Each line of the TextArea is validated separately, and the resulting mathematical expression is a list.  The student is therefore free to choose how many expressions to type in, as the circumstances require, without a pre-defined number of input boxes.  By design, it is better to use these methods than trying to combine separate inputs, some of which are empty, in the PRT later.</p>
+<p>Our experience strongly suggests this option should only be used for edge cases, and not for routine use.</p>
+<p>If you use this option when students navigate away from a page the system will "validate" the inputs, and hence any empty boxes will be considered an active empty choice by the student and will be assessed.  If you use this option there is no way to distinguish between an active empty answer choice, and a student who deletes their answer.  (The same problem occurs with radio buttons....)</p>
+<p>There are (unfortunately) some edge cases where it is useful to permit the execution of a PRT without all the inputs containing significant content.  </p>
+<p>Assume you have three inputs <code>ans1</code>, <code>ans2</code>, <code>ans3</code> contributing to a PRT, all of which have the <code>allowempty</code> option set because you don't want to tell the student which might be empty.  Assume the correct answer has at least one entry non-empty.  Then, make the first node of the PRT check</p>
+<pre><code>ATAlgEquiv({ans1,ans2,ans3},{EMPTYANSWER})
+</code></pre>
+<p>This checks if all inputs are empty, so if true set the score and the penalty to be zero and stop.  This prevents the student accruing a penalty if they navigate away with all the boxes empty, but the PRT will still execute an "attempt".</p>
+<p>If a teacher has three inputs <code>ans1</code>, <code>ans2</code>, <code>ans3</code>, then they can define a set in the feedback variables as follows</p>
+<pre><code>sa:setdifference({ans1,ans2,ans3},{EMPTYANSWER})
+</code></pre>
+<p>The variable <code>sa</code> will be a set containing the non-empty answers (if any).  </p>
+<p>The teacher can use the <code>EMPTYANSWER</code> tag as a "correct answer".</p>
+<h3 id="extra-option-simp">Extra option: simp</h3>
+<p>Actually simplify the student's answer during the validation process.  This will allow students to type in something like</p>
+<pre><code>makelist(k^2,k,1,8)
+</code></pre>
+<p>If teacher's want this kind of thing, then a syntax hint is probably in order as well.</p>
+<p>You may need to <code>ev(ans1,simp)</code> explicitly in any potential response tree.</p>
+<p>It makes no sense to simplify the equivalence reasoning input type, so this has been omitted.</p>
+<h3 id="extra-option-align">Extra option: align</h3>
+<p>Controls if the student's answer is aligned 'left' or 'right' within the input box.</p>
+<h3 id="extra-option-nounits">Extra option: nounits</h3>
+<p>As of STACK 4.3, if units are declared in a question then the whole question will use a units context for parsing inputs.  For example, in a multi-part question you may use a matrix input.  If you do so, and use variable names, then these will be parsed expecting them to be usits.  To prevent this in a particular input, use the <code>nounits</code> option</p>
+<h3 id="extra-option-consolidatesubscripts">Extra option: consolidatesubscripts</h3>
+<p>As of STACK 4.3.10, there is an option to "consolidate subscripts".</p>
+<p>There is a subtle (and perhaps confusing) difference between atoms in Maxima.  The strings <code>a1</code> and <code>a_1</code> are both atoms in Maxima, and are different.  Hence, the atoms <code>a1</code> and <code>a_1</code> are not considered to be algebraically equivalent. To avoid penalising students on a technicality, if you include the extra option <code>consolidatesubscripts</code> or <code>consolidatesubscripts:true</code> then students' input will be converted to the form without the underscore.</p>
+<ol>
+<li>In students' input <code>M_1</code> is converted to <code>M1</code>.</li>
+<li>Teachers are expected to use the correct pattern <code>M1</code> in the correct answer and in PRTs.</li>
+<li>We only filter a very limited pattern, namely <code>^[a-zA-Z]+_[0-9]+$</code> which is an atom starting with one or more letters, then an underscore <code>_</code> then one or more digits.  This is the only pattern currently replaced.  Specifically double subscripts or non-numeric subscripts are ignored.</li>
+</ol>
+<p>(If you have genuine use for more patterns please contact the developers with examples!)</p>
+<p>More information on subscripts is given in the atoms and subscripts section of the more general <a href="../../CAS/Maxima/">Maxima</a> documentation.</p>
+<h3 id="extra-option-checkvars">Extra option: checkvars</h3>
+<p>As of STACK 4.4.0, there is an option to check, or allow comparison between, variables which occur in the student's answer and the teacher's answer.</p>
+<p>This option takes the form of <code>checkvars:n</code>, where <code>n</code> is an integer. Ommiting this option is equivalent to setting <code>n=0</code>.</p>
+<p>The binary bits are used to set this options.</p>
+<ol>
+<li>If the 1st binary bit of <code>n</code> is 1 (i.e. <code>n</code> is odd) then we flag up spurious variables.</li>
+<li>If the 2nd binary bit of <code>n</code> is 1 then we flag up missing variables.</li>
+</ol>
+<p>So, to check both set <code>checkvars:3</code>.</p>
+<p>The numerical argument provides potential for future-proofing features (e.g. case sensitivity).</p>
+<h3 id="extra-option-validator">Extra option: validator</h3>
+<p>This allows an input to add additional bespoke validation, based on a function defined by the question author.  For example, you can define a function which checks if the student's answer is a <em>list of exactly three floating point numbers</em>.  See the <a href="../../CAS/Validator/">validator documetation</a> for more details.</p>
+<p>Writing bespoke validators is an advanced feature, but offers two significant benefits.</p>
+<ol>
+<li>Students are less likely to be penalised on a technicality, especially in high-stakes situations;</li>
+<li>Potential response tree authoring becomes much easier and more reliable because the validation acts as a "guard clause" only allowing correctly structured information through to the PRT.  This means type-checking need not be done in the PRT before assessment.</li>
+</ol>
+<h2 id="extra-options">Extra options</h2>
+<p>In the future we are likely to add additional functionality via the <em>extra options</em> fields.  This is because the form-based support becomes ever more complex, intimidating and difficult to navigate.</p>
+<h2 id="input-tips-and-tricks">Input tips and tricks</h2>
+<p>It is often sensible to use a prefix just in front of the form box.  For example</p>
+<pre><code>\(f(x)=\) [[input:ans1]].
+</code></pre>
+<p>This avoids all kinds of problems with students also trying to enter the prefix themselves.<br />
+You could also specify units afterwards, but you might also want the student to type these in!</p>
+<p>In Maxima the input <code>(a,b,c)</code> is a programmatic block element (see Maxima's manual for <code>block</code>). 
+Hence we cannot use this directly for the input of coordinates.  Instead, have the students type in an unnamed function like</p>
+<pre><code>P(x,y)
+</code></pre>
+<p>This technique can be used to enter a set of points</p>
+<pre><code>{A(1,2), B(2,3)}
+</code></pre>
+<p>as an answer.  The <code>op</code> command can be used to filter out a particular point, and the <code>args</code> command becomes a list of coordinates.</p>
+<h2 id="options-summary-table">Options summary table</h2>
+<p>This table lists all options, and which inputs use/respect them.  The <code>.</code> means the option is ignored.</p>
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>Alg</th>
+<th>Num</th>
+<th>Units</th>
+<th>Matrix</th>
+<th>Check</th>
+<th>Radio</th>
+<th>Drop</th>
+<th>T/F</th>
+<th>TextArea</th>
+<th>Equiv</th>
+<th>String</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box size</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Strict Syn</td>
+<td>Y</td>
+<td>(1)</td>
+<td>(1)</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Insert stars</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Syntax hint</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Hint att</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Forbidden words</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Allowed words</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Forbid float</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Lowest terms</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Check type</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Must verify</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+</tr>
+<tr>
+<td>Show validation</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+</tr>
+<tr>
+<td><strong>Extra options:</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>rationalize</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>min/max sf/dp</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>floatnum</code></td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>intnum</code></td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>rationalnum</code></td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>consolidatesubscripts</code></td>
+<td>Y</td>
+<td>.</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>negpow</code></td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>simp</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>align</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>nounits</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>checkvars</code></td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td><code>validator</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>Y</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<p>For documentation about the various options not documented on this page look at the pages for the specific inputs in which each option is used.</p>
+<p>Notes:</p>
+<ol>
+<li>The numerical and units input type ignore the strict syntax option and always assume strict syntax is "true".<br />
+Otherwise patterns for scientific numbers such as <code>2.23e4</code> will have multiplication characters inserted.</li>
+</ol>
+<h2 id="other-input-types">Other input types</h2>
+<p>Adding new inputs, or options for existing inputs, is a job for the developers.<br />
+The only essential requirement is that the result is a valid CAS expression, which includes of course a string data type, or a list.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

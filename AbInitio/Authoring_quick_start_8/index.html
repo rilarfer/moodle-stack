@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/AbInitio/Authoring_quick_start_8/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Autoría inicio rápido 8: crear un cuestionario - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Autor\u00eda inicio r\u00e1pido 8: crear un cuestionario";
+        var mkdocs_page_input_path = "AbInitio\\Authoring_quick_start_8.md";
+        var mkdocs_page_url = "/AbInitio/Authoring_quick_start_8/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Autoría inicio rápido 8: crear un cuestionario</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="autoria-inicio-rapido-8-crear-un-cuestionario">Autoría inicio rápido 8: crear un cuestionario</h1>
+<p><a href="../Authoring_quick_start_1/">1 - Primera pregunta</a> | <a href="../Authoring_quick_start_2/">2 - Variables de pregunta</a> | <a href="../Authoring_quick_start_3/">3 - Retroalimentación</a> | <a href="../Authoring_quick_start_4/">4 - Aleatorización</a> | <a href="../Authoring_quick_start_5/">5 - Test de preguntas</a> | <a href="../Authoring_quick_start_6/">6 - Preguntas de varias partes</a> | <a href="../Authoring_quick_start_7/">7 - Simplificación</a> | 8 - Cuestionarios</p>
+<p>This part of the authoring quick start guide deals with setting up a Moodle quiz. The following video explains the process:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P3bDdNVC6g0" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="introduction">Introduction</h3>
+<p>Once you have authored questions, you will want to include these in a quiz.  Alternatively, you might like to set up a quiz using the sample questions.  </p>
+<p>The purpose of this document is to provide a guide, from a beginner's point of view, to some of the steps that need to be taken when setting up mathematics questions in a Moodle quiz, using the computer aided assessment package STACK. Note, this guide risks duplicating the Moodle quiz documentation, which should also be consulted.</p>
+<p><em>These have been edited from notes created by Dr Maureen McIver, Department of Mathematical Sciences, Loughborough University, UK, July 2016.</em></p>
+<h3 id="finding-questions">Finding questions</h3>
+<p>You need to start by identifying questions for the quiz and the easiest way to do this is to start with a question that is already written and modify it to meet your needs.  </p>
+<p>If you have been following the quick start guide so far, you should also know how to write your own question from scratch.</p>
+<h3 id="importing-questions-from-an-existing-server">Importing questions from an existing server</h3>
+<p>Let us look at how you import questions from an existing server into your server.</p>
+<p>First, you must export the existing questions:</p>
+<ol>
+<li>log into the module on the Moodle server from which you wish to export questions, and click on <code>Question bank</code> in the Administration block. Then click on <code>Export</code>,  </li>
+<li>Click on <code>Moodle XML format</code>, then choose the category you want to export.  Moodle only lets you export individual categories. </li>
+<li>Click on <code>Export questions to file</code>. This will download a file with the all the questions that category.</li>
+</ol>
+<p>To import these questions into your course:</p>
+<ol>
+<li>Log into your module on the Moodle server and click on <code>Question bank</code> in the Administration block,</li>
+<li>Click on <code>Import</code>,</li>
+<li>Click on <code>Moodle XML format</code> then drag and drop the <code>?.xml</code> file from your Downloads folder on your desktop, and click <code>Import</code> and then <code>Continue</code>. A copy of the questions should then appear in the question bank for your module and you can modify them as you want.</li>
+</ol>
+<h3 id="constructing-a-moodle-quiz">Constructing a Moodle quiz</h3>
+<p>Once you have constructed a question bank (either by importing them or writing them yourselves) you can put them into a Moodle quiz. </p>
+<p>Included within the STACK sample materials is a "Syntax quiz", and it is recommended that you put a copy of this on your own page. This lets students can practice the syntax of how to enter answers into a STACK quiz before they try a specific quiz for your module, and also checks that they can read the mathematics on their machine.</p>
+<h3 id="question-behaviours">Question behaviours</h3>
+<p>Question behaviours dictate how many attempts students are given and how penalties are distributed. There are a number of question behaviours available for a Moodle quiz. The most important are:</p>
+<p><strong>Immediate feedback</strong>, which only lets students have one try at each question, but gives feedback either immediately after answering a question, or only when all questions are answered and submitted. This is useful for standard formative/summative quizzes.</p>
+<p><strong>Deferred feedback</strong>, which only lets students have one try at each question, and does not give feedback until after some given date. This is useful for examinations and coursework quizzes where you don't want students to share worked solutions. </p>
+<p><strong>Interactive with multiple tries</strong>, which lets students have a finite amount of tries to solve the question, with a hint being displayed after each. It deducts a penalty mark for each incorrect attempt. This is useful for formative quizzes where you want to give hints. Note that the amount of attempts is set as one more than the amount of  <code>Hints</code> given in each question. <code>Hints</code> are found under the  <code>Options</code> section when editing a question.  </p>
+<p><strong>Adaptive</strong>, which lets the student have as many tries as they want, but deducts a penalty from the total score of the question for each time the student got the answer wrong. This is useful for testing questions and for informal practice quizzes.</p>
+<h3 id="setting-up-the-quiz">Setting up the quiz</h3>
+<ol>
+<li>Go to the Moodle page and click <code>Turn editing on</code>.  </li>
+<li>Go to the block where you want to put the quiz or add an additional block and click <code>Add an activity or resource</code>, click <code>Quiz</code> and then <code>Add</code>.  </li>
+<li>Give the quiz a name and put any description you want in the Description box.  LaTeX can be used here if you want.  </li>
+<li>Click on <code>Timing</code> and fix the opening and closing times.  </li>
+<li>Click on <code>Grade</code> and fix the <code>Attempts allowed</code>.  E.g. you could use <code>Unlimited</code> for a practice quiz and <code>1</code> for a coursework quiz.  </li>
+<li>Click on  <code>Question behaviour</code> and choose your desired question behaviour, as discussed above.</li>
+<li>Under <code>Review options</code>, you can choose what students are allowed to see during or after the quiz. This includes options such as whether their answer is correct, their mark and feedback. We recommend turning off <code>Right answer</code> for both practice and coursework quizzes, and allowing <code>General feedback</code> (worked solution) to be on for a practice quiz, but off for coursework quizzes.</li>
+<li>Finish by clicking <code>Save and return to course</code>.  </li>
+</ol>
+<p>You can toggle whether students can see the quiz/topic by clicking <code>Edit</code> and <code>Show</code>.</p>
+<p>Note, the Moodle question bank will automatically create a category for the quiz.  It is sometimes sensible to put all the questions used in the quiz into this category, but note that you will only see the category if you have previously navigated to the quiz.</p>
+<h3 id="adding-questions">Adding questions</h3>
+<p>Click on the quiz, and then <code>Edit quiz</code>.  </p>
+<ol>
+<li>Click <code>Add</code>  then click <code>from question bank</code>, select a category then one or more of the STACK questions you have created.</li>
+<li>Click <code>Add selected questions to the quiz</code> then click <code>Save</code> and return to the main module page.  </li>
+</ol>
+<p>To preview the quiz, click on it, then click <code>Preview quiz now</code>.</p>
+<h3 id="extra-time">Extra time</h3>
+<p>If you have students who need extra time you need to set up <code>Groups</code> with these students in. Here is an example for a group of students who need 25% extra time.  </p>
+<ol>
+<li>Under <code>Course Adminstration</code>, click on <code>Users</code>, then <code>Groups</code>, then <code>Create group</code>.  </li>
+<li>Give the group a name, e.g. "25% extra time".  You can put more details of who the group is for in the <code>Group description</code> box.  Click <code>Save changes</code>. </li>
+<li><code>Add/remove users</code>, then click on the ID for a particular student for this group and click <code>Add</code> to put them in the group.  Repeat for each student who needs to be in this group.  </li>
+<li>Go back and click on the Moodle quiz. In the <code>Quiz Adminstration</code>, click on <code>Group overrides</code>, then click <code>Add group override</code>, choose the relevant group, set the appropriate <code>Time limit</code> for the quiz for that group and click <code>Save</code>. </li>
+</ol>
+<h3 id="viewing-results">Viewing results</h3>
+<p>To see the students' results in for a particular quiz, go the the quiz, then under <code>Quiz adminstration</code> click on <code>Results</code>,  then <code>Grades</code>. This will let you see all attempts, with the overall grade and the grade for each question. You can choose to download the results in Excel here as well.</p>
+<h1 id="next-steps">Next steps</h1>
+<p>You should now be able to work with quizzes in Moodle.</p>
+<p>This concludes the authoring quick start guide. The STACK documentation is comprehensive, and there are many things you might want to look at next. For example, you can</p>
+<ul>
+<li>learn about more <a href="/Authoring/Inputs.md">input types</a>,</li>
+<li>learn about more <a href="/Authoring/Answer_Tests/index.md">answer tests</a>,</li>
+<li>add <a href="../../CAS/Plots/">plots</a> to your <a href="/Authoring/CASText.md">CASText</a> fields,</li>
+<li>add support for <a href="/Authoring/Languages.md">multiple languages</a>,</li>
+<li>learn about using <a href="/Authoring/Equivalence_reasoning.md">equivalence reasoning</a>,</li>
+<li>read about <a href="/Topics/Curve_sketching.md">Curve sketching</a>.</li>
+<li>look at more information on <a href="../../CAS/">Maxima</a>, particularly the Maxima documentation if you are not very familiar with Maxima's syntax and function names. A graphical Maxima interface like <a href="http://andrejv.github.com/wxmaxima/">wxMaxima</a> can also be very helpful for finding the appropriate Maxima commands easily.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

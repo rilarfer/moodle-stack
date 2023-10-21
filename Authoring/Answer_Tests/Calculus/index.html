@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Answer_Tests/Calculus/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Calculus answer tests - STACK</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Calculus answer tests";
+        var mkdocs_page_input_path = "Authoring\\Answer_Tests\\Calculus.md";
+        var mkdocs_page_url = "/Authoring/Answer_Tests/Calculus/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Calculus answer tests</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="calculus-answer-tests">Calculus answer tests</h1>
+<p>There are two answer tests for dealing with calculus problems.</p>
+<h3 id="diff">Diff</h3>
+<p>This test is a general differentiation test: it is passed if the arguments are algebraically equivalent, but gives feedback if it looks like the student has integrated instead of differentiated. The first argument is the student's answer. The second argument is the model answer. The answer test option must be the variable with respect to which differentiation is assumed to take place.</p>
+<p>There are edge cases, particularly with (e^x) where differentiation is indistinguishable from integration.  You may need to use the "quiet" option in these cases.</p>
+<h3 id="int">Int</h3>
+<p>This test is designed for a general indefinite integration question: it is passed if both the arguments are indefinite integrals of the same expression. The first argument is the student's answer.
+The second argument is the model answer. The answer test option needs to be the variable with respect to which integration is assumed to take place, or a list (see below).</p>
+<p>Getting this test to work in a general setting is a very difficult challenge.
+In particular, the test assumes that the constant of integration is expressed in a form similar to (+c), although which variable used is not important.</p>
+<p>The Int test has various additional options.</p>
+<p>The question author must supply these options in the form of a list <code>[var, opt1, ...]</code>.  The first argument of this list must be the variable with respect to which integration is taking place.  </p>
+<p>If one of the <code>opt?</code> is exactly the token <code>NOCONST</code> then the test will condone a lack of constant of integration.  That is, if a student has missed off a constant of integration, or the answers differ by a numerical constant, then full marks will be awarded.  Weird constants (e.g. (+c^2)) will still be flagged up.</p>
+<p>If one of the <code>opt?</code> is exactly the token <code>FORMAL</code> then the test will condone the formal derivative of the student's answer matching that of the teacher.  This is useful in examples such as (\log(|x+3|)/2) vs (\log(|2x+6|)/2) where effectively the constant of integration differs by a numerical constant.  Note, if you use the <code>FORMAL</code> option then by definition you will accept a missing constant of integration!</p>
+<p>The answer test architecture only passes in the <em>answer</em> to the test.  The question is not available at that point; however, the answer test has to infer exactly which expression, including the algebraic form, the teacher has set in the question. This includes stripping off constants of integration and constants of integration may occur in a number of ways, e.g. in logarithms.
+In many cases simply differentiating the teacher's answer is fine, in which case the question author need not worry.  Where this does not work, the question author will need to supply the expression from the question in the right form as an option to the answer test.  This is done simply by adding it to the list of options.</p>
+<pre><code>[x, x*exp(5*x+7)]
+</code></pre>
+<p>The test cannot cope with some situations.  Please contact the developers when you find some of these.  This test is already rather overloaded, so please don't expect every request to be accommodated!</p>
+<p>This test, in particular, has a lot of test cases which really document what the test does in detail.  </p>
+<p>The issue of ( \int \frac{1}{x} dx = \log(x)+c) vs  ( \int \frac{1}{x} dx = \log(|x|)+c) is a particular challenge. What mark would you give a student who integrated
+[ \int \frac{1}{x} dx = \log(k\times abs(x))?]
+If the teacher uses (|..|) in their answer then the student is also expected to use the absolute value.  The test is currently defined in such a way that if the teacher uses ( \log(|x|)+c ) in their answer, then they would expect the student to do so.  If they don't use the absolute value function, then they don't expect students to but will accept this in an  answer.</p>
+<p>For example, if the teacher's answer is ( \log(x)+c ) (i.e. no absolute value) then all the following are considered to be correct.
+[ \log(x)+c,\ \log(|x|)+c,\ \log(k\,x),\ \log(k|x|),\ \log(|k, x|) ]</p>
+<p>If the teacher's answer is ( \log(|x|)+c ) (i.e. with absolute value) then all the following are considered to be correct.
+[ \log(|x|)+c,\ \log(k|x|),\ \log(|k, x|)\ ]
+Now, the following are rejected as incorrect, as the studnet should have used (|..|)
+[\log(x)+c,\ \log(k\,x)]</p>
+<p>Note that STACK sets the value of Maxima's <code>logabs:true</code>, which is not the default in Maxima.  This has the effect of adding the absolute value funtion when <code>integrate</code> is used.</p>
+<p>In the case of partial  fractions where there are more than one term of the form (\log(x-a)) then 
+we insist the student is at least consistent.  If the teacher has <em>any</em>  (\log(|x-a|)) then the student must use (|...|) in <em>all</em> of them.  If the teacher has no (\log(|x-a|)) (i.e. just things like (\log(x-a))) then the 
+student must have all or none. </p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

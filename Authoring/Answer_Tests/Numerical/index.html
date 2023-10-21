@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Answer_Tests/Numerical/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Numerical answer tests - STACK</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Numerical answer tests";
+        var mkdocs_page_input_path = "Authoring\\Answer_Tests\\Numerical.md";
+        var mkdocs_page_url = "/Authoring/Answer_Tests/Numerical/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Numerical answer tests</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="numerical-answer-tests">Numerical answer tests</h1>
+<p>This page is dedicated to answer tests which establish numerical precision.</p>
+<p>With these tests it is <em>essential</em> that the SAns field is exactly the name of the input.  For example, if your input is <code>ans1</code> then the SAns field of the answer test must only be <code>ans1</code>. The reason for this is that Maxima changes the display of floating-point numbers to remove or add trailing zeros.  These answer tests must take the value typed at the input, not the value passed through the CAS, otherwise digits will be changed.  This problem does not apply to the teacher's answer because we do not test whether the teacher has supplied the correct number of trailing zeros.  Care will be needed to display the correct number of significant figures with trailing zeros elsewhere in the question though.</p>
+<p>Further information and examples are given in the page on <a href="../../../CAS/Numbers/">numbers</a> and <a href="../../../Topics/Units/">scientific units</a>. </p>
+<p>All software have limitations on the extent to which they can robustly deal with numerical quantities.  Maxima, PHP (and hence STACK) are no exceptions.  Integers are essentially unproblematic, and CAS will support (almost) arbitrary precision integers.  Floating-point representations of real numbers are more difficult, and a classic discussion of how to represent continuous quantities in finite state machine is given by D. Goldberg. <em>What every computer scientist should know about floating-point arithmetic.</em> Computing Surveys, 23(1):5-48, March 1991. </p>
+<h3 id="numrelative-numabsolute">NumRelative &amp; NumAbsolute</h3>
+<p>The option to these tests is a tolerance.  The default tolerance is 0.05.</p>
+<ul>
+<li>Relative: Tests whether <code>abs(sa-ta) &lt;= opt * abs(ta)</code> </li>
+<li>Absolute: Tests whether <code>abs(sa-ta) &lt; opt</code>  </li>
+</ul>
+<p>NumRelative  and NumAbsolute can also accept lists and sets.  Elements are automatically converted to floats and simplified (i.e. <code>ev(float(ex),simp)</code>) and are compared to the teacher's answer using the appropriate numerical test and accuracy.  A uniform accuracy must be used.  With lists the order is important, but with sets it is not.  Checking whether two sets are approximately equal is an interesting mathematical problem....</p>
+<h3 id="gt-gte">GT &amp; GTE</h3>
+<p>"Greater than" or "Greater than or equal to".  Both arguments are assumed to be numbers. The Answer test fully simplifies the SAns and converts this to a float if possible. This is needed to cope with expressions involving sums of surds, (\pi) etc.  Therefore, do expect some numerical rounding which may cause the test to fail in very sharp comparisons.</p>
+<h2 id="significant-figure-testing">Significant figure testing</h2>
+<p>The significant figures of a number are digits that carry meaning. This includes all digits except</p>
+<ul>
+<li>leading zeros;</li>
+<li>trailing zeros when they are only placeholders to indicate the scale of the number.</li>
+</ul>
+<p>To establish the number of significant figures which arise from a calculation it is necessary to know the number of significant figures involved in the floating-point numbers used in the calculation.  This causes a problem in assessment when we have a numerical expression, such as (100), and seek to infer the number of significant figures.  Does this have one significant figure or three?</p>
+<p>The following cases illustrate the difficulties in inferring the number of significant digits from only the written form of a number.</p>
+<ul>
+<li>(0.0010) has exactly (2) significant digits.</li>
+<li>(100) has at least (1) and maybe even (3) significant digits.</li>
+<li>(1.00e3) has exactly (3) significant digits.</li>
+<li>(10.0) has exactly (3) significant digits.</li>
+<li>(0) has (1) significant digit.</li>
+<li>(0.00) has at least (1) and maybe even (3) significant digits.</li>
+<li>(0.01) has exactly (1) significant digit.</li>
+</ul>
+<p>Therefore, with trailing zeros there are a number of cases in which it is not possible to tell from the written form of an expression precisely how many significant digits are present in a student's answer.  This creates a problem for automatic assessment.</p>
+<p>To avoid this ambiguity some scientists adopt a convention where (100) has <em>exactly one significant digit</em>.  To express one hundred to three significant digits it is <em>necessary</em> to use (1.00e2).  This conforms to the specifications in international standards and it certainly avoids ambiguity but in many assessment situations teachers do not want to enforce such strict rules.  STACK seeks to provide tools for both situations:  very strict enforcement of the significant figures rules (needed when teaching significant figures of course!) and a more liberal situation in which STACK will accept an input of (100) when the teacher wanted 1, 2 or 3 significant figures.</p>
+<p>In addition to the number of significant figures used to express the number, a teacher will also want to establish that the student actually has the right number!  In more liberal situations a teacher will condone an error in the last place.  E.g. they will accept an answer written to four significant figures, but where only three are actually correct.</p>
+<h3 id="strictsigfigs">StrictSigFigs</h3>
+<p>This test enforces the strict rules of significant figures.  It does not check for numerical precision and looks only at surface features of the number representation.</p>
+<p>The option is the required number of significant figures.  This must be an integer only.</p>
+<h3 id="numsigfigs">NumSigFigs</h3>
+<p>This is a more liberal test.  Primarily it checks numerical accuracy, but it also checks the number of significant figures in a liberal way.  That is to say, it makes sure that the number of significant figures specified by the teacher lies within the range inferred from the student's answer.  For example, this test will accept (100) as being correctly written to 1, 2 or 3 significant figures.  If you want to enforce the precise rules use the <code>StrictSigFigs</code> test.</p>
+<p>Tests </p>
+<ol>
+<li>whether the student's answer contains <code>opt</code> significant figures, and</li>
+<li>whether the answer is accurate to <code>opt</code> significant figures.   </li>
+</ol>
+<p>If the option is a list <code>[n,m]</code> then we check the answer has been written to <code>n</code> significant figures, with an accuracy of up to <code>m</code> places.  If the answer is too far out then rounding feedback will not be given.   A common test would be to ask for ([n,n-1]) to permit the student to enter the last digit incorrectly.</p>
+<p>If the options are of the form <code>[n,0]</code> then only the number of significant figures in <code>sa</code> will be checked.  This ignores any numerical accuracy and completely ignores the second argument to the function.  Note, that this test is liberal in establishing the number of significant figures.  For strict enforcement of the rules, use <code>StrictSigFigs</code> instead.</p>
+<p>If the options are of the form <code>[n,-1]</code> then the test checks the student has <em>at least</em> <code>n</code> significant figures in the answer, and that numerical accuracy is correct.</p>
+<p>This test only supports numbers where (|sa|&lt;10^{22}).  Please see the <a href="../../../CAS/Numbers/">notes about numerical rounding</a> for the differences between rounding. In <code>NumSigFigs</code> the teacher's answer will be rounded to the specified number of significant figures before a comparison is made.</p>
+<h3 id="numdecplaces">NumDecPlaces</h3>
+<p>Tests (i) whether the student's answer is equivalent to the teacher's and (ii) is written to <code>opt</code> decimal places.  The option, which must be a positive integer, dictates the number of digits following the decimal separator <code>.</code>.  Note that trailing zeros are ''required'', i.e. to two decimal places you must write <code>12.30</code> not just <code>12.3</code>.  The test rounds the numbers to the specified number of decimal places before trying to establish equivalence.</p>
+<h3 id="numdecplaceswrong">NumDecPlacesWrong</h3>
+<p>Tests if the student appears to have the decimal point in the wrong place.  For example, <code>3.141</code> and <code>31.41</code> will be considered the same under this test.  <code>opt</code> is the number of places to consider, from the most significant.</p>
+<p>This test condones any lack of trailing zeros.  Use other tests to establish if a student has sufficient places.</p>
+<h2 id="other-issues">Other issues</h2>
+<p>A teacher may wish to see if a student's answer is incorrect only by orders of magnitude.  E.g. a student answers (110) instead of (1100).  To do this, a teacher can check whether (\log_{10}) of the ratio of two expressions is an integer, e.g.</p>
+<pre><code> integerp(rat(float(log(sa/ta)/log(10))))
+</code></pre>
+<p>There is currently no functionality within the numerical answer tests to automatically check this, and there is no dedicated answer test to establish this property.  A separate PRT node is needed.</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../">Answer tests</a></li>
+<li><a href="../../../CAS/Numbers/">CAS and numbers</a></li>
+<li><a href="../../../Topics/Units/">Scientific units</a></li>
+<li><a href="../../../CAS/Maxima/">Maxima</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

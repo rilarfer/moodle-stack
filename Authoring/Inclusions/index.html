@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Inclusions/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Inclusions - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Inclusions";
+        var mkdocs_page_input_path = "Authoring\\Inclusions.md";
+        var mkdocs_page_url = "/Authoring/Inclusions/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Inclusions</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="inclusions">Inclusions</h1>
+<p>This is an expert level topic, please avoid this feature unless you feel that you 
+understand the implications and concecuences of it. Note that using this feature
+goes against the self-contained material principle present in 
+<a href="../Future_proof/">the guidelines</a>.</p>
+<p>That being said, a common request on the wish-list has been to provide some means
+of sharing code between questions. The inclusion-feature is the first step towards
+such a feature, however, it is not perfect nor do we expect it to be the solution 
+that will finally be selected. But we provide it now that the backend has the tools
+to provide it, for those adventurous enough.</p>
+<p>Technical note: Currently, inclusions within inclusions are not supportted, due to
+loop detection and security validation reasons.</p>
+<h2 id="inclusions-life-cycle">Inclusions life-cycle</h2>
+<p>For all current types of inclusions the inclusion happens at the time of compilation,
+which means that the source will be fetched when the question gets compiled and will
+stay in the cached compilation product. Compilation happens during the first use of
+the question after it has been saved or the cache has been purged.</p>
+<p>The logic will not track changes to the source material, if one wants to fetch it
+again one must re-compile the question, either by purging the caches or by editing
+the question.</p>
+<p>Note that in the current solution during export we export only the source address 
+and the exported material will only work if the address is accessible at the end 
+that imports it.</p>
+<h2 id="inclusions-within-text">Inclusions within text</h2>
+<p>The simpler inclusion type is the CASText2 include-block, which will simply place
+CASText2-code from a given address at the blocks location. Note that one may need
+to be careful with the format of the context and included code, the include logic
+assumes that the code is of the same format as the context, so if your included 
+content is in Markdown-format including it directly to HTML-context may cause 
+trouble.</p>
+<p>Typical use case would be to have a JSXGraph plotting logic that expect that
+certain variables contain parameters for plotting and one would then simply
+make sure that one would populate those parameters before inclusion of the plotting 
+logic for example like this:</p>
+<pre><code>First plot the first plot with the values defined earlier.
+[[include src=&quot;http://example.com/fragments/myplot.txt&quot;/]]
+
+Then include the same plotting logic but change the parameters to plot something else.
+[[define plot_fun=&quot;theotherfun&quot; plot_param1=&quot;something&quot;/]]
+[[include src=&quot;http://example.com/fragments/myplot.txt&quot;/]]
+
+</code></pre>
+<p>As the included content can be of a different format (Markdown etc.) than 
+the context into which it gets included it is recommended that the included
+content defines its own format. For example, wrapping itself in one of 
+the new format controlling blocks <code>[[moodleformat]]</code>, <code>[[htmlformat]]</code> or
+<code>[[markdownformat]]</code>, thus allowing whatever format content to be included
+within another formats content. Note, that at this time identification of 
+math-mode is not quite ready to understand all of these context switches.</p>
+<h2 id="inclusions-within-cas-logic">Inclusions within CAS-logic</h2>
+<p>You can also include code into keyvals, i.e. question-variables or into feedback-variables.
+This type of an inclusion will again act just as if written directly by the question author at that place in the code. If one writes this type of an inclusion within an if-statement it will simply get written open within 
+an if-statement, the <code>if</code> will only decide if it executes, but it will still take that space and bandwidth.</p>
+<p>The included material must follow all the rules of normal STACK keyvals.</p>
+<ol>
+<li>Large amounts of code will affect performance.  The internal Maxima code is pre-compiled but question variables are interpreted at runtime.  </li>
+<li>All the identifiers bound in included code will subject to checks just as if you typed them in.</li>
+<li>Identifiers in your code will be marked as forbidden-words for the students. So particular care should be taken when choosing identifiers in such shared logic between questions.  Do not use names a student might need to type in another, un-related, question!</li>
+<li>Code is loaded when you save the question, not when a student uses the question.  Hence code is cached in the question.  Updates to an external library will therefore not affect existing questions.  That cache will not invalidate unless you (a) update the STACK plugin (which clears all cached/compiled questions), (b) save the question (which again downloads the code).</li>
+</ol>
+<p>Note that we do not do "tree-shaking" at this point to remove unnecessary code.  If you include a massive library of functions that you do not use the question will still have to load those functions into the CAS and that may take some time.  If you have libraries, used in many questions, please consider contibuting these to the core of STACK.</p>
+<p>To include external CAS code call the <code>stack_include()</code>-function with a string  argument.  The argument must be a raw string, containing the URL of the code.  You cannot reference a variable containing such a string. For example,</p>
+<pre><code>a: rand(3)+2;
+/* Load logic to tune the presentation. */
+stack_include(&quot;http://example.com/fragments/mytexputrules.txt&quot;);
+/* Load some special randomisation functions. */
+stack_include(&quot;http://example.com/fragments/mymatrixrand.txt&quot;);
+m: mymatrix_rand_integer_invertible(a);
+</code></pre>
+<p>You may not use evaluation flags with <code>stack_include()</code> while the code included may
+have them the inclusion call cannot be used to apply flags to all the included content.</p>
+<p>The function <code>stack_include_contrib()</code> will load the files contained in the 
+<a href="https://github.com/maths/moodle-qtype_stack/tree/master/stack/maxima/contrib">STACK maxima contrib folder</a> in the master branch in github.
+In particular the argument of <code>stack_include_contrib()</code> has this URL prepended: 
+<code>https://raw.githubusercontent.com/maths/moodle-qtype_stack/master/stack/maxima/contrib/</code></p>
+<p>Hence, the following are completely equivalent</p>
+<pre><code>stack_include("https://raw.githubusercontent.com/maths/moodle-qtype_stack/master/stack/maxima/contrib/validators.mac");
+stack_include_contrib("validators.mac");
+</code></pre>
+<p>Notes.</p>
+<ol>
+<li>We will try to keep files in the contrib folder small, and stable.  </li>
+<li>We intend to move commonly used contributed code into the core in due course.  At that point we will localise language strings for automatic translation.</li>
+<li>Please contact the developers about naming conventions.  For example, external validators should start the function name with <code>validator_</code>.</li>
+</ol>
+<h3 id="sandbox-testing">Sandbox testing</h3>
+<p>Note, that <code>stack_include()</code> and has no Maxima-side equivalent so you cannot simply copy-paste 
+your question-variables into Maxima to debug things. You will need to manually do that inclusion.</p>
+<p><code>stack_include_contrib()</code> will load the packages from the local STACK files, when you set up the sandbox.
+Make sure you have the latest code in your sandbox as you may have stale versions of contributed
+(and other core) files on your local machine.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Answer_Tests/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Answer tests - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Answer tests";
+        var mkdocs_page_input_path = "Authoring\\Answer_Tests\\index.md";
+        var mkdocs_page_url = "/Authoring/Answer_Tests/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Answer tests</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="answer-tests">Answer tests</h1>
+<p>An <em>answer test</em> is used to compare two expressions to establish whether they satisfy some mathematical criteria. The
+prototype test is to establish if they are <em>algebraically equivalent</em>.  Informally, the answer tests have the following syntax</p>
+<pre><code>[Errors, Result, FeedBack, Note] = AnswerTest(StudentAnswer, TeacherAnswer, [Opt], [Raw])
+</code></pre>
+<p>Where,</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StudentAnswer</code></td>
+<td>A CAS expression, assumed to be the student's answer.</td>
+</tr>
+<tr>
+<td><code>TeacherAnswer</code></td>
+<td>A CAS expression, assumed to be the model answer.</td>
+</tr>
+<tr>
+<td><code>Opt</code></td>
+<td>If needed, any options which the specific answer test provides. For example, a variable, the accuracy of the numerical comparison, number of significant figures.</td>
+</tr>
+<tr>
+<td><code>Raw</code></td>
+<td>If needed, the raw string of the student's input to ensure, e.g. Maxima does not remove trailing zeros when establishing the number of significant figures.</td>
+</tr>
+</tbody>
+</table>
+<p>Since the tests can provide feedback, tests which appear to be symmetrical, e.g. Algebraic Equivalence, really need to assume which expression belongs to the student and which to the teacher.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Errors</td>
+<td>Hopefully this will be empty!</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>is either <code>true</code>, <code>false</code>, or <code>fail</code> (which indicates a failure of the test).  This determines which branch of the tree is traversed.</td>
+</tr>
+<tr>
+<td>FeedBack</td>
+<td>This is a text string which is displayed to the student. It is <a href="../CASText/">CASText</a> which may depend on properties of the student's answer.</td>
+</tr>
+<tr>
+<td>Note</td>
+<td>This is a text string which is used for <a href="../Reporting/">Reporting</a>. Each answer note is concatenated with the previous notes and any contributions from the branch.</td>
+</tr>
+</tbody>
+</table>
+<p>The feedback is only shown to a student if the quiet option is set to 'no'.  We provide a static page giving the outcome of all <a href="Results/">answer test results</a>.  These pages are automatically generated by the STACK unit tests and help illustrate, by examples, the exact behaviour of the tests.  These pages provide examples of feedback provided by each test.</p>
+<h2 id="the-tests">The tests</h2>
+<p>Documentation is grouped as follows.</p>
+<ol>
+<li><a href="Equivalence/">Equivalence</a>, e.g. algebraic equivalence (many variations).</li>
+<li>AlgEquiv</li>
+<li>AlgEquivNouns</li>
+<li>SubstEquiv</li>
+<li>CasEqual</li>
+<li>SameType</li>
+<li>SysEquiv</li>
+<li><a href="Form/">Syntactic form</a>, e.g. checking the student's expression is in factored form.</li>
+<li>FacForm</li>
+<li>PartFrac</li>
+<li>SingleFrac</li>
+<li>CompSquare</li>
+<li>Expanded</li>
+<li>LowestTerms</li>
+<li><a href="Rule_based/">Rules-based</a> tests, e.g. equivalence up to associativity and commutativity and advanced bespoke tests.</li>
+<li>EqualComAss</li>
+<li>EqualComAssRules</li>
+<li><a href="Numerical/">Numerical tests</a> including accuracy, e.g. is written to 3 decimal places.</li>
+<li>NumRelative</li>
+<li>NumAbsolute</li>
+<li>NumSigFigs</li>
+<li>NumDecPlaces</li>
+<li>NumDecPlacesWrong</li>
+<li>SigFigsStrict</li>
+<li>GT</li>
+<li>GTE</li>
+<li><a href="../../Topics/Units/">Scientific</a>, e.g. for dealing with dimensional numerical quantities.</li>
+<li>Units</li>
+<li>UnitsStrict</li>
+<li>UnitsRelative</li>
+<li>UnitsStrictRelative</li>
+<li>UnitsAbsolute</li>
+<li>UnitsStrictAbsolute</li>
+<li><a href="Calculus/">Calculus</a>, e.g. for symbolic integration questions.</li>
+<li>Diff</li>
+<li>Int</li>
+<li><a href="String/">String match tests</a> and regular expressions.</li>
+<li>String</li>
+<li>StringSloppy</li>
+<li><a href="../../Topics/Levenshtein_distance/">Levenshtein</a></li>
+<li>SRegExp</li>
+<li><a href="Other/">Other</a> specific subject tests, e.g. sets, logical expressions.</li>
+<li>Sets</li>
+<li><a href="../../CAS/Equivalence_reasoning/">Equiv</a></li>
+<li><a href="../../CAS/Equivalence_reasoning/">EquivFirst</a></li>
+<li><a href="../../Topics/Propositional_Logic/">PropLogic</a></li>
+</ol>
+<h2 id="pre-pocessing-students-answers">Pre-pocessing students' answers</h2>
+<p>You can apply functions before applying the tests using the feedback variables.  For example, to ignore case sensitivity you can apply the <a href="../../CAS/Maxima/#Maxima_commands_defined_by_STACK">Maxima commands defined by STACK</a> <code>exdowncase(ex)</code> to the arguments, before you apply one of the other answer tests. However, some tests really require the raw student's input.  E.g. the numerical decimal place test really requires the name of an input as the <code>SAns</code> field.  If you manipulate an input, you may end up dropping trailing zeros and ruining the number of decimal places in the expression.  STACK will warn you if you need to use the name of an input.</p>
+<h2 id="offline-testing">Offline testing</h2>
+<p>Sometimes it is very useful to work offline using the desktop version of Maxima.  How to do this is explained in the <a href="../../CAS/STACK-Maxima_sandbox/">STACK-maxima-sandbox</a>.</p>
+<p>The Maxima code for each answer test is the name of the test with <code>AT</code> in front.  E.g. the algebraic equivalence <code>AlgEquiv</code> test is called in the sandbox as <code>ATAlgEquiv</code>.  E.g. to test two expressions in the sandbox type</p>
+<pre><code>ATAlgEquiv((x-1)*(x+1), x^2-1);
+</code></pre>
+<p>In the STACK question dashboard, and some of the reporting features, you may see expressions such as the above.  These can be copied into Maxima to help test individual questions.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

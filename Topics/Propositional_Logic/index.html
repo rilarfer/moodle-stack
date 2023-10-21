@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Topics/Propositional_Logic/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Propositional Logic - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Propositional Logic";
+        var mkdocs_page_input_path = "Topics\\Propositional_Logic.md";
+        var mkdocs_page_url = "/Topics/Propositional_Logic/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Propositional Logic</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="propositional-logic">Propositional Logic</h1>
+<p>STACK loads the "logic" package from Maxima.</p>
+<h2 id="boolean-functions">Boolean functions</h2>
+<p>Maxima has Boolean operators <code>and</code>, <code>or</code>, and <code>not</code>.  These rely on the underlying LISP implementation and as a result the <code>simp:false</code> is ignored.<br />
+To illustrate the problem, try the following.</p>
+<pre><code>simp:false$
+true and true;
+x=1 or x=2;
+</code></pre>
+<p>The results respectively (of the second two) are</p>
+<pre><code>true;
+false;
+</code></pre>
+<p>Note, there is no mechanism in Maxima to represent a list of assignments such as <code>x=1 or x=2</code>,
+which would be a natural way to express the solution to a quadratic equation.</p>
+<p>To solve this problem STACK has introduced <code>nounand</code> and <code>nounor</code> which are commutative and associative operators.</p>
+<p>Students do <em>not</em> need to use <code>nounand</code> and <code>nounor</code> in answers.<br />
+Any <code>and</code> and <code>or</code> operators occurring in their answers are always automatically converted into these noun forms.</p>
+<p>Teachers <em>always</em> need to use <code>nounand</code> and <code>nounor</code> in CAS expressions when they want to write non-simplifying expressions.<br />
+For example, when defining the "teacher's answer" they should use the noun forms as appropriate.<br />
+Teachers often need to use Boolean logic, and so need to consciously separate the difference between these operators and concepts.</p>
+<p>Note, the answer tests do <em>not</em> convert noun forms to the Maxima forms.<br />
+Otherwise both <code>x=1 or x=2</code> and <code>x=1 or x=3</code> would be evaluated to <code>false</code> and a teacher could not tell that they are different!<br />
+To replace all <code>nounand</code> (etc) operators and replace them with the Maxima equivalent, use <code>noun_logic_remove(ex)</code>.</p>
+<h2 id="operators-and-notes">Operators and notes</h2>
+<ol>
+<li><code>and</code> This is a lisp function.  Teachers should use <code>nounand</code> to prevent evaluation of <code>x=1 and x=0</code> to <code>false</code> even without simplification.  Students type <code>and</code> and this is always converted internally to <code>nounand</code>.</li>
+<li><code>or</code> This is a lisp function.  Teachers should use <code>nounor</code> to prevent evaluation of <code>x=1 or x=0</code> to <code>false</code> even without simplification.  Students type <code>or</code> and this is always converted internally to <code>nounor</code>.</li>
+<li><code>not</code> This is a lisp function.  Teachers should use <code>nounnot</code> to prevent evaluation.  Students type <code>not</code> and this is always converted internally to <code>nounnot</code>.</li>
+<li><code>nand</code> is provided by the logic package, which respects the value of <code>simp</code>.</li>
+<li><code>nor</code> is provided by the logic package, which respects the value of <code>simp</code>.</li>
+<li><code>xor</code> is provided by the logic package, which respects the value of <code>simp</code>.</li>
+<li><code>eq</code> is provided by the logic package, but this input syntax is not supported in STACK.  Instead we provide an <code>xnor</code> function.</li>
+<li><code>implies</code> is provided by the logic package, which respects the value of <code>simp</code>.</li>
+</ol>
+<p>Notes</p>
+<ul>
+<li>There is no support for symbolic logic symbol input currently and students cannot type <code>&amp;</code>, <code>*</code> for <code>and</code>, and similarly students cannot type <code>+</code> for <code>or</code>.</li>
+<li>There is no existential operator (not that this is propositional logic, but for the record) or an interpretation of '?' as there exits, and there is no universal operator (which some people type in as <code>!</code>).</li>
+<li>To change between language or symbols for logic, use the Logic symbols <a href="../../Authoring/Tables/">option</a>. The default behaviour is to use language.</li>
+</ul>
+<p>The function <code>verb_logic(ex)</code> will remove the noun forms such as <code>nounand</code> and substitute in the lisp versions which will enable evaluation of expressions.  The function <code>noun_logic(ex)</code> will replace any remaining lisp but beware that any evaluation (even with <code>simp:false</code>) will evaluate lisp logical expressions.  It is best to use noun forms at the outset, e.g. in the question variables, and only use the lisp forms when calculating, e.g. to evaluate in the PRT.</p>
+<h2 id="answer-tests">Answer tests</h2>
+<p>The answer tests protect the logical operators.  This behaviour is to prevent evaluation of expressions such as <code>x=1</code> as a boolean predicate fuction.  I.e. the default behaviour is to give priority to the assumption an arbitary expression is an algebraic expression, or a set of equations, inequalities etc.</p>
+<p>The answer test <code>PropLogic</code> replaces all noun logical expressions with the Maxima versions, and then tests two expressions using the function <code>logic_equiv</code> from Maxima's logic package.  This answer test does not support sets, lists, etc.</p>
+<p>The value of the student's answer will always have <code>nounand</code> etc. inserted.  Before you manipulate the student's answer, e.g. with the logic package functions, you will need to apply <code>noun_logic_remove(ex)</code>.</p>
+<h2 id="truth-tables">Truth tables</h2>
+<p>STACK provides various functions for creating and dealing with <a href="../../Authoring/Tables/">tables</a>.</p>
+<p><code>truth_table(ex)</code> returns the true table of the expression <code>ex</code>.  The function will throw an error if the number of variables exceeds 5.  The first row of the table is the headings, consisting of a list of variables, and the expression itself.  See the documentation on <a href="../../Authoring/Tables/">tables</a> for more functionality.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

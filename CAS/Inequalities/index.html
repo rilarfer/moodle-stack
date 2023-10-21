@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Inequalities/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Inequalities - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Inequalities";
+        var mkdocs_page_input_path = "CAS\\Inequalities.md";
+        var mkdocs_page_url = "/CAS/Inequalities/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Inequalities</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="inequalities">Inequalities</h1>
+<p>The non-strict inequalities (\geq) and (\leq) are created as infix operators with the respective syntax</p>
+<pre><code>&gt;=,  &lt;=
+</code></pre>
+<p>Maxima allows single inequalities, such as (x-1&gt;y), and also support for inequalities connected by logical operators, e.g. ( x&gt;1 \mbox{ and } x&lt;=5).</p>
+<p>You can test if two inequalities are the same using the algebraic equivalence test, see the comments on this below.  </p>
+<p>Chained inequalities, for example (1\leq x \leq2\mbox{,}) are not permitted.  They must be joined by logical connectives, e.g. "(x&gt;1) and (x&lt;7)". 
+As <code>and</code> and <code>or</code> are converted to <code>nounand</code> and <code>nounor</code> in student answers, you may need to use these forms in the teacher's answer as well.
+For more information, see <a href="../../Topics/Propositional_Logic/">Propositional Logic</a>.</p>
+<p>From version 3.6, support for inequalities in Maxima (particularly single variable real inequalities) was substantially improved.</p>
+<h1 id="functions-to-support-inequalities">Functions to support inequalities</h1>
+<ul>
+<li><code>ineqprepare(ex)</code></li>
+</ul>
+<p>This function ensures an inequality is written in the form <code>ex&gt;0</code> or <code>ex&gt;=0</code> where <code>ex</code> is always simplified.  This is designed for use with the algebraic equivalence answer test in mind.</p>
+<ul>
+<li><code>ineqorder(ex)</code></li>
+</ul>
+<p>This function takes an expression, applies <code>ineqprepare()</code>, and then orders the parts.  For example,</p>
+<pre><code> ineqorder(x&gt;1 and x&lt;5);
+</code></pre>
+<p>returns</p>
+<pre><code>  5-x &gt; 0 and x-1 &gt; 0
+</code></pre>
+<p>It also removes duplicate inequalities.  Operating at this syntactic level will enable a relatively strict form of equivalence to be established, simply manipulating the form of the inequalities.  It will respect commutativity and associativity and <code>and</code> and <code>or</code>, and will also apply <code>not</code> to chains of inequalities.</p>
+<p>If the algebraic equivalence test detects inequalities, or systems of inequalities, then this function is automatically applied.</p>
+<ul>
+<li><code>make_less_ineq(ex)</code></li>
+</ul>
+<p>Reverses the order of any inequalities so that we have <code>A&lt;B</code> or <code>A&lt;=B</code>.  It does no other transformations.  This is useful because when testing equality up to commutativity and associativity we don't perform this transformation.  We need to put all inequalities a particular way around.  See the EqualComAss test examples for usage.</p>
+<h2 id="see-also">See also</h2>
+<p><a href="../#reference">Maxima reference topics</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

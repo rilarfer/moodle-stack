@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Documentation/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>STACK User Documentation - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "STACK User Documentation";
+        var mkdocs_page_input_path = "Developer\\Documentation.md";
+        var mkdocs_page_url = "/Developer/Documentation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">STACK User Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="stack-user-documentation">STACK User Documentation</h1>
+<p>User documentation is written in an extended implementation of the markup language
+<a href="http://daringfireball.net/projects/markdown/">MarkDown</a>. This page is intended
+for people wishing to write, edit and translate the documentation.</p>
+<h2 id="markdown-language">Markdown language</h2>
+<ul>
+<li>The <a href="http://daringfireball.net/projects/markdown/">markdown</a> project external site.</li>
+<li><a href="http://scottboms.com/-/downloads/documentation/markdown_cheatsheet.pdf">A cheat sheet</a> is available for quick reference.</li>
+</ul>
+<p><strong>Warning:</strong> markdown uses whitespace and formatting to give meaning.  The number of spaces at the beginning and the ends of lines convey specific meaning in markdown.  An example is the way code blocks are included, which is useful for including fragments of Maxima code.</p>
+<h2 id="stacks-markdown-documentation-system">STACK's markdown documentation system</h2>
+<p>STACK stores all documentation within language subdirectories.  For example, English is within <code>/doc/en/</code>.</p>
+<ul>
+<li>The directory structure forms the structure of the documentation.</li>
+<li>Files must use the <code>.md</code> extension.</li>
+<li>Links to files must use the <code>.md</code> extension.</li>
+<li>File and directory names should be safe for urls and will be used as the document's title.
+  Spaces can be encoded as underscore <code>_</code>, e.g. Question state caching should be named <code>Question_state_caching.md</code></li>
+<li>When accessing a directory, the file <code>index.md</code> in that directory will be displayed, hence this file should be created for new directories.
+  Note <code>index.md</code> will never be displayed in a directory listing, it can be accessed by navigating to the directory itself.</li>
+<li>Directories may be nested.</li>
+<li>A directory listing will be appended to the site map when rendered.</li>
+<li>Metadata about the files is stored in <code>meta_en.json</code>.  Every page should have metadata.</li>
+</ul>
+<h2 id="how-relative-links-work-in-stacks-documentation">How relative links work in STACK's documentation</h2>
+<p><strong>Note</strong> Links in the documentation are relative. You can use the following standard notation, for:</p>
+<ol>
+<li>a document in the current directory simply use the filename e.g. <code>[Link to Article](Article.md)</code></li>
+<li>the current directory use <code>./</code> e.g.</li>
+<li><code>./Article.md</code> refers to <code>Article</code> in this directory</li>
+<li><code>./#reference</code> refers to the index of the current directory scrolled to the heading with id <code>reference</code></li>
+<li>the parent directory use <code>../</code> e.g.</li>
+<li><code>../</code> refers to the docs homepage (if currently only one tier deep)</li>
+<li><code>../Category/Article.md</code> refers to <code>Article.md</code> in the <code>Category</code> in the parent directory.</li>
+</ol>
+<h2 id="conventions-in-authoring-pages">Conventions in authoring pages</h2>
+<p>Markdown does not have <em>categories</em> in the way that MediaWiki does.  Instead, we strongly encourage authors to include a <code># See also</code> section at the end of <em>each</em> STACK documentation page.  This should be part of the markdown page.</p>
+<h2 id="adding-images-and-files-to-the-documentation">Adding images and files to the documentation</h2>
+<p>The directory <code>/doc/content/</code> is for static content which is served by the documentation.
+If you want to serve content from the docs please place it in this directory.</p>
+<p>When writing links use direct relative links to</p>
+<pre><code>$CFG-&gt;wwwroot . "/question/type/stack/doc/content";
+</code></pre>
+<p>E.g. in <code>About/Logo.md</code> use</p>
+<pre><code>![STACK Logo](../../content/logo.png)
+</code></pre>
+<p>The text in square brackets is the alt text, which is important for visually impaired users reading the documentation. There are many great <a href="https://webaim.org/techniques/alttext/">guides for writing good alt text</a>.</p>
+<h2 id="adding-a-link-to-video-in-the-documentation">Adding a link to video in the documentation</h2>
+<p>To embed video into the documentation first find the unique video key, <code>VIDEO-KEY</code>, then then modify</p>
+<pre><code>[![IMAGE ALT TEXT](http://img.youtube.com/vi/VIDEO-KEY/0.jpg)](https://www.youtube.com/watch?v=VIDEO-KEY "Video title")
+</code></pre>
+<p>For example, <code>cpwo-D6EUgA</code>, gives</p>
+<pre><code>[![IMAGE ALT TEXT](http://img.youtube.com/vi/cpwo-D6EUgA/0.jpg)](https://www.youtube.com/watch?v=cpwo-D6EUgA "Your First STACK Question")
+</code></pre>
+<p>The following rendered markdown:</p>
+<p><a href="https://www.youtube.com/watch?v=cpwo-D6EUgA" title="Your First STACK Question"><img alt="IMAGE ALT TEXT" src="http://img.youtube.com/vi/cpwo-D6EUgA/0.jpg" /></a></p>
+<h2 id="embed-video-in-the-documentation">Embed video in the documentation</h2>
+<p>Using an iframe such as</p>
+<pre><code>&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/cpwo-D6EUgA" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+</code></pre>
+<p>Gives</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cpwo-D6EUgA" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="mathematics">Mathematics</h2>
+<p>For the purpose of rendering mathematical equations, an <a href="https://github.com/drdrang/php-markdown-extra-math">extended version</a> of <a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a> is used.</p>
+<p>It uses LaTeX style notation <code>\(</code> and <code>\[</code> to write inline and display maths respectively. Fortunately GitHub documentation uses the same notation :D.
+An example:</p>
+<pre><code>\[ \frac{\int_a^b f(t) \textrm{d} t }{b - a} \]
+</code></pre>
+<p>[ \frac{\int_a^b f(t) \textrm{d} t}{b - a} ]</p>
+<h2 id="compatibility-with-the-online-docs-website">Compatibility with the online docs {#Website}</h2>
+<p>The STACK docs are made available online on <a href="https://docs.stack-assessment.org">docs.stack-assessment.org</a>. For more information on how this is achieved, see the <a href="../Website/">Website documentation</a>. However this places certain limitations on the sort of elements that can be included in the documentation:</p>
+<ul>
+<li>You can only have relative links to files within the <code>doc</code> directory. This means you should not link relatively to, for example, one of the stack .php files. If you want to demonstrate a behaviour of one of STACKs files, it is better to do a direct link to that file on GitHub or on the STACK demo.</li>
+<li>You cannot use HTML text areas to display LaTeX Math, as that will display poorly. Please use multiline code blocks instead.</li>
+</ul>
+<h1 id="examples-examples">Examples {#Examples}</h1>
+<h3 id="paragraphs-and-formatting">Paragraphs and formatting</h3>
+<p>Paragraphs are made with two new line characters, a single new line will not be rendered:</p>
+<pre><code>This is in a paragraph,
+so is this
+
+This is a new paragraph
+
+This is a **bold** word and this is an *italicised* word.
+</code></pre>
+<p>This is in a paragraph,
+so is this</p>
+<p>This is a new paragraph</p>
+<p>This is a <strong>bold</strong> word and this is an <em>italicised</em> word.</p>
+<h3 id="headings">Headings</h3>
+<p>Headings are indicated by the # symbol</p>
+<pre><code># Huge
+## Quite huge
+### Not so huge
+#### Barely huge
+</code></pre>
+<h1 id="huge">Huge</h1>
+<h2 id="quite-huge">Quite huge</h2>
+<h3 id="not-so-huge">Not so huge</h3>
+<h4 id="barely-huge">Barely huge</h4>
+<h3 id="lists">Lists</h3>
+<p>Ordered (numbered) and unordered lists are very intuitive, and nesting is easy</p>
+<pre><code>1. first point
+2. second point, which is so long
+   it needs two lines
+3. third point will demonstrate nesting
+   1. Nested
+   2. Lists
+
+* Unordered lists made my stars
+* You can nest with different styles
+  1. See?
+</code></pre>
+<ol>
+<li>first point</li>
+<li>second point, which is so long
+   it needs two lines</li>
+<li>third point will demonstrate nesting</li>
+<li>Nested</li>
+<li>
+<p>Lists</p>
+</li>
+<li>
+<p>Unordered lists made my stars</p>
+</li>
+<li>You can nest with different styles</li>
+<li>See?</li>
+</ol>
+<h3 id="code-monospace">Code (monospace)</h3>
+<p>Code can be displayed inline using back ticks `content` to display <code>content</code>. Code can be displayed in a block by indenting:</p>
+<pre><code>    Block style code
+</code></pre>
+<p>Will display</p>
+<pre><code>Block style code
+</code></pre>
+<h3 id="links">Links</h3>
+<p>Links are written <code>[text](Documentation.md)</code> to give <a href="./">text</a>.</p>
+<p>They must end with the <code>.md</code> extension.  External links are easily generated using</p>
+<pre><code>&lt;http://sesamestreet.com&gt;
+</code></pre>
+<p>gives <a href="http://sesamestreet.com">http://sesamestreet.com</a>,
+email address work similarly</p>
+<pre><code>&lt;count@sesamestreet.com&gt;
+</code></pre>
+<p>gives <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#117;&#110;&#116;&#64;&#115;&#101;&#115;&#97;&#109;&#101;&#115;&#116;&#114;&#101;&#101;&#116;&#46;&#99;&#111;&#109;">&#99;&#111;&#117;&#110;&#116;&#64;&#115;&#101;&#115;&#97;&#109;&#101;&#115;&#116;&#114;&#101;&#101;&#116;&#46;&#99;&#111;&#109;</a>.</p>
+<h3 id="other-cool-features">Other cool features</h3>
+<pre><code>Definition lists
+: Are one of the many cool features available
+They are useful for
+: Dictionary style entries
+</code></pre>
+<p>Definition lists
+: Are one of the many cool features available</p>
+<p>They are useful for
+: Dictionary style entries</p>
+<p>To force block style code write <code>~~~~</code> above and below, good for after a list when indentation will be interpreted as part of the list</p>
+<pre><code>~~~~~~~~~~
+Like this
+~~~~~~~~~~
+
+
+
+&gt; When quoting the syntax is like in emails.
+</code></pre>
+<blockquote>
+<p>When quoting the syntax is like in emails.</p>
+</blockquote>
+<pre><code>Tables       | are also
+------------ | --------
+an extremely | useful
+feature      | !
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th>are also</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>an extremely</td>
+<td>useful</td>
+</tr>
+<tr>
+<td>feature</td>
+<td>!</td>
+</tr>
+</tbody>
+</table>
+<h1 id="see-also">See also</h1>
+<ul>
+<li><a href="http://daringfireball.net/projects/markdown/">MarkDown</a></li>
+<li><a href="http://michelf.com/projects/php-markdown/extra/">PHP Markdown Extra</a></li>
+<li><a href="https://github.com/drdrang/php-markdown-extra-math">PHP Markdown Extra Math</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

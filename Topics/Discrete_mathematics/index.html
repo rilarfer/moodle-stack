@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Topics/Discrete_mathematics/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Discrete mathematics and graph theory. - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Discrete mathematics and graph theory.";
+        var mkdocs_page_input_path = "Topics\\Discrete_mathematics.md";
+        var mkdocs_page_url = "/Topics/Discrete_mathematics/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Discrete mathematics and graph theory.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="discrete-mathematics-and-graph-theory">Discrete mathematics and graph theory.</h1>
+<p>A graph in discrete mathematics is a set of edges and vertices.  Maxima has a "graphs" package, which we do not currently support (see github issue #572 for a discussion of why).</p>
+<h2 id="generating-points-for-a-graph">Generating points for a graph</h2>
+<p>The following question variables produce the complete graph on <code>m</code> vertices.</p>
+<pre><code>/* Choose the number of points. */
+m:7;
+/* Distribute the points around a circle. */
+pts:makelist([decimalplaces(float(cos(2*%pi*k/m)),4),decimalplaces(float(sin(2*%pi*k/m)),4)],k,0,m-1);
+
+/* Create the complete graph of m elements. */
+every_pair(ex):=block(
+    if length(ex)&lt;2 then return([]),
+    if length(ex)=2 then return([ex]),
+    append(maplist(lambda([ex2],[first(ex),ex2]),rest(ex)), every_pair(rest(ex)))
+);
+edges:every_pair(makelist(k,k,0,m-1));
+</code></pre>
+<h2 id="displaying-graphs-with-plot">Displaying graphs with <code>plot()</code></h2>
+<p>It is possible to plot simple discrete graphs directly using STACK's <a href="Plots.md"><code>plot</code></a> command by building a combination of discrete and line plots.  If you want to do this, we <em>strongly</em> recommend you work offline first in Maxima using <code>plot2d</code> to ensure your Maxima code works.</p>
+<p>In general it is better to (1) separate connections of points from the coordinates of points, and (2) deal with lists of coordinates.  That way we can pass a connection, or the coordinates of a point into a function more easily.  Create a list of coordinates, where each coordinate is a point [x,y].</p>
+<pre><code>nk:5;
+/* Position nk coordinates evenly round the unit circle. */
+pc1:float(makelist([cos(%pi/(2*nk)+2*k*%pi/nk), sin(%pi/(2*nk)+2*k*%pi/nk)], k, 0, nk));
+/* Extract individual coordinates. */
+x1:maplist(first, pc1); 
+y1:maplist(second, pc1); 
+p1:[discrete,x1,y1];
+</code></pre>
+<p>Plot must have floating point numbers to deal with.</p>
+<p>Now use the CASText:</p>
+<pre><code>{@plot([p1,p1],[x,-1,1],[y,-1,1],[style,points,lines],[box,false],[axes,false])@}
+</code></pre>
+<p>Notice we plot a list, containing <code>p1</code> twice, once with style <code>points</code> and once with <code>lines</code>.</p>
+<p>The following takes a list of edge connections, <code>[a,b]</code>, and a list of co-ordinate points of the form <code>[x,y]</code> and produces the discrete plots of the edge connections. 
+Note the two stage process.</p>
+<ol>
+<li>Turn the list of edge connections (<code>edgel</code>) into lists of points to connect. (The inner <code>maplist</code>)</li>
+<li>Turn two points to connect into a discrete plot of the form <code>[discrete [x1, x2], [y1, y2]]</code>.</li>
+</ol>
+<p>The following code could be combined, but two separate <code>maplist</code> applications separate out the processes with more clarity.</p>
+<pre><code>pedges(edgel, pts):= maplist(lambda([ex], [discrete, maplist(first, ex), maplist(second, ex)]), maplist(lambda([ex], [pts[first(ex)], pts[second(ex)]]), edgel));
+</code></pre>
+<p>As an example we will create a simple (disconnected) graph as follows.</p>
+<pre><code>g1:[[2,3], [3,4], [4,2], [1,5]];
+/* Plot this graph, using points in positions pc1. */
+p2:pedges(g1, pc1);
+
+/* Set colours. */
+pcols2:makelist(red, k, 1, length(p2));
+
+/* Set Style */
+pstyle2:makelist(lines, k, 1, length(p2));
+
+/* Add in points, as before. */
+p2:append([p1], p2);
+pstyle2:append([points], pstyle2);
+pcols2:append([blue], pcols2);
+
+/* Create a single plot. */
+pcols2:append([color], pcols2);
+pstyle2:append([style], pstyle2);
+</code></pre>
+<p>And add in the castext</p>
+<pre><code>{@plot(p2,[x,-1,1],[y,-1,1], pstyle2, pcols2, [box,false], [axes,false])@}
+</code></pre>
+<p>To create a complete graph, we need code to create every pair of edges [a,b], as follows.</p>
+<pre><code>/* Return a list of edge pairs n1 to a list of points. */
+pedgesto(n1, nl) := maplist(lambda([ex], [n1, ex]), nl);
+/* Return every pair of points in nl. */
+palledges(nl) := if is(length(nl)=1) then [] else append(pedgesto(first(nl), rest(nl)), palledges(rest(nl)));
+
+/* The complete graph on nk edges. */
+knk:palledges(makelist(k,k,1,nk));
+
+/* Plot this graph, using points in positions pc1. */
+p3:pedges(knk, pc1);
+
+/* Set colours. */
+pcols3:makelist(red, k, 1, length(p3));
+
+/* Set Style */
+pstyle3:makelist(lines, k, 1, length(p3));
+
+/* Add in points, as before. */
+p3:append([p1], p3);
+pstyle3:append([points], pstyle3);
+pcols3:append([blue], pcols3);
+
+/* Create a single plot. */
+pcols3:append([color], pcols3);
+pstyle3:append([style], pstyle3);
+</code></pre>
+<p>And add in the castext</p>
+<pre><code>{@plot(p3,[x,-1,1],[y,-1,1], pstyle3, pcols3, [box,false], [axes,false])@}
+</code></pre>
+<p>In the above code I have tried to separate out all the issues into individual steps.  Clearly there is significant scope here for utility/convenience functions.</p>
+<h2 id="displaying-graphs-with-jsxgraph">Displaying graphs with JSXGraph</h2>
+<p><a href="../../Authoring/JSXGraph/">JSXGraph</a> can be used to display discrete graphs.</p>
+<p>In the question variables define your points and edges.</p>
+<pre><code>/* A list of points, which are lists of coordinates.*/
+pts:[[1.0,0.0],[0.623,0.782],[-0.223,0.975],[-0.901,0.434],[-0.901,-0.434],[-0.223,-0.975],[0.623,-0.782]];
+
+/* A list of edge connections. */
+edges:[[0,1],[0,2],[0,3],[4,5],[4,6],[4,0]];
+</code></pre>
+<p>Then, you can use this JSXGraph block to create your vertices and edges.  Note, this code uses <code>board.create('arrow', [...])</code>, but you could as well use <code>segment</code> not <code>arrow</code> for an un-directed graph.</p>
+<pre><code>[[jsxgraph]]
+    /* boundingbox:[left, top, right, bottom] */
+    var board = JXG.JSXGraph.initBoard(divid, {boundingbox: [-1.2, 1.2, 1.2, -1.2], axis: false, showCopyright: false});
+
+    /* Notice the syntax STACK uses for putting the _value_ of a variable into the text before display. */
+    var pts = {#pts#};
+    var boardpts = new Array();
+    var arrayLength = pts.length;
+    for (var i = 0; i &lt; arrayLength; i++) {
+        boardpts.push(board.create('point', pts[i]));
+    }
+
+    var edges = {#edges#};
+    var boardedges = new Array();
+    var arrayLength = edges.length;
+    for (var i = 0; i &lt; arrayLength; i++) {
+        boardedges.push(board.create('arrow', [boardpts[edges[i][0]], boardpts[edges[i][1]]]));
+    }
+[[/jsxgraph]]
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

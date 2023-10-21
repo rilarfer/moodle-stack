@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Topics/Vector_Calculus/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Vector Calculus in STACK - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Vector Calculus in STACK";
+        var mkdocs_page_input_path = "Topics\\Vector_Calculus.md";
+        var mkdocs_page_url = "/Topics/Vector_Calculus/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Vector Calculus in STACK</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="vector-calculus-in-stack">Vector Calculus in STACK</h1>
+<p>Setting vector calculus problems using STACK does not require too much more thinking than setting regular calculus or linear algebra problems. There are a few extra additions, but a passing familiarity with Maxima's notation for derivatives, integrals and vectors will usually suffice.</p>
+<h1 id="calculus-with-more-than-one-variable">Calculus with more than one variable</h1>
+<p>To find derivatives of functions of more than one variable you can use the normal <code>diff(f,x)</code> function, which returns the partial derivative of (f) with respect to (x). To find the gradient vector, you might choose to put all the partial derivatives in a list or matrix using something like</p>
+<pre><code>grad(f,vars):= block(
+  grad_vec: map(lambda([ex], 'diff(f,vars[ex])), ev(makelist(ii,ii,1,length(vars)), simp)),
+  return(transpose(matrix(grad_vec)))
+);
+</code></pre>
+<p>Then <code>grad(f,[x,y,z])</code> would return
+[
+ \left[\begin{array}{c} \frac{\mathrm{d} f}{\mathrm{d} x} \ \frac{\mathrm{d} f}{\mathrm{d} y} \ \frac{\mathrm{d} f}{\mathrm{d} z} \end{array}\right]
+]
+Setting Maxima's <code>derivabbrev:true</code> changes the display of derivatives to subscripts.  Now <code>grad(f,[x,y,z])</code> would return
+[
+\left[\begin{array}{c} f_{x} \ f_{y} \ f_{z} \end{array}\right]
+]</p>
+<p>If you would like to work with differentials, using <code>diff(f)</code> without specifying a variable will return <code>del(f)</code>. For example, </p>
+<pre><code>(%i1) f: x*y*z;
+(%o1) x y z;
+(%i2) diff(f);
+(%o2) x y del(z) + x z del(y) + y z del(x)
+</code></pre>
+<p>The Maxima differentials will display as (d(x)).  If you prefer notation such as (\mathrm{d}x) you might like to redfine the tex function associated with <code>del</code> e.g.</p>
+<pre><code>texput(del,lambda([ex],sconcat("\\mathrm{d}",tex1(first(ex)))));
+</code></pre>
+<p>If you need to assert that one or more variables are constant, you can use <code>declare([a,b,c],constant)</code> means that, using the previous example, <code>diff(f*c)</code> would return <code>c x y del(z) + c x z del(y) + c y z del(x)</code> rather than <code>c x y del(z) + c x z del(y) + c y z del(x) + x y z del(c)</code>.</p>
+<p>If you want to assert that one variable depends on the other, you can use <code>depends([f,g],[x,y])</code> to mean that (f) and (g) both depend on (x) and (y). If you just want to note that (y) depends on (x), then <code>depends(y,x)</code> is sufficient. This is useful when asking students to perform implicit partial differentiation and solve for the given derivative. Here is an example that wants students to find a partial derivative of one variable with respect to another, holding another variable constant: </p>
+<pre><code>declare([a,b,c,d],constant);
+eqn1: x*y = a*t^b*z;
+eqn2: c*z*y^d*t = sin(x);
+[eqn1, eqn2]: random_permutation([eqn1, eqn2]);
+
+[dep1,dep2,indep,const]: random_permutation([x, y, z, t]);
+depends([dep1,dep2],indep);
+
+eqn1d: diff(eqn1,indep);
+eqn2d: diff(eqn2,indep);
+
+ta: rhs(flatten(solve([eqn1d,eqn2d],['diff(dep1,indep),'diff(dep2,indep)]))[1]);
+</code></pre>
+<p>This example generates two equations in (x), (y), (z) and (t), assigns each variable a role as either a dependent variable, independent variable, or a variable being held constant (also independent, but behaving differently in this context), differentiates both equations implicitly with respect to the independent variable, and then solves the equations simultaneously for the desired derivative. The original question had values assigned to (a), (b), (c) and (d), but it is interesting to declare them constant here. </p>
+<p>Note that these questions can be a bit volatile, as Maxima simply cannot establish equality when various substitutions are made. It may be prudent to make rearrangement difficult, and/or tell students to not substitute values in their answer. </p>
+<h1 id="using-vectors">Using vectors</h1>
+<p>Maxima does not distinguish between vectors and matrices, with both being defined using the <code>matrix</code> command. You can put whatever you like in a matrix, so like the example above with a gradient vector, you can easily define a vector function as a matrix with expressions as elements. Some key points: </p>
+<ol>
+<li>Lists are treated very similarly to row vectors (which means that things like the dot product operator work on them). It also means that it is sufficient to use <code>transpose([a,b,c])</code> to get a column vector.</li>
+<li><code>*</code> is used for element-wise multiplication of lists and matrices, whereas <code>.</code> is used as both a dot product and matrix product. This leads to slightly confusing behaviour for vectors, where <code>[x,y] . [z,t]</code>, <code>[x,y] . transpose([z,t])</code> and <code>transpose([x,y]) . transpose([z,t])</code> will all return <code>x*z + y*t</code>, but <code>transpose([x,y]) . [z,t]</code> will return the outer product matrix <code>matrix([x*z, t*x], [y*z, t*y])</code>.</li>
+<li>Matrices are indexed as <code>A[i,j]</code>, which means that when dealing with vectors you must be careful to index both the row and the column. For example, <code>matrix([1],[2],[3])[1]</code> will return the list <code>[1]</code> rather than the value <code>1</code>, and <code>matrix([1,2,3])[1]</code> will return the whole row <code>[1,2,3]</code>. One way around this is to use the <code>list_matrix_entries</code> function to return the list of all matrix entries, which is often easier to work with when considering vectors. Note that this function returns an error when given a list. </li>
+<li>The function <code>crossproduct(a,b)</code> is defined in STACK (not core Maxima), but must take two (3) by (1) column vectors as the input, not lists or row vectors. </li>
+<li>The function <code>jacobian([f1,f2],[x,y])</code> is defined, and takes two lists as arguments. The first is the vector function, and the second is the list of variables. </li>
+</ol>
+<p>Some useful functions that are <em>not</em> defined in core Maxima are defined in STACK's contributed <code>vectorcalculus.mac</code> file in the contrib directory.</p>
+<ol>
+<li>divergence <code>div(u, vars)</code>. Accepts (u) as either a matrix or a list.</li>
+<li>curl <code>curl(u, vars)</code>.  Accepts (u) as either a matrix or a list.</li>
+</ol>
+<p>These functions can be <a href="../../Authoring/Inclusions/">included</a> with <code>stack_include</code>.</p>
+<h1 id="lagrange-multipliers">Lagrange Multipliers</h1>
+<p>Finding critical points using the method of Lagrange multipliers is as simple as finding the stationary points to the system of equations given by (f - \lambda c) where (f) is the multivariable function you are investigating and (c) is a constraint curve. There are a few new considerations that come along with questions like this, such as what input type to use and how to account for a variable number of solutions.  </p>
+<p>Here is some example code that shows how you might procedurally generate solutions to a problem like this, where <code>func</code> is our function (f) and <code>cons</code> is our constraint curve (c) given as a single algebraic expression to be set to zero. </p>
+<pre><code>equations: [diff(func, x) = L*diff(cons, x), diff(func, y) = L*diff(cons, y), cons = 0];
+solns: map(lambda([ex],map(rhs,firstn(radcan(ex),2))),solve(equations, [x, y, L]));
+ta: sublist(solns,lambda([ex],real_numberp(first(ex)) and real_numberp(second(ex))));
+</code></pre>
+<p>This code will generate all correct solutions, trim out the value of (\lambda) which typically does not concern us, removes any complex solutions, and returns the final answer as a list of ordered pairs. This is useful because it allows us to use the TextArea input type. To enter their answers, students can give as many or as ordered pairs as they like.</p>
+<p>To mark this question, we could use some code like the following:</p>
+<pre><code>ans1_set: setify(map(simplify, ans1));
+ta_set: setify(map(simplify, ta));
+
+num_correct: length(intersection(ans1_set, ta_set));
+prop_correct: num_correct/length(ta);
+</code></pre>
+<p>Now we can compare the two sets directly in the PRT using AlgEquiv or Sets. If this test fails, we might like to award <code>prop_correct</code> marks as the score (so that if a student found 3 out of 4 critical points they would be awarded 0.75 marks). We might also find it prudent to award a flat penalty for any superfluous answers in this case too, or perhaps only if the student gives more answers than expected (to avoid double-penalising typos), though this is now a discussion of grading. </p>
+<h1 id="vector-plots">Vector Plots</h1>
+<p>Newer versions of JSXGraph provide support for vector plots natively, but STACK currently does not use this version of JSXGraph. However, it is not too difficult to create a bespoke vector plot function that can be adapted to a variety of circumstances.</p>
+<p>There are several considerations when creating a vector plot:</p>
+<p>1) How densely packed should the vectors be? 
+2) How long should the vectors be, and how much variation in length should there be? 
+3) What aesthetic choices are important to aid readability? 
+4) How should function information be passed from Maxima to JSXGraph?</p>
+<p>There is no single answer to these, and your answer will likely differ per question. Below is one approach to creating a vector plot question. Note that it assumes you are working with a plaintext editor and so <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;&amp;</code> are all viable options. If you work in a different editor (such as a the Moodle default) you may like to define your own functions to prevent conversion to <code>&amp;lt;</code>, <code>&amp;gt;</code> or <code>&amp;amp;</code> upon saving. </p>
+<p>Let us first assume a general vector function, called <code>F</code>. In the question variables, we could define <code>fx</code> and <code>fy</code> and then define <code>F: [fx,fy]</code>. If we were wanting to instead plot a gradient, we could define a function <code>f</code> and then define its gradient as <code>F: [diff(f,x),diff(f,y)]</code>. We will also need a version of <code>F</code> that uses valid JavaScript syntax. You might like to convert manually using something like <code>fx_jsx: ssubst("**","^",string(fx))</code>, though this relies on you knowing the form of the function and can cause problems with the unary minus. A better option could be to use <a href="https://jsxgraph.org/docs/symbols/JXG.JessieCode.html">JXG.JessieCode</a>. Lastly, we want a JavaScript function to output the direction at a given point. Something like the the following suffices.</p>
+<pre><code>var F = function(x,y) { return [{@fx_jsx@},{@fy_jsx@}] };
+</code></pre>
+<p>Next, we want to know where we are plotting. Keeping everything in terms of the plotting axes and number of vectors will prove convenient. If we choose the number of vectors in the x-direction to be <code>num_x</code> and similarly for y to be <code>num_y</code>, we can set up the following: </p>
+<pre><code>var xi = -2, yf = 2, xf = 2, yi = -2
+var axes = [xi, yf, xf, yi]
+var num_x = 20, num_y = 20
+var dx = 1/num_x*(xf - xi)
+var dy = 1/num_y*(yf - yi)
+</code></pre>
+<p>Our goal will be to plot vectors at every grid point defined by these steps in x and y called <code>dx</code> and <code>dy</code>.</p>
+<p>Before we iterate through this, we need to define the function that will actually plot the vectors.</p>
+<pre><code>var createVector = function(px, py) {
+    var vec = F(px,py) /* Compute the value of the function here */
+    var vecScaler = 1/Math.sqrt(vec[0]**2 + vec[1]**2)
+    var plotVec = [dx*vec[0]*vecScaler, dy*vec[1]*vecScaler]
+    var tip = [px + plotVec[0], py + plotVec[1]]
+    board.create('arrow',[[px,py],tip],{
+        color: "#1f77b4", opacity: 0.66, lastArrow: {type: 2, size: 4},
+        fixed: true, highlight: false
+    });
+    board.create('point',[px,py],{
+        color: "#1f77b4", size: 0.1, strokeOpacity: 0.66, fillOpacity: 0.75,
+        highlight: false, fixed: true, withLabel: false
+    });
+}
+</code></pre>
+<p>A couple of things to note: Firstly, the variable <code>vecScaler</code> is always equal to the reciprocal of the length of the vector, which means that in this example it will always plot a "unit" vector (where a unit here is the grid size). This can (and perhaps should) be changed unless you wish to use colour to denote different vector length (which is poor accessibility practice on its own). Secondly, these vectors are eminating from the grid point, which is plotted itself with a transparent dot. In fact, everything is partially transparent to avoid excessive busyness in the plot. You could easily set this up to instead plot with the centre of the arrow being the location, or could tweak any of the other visual settings. In general, it is good to indicate where the vector originates for clarity. </p>
+<p>Now we can finally plot the vectors. </p>
+<pre><code>var i, j;  
+for (i = xi/dx - 1; i &lt;= xf/dx + 1; i++) {
+  for (j = yi/dy - 1; j &lt;= yf/dy + 1; j++) {
+    createArrow(i*dx,j*dy);
+  }
+}
+</code></pre>
+<p>Note that the vectors are being plotted from just outside the desired area so that they can enter the plot from outside if needed. Now we have a vector plot! </p>
+<p>The scaling factor <code>vecScaler</code> is the last thing to consider seriously. It is often important to distinguish between different vector lengths, but just setting <code>vecScaler = 1</code> will usually render the plot illegible with huge vectors shooting all over the place. There is no shortage of ways to scale, but one way the author has found helpful is to use a sigmoidal curve like (\tan^{-1}(x)). Here is one option: </p>
+<pre><code>var myScaler = function(vec,a,b) { return a*(Math.PI/2 - Math.atan(a/b*Math.sqrt(vec[0]**2 + vec[1]**2))) }
+</code></pre>
+<p>for some tuning constants a and b. Note that this function produces a multiplying factor, not the desired length directly. b is the maximum length of the vector relative to the grid size, which is often set to either 1 or 1.414 (the former being good for vectors that tend to point along gridlines and the latter being good for vectors that tend to point in the direction of the diagonals, or if you like a little bit of overlap). a is a measure of how fast the vector reaches the maximum length. You could tweak the values of a and b for each question, or you could pair up functions and scaling factors in the question variables when randomising. Regardless, it might be a good idea to copy-paste the graphing code into the question note so that you can check the scaling when deploying variants.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

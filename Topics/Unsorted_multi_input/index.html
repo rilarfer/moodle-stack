@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Topics/Unsorted_multi_input/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Unsorted multi-input answers - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Unsorted multi-input answers";
+        var mkdocs_page_input_path = "Topics\\Unsorted_multi_input.md";
+        var mkdocs_page_url = "/Topics/Unsorted_multi_input/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Unsorted multi-input answers</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="unsorted-multi-input-answers">Unsorted multi-input answers</h1>
+<p>Quite often we have a number of separate inputs, but we don't know which order the student will choose to enter.</p>
+<p>Let's assume we ask a student to break down integration using linearity for example we have
+[ \int x^2+\sin(x) \mathrm{d} x = \int {\color{red}?} \mathrm{d} x + \int {\color{red}?} \mathrm{d} x]
+where the <code>?</code> are inputs <code>ans1</code> and <code>ans2</code>.  We might expect <code>ans1=x^2</code> but of course we could also have <code>ans1=sin(x)</code>.</p>
+<h3 id="use-the-feedback-variables">Use the feedback variables</h3>
+<p>One option is to define <code>sans:ans1+ans2</code> in the feedback variables.  Then the PRT can check <code>sans</code> is equivalent to the integrand up to commutativity and associativity (or something else if you perefer). The problem with this is the difficulty in awarding partial credit.</p>
+<h3 id="partial-credit-for-some-correct-answers">Partial credit for some correct answers</h3>
+<p>We want to provide some partial credit when student have some, but not all, the inputs correct.</p>
+<p>Let's assume we are looking for (n) different inputs.  We define (m) to be the number of missing, (w) to be the number of "not wanted" inputs, then we choose the score to be
+[ s = \max\left(1-\frac{m+w}{2n}, 0\right)]
+E.g., here if a student gets all (n) wrong so that (m=w=n) then the score is zero.
+If the student types in all the required expressions, (n=0) and (n) wrong ones in addition, then (s=\frac{1}{2}).
+This function is, of course, a choice of the teacher.</p>
+<p>In the above example, put the following in the question variables</p>
+<pre><code>ta1:x^2;
+ta2:sin(x);
+tas:{ta1, ta2};
+p:ta1+ta2;
+</code></pre>
+<p>In the feedback variables put</p>
+<pre><code>sans:{ans1, ans2};
+missing:setdifference(tas, sans);
+notwanted:setdifference(sans, tas);
+score:max(1-(length(missing)+length(notwanted))/(2*length(tas)),0);
+</code></pre>
+<p>Continuing the above example, in the PRT use</p>
+<ol>
+<li>The answer test <code>sets</code> perhaps with the quiet option.</li>
+<li><code>sans</code> is <code>{ans1,ans2}</code>.</li>
+<li><code>tans</code> is <code>tas</code>.</li>
+<li>Assign the score in <em>both</em> prt branches to be <code>score</code>.</li>
+</ol>
+<h3 id="dealing-with-duplicate-entries">Dealing with duplicate entries</h3>
+<p>How do we decide partial credit when there may be duplicates, e.g. eignevalues with repetion?  If the teacher's answer is <code>[1,1,2]</code> then we can't use the above example based on sets.</p>
+<p>STACK provides a maxima function <code>list_cancel(l1,l2)</code> which removes any common elements from <code>[l1,l2]</code>, with duplication.  E.g. use the following in the quesion variables.</p>
+<pre><code>sans:{ans1, ans2};
+[missing, notwanted]:list_cancel([sans, tas]);
+score:max(1-(length(missing)+length(notwanted))/(2*length(tas)),0);
+</code></pre>
+<p>Note that <code>list_cancel</code> will not establish algebraic equialence and within this function two expressions are considered the same using maxima's <code>is(ex1=ex2))</code>.  Hence, some pre-processing of the lists might be needed, depending on the situation and what you consider is the "same".  For example if we have</p>
+<pre><code>l1:[x^2,x^3,x^2-1,x+x];
+l2:[x^2,x^4,(x-1)*(x+1),2*x];
+list_cancel([l1,l2]);
+</code></pre>
+<p>will return [\left[ \left[ x^3 , x^2-1 \right]  , \left[ x^4 , \left(x-1\right) \,\left(x+1\right) \right]  \right] ]
+Notice the last elements are remove because default simplification takes place but (x^2-1) and ((x-1)(x+1)) are not considered the same by <code>is</code>.  In this case <code>ratsimp</code> can be applied to the lists first.  In other situations functions like <code>trigsimp</code> or <code>trigrat</code> might be needed.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

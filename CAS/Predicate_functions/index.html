@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/CAS/Predicate_functions/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Predicate functions - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Predicate functions";
+        var mkdocs_page_input_path = "CAS\\Predicate_functions.md";
+        var mkdocs_page_url = "/CAS/Predicate_functions/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Predicate functions</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="predicate-functions">Predicate functions</h1>
+<p>A predicate function takes an expression and returns Boolean values <code>true</code> or <code>false</code>.</p>
+<p>The convention in <a href="../Maxima/">Maxima</a> is to end predicate
+functions with the letter "p". Many predicate functions exist
+already within Maxima.  Some of the more useful to us are
+listed below.   STACK defines an additional range of predicate
+functions.  Some are described here, others are in the relevant specific sections of the documentation, such as <a href="../Numbers/">numbers</a>.</p>
+<p>Since establishing mathematical properties are all about predicates they are particularly important for STACK.</p>
+<p>You can use predicate functions directly in the <a href="../../Authoring/Potential_response_trees/">potential response tree</a> by comparing the result with <code>true</code> using the
+<a href="../../Authoring/Answer_Tests/">answer test</a> AlgEquiv.</p>
+<h1 id="maxima-type-predicate-functions">Maxima type predicate functions</h1>
+<p>The following are a core part of Maxima, but there are many others.  Notice, predicate functions end in the letter "p".</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Predicate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>floatnump(ex)</code></td>
+<td>Determines if (ex) is a float.</td>
+</tr>
+<tr>
+<td><code>numberp(ex)</code></td>
+<td>Determines if (ex) is a number.  <em>NOTE</em> <code>numberp</code> returns <code>false</code> if its argument is a symbol, even if the argument is a symbolic number such as (\sqrt{2}), (\pi) or (i), or declared to be even, odd, integer, rational, irrational, real, imaginary, or complex.   This function also does not work when <code>simp:false</code>, so see the dedicated page on <a href="../Numbers/">numbers</a>.</td>
+</tr>
+<tr>
+<td><code>setp(ex)</code></td>
+<td>Determines if (ex) is a set.</td>
+</tr>
+<tr>
+<td><code>listp(ex)</code></td>
+<td>Determines if (ex) is a list.</td>
+</tr>
+<tr>
+<td><code>matrixp(ex)</code></td>
+<td>Determines if (ex) is a matrix.</td>
+</tr>
+<tr>
+<td><code>polynomialp(ex,[v])</code></td>
+<td>Determines if (ex) is a polynomial in the list of variables v.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="stack-type-predicate-functions">STACK type predicate functions</h1>
+<p>The following type predicates are defined by STACK.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Predicate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>variablep(ex)</code></td>
+<td>Determines if (ex) is avariable, that is an atom but not a real numberm, (i) or a string.</td>
+</tr>
+<tr>
+<td><code>equationp(ex)</code></td>
+<td>Determines if (ex) is an equation.</td>
+</tr>
+<tr>
+<td><code>functionp(ex)</code></td>
+<td>Determines if (ex) is a function definition, using the operator <code>:=</code>.</td>
+</tr>
+<tr>
+<td><code>inequalityp(ex)</code></td>
+<td>Determines if (ex) is an inequality.</td>
+</tr>
+<tr>
+<td><code>expressionp(ex)</code></td>
+<td>Determines if (ex) is <em>not</em> a matrix, list, set, equation, function or inequality.</td>
+</tr>
+<tr>
+<td><code>polynomialpsimp(ex)</code></td>
+<td>Determines if (ex) is a polynomial in its own variables.</td>
+</tr>
+<tr>
+<td><code>simp_numberp(ex)</code></td>
+<td>Determines if (ex) is a number when <code>simp:false</code>.</td>
+</tr>
+<tr>
+<td><code>simp_integerp(ex)</code></td>
+<td>Determines if (ex) is an integer when <code>simp:false</code>.</td>
+</tr>
+<tr>
+<td><code>real_numberp(ex)</code></td>
+<td>Determines if (ex) is a real number.</td>
+</tr>
+<tr>
+<td><code>rational_numberp(ex)</code></td>
+<td>Determines if (ex) is written as a fraction.  For a true mathematical rational number use <code>rational_numberp(ex) or simp_integerp(ex)</code></td>
+</tr>
+<tr>
+<td><code>lowesttermsp(ex)</code></td>
+<td>Determines if a fraction (ex) is in lowest terms.</td>
+</tr>
+<tr>
+<td><code>complex_exponentialp(ex)</code></td>
+<td>Determines if (ex) is written in complex exponential form, (r e^{i\theta} ).  Needs <code>simp:false</code>.</td>
+</tr>
+<tr>
+<td><code>imag_numberp(ex)</code></td>
+<td>Determines if (ex) is a purely imaginary number.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="stack-general-predicates">STACK general predicates</h1>
+<p>The following are defined by STACK.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Predicate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>element_listp(ex,l)</code></td>
+<td><code>true</code> if <code>ex</code> is an element of the <em>list</em> (l).  (Sets have <code>elementp</code>, but lists don't)</td>
+</tr>
+<tr>
+<td><code>all_listp(p,l)</code></td>
+<td><code>true</code> if all elements of (l) satisfy the predicate (p).</td>
+</tr>
+<tr>
+<td><code>any_listp(p,l)</code></td>
+<td><code>true</code> if any elements of (l) satisfy the predicate (p).</td>
+</tr>
+<tr>
+<td><code>sublist(l,p)</code></td>
+<td>Return a list containing only those elements of the list (l) for which the predicate p is true</td>
+</tr>
+</tbody>
+</table>
+<p>(The last of these is core Maxima and is not, strictly speaking, a predicate function)</p>
+<h1 id="stack-other-predicate-functions">STACK other predicate functions</h1>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Predicate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expandp(ex)</code></td>
+<td>true if (ex) equals its expanded form.</td>
+</tr>
+<tr>
+<td><code>factorp(ex)</code></td>
+<td>true if (ex) equals its factored form.  Note, if you would like to know if an expression is factored you need to use the <a href="../../Authoring/Answer_Tests/#Form">FacForm</a> answer test.  Prime integers equal their factored form, composite integers do not.</td>
+</tr>
+<tr>
+<td><code>continuousp(ex,v,xp)</code></td>
+<td>true if (ex) is continuous with respect to (v) at (xp) (unreliable).</td>
+</tr>
+<tr>
+<td><code>diffp(ex,v,xp,[n])</code></td>
+<td>true if (ex) is (optionally (n) times) differentiable with respect to (v) at (xp) (unreliable).</td>
+</tr>
+</tbody>
+</table>
+<p>The last two functions rely on Maxima's <code>limit</code> command and hence are not robust.</p>
+<h1 id="establishing-form">Establishing form</h1>
+<p>A lot of what teachers do is try to establish if a student's answer "looks right" that is, in an appropriate form.</p>
+<p><code>linear_term_p(ex, p)</code> establishes that the expression <code>ex</code> is a simple product of one expression for which the predicate <code>p</code> is true and zero or more real numbers.</p>
+<p><code>linear_combination_p(ex, p)</code> establishes that the expression <code>ex</code> is a linear combination of terms for which <code>p</code> is true.</p>
+<p>The teacher can then use this function to build more complex predicates such as the following</p>
+<pre><code>fouriertermp(ex) := if ((safe_op(ex)="cos" or safe_op(ex)="sin") and linear_term_p(first(args(ex)), variablep)) then true else false$
+</code></pre>
+<p>This predicate function decides if we have a term of the form (\sin(n\, v)) or (\cos(n\, v)) where (n) is any product of real numbers (e.g. (3\pi/2)) and (v) is any variable.  A teacher might prefer to specify a particular variable.</p>
+<pre><code>fouriertermp(ex) := if ((safe_op(ex)="cos" or safe_op(ex)="sin") and linear_term_p(first(args(ex)), lambda([ex2], ex2=t))) then true else false$
+</code></pre>
+<p>So, if you want to decide if the student's answer looks like ( \sum_{k=1}{n} a_k\cos(k\pi t) + a_k\cos(k\pi t) ) the combined predicate <code>linear_combination_p(ex, fouriertermp)</code> can be used.</p>
+<p>Testing for form in this way is probably more reliable that the <code>substequiv</code> answer test which fails to match up expressions like (A\sin(t)+B\cos(t)) with (A\sin(t)-B\cos(t)).  As every, the minus sign is a problem.  However, the following predicate will work.</p>
+<pre><code>simpletrigp(ex) := if (ex=cos(t) or ex=sin(t)) then true else false$
+</code></pre>
+<p>and the test <code>linear_combination_p(ex, simpletrigp)</code> will be able to do this.</p>
+<h1 id="related-functions">Related functions</h1>
+<p>This is not, strictly speaking, a predicate function.  It is common to want to ensure that a student's expression is free of things like (\sqrt{2}), (a^{1/2}) or (1+\sqrt[3]{2}) in the denominator.  This include any complex numbers.</p>
+<p><code>rationalized(ex)</code> searches across the whole expression <code>ex</code> and looks in the denominators of any fractions.  If the denominators are free of such things the function returns <code>true</code> otherwise the function returns the list of offending expressions.  This design allows efficient feedback of the form ``the denominator in your expression should be free of the following: ...".</p>
+<h2 id="see-also">See also</h2>
+<p><a href="../#reference.md">Maxima reference topics</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

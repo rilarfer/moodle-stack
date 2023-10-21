@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/PHP-CAS/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>PHP interface with the CAS - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PHP interface with the CAS";
+        var mkdocs_page_input_path = "Developer\\PHP-CAS.md";
+        var mkdocs_page_url = "/Developer/PHP-CAS/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">PHP interface with the CAS</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="php-interface-with-the-cas">PHP interface with the CAS</h1>
+<p>This document describes the design of the PHP interface to the CAS.  This interface was developed specifically to connect STACK to Maxima.</p>
+<h1 id="high-level-objects">High level objects</h1>
+<h2 id="cas-text">CAS text</h2>
+<p>CAS text is literally "computer algebra active text".  This is documented <a href="../../Authoring/CASText/">here</a>.  Note, that when constructing CAS text it must be able to take a CAS session as an argument to the constructor.  In this way we can use lists of variables, such as <a href="../../Authoring/Variables/">question variables</a> to provide values.</p>
+<p>E.g. we might have :</p>
+<pre><code>n:rand(5)+2;
+</code></pre>
+<p>in the question variables field.  The question is instantiated,  and then later we need to create some CAS text, e.g. feedback, in which we have :</p>
+<pre><code>You were asked to find the integral of \((x+2)^{@n@}\) with respect to \(x\).  In fact ....
+</code></pre>
+<p>Here, we need the CAS text to be able to construct the text, with the previously evaluated value of <code>n</code>.  This need is also why the CAS session returns the <em>value</em> of the variables as well as a displayed form.  It is used here.</p>
+<h2 id="cas-session">CAS session</h2>
+<p>This class actually calls the CAS itself.  The basic ideas is to take a list of maxima commands, including assignments of the form.</p>
+<pre><code>key:rawvalue
+</code></pre>
+<p>and executes this list in a single Maxima session.  The results of this are then captures and fed back into the CAS strings so we essentially have data in the form:</p>
+<pre><code>key =&gt;
+    value
+    display
+    error
+</code></pre>
+<p>An important point here is that expressions (values) can refer to previous keys. This is one reason why we can't tie teachers down to a list of allowed functions.  They will be defining variable and function names.  We have implemented a lazy approach where the connection to the CAS is only made, and automatically made, when we ask for the values, display form or error terms for a variable.  And we don't generate display and value unless they are needed later.  E.g. intermediate values do not create LaTeX.</p>
+<h2 id="answer-tests">Answer tests</h2>
+<p>The answer tests essentially compare two expressions.  These may accept an option, e.g. the number of significant figures.
+Details of the current answer tests are available <a href="../../Authoring/Answer_Tests/">elsewhere</a>.  The result of an answer test should be</p>
+<ol>
+<li>Boolean outcome, true or false,</li>
+<li>errors,</li>
+<li>feedback,</li>
+<li>note.</li>
+</ol>
+<h1 id="other-concepts">Other concepts</h1>
+<h2 id="validity">Validity</h2>
+<p>There are a number of reasons why a CAS expression needs to be "valid".   These are</p>
+<ol>
+<li>security,</li>
+<li>stability,</li>
+<li>error trapping,</li>
+<li>pedagogic reasons, specific to a particular question.</li>
+</ol>
+<h2 id="single-call-prts-and-simplification">Single call PRTs and simplification</h2>
+<p>As of STACK 4.4 we make a single Maxima call to exectue an entire PRT. 
+This reduces significantly the number of separate calls to maxima, which 
+is a significant efficienty  boost for more complex questions.</p>
+<p>Some answer tests rely on "unsimplified" expressions with a "what you see 
+is what you get" approach.</p>
+<p>This example illustrates the issue.  The teacher computes the answer to their 
+question, e.g. find (\int_{0}^{1} {\frac{{\left(1-x\right)}^4\cdot x^4}{x^2+1}} \mathrm{d}x), 
+with the Maxima code</p>
+<pre><code>p1:int(x^4*(1-x)^4/(1+x^2),x,0,1);
+</code></pre>
+<p>using simplification (obviously) at the start of the quetion variables, and this simplified expression is used
+by the PRT. The answer,  (\frac{22}{7}-\pi), is held internally in "simplified" form. 
+The Maxima string output is <code>22/7-%pi</code> but internally the answer is actually the following </p>
+<pre><code>((MPLUS SIMP) ((RAT SIMP) 22 7) ((MTIMES SIMP) -1 $%PI))
+</code></pre>
+<p>You can see the internal tree structure of a Maxima expression with the following code.</p>
+<pre><code>(simp:true, p1:22/7-%pi, ?print(p1));
+</code></pre>
+<p>Rather than <code>22/7-%pi</code> the internal structure is really closer to this: <code>rat(22,7)+ (-1*%pi)</code>.</p>
+<p>On the other hand, a student types in the expression <code>22/7-%pi</code> and we deal with this without simplification.
+The internal Maxima expression is now </p>
+<pre><code>(simp:false, p1:22/7-%pi, ?print(p1));
+</code></pre>
+<p>which gives a different internal structure</p>
+<pre><code>((MPLUS) ((MQUOTIENT) 22 7) ((MMINUS) $%PI))
+</code></pre>
+<p>which might best be thought of as <code>22/7+-(%pi)</code> where <code>-</code> is now a function of a single argument.</p>
+<p>In this example, the unsimplified <code>MQUOTIENT</code> and simplified <code>RAT SIMP</code> are not particularly problematic.  However, the difference between <code>-%pi</code> and <code>-1*%pi</code> is seriouly problematic.  Indeed, this kind of distinction is exactly what some
+answer tests, e.g. <code>EqualComAss</code> and <code>CasEqual</code>, are designed to establish.  These tests will not work with a mix of simplified and unsimplified expressions, even if to the user they look completely identical!</p>
+<p>The solution to this problem is to "rinse" away any maxima internal simplification by using the Maxima <code>string</code> function to return the expression to the top level which a user would expect to type.  This process corresponds to what happend in older versions of Maxima in which expressions were routinely passed between Maxima and PHP, with the string representation being used.</p>
+<p>Some expressions (lists, matrices) are passed by reference in Maxima, so even if the teacher's answer is created without simplification in the first instance, when it is evaluated by the answer tests there is a risk of it becoming simplified when it is later compared by an answer test function.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/STACK-JS/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>STACK-JS - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "STACK-JS";
+        var mkdocs_page_input_path = "Developer\\STACK-JS.md";
+        var mkdocs_page_url = "/Developer/STACK-JS/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">STACK-JS</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="stack-js">STACK-JS</h1>
+<p>Including JavaScript in questions has always been a bit suspicious as it
+essentially executes with the user's rights in the browser. For this reason it
+is necessary to somehow separate that scripting from the VLE context. It is also
+good to separate the scripting from the VLE to ease portability of materials
+to other VLEs.</p>
+<p>STACK-JS is a sandbox IFRAME based solution where the potentially dangerous 
+bits of code exist inside an IFRAME and communicate with the VLE through a limited 
+set of messages. The idea is to restrict the script from directly seeing
+the VLE, and restrict interaction with the VLE.</p>
+<h2 id="basics">Basics</h2>
+<p>The solution consist of two parts:</p>
+<ol>
+<li>
+<p>The VLE side beachhead script which needs to adapt to the VLE while at
+    the same time maintain the STACK-JS features. For Moodle this script
+    is in the <code>amd/src/stackjsvle.js</code> file and it has been designed so
+    that the VLE-specific parts are separated into functions name <code>vle_</code>
+    porting this to other VLEs should not be difficult.</p>
+</li>
+<li>
+<p>The IFRAME side script is currently stored at
+    <code>corsscripts/stackjsiframe.js</code> and provides automated promise-based APIs
+    for doing basic actions through the messaging system. This script
+    should never be changed and it should always be the same on all VLEs.
+    It includes logic for synchronisation that may not be necessary with
+    the default Moodle implementation, but should still be kept there for
+    possible other uses.</p>
+</li>
+</ol>
+<p>The VLE side has more control here, as it can decide what it allows and
+to whom it listens. In general, the IFRAMEs are constructed through the VLE
+side scripts and those scripts only listen to the IFRAMEs they constructed.</p>
+<p>The primary security feature of the VLE side is to limit the access to
+inputs to just those inputs present within questions. The access is also
+limited to listening for input changes and setting their values so no DOM
+modification is possible. However, there are messages that allow toggling
+the visibility and changing the contents of elements by ID, however again
+the VLE can limit those elements to just those elements within
+the questions and also apply whatever cleaning (strip all scripts and so
+on) to any content received.</p>
+<h2 id="promises-for-the-content">Promises for the content</h2>
+<p>The content going into those IFRAMEs can be anything and it can do
+whatever it wants in those IFRAMEs. The STACK-JS logic will promise that
+no filtering for the content will ever be done. Other than Markdown etc.
+if requested. No VLE level filters will affect it nor will we tidy it.</p>
+<p>Content can also rest assured that it is not within the same origin as
+the VLE and thus cannot leak authorisation or other sensitive details
+from that side.</p>
+<h2 id="inconveniences">Inconveniences</h2>
+<p>As the IFRAME is in its own "origin" it cannot load scripts from just any
+source. And as it is important to be able to load some scripts, especially
+that <code>stackjsiframe.js</code>, we need a source that is suitable. That source
+needs to set a particular header, and as we do not want to add extra install
+requirements for different web-servers we now have a special script that
+modifies headers at <code>corsscripts/cors.php</code>. We could also serve that script
+from external source through some CDN, but we probably want to maintain
+the ability to run the whole system in a closed network so that is why we
+provide our own header modification script.</p>
+<p>If one needs to serve anything to those IFRAMEs from the local system one
+can either drop that thing into that <code>corsscripts/</code> directory or config
+ones own headers elsewhere. Currently, works with <code>.css</code> and <code>.js</code> files.</p>
+<h3 id="loading-external-scripts">Loading external scripts</h3>
+<p>Do note that loading external scripts into the IFRAME is possible as long
+as the following two conditions are met:</p>
+<ol>
+<li>You are not loading from <code>http://</code> sources into <code>https://</code> context.
+    Things work the other way around but mixing HTTP into HTTPS does not,
+    as most sane VLEs are going to be running over HTTPS and the IFRAME will
+    inherit some security assumptions from the surroundings, you should
+    always write any references to external libraries using <code>https://...</code> urls.</li>
+<li>The server serving that library has the correct CORS header so that
+    the script allows itself to be loaded into different origin context.
+    Basically, public usage CDN:s have this header. But most servers do
+    not by default serve scripts for others to use. The header is this:
+    <code>Access-Control-Allow-Origin: *</code>. Do note that the server could also
+    serve other headers that might affect your ability to load scripts into
+    sandbox IFRAMEs so if things do not work check those headers.</li>
+</ol>
+<p>Do note that use of external resources will always make your materials
+sensitive to external changes. Therefore, if you do build materials that
+rely on external libraries do consider self hosting fixed copies of those
+libraries for your own use.</p>
+<h2 id="the-general-security-reason">The general security reason</h2>
+<p>While no attacks using the scripting are currently known, securing this
+border is necessary in a world where material sharing is more common. If your
+STACK installation is not new enough to use this security feature then do pay
+extra attention to materials received from random sources, as they might
+contain scripting that would execute with your rights. Such execution could,
+for example:</p>
+<ol>
+<li>Exfiltrate information from the system that is likely to house
+    student details.</li>
+<li>Modify information in the system, for example, points, quiz settings, or
+    access rights.</li>
+<li>Do arbitrary actions "as you", e.g., post messages onto course forums.</li>
+</ol>
+<p>Do note that similar risks are related to any materials that allow arbitrary
+scripts to be included either by the student or by whoever authored
+the material and these types of attacks are always just one spoofed e-mail
+away.</p>
+<p>While unlikely, it is worth being careful until STACK has completed
+the migration to secured JavaScript. The current plan is to first provide
+means for doing things in a secure way and then forbid insecure methods
+in a following release. Until that following release, keep your eyes open.</p>
+<h2 id="minimal-example-for-access-to-an-input">Minimal example for access to an input</h2>
+<p>Given a STACK question with an input named <code>ans1</code> you can create an IFRAME
+that executes arbitrary code that can refrence that input like this:</p>
+<pre><code>[[iframe]]
+[[script type=&quot;module&quot;]]
+import {stack_js} from '[[cors src=&quot;stackjsiframe.js&quot;/]]';
+var promiseforaninput = stack_js.request_access_to_input(&quot;ans1&quot;, true);
+promiseforaninput.then((id) =&gt; {
+   document.getElementById(id).type = 'input';
+});
+[[/script]]
+[[/iframe]]
+</code></pre>
+<p>The first two lines first open up an <code>[[iframe]]</code> which generates an XHTML
+document and an IFRAME to contain it, and then we use the <code>[[script]]</code> block
+to generate a script-tag in that documents head. With the <code>type="module"</code> we
+make it possible to use the <code>import</code> syntax to bring in libraries and in this
+case we bring in the <code>stack_js</code> library from an URL provided by the <code>[[cors]]</code>
+block so that we do not need to write hard coded references to the full URL.
+Once we have the library, we then ask it for access to the input named <code>ans1</code>,
+we also add that <code>true</code> to signal the we would want to see <code>input</code> events
+being synchronised in addition to normal <code>change</code> events, to make this demo
+more interactive. As the connection process is asynchronous we will receive
+a promise that will resolve into the identifier of an hidden input that will
+be constructed inside the IFRAME, in this example we simply make that input
+visible so that we can try interacting with it directly.</p>
+<p>If you modify that IFRAME side inputs value through code or other means it
+will only get synchronised to the VLE side once a <code>change</code> event is emitted,
+so do dispatch some events if things do not otherwise work.</p>
+<p>Also if your only purpose is to run JavaScript you might want to hide
+the IFRAME, you can simply place it inside something that is not being
+displayed or use <code>hidden="true"</code> as an argument to the <code>[[iframe]]</code>-block.
+If it needs to be visible, all the dimension options of <code>[[jsxgraph]]</code> also
+work here. </p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Authoring/Testing/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Testing, debugging and quality control - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Testing, debugging and quality control";
+        var mkdocs_page_input_path = "Authoring\\Testing.md";
+        var mkdocs_page_url = "/Authoring/Testing/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Testing, debugging and quality control</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="testing-debugging-and-quality-control">Testing, debugging and quality control</h1>
+<p>This page deals with testing questions and quality control. This is largely done through the question test functionality.</p>
+<p>High-quality question production needs care at each stage.  An <a href="../Workflow/">authoring workflow</a> is described separately.</p>
+<p>We have separate advice on <a href="../Fixing_broken_questions/">fixing broken questions</a> in a live quiz.</p>
+<h2 id="testing-for-quality-control">Testing for quality control</h2>
+<p>It is important to test questions to ensure they work correctly.  One approach would be for the teacher to repeatedly test them with various random numbers and inputs.  But this is inefficient and unreliable.</p>
+<p>Question Tests provide an automated mechanism through which the author may establish with confidence that
+the Potential Response Trees are processing the student answer as expected. They are based on the concept of "unit testing" from software development.
+Question variables can be included in the tests; indeed these are needed to define test inputs in the context of random values.</p>
+<p>Each test assigns values to</p>
+<ol>
+<li>any/all of the inputs.  These values may, naturally, depend on the
+   <a href="../Variables/#Question_variables">question variables</a>.</li>
+<li>values for the score and any penalty.</li>
+<li><a href="../Potential_response_trees/#Answer_note">Answer notes</a> from each of
+   the <a href="../Potential_response_trees/">potential response trees</a>.</li>
+</ol>
+<p>The teacher can opt to run the question tests from the preview window.  STACK automatically takes each test, assigns the values to inputs and attempts to submit it.  The results of the last answer note from each potential response tree is compared to that specified by the teacher.  Notice that this is a limitation of the system.  Specifying the complete route through the potential response tree would be too difficult and would discourage teachers from writing tests.</p>
+<p>If the score, penalty and answer note generated by each potential response tree matches that specified by the teacher, then the test will PASS, otherwise the test will FAIL. Note that failure of a test is a mismatch between outputs and expected outputs, not necessarily a sign that something is wrong with the question itself!</p>
+<p>The teacher can also examine by hand the outcomes generated by each step of each test, including full feedback generated.</p>
+<p>In this way, the teacher can record, within the question itself, how they expect the marking scheme to work for a variety of student answers.</p>
+<h2 id="writing-tests">Writing tests</h2>
+<ol>
+<li>Author and save your question.</li>
+<li>From the Question bank, choose the <em>Preview</em> option.</li>
+<li>The <em>Preview question</em> window will open.  If you have authority to edit the question, then the top right of the question window will contain a link to <em>question tests and deployed variants...</em>.  Follow this link.</li>
+<li>This page manages both question tests and deployed variants.  Initially you will have no tests or deployed variants.  Choose <em>Add a test case...</em></li>
+<li>Specify values for each input.  This may use the question variables.  The values of these variables will be used for any random variants.</li>
+<li>Specify the expected outcomes for each potential response tree.  This includes the score, penalty and answer note.  <em>Note</em>: currently only the last Answer Note, not the whole path through the potential response tree, is examined.  This is a limitation.</li>
+<li>Once you have added the test case, STACK will automatically validate and submit these responses and display the outcomes.</li>
+<li>You may add as many test cases are you need.  It is sensible to add in the following.<ol>
+<li>The correct response.  There is a button which will copy the expression used as the "Teacher's answer" in the input as a basis for a test case to help create this test.</li>
+<li>One example of each distinction you wish to make, i.e. if you have added specific feedback then provide an answer you expect to trigger this.</li>
+<li>Some "invalid" responses, especially if these are syntactically-valid expressions.  E.g. If the answer is an equation such as (y=2x+1), then (2x+1) might be invalid if you have chosen the input option "check types".  Adding a test case is useful to confirm this potential problem is caught by the question.  Leave the fields empty and the answer note <code>NULL</code> to indicate this.</li>
+<li>Add a totally incorrect answer.</li>
+</ol>
+</li>
+<li>If you leave the penalty field blank it will assume you mean the default penalty for the question.</li>
+</ol>
+<p>On the question testing page is a "Send to CAS" button.  Pressing this sends the question variables and general feedback to a special page which enables more efficient authoring of the feedback in the context of the values of the variables.  You still need to copy this by hand into the question edit form when you are satisfied.</p>
+<p>A Moodle administrator can run all of the questions tests within a particular course, or across the whole site by following the links on the STACK admin page.  It is useful do to this after upgrading the STACK code on the server to identify any test cases which have changed.</p>
+<p>Test cases can include a meaningful description of up to 255 characters.  This field is a simple string, and is not castext.</p>
+<h2 id="test-case-construction-and-maxima-evaluation">Test case construction and Maxima evaluation</h2>
+<p>Test cases are always written assuming <code>simp:false</code> regardless of the option set elsewhere.  If you want to construct a simplified test case then wrap this in <code>ev(... , simp)</code> to simplify the expression generating the test case.  This behaviour is required to enable construction of unsimplified test cases.</p>
+<p>You can (and should) constuct test cases based on invalid expressions.  If the raw testcase expression cannot be sent to the CAS, e.g. a missing bracket, then this invalidity will be tested.</p>
+<p>While test case construction uses <code>simp:false</code> Maxima must "evaluate" the expression prior to the result being used by an input as a test case.  This will replace variables by their values.  E.g. the typical case is to define a variable such as <code>ta</code> as the teacher's answer in the question variables field and use this throughout the question.  This answer will either be simplified, or not, when the question variables are evaluated.  To construct a test case using the teacher's answer use <code>ta</code> as the test case input.</p>
+<p>It is easier to create a number of variables in the question variables field for wrong answers, e.g. <code>wa1</code>, <code>wa2</code>, and construct the test cases in the question variables in advance.</p>
+<p>For matrix inputs the test case must be a correct Maxima statement, e.g. <code>matrix([1,2],[2,3])</code>.  There is currently no option to construct test cases by filling in individual input boxes here, which restricts the ability to create test cases of individual syntactically invalid matrix entries.  Similarly, for the textarea and equivalence reasoning input types the test case should be constructed as a list, just as the teacher's answer field is constructed.</p>
+<p>Some evaluations in Maxima do actually more than just replace existing variables with the values from the question variables. For example, in Maxima try</p>
+<pre><code>simp:false;
+f:x*sin(1/x);
+limit(f,x,0);
+</code></pre>
+<p>Notice here, that while <code>simp:false</code> the limit is still evaluated.  This is not "simplification".  For the full story, please refer to the Maxima docs on the <code>ev</code> command.</p>
+<p>In this case, you can prevent evaluation of limits by using an apostrophie in the test case construction to prevent evaluation.</p>
+<pre><code>simp:false;
+f:x*sin(1/x);
+'limit(f,x,0);
+</code></pre>
+<h3 id="test-case-construction-and-mcq">Test case construction and MCQ</h3>
+<p>Remember that MCQ input types return a CAS expression.  However, you must ensure each testcase actually corresponds to an option provided to the student, otherwise STACK will generate a runtime error.  Hence you cannot construct a test case from the list provided as the "Teacher's answer" in these input types!</p>
+<p>It is sensible to use the helper functions.  E.g. for a radio/dropdown use</p>
+<pre><code>tc1:first(mcq_correct(ta));
+</code></pre>
+<p>For the checkbox type you will need the whole list.</p>
+<pre><code>tc1:mcq_correct(ta);
+</code></pre>
+<h3 id="test-case-construction-and-numerical-precision">Test case construction and numerical precision.</h3>
+<p>You can construct test cases using the functions such as <code>dispdp</code> to create a test-case input with trailing zeros.  This is neeeded if the input, or answer test, is testing for a minimum number of decimal places or significant figures.</p>
+<h2 id="testing-values-of-variables">Testing values of variables</h2>
+<p>STACK provides a special function <code>s_assert(ex1, ex2)</code> which can be used in the question variables and feedback variables.  If <code>is(ex1=ex2)</code> does not evaluate to <code>true</code> then this function throws a maxima error message.  This can be used to create a run-time error and prevent a question, and a particular variant, being used.</p>
+<p>For example, if you have an expression <code>1/n</code> and the variable <code>n</code> is randomly generated you need to prevent a random version being zero.  In this case put the following in the question variables.</p>
+<pre><code>s_assert(is(n=0), false);
+</code></pre>
+<p>This test will throw an error when <code>n</code> is zero.</p>
+<p>In many situations this kind of test creation will be simpler than mapping onto student inputs.</p>
+<h2 id="stack-maxima-sandbox">STACK-Maxima sandbox</h2>
+<p>It is very useful to be able to use the desktop Maxima application to test questions.  To do this it is very helpful to load all the STACK libraries.  Details on how to do this are in the <a href="../../CAS/STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> page.</p>
+<h2 id="simplification-simplification">Simplification ## {#Simplification}</h2>
+<p>You can set global <a href="../../CAS/Simplification/">simplification</a> flags in two places within questions:</p>
+<ol>
+<li>Globally in the question.</li>
+<li>In each potential response tree.</li>
+</ol>
+<p>Regardless of what settings you use here the expressions you enter for inputs in question tests are <em>not</em> simplified.  This is necessary.  For example, if your question is "what is ({@a@}+{@b@})?" where {@a@} and {@b@} are randomly generated.  You will need to set the question level option <code>simplify:false</code> to prevent the student typing in the sum itself as an answer.  Then you will probably need separate tests for the expressions <code>a+b</code> and <code>ev(a+b,simp)</code> to make sure the student hasn't typed in the sum instead of the value of the sum.  For this reason, to enable "unsimplified" expressions to be included as question tests we do not simplify test inputs regardless of the options used in the question.</p>
+<p>If you have set <code>simplify:true</code> everywhere in your question, and you are only establishing algebraic equivalence of your answers anyway, "un-simplified" expressions as inputs to the tests will not matter.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>When you are done testing a question which uses randomization, you need to <a href="../Deploying/">deploy variants</a> of the question.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

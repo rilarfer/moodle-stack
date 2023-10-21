@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/Developer/Syntax_Future/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Future plans for syntax of answers and STACK. - STACK</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Future plans for syntax of answers and STACK.";
+        var mkdocs_page_input_path = "Developer\\Syntax_Future.md";
+        var mkdocs_page_url = "/Developer/Syntax_Future/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> STACK
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../AbInitio/">Guía Autoría inicio rápido</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Authoring/">Autoría</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CAS/">CAS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../">Desarrollador</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Moodle/">Moodle</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Reference/">Referencias</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Students/">Estudiantes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Topics/">Temas</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">STACK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Future plans for syntax of answers and STACK.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="future-plans-for-syntax-of-answers-and-stack">Future plans for syntax of answers and STACK.</h1>
+<p><strong>Problem we are trying to solve</strong>: students don't use the correct syntax.  We want, as much as possible, to spot common problems and either (1) tell students what they have done wrong, or (2) just condone the problem and fix it quietly.</p>
+<p><strong>Goal</strong>: be as helpful to students as possible.</p>
+<p>Separate "spotting problems/setting a context" from "Fixing/condoning problems".</p>
+<ol>
+<li>Teachers are expected to always use correct Maxima syntax, and use inert functions such as <code>stackunits</code>.</li>
+<li>Use the "Insert stars" option to set the pattern/context for checking expresions.</li>
+<li>Use the "Strict syntax" option to decide if we can fix/condone a problem for students.</li>
+<li>"yes" we don't condone any problem, but we do report back error messages such as "you seem to be missing *s", etc.</li>
+<li>"no" we just interpret and use the expression.  It may still be "invalid".</li>
+</ol>
+<p>E.g. if we have "Insert stars" looking for implied multiplication, and "Strict syntax" is "no" then a student's answer <code>2x</code> will be changed to <code>2*x</code> and used without comment.</p>
+<p>Some patterns must always be wrong.  Always check for these, even with teachers (who also need helpful error messages!).</p>
+<ul>
+<li><code>)(</code> must be missing a star.</li>
+<li>Some implied multiplication patterns such as <code>2x</code>, or space patterns <code>2 x</code>.</li>
+<li>Atoms which appear as both function names and variable names.  E.g.<code>x(x+1)</code>.</li>
+</ul>
+<p>The issues are as follows:</p>
+<ol>
+<li>Implied multiplication.</li>
+<li><code>2x</code> must be <code>2*x</code>.</li>
+<li><code>x2</code> could be the atom <code>x2</code>, <code>x*2</code>, or <code>x[2]</code>.  Only if we look for "implied multiplication" do we suggest <code>x2-&gt;x*2</code>.</li>
+<li>Use of spaces as implied multiplication.</li>
+<li><code>2 x</code> must be <code>2*x</code>.</li>
+<li>Assume single variable character names. In many situations we know that a student will only have single character variable names.  Identify variables in the student's answer made up of more than one character then replace these with the product of the letters.</li>
+<li>We identify <em>variables</em> and known functions are now protected, e.g. <code>sin(ax)</code> will not end up as <code>s*i*n*(a*x)</code> but as <code>sin(a*x)</code>.</li>
+<li>Greek letters are always protected. (This might not work, e.g. <code>pi</code> might be <code>p*i</code>, but this is why we have validation!)</li>
+<li><code>in</code> is a keyword in Maxima, but we treat this as a special case <code>in-&gt;i*n</code>.</li>
+<li><code>asin(x)</code> is a problem, because <code>asin</code> is a function.  This is not transformed to <code>a*sin(x)</code>.</li>
+<li>Prevent the use of any user-defined functions? E.g. <code>f(x+1)</code> is function application in default Maxima, but <code>f</code> us not defined.</li>
+</ol>
+<h2 id="insert-stars-option">"Insert stars" option.</h2>
+<p>The value of this option is an integer.  Sum the numbers for each issue you want to include.  I.e. written in binary, each bit acts as a flag for each of the issues above.  This is extensible, as we identify new issues.</p>
+<ul>
+<li><code>0</code>: Expect strict Maxima syntax. I.e. don't insert *s for implied multiplication, or in place of any spaces.</li>
+<li><code>1</code>: Insert <code>*</code>s for implied multiplication.  If any patterns are identified as needing <code>*</code>s then they will automatically be inserted into the expression quietly.</li>
+<li><code>2</code>: Allow spaces for implied multiplication.</li>
+<li><code>4</code>: Assume single character variable names.</li>
+<li><code>8</code>: Assume single character variable nemes, and assume no Maxima constants.  E.g. <code>pi</code> is now <code>p*i</code> and not (\pi).</li>
+<li><code>16</code>: Assume no user-defined functions. (If <code>1</code> is set the insert stars...)</li>
+</ul>
+<p>Therefore, a value of <code>3</code> both inserts <code>*</code>s for implied multiplication and allow spaces to imply multiplication, but we do not assume single character variable names, and we do not prevent user-defined functions.</p>
+<h2 id="other-proposals">Other proposals.</h2>
+<ol>
+<li>Use the "forbid floats" option to deal with patterns like scientific notation.  If "forbid floats" is true we add patterns so that <code>3E2</code> or <code>3e2</code> (which Maxima interprets as <code>300.0</code>) are added to any for insert *s.</li>
+</ol>
+<h2 id="future-developments">Future developments</h2>
+<p>Support other issues in context, at the parsing stage.</p>
+<ul>
+<li>Base M numbers</li>
+<li>Allow entry of unicode?</li>
+<li>Spot order of precedence problems:  <code>x = 1 or 2</code> (normally used to mean <code>x=1 or x=2</code>).</li>
+<li>Bespoke grammers, e.g. add in support for intervals.  <code>x in (-2,-1] or [1,2)</code>.</li>
+<li>Student use of control structures, e.g. <code>if then...</code>?</li>
+</ul>
+<h2 id="legacy-mapping">Legacy mapping.</h2>
+<p>For old questions (those with <code>stackversion &lt; 2019041600</code>) we automatically perform the following mapping for the value of the insert stars option.</p>
+<p><code>old -&gt; new</code> (Old phrase).</p>
+<ul>
+<li><code>0 -&gt; 0</code> (Don't insert stars)</li>
+<li><code>1 -&gt; 1</code> (Insert stars for implied multiplication only)</li>
+<li><code>2 -&gt; 4</code> (Insert stars assuming single-character variable names)</li>
+<li><code>3 -&gt; 2</code> (Insert stars for spaces only)</li>
+<li><code>4 -&gt; 3</code> (Insert stars for implied multiplication and for spaces)</li>
+<li><code>5 -&gt; 7</code> (Insert stars assuming single-character variables, implied and for spaces)</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
