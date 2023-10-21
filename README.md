@@ -1,2 +1,2 @@
 # moodle-stack
-Página Web para documentación de Moodle
+Página Web para documentación de STACK Moodle
