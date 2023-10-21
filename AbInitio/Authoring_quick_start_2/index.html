@@ -114,7 +114,7 @@
 <h2 id="pregunta-de-ejemplo">Pregunta de Ejemplo</h2>
 <p>Para este ejemplo, trabajaremos con un sencillo problema de integración. A continuación se muestra un conjunto típico de ejercicios de práctica.</p>
 <p><img alt="Ejercicios de integración" src="../../content/IntegrationExercises.jpg" /></p>
-<p>Centrémonos en el problema de encontrar (\int 3(x-1)^{-4} \mathrm{d}x). Cree una nueva pregunta STACK. Como antes, daremos a nuestra pregunta un <strong>nombre de pregunta</strong>, digamos "Ejemplo de integración".</p>
+<p>Centrémonos en el problema de encontrar <script type="math/tex">\int 3(x-1)^{-4} \mathrm{d}x</script>. Cree una nueva pregunta STACK. Como antes, daremos a nuestra pregunta un <strong>nombre de pregunta</strong>, digamos "Ejemplo de integración".</p>
 <h3 id="uso-de-variables-de-pregunta">Uso de variables de pregunta</h3>
 <p>Los siguientes pasos serían añadir el texto de la pregunta y, a continuación, añadir la respuesta del profesor <code>-1*(x-1)^(-3)+c</code> al campo <code>respuesta modelo</code> y al <code>árbol de respuestas potenciales</code>.  Sin embargo, normalmente se hará referencia a la expresión y a la respuesta modelo más de una vez, por lo que suele ser más fácil asignarlas a "variables de pregunta" utilizando el campo opcional <a href="../../Authoring/Variables/#Question_variables">Variables de la pregunta</a>.</p>
 <p>Añada lo siguiente a las variables de la pregunta</p>
@@ -128,7 +128,8 @@ ta: int(exp,x)+c;
 [[input:ans1]] [[validation:ans1]]
 </code></pre>
 <p>Observe que hemos definido una variable local <code>exp</code>, y utilizado el valor de la misma en el texto de la Pregunta. Hay una diferencia entre las matemáticas encerradas entre símbolos <code>\(..\)</code> y símbolos <code>{@..@}</code>. Todos los campos basados en texto de la pregunta, incluida la retroalimentación, son <a href="../../Authoring/CASText/">texto CAS</a>.  Se trata de HTML en el que se pueden insertar las matemáticas.  LaTeX se coloca entre <code>\(..\)</code>s, y las expresiones CAS (incluyendo sus variables) entre símbolos coincidentes <code>{@..@}</code>.  Las expresiones CAS se evalúan en el contexto de las variables de la pregunta y se muestran como LaTeX.</p>
-<p>Dado que aquí hemos utilizado <code>{@exp@}</code>, el usuario no verá un (exp) en la pantalla cuando se instancie la pregunta, sino el <em>valor mostrado</em> de <code>exp</code>: (\frac{3}{(x-1)^{-4}})</p>
+<p>Dado que aquí hemos utilizado <code>{@exp@}</code>, el usuario no verá un <script type="math/tex">exp</script> en la pantalla cuando se instancie la pregunta, sino el <em>valor mostrado</em> de <code>exp</code>: <script type="math/tex">\frac{3}{(x-1)^{-4}}</script>
+</p>
 <p>En la entrada <code>ans1</code>, especifica la <code>respuesta modelo</code> como la variable <code>ta</code>.</p>
 <p>En el árbol de respuestas potenciales, ponga <code>Answer test</code> en <code>AlgEquiv</code>, ponga <code>SAns</code> en <code>ans1</code> y ponga <code>TAns</code> en <code>ta</code>.</p>
 <p>Es una buena práctica utilizar variables de pregunta a menudo, ya que ahorran tiempo y le permiten cambiar las propiedades de la pregunta fácilmente en el futuro.</p>
@@ -166,6 +167,7 @@ ta: int(exp,x)+c;
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -197,8 +197,8 @@ Notes</p>
 <li>Don't insert stars:  This does not insert <code>*</code> characters automatically.  If there are any pattern identified the result will be an invalid expression.</li>
 <li>Insert <code>*</code>s for implied multiplication.  If any patterns are identified as needing <code>*</code>s then they will automatically be inserted into the expression quietly.</li>
 <li>Insert <code>*</code>s assuming single character variable names.  In many situations we know that a student will only have single character variable names.  Identify variables in the student's answer made up of more than one character then replace these with the product of the letters.</li>
-<li>Note, the student's formula is interpreted and variables identified, so (\sin(ax)) will not end up as <code>s*i*n*(a*x)</code> but as <code>sin(a*x)</code>.</li>
-<li>Note, in interpreting the student's formula we build an internal tree in order to identify variable names and function names.  Hence (xe^x) is interpreted as ( (xe)^x ).  We then identify the variable name <code>xe</code> and replace this as <code>x*e</code>.  Hence, using this option we have <code>xe^x</code> is interpreted as <code>(x*e)^x</code> NOT as <code>x*e^x</code> which you might expect.  </li>
+<li>Note, the student's formula is interpreted and variables identified, so <script type="math/tex">\sin(ax)</script> will not end up as <code>s*i*n*(a*x)</code> but as <code>sin(a*x)</code>.</li>
+<li>Note, in interpreting the student's formula we build an internal tree in order to identify variable names and function names.  Hence <script type="math/tex">xe^x</script> is interpreted as <script type="math/tex"> (xe)^x </script>.  We then identify the variable name <code>xe</code> and replace this as <code>x*e</code>.  Hence, using this option we have <code>xe^x</code> is interpreted as <code>(x*e)^x</code> NOT as <code>x*e^x</code> which you might expect.  </li>
 </ul>
 <p>There are also additional options to insert multiplication signs for spaces.</p>
 <ul>
@@ -206,11 +206,11 @@ Notes</p>
 <li>Insert stars for implied multiplication and for spaces</li>
 <li>Insert stars assuming single-character variable names and for spaces</li>
 </ul>
-<p>If a space is taken for multiplication what should we do with (\sin\ x)?  Currently this is transformed to (\sin \times x) and then rejected as invalid as you can't multiply the function name by its argument.  Use these latter options with caution: in the long run students are likely to need to use a strict syntax with machines, and letting them use spaces now might be a disservice.</p>
+<p>If a space is taken for multiplication what should we do with <script type="math/tex">\sin\ x</script>?  Currently this is transformed to <script type="math/tex">\sin \times x</script> and then rejected as invalid as you can't multiply the function name by its argument.  Use these latter options with caution: in the long run students are likely to need to use a strict syntax with machines, and letting them use spaces now might be a disservice.</p>
 <p>It is often very important to have some on-screen representation of multiplication, e.g. as a dot, so the student can see at the validation that <code>xe^x</code> is interpreted </p>
 <ol>
-<li>as ( (x\cdot e)^x) if we assume single character variable names, and</li>
-<li>as ( xe^x) if we just "Insert <code>*</code>s for implied multiplication".  The absence of the dot here is key.</li>
+<li>as <script type="math/tex"> (x\cdot e)^x</script> if we assume single character variable names, and</li>
+<li>as <script type="math/tex"> xe^x</script> if we just "Insert <code>*</code>s for implied multiplication".  The absence of the dot here is key.</li>
 </ol>
 <h3 id="syntax-hint-syntax_hint">Syntax Hint {#Syntax_Hint}</h3>
 <p>A syntax hint allows the teacher to give the student a pro-forma in the input box.
@@ -255,9 +255,9 @@ can have a minus sign and two unary minus signs are considered to be something w
 <p>If this option is set to <code>yes</code> then unless the student's expression is the same
 <a href="../../CAS/Maxima/#Types_of_object">Maxima</a> as the teacher's correct answer,
 then the attempt will be rejected as invalid.</p>
-<p>Type checking here is very simple, basically checking the student's answer is an equation, inequality, list, set, matrix to match that of the teacher.  The intention is not to be completely comprehensive, but to avoid obvious type mismatch.  E.g. this is very useful for ensuring the student has typed in an "equation", such as (y=mx+c)
-and not an expression such as (mx+c).  Remember, you can't compare an expression with an equation!</p>
-<p>Another useful way of avoiding this problem is to put a LaTeX string such as (y=) just before the input.  E.g.</p>
+<p>Type checking here is very simple, basically checking the student's answer is an equation, inequality, list, set, matrix to match that of the teacher.  The intention is not to be completely comprehensive, but to avoid obvious type mismatch.  E.g. this is very useful for ensuring the student has typed in an "equation", such as <script type="math/tex">y=mx+c</script>
+and not an expression such as <script type="math/tex">mx+c</script>.  Remember, you can't compare an expression with an equation!</p>
+<p>Another useful way of avoiding this problem is to put a LaTeX string such as <script type="math/tex">y=</script> just before the input.  E.g.</p>
 <pre><code>\(y=\)[[input:ans1]].
 </code></pre>
 <h3 id="student-must-verify-student_must_verify">Student must verify ### {#Student_must_verify}</h3>
@@ -789,6 +789,7 @@ The only essential requirement is that the result is a valid CAS expression, whi
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

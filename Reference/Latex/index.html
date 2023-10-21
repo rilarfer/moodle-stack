@@ -109,18 +109,27 @@
                 <h1 id="useful-latex">Useful LaTeX</h1>
 <p>LaTeX notation can specify inline or display mode for maths by delimiting with <code>\(</code> or <code>\[</code> respectively.  Here are some simple examples:</p>
 <ul>
-<li><code>x^2</code> gives (x^2)</li>
-<li><code>x_n</code> gives (x_n)</li>
-<li><code>x^{2x}</code> gives (x^{2x})</li>
-<li><code>\alpha\beta</code> gives (\alpha\beta)</li>
-<li><code>\sin(3\pi x)</code> gives (\sin(3\pi x))</li>
-<li><code>\frac{1}{1-n^2}</code> gives (\frac{1}{1-n^2}) when inline.  In display mode it gives:</li>
+<li><code>x^2</code> gives <script type="math/tex">x^2</script>
+</li>
+<li><code>x_n</code> gives <script type="math/tex">x_n</script>
+</li>
+<li><code>x^{2x}</code> gives <script type="math/tex">x^{2x}</script>
+</li>
+<li><code>\alpha\beta</code> gives <script type="math/tex">\alpha\beta</script>
+</li>
+<li><code>\sin(3\pi x)</code> gives <script type="math/tex">\sin(3\pi x)</script>
+</li>
+<li><code>\frac{1}{1-n^2}</code> gives <script type="math/tex">\frac{1}{1-n^2}</script> when inline.  In display mode it gives:</li>
 </ul>
-<p>[ \frac{1}{1-n^2} ]</p>
+<p>
+<script type="math/tex; mode=display"> \frac{1}{1-n^2} </script>
+</p>
 <ul>
-<li><code>\int_a^b x^2\ dx</code> gives (\int_a^b x^2\ dx) when inline.  In display mode it gives:</li>
+<li><code>\int_a^b x^2\ dx</code> gives <script type="math/tex">\int_a^b x^2\ dx</script> when inline.  In display mode it gives:</li>
 </ul>
-<p>[ \int_a^b x^2\ dx ]</p>
+<p>
+<script type="math/tex; mode=display"> \int_a^b x^2\ dx </script>
+</p>
               
             </div>
           </div><footer>
@@ -152,6 +161,7 @@
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

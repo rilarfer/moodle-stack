@@ -109,31 +109,32 @@
                 <h1 id="vector-calculus-in-stack">Vector Calculus in STACK</h1>
 <p>Setting vector calculus problems using STACK does not require too much more thinking than setting regular calculus or linear algebra problems. There are a few extra additions, but a passing familiarity with Maxima's notation for derivatives, integrals and vectors will usually suffice.</p>
 <h1 id="calculus-with-more-than-one-variable">Calculus with more than one variable</h1>
-<p>To find derivatives of functions of more than one variable you can use the normal <code>diff(f,x)</code> function, which returns the partial derivative of (f) with respect to (x). To find the gradient vector, you might choose to put all the partial derivatives in a list or matrix using something like</p>
+<p>To find derivatives of functions of more than one variable you can use the normal <code>diff(f,x)</code> function, which returns the partial derivative of <script type="math/tex">f</script> with respect to <script type="math/tex">x</script>. To find the gradient vector, you might choose to put all the partial derivatives in a list or matrix using something like</p>
 <pre><code>grad(f,vars):= block(
   grad_vec: map(lambda([ex], 'diff(f,vars[ex])), ev(makelist(ii,ii,1,length(vars)), simp)),
   return(transpose(matrix(grad_vec)))
 );
 </code></pre>
 <p>Then <code>grad(f,[x,y,z])</code> would return
-[
- \left[\begin{array}{c} \frac{\mathrm{d} f}{\mathrm{d} x} \ \frac{\mathrm{d} f}{\mathrm{d} y} \ \frac{\mathrm{d} f}{\mathrm{d} z} \end{array}\right]
-]
+<script type="math/tex; mode=display">
+ \left[\begin{array}{c} \frac{\mathrm{d} f}{\mathrm{d} x} \\ \frac{\mathrm{d} f}{\mathrm{d} y} \\ \frac{\mathrm{d} f}{\mathrm{d} z} \end{array}\right]
+</script>
 Setting Maxima's <code>derivabbrev:true</code> changes the display of derivatives to subscripts.  Now <code>grad(f,[x,y,z])</code> would return
-[
-\left[\begin{array}{c} f_{x} \ f_{y} \ f_{z} \end{array}\right]
-]</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{c} f_{x} \\ f_{y} \\ f_{z} \end{array}\right]
+</script>
+</p>
 <p>If you would like to work with differentials, using <code>diff(f)</code> without specifying a variable will return <code>del(f)</code>. For example, </p>
 <pre><code>(%i1) f: x*y*z;
 (%o1) x y z;
 (%i2) diff(f);
 (%o2) x y del(z) + x z del(y) + y z del(x)
 </code></pre>
-<p>The Maxima differentials will display as (d(x)).  If you prefer notation such as (\mathrm{d}x) you might like to redfine the tex function associated with <code>del</code> e.g.</p>
+<p>The Maxima differentials will display as <script type="math/tex">d(x)</script>.  If you prefer notation such as <script type="math/tex">\mathrm{d}x</script> you might like to redfine the tex function associated with <code>del</code> e.g.</p>
 <pre><code>texput(del,lambda([ex],sconcat("\\mathrm{d}",tex1(first(ex)))));
 </code></pre>
 <p>If you need to assert that one or more variables are constant, you can use <code>declare([a,b,c],constant)</code> means that, using the previous example, <code>diff(f*c)</code> would return <code>c x y del(z) + c x z del(y) + c y z del(x)</code> rather than <code>c x y del(z) + c x z del(y) + c y z del(x) + x y z del(c)</code>.</p>
-<p>If you want to assert that one variable depends on the other, you can use <code>depends([f,g],[x,y])</code> to mean that (f) and (g) both depend on (x) and (y). If you just want to note that (y) depends on (x), then <code>depends(y,x)</code> is sufficient. This is useful when asking students to perform implicit partial differentiation and solve for the given derivative. Here is an example that wants students to find a partial derivative of one variable with respect to another, holding another variable constant: </p>
+<p>If you want to assert that one variable depends on the other, you can use <code>depends([f,g],[x,y])</code> to mean that <script type="math/tex">f</script> and <script type="math/tex">g</script> both depend on <script type="math/tex">x</script> and <script type="math/tex">y</script>. If you just want to note that <script type="math/tex">y</script> depends on <script type="math/tex">x</script>, then <code>depends(y,x)</code> is sufficient. This is useful when asking students to perform implicit partial differentiation and solve for the given derivative. Here is an example that wants students to find a partial derivative of one variable with respect to another, holding another variable constant: </p>
 <pre><code>declare([a,b,c,d],constant);
 eqn1: x*y = a*t^b*z;
 eqn2: c*z*y^d*t = sin(x);
@@ -147,7 +148,7 @@ eqn2d: diff(eqn2,indep);
 
 ta: rhs(flatten(solve([eqn1d,eqn2d],['diff(dep1,indep),'diff(dep2,indep)]))[1]);
 </code></pre>
-<p>This example generates two equations in (x), (y), (z) and (t), assigns each variable a role as either a dependent variable, independent variable, or a variable being held constant (also independent, but behaving differently in this context), differentiates both equations implicitly with respect to the independent variable, and then solves the equations simultaneously for the desired derivative. The original question had values assigned to (a), (b), (c) and (d), but it is interesting to declare them constant here. </p>
+<p>This example generates two equations in <script type="math/tex">x</script>, <script type="math/tex">y</script>, <script type="math/tex">z</script> and <script type="math/tex">t</script>, assigns each variable a role as either a dependent variable, independent variable, or a variable being held constant (also independent, but behaving differently in this context), differentiates both equations implicitly with respect to the independent variable, and then solves the equations simultaneously for the desired derivative. The original question had values assigned to <script type="math/tex">a</script>, <script type="math/tex">b</script>, <script type="math/tex">c</script> and <script type="math/tex">d</script>, but it is interesting to declare them constant here. </p>
 <p>Note that these questions can be a bit volatile, as Maxima simply cannot establish equality when various substitutions are made. It may be prudent to make rearrangement difficult, and/or tell students to not substitute values in their answer. </p>
 <h1 id="using-vectors">Using vectors</h1>
 <p>Maxima does not distinguish between vectors and matrices, with both being defined using the <code>matrix</code> command. You can put whatever you like in a matrix, so like the example above with a gradient vector, you can easily define a vector function as a matrix with expressions as elements. Some key points: </p>
@@ -155,23 +156,23 @@ ta: rhs(flatten(solve([eqn1d,eqn2d],['diff(dep1,indep),'diff(dep2,indep)]))[1]);
 <li>Lists are treated very similarly to row vectors (which means that things like the dot product operator work on them). It also means that it is sufficient to use <code>transpose([a,b,c])</code> to get a column vector.</li>
 <li><code>*</code> is used for element-wise multiplication of lists and matrices, whereas <code>.</code> is used as both a dot product and matrix product. This leads to slightly confusing behaviour for vectors, where <code>[x,y] . [z,t]</code>, <code>[x,y] . transpose([z,t])</code> and <code>transpose([x,y]) . transpose([z,t])</code> will all return <code>x*z + y*t</code>, but <code>transpose([x,y]) . [z,t]</code> will return the outer product matrix <code>matrix([x*z, t*x], [y*z, t*y])</code>.</li>
 <li>Matrices are indexed as <code>A[i,j]</code>, which means that when dealing with vectors you must be careful to index both the row and the column. For example, <code>matrix([1],[2],[3])[1]</code> will return the list <code>[1]</code> rather than the value <code>1</code>, and <code>matrix([1,2,3])[1]</code> will return the whole row <code>[1,2,3]</code>. One way around this is to use the <code>list_matrix_entries</code> function to return the list of all matrix entries, which is often easier to work with when considering vectors. Note that this function returns an error when given a list. </li>
-<li>The function <code>crossproduct(a,b)</code> is defined in STACK (not core Maxima), but must take two (3) by (1) column vectors as the input, not lists or row vectors. </li>
+<li>The function <code>crossproduct(a,b)</code> is defined in STACK (not core Maxima), but must take two <script type="math/tex">3</script> by <script type="math/tex">1</script> column vectors as the input, not lists or row vectors. </li>
 <li>The function <code>jacobian([f1,f2],[x,y])</code> is defined, and takes two lists as arguments. The first is the vector function, and the second is the list of variables. </li>
 </ol>
 <p>Some useful functions that are <em>not</em> defined in core Maxima are defined in STACK's contributed <code>vectorcalculus.mac</code> file in the contrib directory.</p>
 <ol>
-<li>divergence <code>div(u, vars)</code>. Accepts (u) as either a matrix or a list.</li>
-<li>curl <code>curl(u, vars)</code>.  Accepts (u) as either a matrix or a list.</li>
+<li>divergence <code>div(u, vars)</code>. Accepts <script type="math/tex">u</script> as either a matrix or a list.</li>
+<li>curl <code>curl(u, vars)</code>.  Accepts <script type="math/tex">u</script> as either a matrix or a list.</li>
 </ol>
 <p>These functions can be <a href="../../Authoring/Inclusions/">included</a> with <code>stack_include</code>.</p>
 <h1 id="lagrange-multipliers">Lagrange Multipliers</h1>
-<p>Finding critical points using the method of Lagrange multipliers is as simple as finding the stationary points to the system of equations given by (f - \lambda c) where (f) is the multivariable function you are investigating and (c) is a constraint curve. There are a few new considerations that come along with questions like this, such as what input type to use and how to account for a variable number of solutions.  </p>
-<p>Here is some example code that shows how you might procedurally generate solutions to a problem like this, where <code>func</code> is our function (f) and <code>cons</code> is our constraint curve (c) given as a single algebraic expression to be set to zero. </p>
+<p>Finding critical points using the method of Lagrange multipliers is as simple as finding the stationary points to the system of equations given by <script type="math/tex">f - \lambda c</script> where <script type="math/tex">f</script> is the multivariable function you are investigating and <script type="math/tex">c</script> is a constraint curve. There are a few new considerations that come along with questions like this, such as what input type to use and how to account for a variable number of solutions.  </p>
+<p>Here is some example code that shows how you might procedurally generate solutions to a problem like this, where <code>func</code> is our function <script type="math/tex">f</script> and <code>cons</code> is our constraint curve <script type="math/tex">c</script> given as a single algebraic expression to be set to zero. </p>
 <pre><code>equations: [diff(func, x) = L*diff(cons, x), diff(func, y) = L*diff(cons, y), cons = 0];
 solns: map(lambda([ex],map(rhs,firstn(radcan(ex),2))),solve(equations, [x, y, L]));
 ta: sublist(solns,lambda([ex],real_numberp(first(ex)) and real_numberp(second(ex))));
 </code></pre>
-<p>This code will generate all correct solutions, trim out the value of (\lambda) which typically does not concern us, removes any complex solutions, and returns the final answer as a list of ordered pairs. This is useful because it allows us to use the TextArea input type. To enter their answers, students can give as many or as ordered pairs as they like.</p>
+<p>This code will generate all correct solutions, trim out the value of <script type="math/tex">\lambda</script> which typically does not concern us, removes any complex solutions, and returns the final answer as a list of ordered pairs. This is useful because it allows us to use the TextArea input type. To enter their answers, students can give as many or as ordered pairs as they like.</p>
 <p>To mark this question, we could use some code like the following:</p>
 <pre><code>ans1_set: setify(map(simplify, ans1));
 ta_set: setify(map(simplify, ta));
@@ -225,7 +226,7 @@ for (i = xi/dx - 1; i &lt;= xf/dx + 1; i++) {
 }
 </code></pre>
 <p>Note that the vectors are being plotted from just outside the desired area so that they can enter the plot from outside if needed. Now we have a vector plot! </p>
-<p>The scaling factor <code>vecScaler</code> is the last thing to consider seriously. It is often important to distinguish between different vector lengths, but just setting <code>vecScaler = 1</code> will usually render the plot illegible with huge vectors shooting all over the place. There is no shortage of ways to scale, but one way the author has found helpful is to use a sigmoidal curve like (\tan^{-1}(x)). Here is one option: </p>
+<p>The scaling factor <code>vecScaler</code> is the last thing to consider seriously. It is often important to distinguish between different vector lengths, but just setting <code>vecScaler = 1</code> will usually render the plot illegible with huge vectors shooting all over the place. There is no shortage of ways to scale, but one way the author has found helpful is to use a sigmoidal curve like <script type="math/tex">\tan^{-1}(x)</script>. Here is one option: </p>
 <pre><code>var myScaler = function(vec,a,b) { return a*(Math.PI/2 - Math.atan(a/b*Math.sqrt(vec[0]**2 + vec[1]**2))) }
 </code></pre>
 <p>for some tuning constants a and b. Note that this function produces a multiplying factor, not the desired length directly. b is the maximum length of the vector relative to the grid size, which is often set to either 1 or 1.414 (the former being good for vectors that tend to point along gridlines and the latter being good for vectors that tend to point in the direction of the diagonals, or if you like a little bit of overlap). a is a measure of how fast the vector reaches the maximum length. You could tweak the values of a and b for each question, or you could pair up functions and scaling factors in the question variables when randomising. Regardless, it might be a good idea to copy-paste the graphing code into the question note so that you can check the scaling when deploying variants.</p>
@@ -260,6 +261,7 @@ for (i = xi/dx - 1; i &lt;= xf/dx + 1; i++) {
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

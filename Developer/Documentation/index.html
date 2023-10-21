@@ -175,7 +175,9 @@ If you want to serve content from the docs please place it in this directory.</p
 An example:</p>
 <pre><code>\[ \frac{\int_a^b f(t) \textrm{d} t }{b - a} \]
 </code></pre>
-<p>[ \frac{\int_a^b f(t) \textrm{d} t}{b - a} ]</p>
+<p>
+<script type="math/tex; mode=display"> \frac{\int_a^b f(t) \textrm{d} t}{b - a} </script>
+</p>
 <h2 id="compatibility-with-the-online-docs-website">Compatibility with the online docs {#Website}</h2>
 <p>The STACK docs are made available online on <a href="https://docs.stack-assessment.org">docs.stack-assessment.org</a>. For more information on how this is achieved, see the <a href="../Website/">Website documentation</a>. However this places certain limitations on the sort of elements that can be included in the documentation:</p>
 <ul>
@@ -334,6 +336,7 @@ feature      | !
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -121,12 +121,13 @@
 It is an iterative formal symbolic procedure where algebraic expressions, or terms within an expression, 
 are replaced by an equivalent until a "solved" form is reached.
 An example of solving a quadratic equation is shown below.
-[\begin{array}{cc} \  &amp; x^2-x=30 &amp; \
-\color{green}{\Leftrightarrow} &amp; x^2-x-30=0 &amp; \
-\color{green}{\Leftrightarrow} &amp; \left(x-6\right)\cdot \left(x+5\right)=0 \
-\color{green}{\Leftrightarrow} &amp; x-6=0\lor x+5=0 \
-\color{green}{\Leftrightarrow} &amp; x=6\lor x=-5
-\end{array}]</p>
+<script type="math/tex; mode=display">\begin{array}{cc} \  & x^2-x=30 & \\
+\color{green}{\Leftrightarrow} & x^2-x-30=0 & \\
+\color{green}{\Leftrightarrow} & \left(x-6\right)\cdot \left(x+5\right)=0 \\
+\color{green}{\Leftrightarrow} & x-6=0\lor x+5=0 \\
+\color{green}{\Leftrightarrow} & x=6\lor x=-5
+\end{array}</script>
+</p>
 <p>The point is that replacing an expression or a sub-expression in a problem by an equivalent expression provides a new problem having the same solutions.
 This input type enables us to capture and evaluate student's line-by-line reasoning, i.e. their steps in working, during this kind of activity.</p>
 <p>Reasoning by equivalence is very common in elementary mathematics.  It is either the entire task (such as when solving a quadratic)
@@ -138,7 +139,7 @@ This input type is designed to capture this kind of working and evaluate it base
 Instructions for students are <a href="../../Students/Equivalence_reasoning/">here</a>.  Some common observations about this form of reasoning are</p>
 <ol>
 <li>Students often use no logical connectives between lines.</li>
-<li>Students ignore the natural domain of an expression, e.g. in (\frac{1}{x}) the value (x=0) is excluded from the domain of definition.</li>
+<li>Students ignore the natural domain of an expression, e.g. in <script type="math/tex">\frac{1}{x}</script> the value <script type="math/tex">x=0</script> is excluded from the domain of definition.</li>
 <li>Operations which do not result in equivalence are often used, e.g. squaring both sides of an equation.</li>
 </ol>
 <p>This input type mirrors current common practice and does not expect students to indicate either logic or domains.<br />
@@ -174,7 +175,7 @@ blurs the distinction between validation and correctness, but in a way which is 
 <li>The position of the validation tags, e.g. <code>[[validation:ans1]]</code> are ignored for this input type.  Validation feedback is always displayed next to the TextArea into which students type their answer.</li>
 <li>The teacher's answer and any syntax hint must be a list.  If you just pass in an expression strange behaviour may result.</li>
 <li>The input type works very much like the TextArea input type.  Internally, the student's lines are turned into a list.  If you want to use the "final answer" then use code such as <code>last(ans1)</code> in your potential response tree.</li>
-<li>If students type in an expression rather than an equation, the system will assume they forgot to add (=0) at the end and act accordingly.  This is displayed to the student.</li>
+<li>If students type in an expression rather than an equation, the system will assume they forgot to add <script type="math/tex">=0</script> at the end and act accordingly.  This is displayed to the student.</li>
 </ul>
 <p>If the student starts their line with an <code>=</code> sign, this is accepted.  Teachers cannot use a prefix <code>=</code>.  In a worked solution the teacher must use the prefix function <code>stackeq</code>.  For example,</p>
 <pre><code>ta:[(x-1)^2,stackeq(x^2-2*x+1)]
@@ -189,11 +190,11 @@ blurs the distinction between validation and correctness, but in a way which is 
 <p><code>comments</code> allows students to include comments in their answer.  By default comments are not permitted as it breaks up the argument and stops automatic marking.</p>
 <p><code>firstline</code> takes the first line of the teacher's answer and forces the student to have this as the first line of the student's answer.  The test used is equality up to commutativity and associativity (EqualComAss answer test).</p>
 <p><code>assume_pos</code> sets the value of Maxima's <code>assume_pos</code> variable to be true.<br />
-If we <code>assume_pos</code> they any negative solutions will be ignored, whether or not they exist.  So (x=\pm 2) will now be equivalent to (x=2).<br />
+If we <code>assume_pos</code> they any negative solutions will be ignored, whether or not they exist.  So <script type="math/tex">x=\pm 2</script> will now be equivalent to <script type="math/tex">x=2</script>.<br />
 You might not want this equivalence.  In particular, this also has the effect of condoning squaring or rooting both sides of an equation.<br />
-For example (x^4=2) will now be equivalent to (x=2) (rather than (x=2 \vee x=-2)).<br />
+For example <script type="math/tex">x^4=2</script> will now be equivalent to <script type="math/tex">x=2</script> (rather than <script type="math/tex">x=2 \vee x=-2</script>).<br />
 This is not the default, but is useful in situations where a student is rearranging an equation to a given subject, and all the variables are assumed to be positive.  Note, this option is only for the input type. You will also need to set this in the question options to also affect the answer test.</p>
-<p><code>assume_real</code> sets an internal flag to work over the real numbers.  If <code>true</code> then (x=1) will be considered equivalent to (x^3=1).  Note, this option is only for the input type. You will also need to set this in the question options to also affect the answer test.</p>
+<p><code>assume_real</code> sets an internal flag to work over the real numbers.  If <code>true</code> then <script type="math/tex">x=1</script> will be considered equivalent to <script type="math/tex">x^3=1</script>.  Note, this option is only for the input type. You will also need to set this in the question options to also affect the answer test.</p>
 <p><code>calculus</code> allows calculus operations in an argument.  Note, this option is only for the input type. You will also need to set this in the answer test options to also affect the answer test.  This is at a very early stage of development.<br />
 For example, constants of integration are not currently checked by this currently.</p>
 <p>If the syntax hint is just the keyword <code>firstline</code> then the first line of the <em>value</em> of the teacher's answer will appear as a syntax hint.<br />
@@ -214,15 +215,16 @@ The options supported are <code>assume_pos</code>, <code>assume_real</code>, and
 <p>To test the last line of an argument is in the correct form will require a separate node in the potential response tree.  To add this to the answer test gives too many possibilities.</p>
 <h1 id="natural-domains">Natural domains</h1>
 <p>The equivalence reasoning input tracks natural domains of expressions.  This is via the STACK's <code>natural_domain(ex)</code> function.  Natural domains are shown to students in the validation feedback.
-[ \begin{array}{lll} &amp;\frac{5\,x}{2\,x+1}-\frac{3}{x+1}=1&amp;{\color{blue}{{x \not\in {\left {-1 , -\frac{1}{2} \right }}}}}\cr \color{green}{\Leftrightarrow}&amp;5\,x\,\left(x+1\right)-3\,\left(2\,x+1\right)=\left(x+1\right)\,\left(2\,x+1\right)&amp; \end{array} ]
+<script type="math/tex; mode=display"> \begin{array}{lll} &\frac{5\,x}{2\,x+1}-\frac{3}{x+1}=1&{\color{blue}{{x \not\in {\left \{-1 , -\frac{1}{2} \right \}}}}}\cr \color{green}{\Leftrightarrow}&5\,x\,\left(x+1\right)-3\,\left(2\,x+1\right)=\left(x+1\right)\,\left(2\,x+1\right)& \end{array} </script>
 At the moment STACK quietly condones silent domain enlargements such as in the above example.</p>
 <h1 id="repeated-roots">Repeated roots</h1>
-<p>There is general ambiguity about how to express multiplicity of roots.  If ((x-1)^2=0) is not equivalent to (x=1) then students need to indicate multiplicity of roots, but there appears to be no consensus on how this should be notated.</p>
-<p>The equation ( (x-3)^2 = 0 ) and the expression ( x=3 \mbox{ or } x=3) are considered to be equivalent, because they have the same roots with the same multiplicity.
-The expressions ( x=3 \mbox{ or } x=3) and ( x=3) have the same variety, but are not identical.
-This is, of course, slightly awkward since logical ``or'' is idempotent, and so ( x=3 \mbox{ or } x=3) and ( x=3) would be equivalent at a symbolic level.
-For this reason, STACK accepts (x=3) as equivalent to ((x-3)^2=0), but with an acknowledgement.
-[ \begin{array}{lll} &amp;\left(x-3\right)^3=0&amp; \cr \color{green}{\mbox{(Same roots)}}&amp;x=3&amp; \cr \end{array} ]</p>
+<p>There is general ambiguity about how to express multiplicity of roots.  If <script type="math/tex">(x-1)^2=0</script> is not equivalent to <script type="math/tex">x=1</script> then students need to indicate multiplicity of roots, but there appears to be no consensus on how this should be notated.</p>
+<p>The equation <script type="math/tex"> (x-3)^2 = 0 </script> and the expression <script type="math/tex"> x=3 \mbox{ or } x=3</script> are considered to be equivalent, because they have the same roots with the same multiplicity.
+The expressions <script type="math/tex"> x=3 \mbox{ or } x=3</script> and <script type="math/tex"> x=3</script> have the same variety, but are not identical.
+This is, of course, slightly awkward since logical ``or'' is idempotent, and so <script type="math/tex"> x=3 \mbox{ or } x=3</script> and <script type="math/tex"> x=3</script> would be equivalent at a symbolic level.
+For this reason, STACK accepts <script type="math/tex">x=3</script> as equivalent to <script type="math/tex">(x-3)^2=0</script>, but with an acknowledgement.
+<script type="math/tex; mode=display"> \begin{array}{lll} &\left(x-3\right)^3=0& \cr \color{green}{\mbox{(Same roots)}}&x=3& \cr \end{array} </script>
+</p>
 <h1 id="other-functions">Other functions</h1>
 <p>The maxima function <code>stack_disp_arg(ex, [showlogic, showdomain])</code> can be used to display a list of expressions <code>ex</code> in the same form as used in the input and answer tests.  This is useful for displaying the teacher's worked solution in the general feedback.  </p>
 <p>The second two arguments are optional.
@@ -239,7 +241,7 @@ For this reason, STACK accepts (x=3) as equivalent to ((x-3)^2=0), but with an a
 </code></pre>
 <h1 id="finding-a-step-in-working">Finding a step in working</h1>
 <p>It is relatively common to want students to take a "particular step" in their argument.  That is to say, to expect a particular intermediate expression to appear explicitly in their list of answers.</p>
-<p>For example, imagine you want students to "simplify" ( \log_5(25) ) to (2).  It is important to see evidence of the expression ( \log_5(5^2) ) in their answer.  The teacher's answer is, e.g.</p>
+<p>For example, imagine you want students to "simplify" <script type="math/tex"> \log_5(25) </script> to <script type="math/tex">2</script>.  It is important to see evidence of the expression <script type="math/tex"> \log_5(5^2) </script> in their answer.  The teacher's answer is, e.g.</p>
 <pre><code>ta:[lg(25,5),stackeq(lg(5^2,5)),stackeq(2*lg(5,5)),stackeq(2*1),stackeq(2)]
 </code></pre>
 <p>We want to accept </p>
@@ -249,18 +251,18 @@ For this reason, STACK accepts (x=3) as equivalent to ((x-3)^2=0), but with an a
 <pre><code>sa0:[lg(25,5),stackeq(2)]
 </code></pre>
 <p>Both of these are correct reasoning arguments, but the second is missing the desired step.</p>
-<p>To facilitate this search we provide the function <code>stack_equiv_find_step(ex, exl)</code>.  This looks for expression <code>ex</code> in the list <code>exl</code> using <code>ATEqualComAss</code>.  It returns the list of indices of the position.  If you just want to know if the expression is missing use the predicate <code>emptyp</code>.  Note, this function strips off <code>stackeq</code> before testing, so this function will find ( \log_5(5^2) ) in both <code>sa1</code> and <code>sa2</code> below.</p>
+<p>To facilitate this search we provide the function <code>stack_equiv_find_step(ex, exl)</code>.  This looks for expression <code>ex</code> in the list <code>exl</code> using <code>ATEqualComAss</code>.  It returns the list of indices of the position.  If you just want to know if the expression is missing use the predicate <code>emptyp</code>.  Note, this function strips off <code>stackeq</code> before testing, so this function will find <script type="math/tex"> \log_5(5^2) </script> in both <code>sa1</code> and <code>sa2</code> below.</p>
 <pre><code>sa2:[lg(25,5),lg(5^2,5),2]
 </code></pre>
 <h2 id="longer-term-plans">Longer term plans</h2>
 <ol>
-<li>Define (x\neq a) operator.  Needed to exclude single numbers from the domain.</li>
-<li>Define (x\in X) operator, for student use.</li>
+<li>Define <script type="math/tex">x\neq a</script> operator.  Needed to exclude single numbers from the domain.</li>
+<li>Define <script type="math/tex">x\in X</script> operator, for student use.</li>
 <li>Provide better tools for dealing with assessment, such as checking for particular steps.</li>
 <li>Provide better feedback to students about which steps they have taken and what goes wrong.</li>
 </ol>
 <p>In the long term, we may fully implement the ideas in the paper Sangwin, C.J. <strong>An Audited Elementary Algebra</strong> The Mathematical Gazette, July 2015.</p>
-<p>In the future students might also be expected to say what they are doing, e.g. ``add (a) to both sides", as well as just do it.  Quite how it does this, and the options available to the teacher is what is most likely to change.</p>
+<p>In the future students might also be expected to say what they are doing, e.g. ``add <script type="math/tex">a</script> to both sides", as well as just do it.  Quite how it does this, and the options available to the teacher is what is most likely to change.</p>
 <p>We would like to introduce the idea of a <em>model answer</em>.  STACK will then establish the extent to which the student's answer follows this model solution.</p>
               
             </div>
@@ -293,6 +295,7 @@ For this reason, STACK accepts (x=3) as equivalent to ((x-3)^2=0), but with an a
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

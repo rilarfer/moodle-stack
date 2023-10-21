@@ -110,24 +110,24 @@
 <p>Rules-based answer tests are a special kind of mathematical <a href="../">answer test</a>.</p>
 <h3 id="equality-up-to-associativity-and-commutativity-equalcomass">Equality up to associativity and commutativity ### {#EqualComAss}</h3>
 <p>The <code>EqualComAss</code> test establishes that two expressions are equal up to commutativity and associativity of addition and multiplication, together with their inverses minus and division.</p>
-<p>For example [a+b=b+a\mbox{,}] but [x+x\neq 2x\mbox{.}] This is very useful in elementary algebra, where we want the form of the answer exactly. This test seeks to establish whether two expressions are the same when the basic operations of arithmetic addition/multiplication and Boolean and/or are assumed to be nouns but are commutative and associative.  Hence, (2x+y=y+2x) but (x+x+y\neq 2x+y).  The unary minus commutes with multiplication in a way natural to establishing the required form of equivalence.</p>
+<p>For example <script type="math/tex; mode=display">a+b=b+a\mbox{,}</script> but <script type="math/tex; mode=display">x+x\neq 2x\mbox{.}</script> This is very useful in elementary algebra, where we want the form of the answer exactly. This test seeks to establish whether two expressions are the same when the basic operations of arithmetic addition/multiplication and Boolean and/or are assumed to be nouns but are commutative and associative.  Hence, <script type="math/tex">2x+y=y+2x</script> but <script type="math/tex">x+x+y\neq 2x+y</script>.  The unary minus commutes with multiplication in a way natural to establishing the required form of equivalence.</p>
 <p>This is a particularly useful test for checking that an answer is written in a particular form, e.g. "simplified".</p>
 <p>Notes </p>
 <ol>
-<li>This test does not include laws of indices, so (x\times x \neq x^2). Since we are dealing only with nouns (-\times -) does not simplify to (1). E.g. (-x\times -x \neq x\times x \neq x^2).  This also means that (\sqrt{x}) is not considered to be equivalent to (x^{\frac{1}{2}}) under this test.  In many situations this notation is taken to mean the same thing, but internally in Maxima they are represented by different functions and are not converted to a canonical form by the test.</li>
-<li>By design, addition commutes with subtraction, so ( -1+2\equiv 2-1) and multiplication commutes with division, so ( (ab)/c\equiv a(b/c) ).</li>
-<li>By design (-1/4x \neq -x/4) since we do not have the rule ( 1\times x \rightarrow x).  To establish this equivalence we would need a different answer test.</li>
-<li>This test can also be used to establish ({4,4} \neq {4}), but ({1,2} = {2,1}) since the arguments of the set constructor function are commutative.  Sets are not associative, so ({1,2} \neq {{1},2}).  (See Maxima's <code>flatten</code> command.)</li>
+<li>This test does not include laws of indices, so <script type="math/tex">x\times x \neq x^2</script>. Since we are dealing only with nouns <script type="math/tex">-\times -</script> does not simplify to <script type="math/tex">1</script>. E.g. <script type="math/tex">-x\times -x \neq x\times x \neq x^2</script>.  This also means that <script type="math/tex">\sqrt{x}</script> is not considered to be equivalent to <script type="math/tex">x^{\frac{1}{2}}</script> under this test.  In many situations this notation is taken to mean the same thing, but internally in Maxima they are represented by different functions and are not converted to a canonical form by the test.</li>
+<li>By design, addition commutes with subtraction, so <script type="math/tex"> -1+2\equiv 2-1</script> and multiplication commutes with division, so <script type="math/tex"> (ab)/c\equiv a(b/c) </script>.</li>
+<li>By design <script type="math/tex">-1/4x \neq -x/4</script> since we do not have the rule <script type="math/tex"> 1\times x \rightarrow x</script>.  To establish this equivalence we would need a different answer test.</li>
+<li>This test can also be used to establish <script type="math/tex">\{4,4\} \neq \{4\}</script>, but <script type="math/tex">\{1,2\} = \{2,1\}</script> since the arguments of the set constructor function are commutative.  Sets are not associative, so <script type="math/tex">\{1,2\} \neq \{\{1\},2\}</script>.  (See Maxima's <code>flatten</code> command.)</li>
 <li>Simplification is automatically switched off when this test is applied, otherwise it makes no sense. </li>
 </ol>
 <h3 id="unary-minus-and-division">Unary minus and division</h3>
 <p>In order to understand how the tests work it is essential to understand how we represent unary minus and division internally.</p>
-<p>Without simplification, Maxima has a unary minus function.  Litterally <code>minus(x)</code>.  This is transformed into <code>UNARY_MINUS nounmul ex</code>  The use of multiplication here allows <code>-</code> to commute with other multiplication, so we can spot things like (-x \times -y = --xy) using associativity and commutativity.</p>
-<p>Similarly, we replace division (a/b) with <code>a nounmul UNARY_RECIP(b)</code>.  This means that <code>UNARY_RECIP(b)</code> is not automatically the same as <code>1 nounmul UNARY_RECIP(b)</code>, without an additional rule.</p>
+<p>Without simplification, Maxima has a unary minus function.  Litterally <code>minus(x)</code>.  This is transformed into <code>UNARY_MINUS nounmul ex</code>  The use of multiplication here allows <code>-</code> to commute with other multiplication, so we can spot things like <script type="math/tex">-x \times -y = --xy</script> using associativity and commutativity.</p>
+<p>Similarly, we replace division <script type="math/tex">a/b</script> with <code>a nounmul UNARY_RECIP(b)</code>.  This means that <code>UNARY_RECIP(b)</code> is not automatically the same as <code>1 nounmul UNARY_RECIP(b)</code>, without an additional rule.</p>
 <h3 id="equalcomassrules">EqualComAssRules</h3>
 <p>This is an advanced test.</p>
-<p>This test allows question authors to create equivalence classes based on equality up to associativity and commutativity with the addition of optional rules. For example, the teacher can include the identity operations of addition and multiplication: (0+ x\rightarrow x) and (1\times x\rightarrow x).  This makes it much easier to establish things like (0-1\times i) is equivalent to (-i).  However, more general integer arithmatic is still not automatically included so (2\times 3 \neq 6).</p>
-<p>This test always assumes associativity and commutativity of addition and multiplication.  Essentially this test extends the <code>EqualComAss</code> test by adding in additional rules. Without assumptions of commutativity and associativity we would need all sorts of additional rules, such as (x+0 \rightarrow x), since without commutativity this would not be captured by the rule <code>zeroAdd</code>, i.e. (0+x \rightarrow x).  Furthermore, the way <code>EqualComAss</code> deals with unary minus and division make associativity and commutativity difficult to add in their pure form.</p>
+<p>This test allows question authors to create equivalence classes based on equality up to associativity and commutativity with the addition of optional rules. For example, the teacher can include the identity operations of addition and multiplication: <script type="math/tex">0+ x\rightarrow x</script> and <script type="math/tex">1\times x\rightarrow x</script>.  This makes it much easier to establish things like <script type="math/tex">0-1\times i</script> is equivalent to <script type="math/tex">-i</script>.  However, more general integer arithmatic is still not automatically included so <script type="math/tex">2\times 3 \neq 6</script>.</p>
+<p>This test always assumes associativity and commutativity of addition and multiplication.  Essentially this test extends the <code>EqualComAss</code> test by adding in additional rules. Without assumptions of commutativity and associativity we would need all sorts of additional rules, such as <script type="math/tex">x+0 \rightarrow x</script>, since without commutativity this would not be captured by the rule <code>zeroAdd</code>, i.e. <script type="math/tex">0+x \rightarrow x</script>.  Furthermore, the way <code>EqualComAss</code> deals with unary minus and division make associativity and commutativity difficult to add in their pure form.</p>
 <p>Each rule is a named function in Maxima, and each rule has an associated predicate function to decide if the rule is applicable at the top level of an expression.   E.g. <code>zeroAddp(0+x)</code> would return <code>true</code> and <code>zeroAdd(0+x)</code> would return <code>x</code>.</p>
 <p>The teacher must supply an option consisting of a list of the following rule names.</p>
 <table>
@@ -164,35 +164,51 @@
 </tr>
 <tr>
 <td><code>zeroAdd</code></td>
-<td>(0+x \rightarrow x)</td>
+<td>
+<script type="math/tex">0+x \rightarrow x</script>
+</td>
 </tr>
 <tr>
 <td><code>zeroMul</code></td>
-<td>(0\times x \rightarrow 0)</td>
+<td>
+<script type="math/tex">0\times x \rightarrow 0</script>
+</td>
 </tr>
 <tr>
 <td><code>oneMul</code></td>
-<td>(1\times x \rightarrow x)</td>
+<td>
+<script type="math/tex">1\times x \rightarrow x</script>
+</td>
 </tr>
 <tr>
 <td><code>oneDiv</code></td>
-<td>(\frac{x}{1} \rightarrow x)</td>
+<td>
+<script type="math/tex">\frac{x}{1} \rightarrow x</script>
+</td>
 </tr>
 <tr>
 <td><code>onePow</code></td>
-<td>(1^x \rightarrow 1)</td>
+<td>
+<script type="math/tex">1^x \rightarrow 1</script>
+</td>
 </tr>
 <tr>
 <td><code>idPow</code></td>
-<td>(x^1 \rightarrow x)</td>
+<td>
+<script type="math/tex">x^1 \rightarrow x</script>
+</td>
 </tr>
 <tr>
 <td><code>zeroPow</code></td>
-<td>(0^x \rightarrow 0) if (x \neq 0)</td>
+<td>
+<script type="math/tex">0^x \rightarrow 0</script> if <script type="math/tex">x \neq 0</script>
+</td>
 </tr>
 <tr>
 <td><code>zPow</code></td>
-<td>(x^0 \rightarrow 1)  if (x \neq 0)</td>
+<td>
+<script type="math/tex">x^0 \rightarrow 1</script>  if <script type="math/tex">x \neq 0</script>
+</td>
 </tr>
 <tr>
 <td>(<code>NEG_TRANS</code>)</td>
@@ -200,11 +216,14 @@
 </tr>
 <tr>
 <td><code>negNeg</code></td>
-<td>(-(-x) \rightarrow x)</td>
+<td>
+<script type="math/tex">-(-x) \rightarrow x</script>
+</td>
 </tr>
 <tr>
 <td><code>negDiv</code></td>
-<td>( y/(-x) \rightarrow -y/x )  (Note, this assumes <code>UNARY_RECIP</code> and <code>UNARY_MINUS</code>)</td>
+<td>
+<script type="math/tex"> y/(-x) \rightarrow -y/x </script>  (Note, this assumes <code>UNARY_RECIP</code> and <code>UNARY_MINUS</code>)</td>
 </tr>
 <tr>
 <td><code>negOrd</code></td>
@@ -216,15 +235,19 @@
 </tr>
 <tr>
 <td><code>recipMul</code></td>
-<td>( x/a\times y/b \rightarrow (x\,y)/(a\,b) )</td>
+<td>
+<script type="math/tex"> x/a\times y/b \rightarrow (x\,y)/(a\,b) </script>
+</td>
 </tr>
 <tr>
 <td><code>divDiv</code></td>
-<td>( a/(b/c) \rightarrow a\,c/b )</td>
+<td>
+<script type="math/tex"> a/(b/c) \rightarrow a\,c/b </script>
+</td>
 </tr>
 <tr>
 <td></td>
-<td>Note ( a/b/c ) is interpreted as  ( (a/b)/c=a/(b\,c) ) in Maxima.</td>
+<td>Note <script type="math/tex"> a/b/c </script> is interpreted as  <script type="math/tex"> (a/b)/c=a/(b\,c) </script> in Maxima.</td>
 </tr>
 <tr>
 <td><code>divCancel</code></td>
@@ -265,8 +288,8 @@
 </tbody>
 </table>
 <p>The rule <code>negOrd</code> deserves comment.  Ultimately we only compare parse trees exactly, and so we need to order terms in sums and products (commutativity).
-However (y-x) is never ordered as (-x+y).  Furthermore, (-(x-y) \neq -x+y).  We need to factor out the unary minus and ensure that the coefficient of the leading term is not negative.
-Factoring out is better than distributing here, since in a produce such as (-(x-y)(x-z)) it is not clear which term in the product the inital minus sign will end up in.
+However <script type="math/tex">y-x</script> is never ordered as <script type="math/tex">-x+y</script>.  Furthermore, <script type="math/tex">-(x-y) \neq -x+y</script>.  We need to factor out the unary minus and ensure that the coefficient of the leading term is not negative.
+Factoring out is better than distributing here, since in a produce such as <script type="math/tex">-(x-y)(x-z)</script> it is not clear which term in the product the inital minus sign will end up in.
 Since <code>negOrd</code> is a factor command, it is incompatible with <code>negDist</code>.</p>
 <p>For convenience sets of rules can be specificed.  E.g. you can use the name <code>ID_TRANS</code> in place of the list <code>[zeroAdd,zeroMul,oneMul,oneDiv,onePow,idPow,zeroPow,zPow]</code> to include all of the basic identity operators.</p>
 <p>If you want to remove tests from a list you can use code such as <code>delete(zeroAdd, ID_TRANS)</code>.</p>
@@ -275,8 +298,8 @@ Since <code>negOrd</code> is a factor command, it is incompatible with <code>neg
 <p>If you add the rule <code>testdebug</code> then you will see both expressions in the answer note.  This is useful for debugging, but would clutter up things in a production setting.</p>
 <h2 id="examples-of-use">Examples of use</h2>
 <h3 id="unique-prime-factorisation">Unique prime factorisation</h3>
-<p>Imagine we have asked students to find the prime decomposition of (1617 = 3^1\cdot 7^2\cdot 11^1).  This is the answer we are aiming at, but we also want to condone the answer
-(3\cdot 7^2\cdot 11).   We can do this with the rule <code>[idPow]</code>.  We might also (being generous perhaps) want to also accept ( 2^0\cdot 3^1\cdot 5^0\cdot 7^2\cdot 11^1 ).  We can do this with the three rules <code>[oneMul,idPow,zPow]</code>.  You can try this code in the sandbox.</p>
+<p>Imagine we have asked students to find the prime decomposition of <script type="math/tex">1617 = 3^1\cdot 7^2\cdot 11^1</script>.  This is the answer we are aiming at, but we also want to condone the answer
+<script type="math/tex">3\cdot 7^2\cdot 11</script>.   We can do this with the rule <code>[idPow]</code>.  We might also (being generous perhaps) want to also accept <script type="math/tex"> 2^0\cdot 3^1\cdot 5^0\cdot 7^2\cdot 11^1 </script>.  We can do this with the three rules <code>[oneMul,idPow,zPow]</code>.  You can try this code in the sandbox.</p>
 <pre><code>ATEqualComAssRules(2^0*3^1*5^0*7^2*11^1, 3^1*7^2*11^1, [oneMul,idPow,zPow]);
 </code></pre>
 <p>Note, this test always assumes commutativity so you can't (currently) enforce the order of writing the prime factors.</p>
@@ -319,6 +342,7 @@ Since <code>negOrd</code> is a factor command, it is incompatible with <code>neg
     <script>var base_url = "../../..";</script>
     <script src="../../../js/theme_extra.js"></script>
     <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../search/main.js"></script>
     <script>
         jQuery(function () {

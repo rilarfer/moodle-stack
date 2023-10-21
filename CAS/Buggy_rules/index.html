@@ -111,16 +111,22 @@
 particular but wrong, it is useful for us to be able to apply
 wrong or buggy rules to expressions.  A typical example would
 be to expand out powers in the wrong way, e.g.</p>
-<p>[(x+y)^2=x^2+y^2.]</p>
+<p>
+<script type="math/tex; mode=display">(x+y)^2=x^2+y^2.</script>
+</p>
 <h1 id="powers-obey-linearity">Powers obey linearity</h1>
 <p><code>buggy_pow(ex)</code> Implements the buggy linearity rule for exponentiation, i.e.</p>
-<p>[(a+b)^n \rightarrow a^n+b^n.]</p>
+<p>
+<script type="math/tex; mode=display">(a+b)^n \rightarrow a^n+b^n.</script>
+</p>
 <p>This is  useful if we want to compare a student's answer to the result  of having done something wrong.</p>
 <h1 id="naive-addition-of-fractions">Naive addition of fractions</h1>
 <p><code>mediant(ex1,ex2)</code> calculates the mediant of two rational expressions.
 The mediant of two fractions</p>
-<p>[ \mbox{mediant}\left(\frac{p_1}{q_1} , \frac{p_2}{q_2}\right)
-:= \frac{p_1+p_2}{q_1+q_2}.]</p>
+<p>
+<script type="math/tex; mode=display"> \mbox{mediant}\left(\frac{p_1}{q_1} , \frac{p_2}{q_2}\right)
+:= \frac{p_1+p_2}{q_1+q_2}.</script>
+</p>
 <p>Note that both <code>denom</code> and <code>num</code> work on non-rational expressions, assuming the expression to be "over one" by implication.  Hence <code>mediant</code> will also assume the denominator is also one in such cases.</p>
 <p>This is not always a buggy rule. It is used, for example, in connection with Farey sequences, but it is included here as in assessment this function is useful for checking a common mistake when adding fractions.</p>
 <p>There is scope for further examples of such rules.</p>
@@ -157,6 +163,7 @@ The mediant of two fractions</p>
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

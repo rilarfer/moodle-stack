@@ -108,7 +108,7 @@
               
                 <h1 id="getting-started-with-equivalence-reasoning">Getting started with equivalence reasoning</h1>
 <p>This guide shows you how to write STACK questions using the line by line <a href="../../CAS/Equivalence_reasoning/">equivalence reasoning</a> input type.</p>
-<p>As an example, we want the students to expand the cubic ((x+2)^3) showing their working in a stepwise fashion, line by line.
+<p>As an example, we want the students to expand the cubic <script type="math/tex">(x+2)^3</script> showing their working in a stepwise fashion, line by line.
 The student's response to this question will allow us to test their knowledge and competency in the following:</p>
 <ol>
 <li>Expanding brackets</li>
@@ -123,15 +123,25 @@ ta:[(x+2)^3,stackeq((x+2)*(x+2)^2),stackeq((x+2)*(x^2+4*x+4)),stackeq(x^3+4*x^2+
 </code></pre>
 <p>The first variable, <code>p</code>, is the expression in the question. The variable <code>taf</code> is the final model answer.
 The variable <code>ta</code> is a list containing each step we are expecting our students to express as they work towards the final answer:</p>
-<p>((x+2)^{3})</p>
-<p>(=(x+2)(x+2)^{2})</p>
-<p>(=(x+2)(x^{2}+4x+4))</p>
-<p>(=x^{3}+4x^{2}+4x+2x^{2}+8x+8)</p>
-<p>(=x^{3}+6x^{2}+12x+8)</p>
+<p>
+<script type="math/tex">(x+2)^{3}</script>
+</p>
+<p>
+<script type="math/tex">=(x+2)(x+2)^{2}</script>
+</p>
+<p>
+<script type="math/tex">=(x+2)(x^{2}+4x+4)</script>
+</p>
+<p>
+<script type="math/tex">=x^{3}+4x^{2}+4x+2x^{2}+8x+8</script>
+</p>
+<p>
+<script type="math/tex">=x^{3}+6x^{2}+12x+8</script>
+</p>
 <p>Notes:</p>
 <ul>
 <li>We use the CAS functions <code>expand()</code> and <code>ev(...,simp)</code> to simply the output of <code>expand()</code>, to determine the model answer. </li>
-<li>The special function <code>stackeq</code> is replaced by unary equals.  Maxima expects equality to be an infix (a=b) not unary prefix (=b), so STACK needs this special operator.  Students using the input area can just start a line with (=), but teachers cannot!</li>
+<li>The special function <code>stackeq</code> is replaced by unary equals.  Maxima expects equality to be an infix <script type="math/tex">a=b</script> not unary prefix <script type="math/tex">=b</script>, so STACK needs this special operator.  Students using the input area can just start a line with <script type="math/tex">=</script>, but teachers cannot!</li>
 </ul>
 <p>In this context the teacher's answer and the student's answer is a list.  The whole answer is a single object, which we assess.</p>
 <p>Copy the following text into the Question text box:</p>
@@ -171,7 +181,7 @@ Auto-simplify = no
 <p>Clearly, more is needed for a complete sensible question.</p>
 <p>At this point please read the <a href="../../CAS/Equivalence_reasoning/">equivalence reasoning</a> input type documentation.</p>
 <h2 id="getting-to-the-right-place">Getting to the right place</h2>
-<p>We probably want the student to end up at the expression (x^{3}+6x^{2}+12x+8).</p>
+<p>We probably want the student to end up at the expression <script type="math/tex">x^{3}+6x^{2}+12x+8</script>.</p>
 <p>To check is the student has reached this point, add another node to the PRT.  If node 1 is true (i.e. the student started in the correct place and didn't make a mistake) then connect to node 2.
 Node 2 should be set up as</p>
 <pre><code>SAns = last(ans1)
@@ -180,8 +190,8 @@ answer test = EqualComAss
 Auto-simplify = no
 </code></pre>
 <p>This node adds in feedback to check the student has reached the right place.</p>
-<p>Note, by using <code>EqualComAss</code> both (x^{3}+6x^{2}+12x+8) and (x^{3}+x^{2}6+8+12x) will be accepted.
-If you really want the term order as well, as in, (x^{3}+6x^{2}+12x+8) then you need to use <code>CasEqual</code> as the answer test instead.</p>
+<p>Note, by using <code>EqualComAss</code> both <script type="math/tex">x^{3}+6x^{2}+12x+8</script> and <script type="math/tex">x^{3}+x^{2}6+8+12x</script> will be accepted.
+If you really want the term order as well, as in, <script type="math/tex">x^{3}+6x^{2}+12x+8</script> then you need to use <code>CasEqual</code> as the answer test instead.</p>
 <h2 id="what-is-a-legitimate-step">What is a legitimate step?</h2>
 <p>At this point, any expressions which are equivalent are considered to be a legitimate step.</p>
 <p>Clearly this is not entirely satisfactory.
@@ -227,6 +237,7 @@ If you have experience, and views, on how this should work please contact the de
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

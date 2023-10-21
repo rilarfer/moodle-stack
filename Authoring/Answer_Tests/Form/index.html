@@ -107,22 +107,24 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="algebraic-form">Algebraic Form</h1>
-<p>Often, we wish to establish if the student's expression has the correct <em>form</em>. For example, consider the following written forms of (x^2-4x+4).</p>
-<p>[(x-2)(x-2),\quad (x-2)^2,\quad  (2-x)^2,\quad  4\left(1-\frac{x}{2}\right)^2.]</p>
+<p>Often, we wish to establish if the student's expression has the correct <em>form</em>. For example, consider the following written forms of <script type="math/tex">x^2-4x+4</script>.</p>
+<p>
+<script type="math/tex; mode=display">(x-2)(x-2),\quad (x-2)^2,\quad  (2-x)^2,\quad  4\left(1-\frac{x}{2}\right)^2.</script>
+</p>
 <p>Each of these might be considered to be factored.  <strong>Establishing <code>ex</code> is factored is not the same as comparing it with</strong> <code>factor(ex)</code>.</p>
 <h3 id="facform-factorisation-of-polynomials">FacForm: factorisation of polynomials</h3>
 <p>This test checks (i) that SAns is algebraically equivalent to TAns , and (ii) that SAns is "factored" over the rational numbers. The answer test expects the option to be the variable, which is needed to generate feedback. If the answer is incorrect, quite detailed feedback is provided.</p>
-<p>An expression is said to be factored if it is written as a product of powers of distinct irreducible factors. Strictly speaking, in establishing that an expression is in factored form, we might not even care whether the terms in the product are fully simplified, as long as they are irreducible. Irreducibility on the other hand means we can't find further factors, but here we need some care. Consider (x^8+16x^4+48).</p>
+<p>An expression is said to be factored if it is written as a product of powers of distinct irreducible factors. Strictly speaking, in establishing that an expression is in factored form, we might not even care whether the terms in the product are fully simplified, as long as they are irreducible. Irreducibility on the other hand means we can't find further factors, but here we need some care. Consider <script type="math/tex">x^8+16x^4+48</script>.</p>
 <ol>
-<li>Any non-trivial factorization, e.g. ((x^4+4)(x^4+12)).</li>
-<li>A factorization into irreducible factors over the integers/rational numbers, i.e. ((x^2+2x+x)(x^2-2x+2)(x^4+12)).</li>
-<li>A factorization into terms irreducible over the reals, i.e. ((x^2+2x+x)(x^2-2x+2)(x^2+2\sqrt[4]{3}x+2\sqrt[4]{3})(x^2-2\sqrt[4]{3}x+2\sqrt[4]{3})).</li>
-<li>A factorization into irreducible polynomials over the Gaussian integers, with (i) allowed, i.e. ((x+1+i)(x+1-i)(x-1+i)(x-1-i)(x^4+12)).</li>
-<li>A factorization over the complex numbers, where the factor ((x^4+12)) would also be split into the four terms (x\pm\sqrt[4]{3}(1\pm i)).</li>
+<li>Any non-trivial factorization, e.g. <script type="math/tex">(x^4+4)(x^4+12)</script>.</li>
+<li>A factorization into irreducible factors over the integers/rational numbers, i.e. <script type="math/tex">(x^2+2x+x)(x^2-2x+2)(x^4+12)</script>.</li>
+<li>A factorization into terms irreducible over the reals, i.e. <script type="math/tex">(x^2+2x+x)(x^2-2x+2)(x^2+2\sqrt[4]{3}x+2\sqrt[4]{3})(x^2-2\sqrt[4]{3}x+2\sqrt[4]{3})</script>.</li>
+<li>A factorization into irreducible polynomials over the Gaussian integers, with <script type="math/tex">i</script> allowed, i.e. <script type="math/tex">(x+1+i)(x+1-i)(x-1+i)(x-1-i)(x^4+12)</script>.</li>
+<li>A factorization over the complex numbers, where the factor <script type="math/tex">(x^4+12)</script> would also be split into the four terms <script type="math/tex">x\pm\sqrt[4]{3}(1\pm i)</script>.</li>
 </ol>
 <p>In elementary teaching, meaning 4. is unlikely to occur. Indeed, we might take this example to represent factoring over any extension field of the rational numbers.  We normally seek to establish that the factors are irreducible over the integers (which is equivalent to irreducibility over the rational numbers) or the reals.  But, unlike a canonical form, we are not particularly interested in the order of the terms in this product, or the order of summands inside these terms.</p>
-<p>The FacForm test establishes that the expression is factored over the rational numbers.  If the coefficients of the polynomial are all real, at worst you will have quadratic irreducible terms.  There are some delicate cases such as: ((2-x)(3-x)) vs  ((x-2)(x-3))  and ((1-x)^2) vs ((x-1)^2), which this test will cope with.</p>
-<p>It is also possible a student will do something which is just plain odd, e.g. (x^2-4x+4) can be rewritten as (x(x-4+4/x)) which is a "product of powers of distinct irreducible factors" but not acceptable to most teachers.  The student's answer must also be a polynomial in the variable (using <code>polynomialp</code> as the test predicate).</p>
+<p>The FacForm test establishes that the expression is factored over the rational numbers.  If the coefficients of the polynomial are all real, at worst you will have quadratic irreducible terms.  There are some delicate cases such as: <script type="math/tex">(2-x)(3-x)</script> vs  <script type="math/tex">(x-2)(x-3)</script>  and <script type="math/tex">(1-x)^2</script> vs <script type="math/tex">(x-1)^2</script>, which this test will cope with.</p>
+<p>It is also possible a student will do something which is just plain odd, e.g. <script type="math/tex">x^2-4x+4</script> can be rewritten as <script type="math/tex">x(x-4+4/x)</script> which is a "product of powers of distinct irreducible factors" but not acceptable to most teachers.  The student's answer must also be a polynomial in the variable (using <code>polynomialp</code> as the test predicate).</p>
 <h3 id="factorisation-of-integers">Factorisation of integers</h3>
 <p>If you would like to ask a student to factor a polynomial, then do not use the <code>FacForm</code> answer test.  The <code>FacForm</code> answer test is designed to use with polynomials.</p>
 <p>Instead, switch off simplification and define</p>
@@ -132,7 +134,7 @@
 <p>Note however that EqualComAss does not think that <code>2^2*3</code> and <code>2*2*3</code> are the same!</p>
 <h3 id="partfrac-partial-fractions">PartFrac: partial fractions</h3>
 <p>This test checks (i) that SAns is algebraically equivalent to TAns , and (ii) that SAns is in "partial fraction form". The option must be the variable.</p>
-<p>To help provide feedback to students on how to calculate the partial fraction form we have special function <code>poly_about_a(ex, v, a)</code> which writes the polynomial <code>ex</code> in variable <code>v</code> about the point <code>v=a</code>.  E.g. (x^2=1-2(x-1)+(x-1)^2) when written about (x=1). This is basically the complete finite Taylor series for the polynomial about (x=1).  The form "about (x=a)" can readily be calculated by "shift-expand-shift" and without derivatives.  It is, in my view, somewhat neglected. See <a href="https://www.cambridge.org/core/journals/mathematical-gazette/article/abs/limitfree-derivatives/3410B7A9E318FAAD27C2948EED073DCF">doi:10.1017/S0025557200003569</a> for applications to a limit-free derivative for polynomials.</p>
+<p>To help provide feedback to students on how to calculate the partial fraction form we have special function <code>poly_about_a(ex, v, a)</code> which writes the polynomial <code>ex</code> in variable <code>v</code> about the point <code>v=a</code>.  E.g. <script type="math/tex">x^2=1-2(x-1)+(x-1)^2</script> when written about <script type="math/tex">x=1</script>. This is basically the complete finite Taylor series for the polynomial about <script type="math/tex">x=1</script>.  The form "about <script type="math/tex">x=a</script>" can readily be calculated by "shift-expand-shift" and without derivatives.  It is, in my view, somewhat neglected. See <a href="https://www.cambridge.org/core/journals/mathematical-gazette/article/abs/limitfree-derivatives/3410B7A9E318FAAD27C2948EED073DCF">doi:10.1017/S0025557200003569</a> for applications to a limit-free derivative for polynomials.</p>
 <p>Here, e.g. if we have the question variables</p>
 <pre><code>n1:4;
 p1:(9*y-8)/(y-n1)^2
@@ -146,16 +148,17 @@ This gives {@num(p1)=p2@}, which allows us to complete the partial fraction form
 \[ {@p1@} = \frac{ {@p2@} }{ {@denom(p1)@} } = {@p3@} = {@ev(p3,simp)@}. \]
 </code></pre>
 <p>is rendered as:</p>
-<p>You need to do more work on the term ({\frac{9 y-8}{{\left(y-4\right)}^2}}).
-In particular, write the numerator ({9 y-8}) about the point ({y=4}).
-This gives ({9 y-8=28+9 \left(y-4\right)}), which allows us to complete the partial fraction form as follows:
-[ {\frac{9 y-8}{{\left(y-4\right)}^2}} = \frac{ {28+9 \left(y-4\right)} }{ {{\left(y-4\right)}^2} } = {\frac{28}{{\left(y-4\right)}^2}+\frac{9 \left(y-4\right)}{{\left(y-4\right)}^2}} = {\frac{9}{y-4}+\frac{28}{{\left(y-4\right)}^2}}. ]</p>
+<p>You need to do more work on the term <script type="math/tex">{\frac{9 y-8}{{\left(y-4\right)}^2}}</script>.
+In particular, write the numerator <script type="math/tex">{9 y-8}</script> about the point <script type="math/tex">{y=4}</script>.
+This gives <script type="math/tex">{9 y-8=28+9 \left(y-4\right)}</script>, which allows us to complete the partial fraction form as follows:
+<script type="math/tex; mode=display"> {\frac{9 y-8}{{\left(y-4\right)}^2}} = \frac{ {28+9 \left(y-4\right)} }{ {{\left(y-4\right)}^2} } = {\frac{28}{{\left(y-4\right)}^2}+\frac{9 \left(y-4\right)}{{\left(y-4\right)}^2}} = {\frac{9}{y-4}+\frac{28}{{\left(y-4\right)}^2}}. </script>
+</p>
 <h3 id="singlefrac-single-fractions">SingleFrac: Single fractions</h3>
 <p>This test checks (i) that SAns is algebraically equivalent to TAns , and (ii) that SAns is written as a single fraction. Notes</p>
 <ul>
 <li>This test works at the top level, making sure the expression as a whole is a single fraction.</li>
 <li>if you also want this expression written in lowest terms, then this is quite a separate test.  You need to first confirm you have a single fraction then add a new potential response. One way is to use the <a href="../../../CAS/Predicate_functions/">../CAS/Predicate functions</a> <code>lowesttermsp(ex)</code> and compare the result with <code>true</code> with the AlgEquiv test.</li>
-<li>The algebraic equivalence check is for convenience.  If you only want to check an expression is a single fraction make (SAns=TAns), i.e. ATSingleFrac(ex,ex) will do.</li>
+<li>The algebraic equivalence check is for convenience.  If you only want to check an expression is a single fraction make <script type="math/tex">SAns=TAns</script>, i.e. ATSingleFrac(ex,ex) will do.</li>
 </ul>
 <h3 id="lowestterms">LowestTerms</h3>
 <p>This test checks that all numbers written in the first expression are in lowest terms and that the denominator is clear of surds and complex numbers.</p>
@@ -164,7 +167,7 @@ This gives ({9 y-8=28+9 \left(y-4\right)}), which allows us to complete the part
 <li>the second argument to this function is ignored, i.e. this test does not confirm algebraic equivalence.  You might as well use 0 here.</li>
 </ul>
 <h3 id="expanded">Expanded ###</h3>
-<p>Confirms SAns is equal to <code>expand(SAns)</code>.  Note, the second argument to this answer test is not used (but must be non-empty).  Note with this test that an expression such as (x^2-(a+b)x+ab) is not considered to be expanded, and this test will return false.</p>
+<p>Confirms SAns is equal to <code>expand(SAns)</code>.  Note, the second argument to this answer test is not used (but must be non-empty).  Note with this test that an expression such as <script type="math/tex">x^2-(a+b)x+ab</script> is not considered to be expanded, and this test will return false.</p>
 <h3 id="completedsquare">CompletedSquare</h3>
 <p>This test checks (i) that SAns is algebraically equivalent to TAns , and (ii) that SAns is in "completed square form". The option must be the variable.</p>
               
@@ -198,6 +201,7 @@ This gives ({9 y-8=28+9 \left(y-4\right)}), which allows us to complete the part
     <script>var base_url = "../../..";</script>
     <script src="../../../js/theme_extra.js"></script>
     <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -160,8 +160,8 @@ STACK uses Maxima's assignment rules.</p>
 <p>It is possible to use an unnamed <code>lambda</code> function.  E.g. if you have a function <code>tup</code> then</p>
 <pre><code>texput(tup,  lambda([z], block([a,b], [a,b]:args(z), sconcat("\\left[",tex1(a),",",tex1(b),"\\right)"))));
 </code></pre>
-<p>will display <code>tup(a,b)</code> as ( \left[a,b\right) ).</p>
-<p>As a more complicated example, to typeset <code>u(A_k,k,1,inf)</code> as ({\bigcup_{k = 1}^{\infty } {A}_{k}}) you can use the following:</p>
+<p>will display <code>tup(a,b)</code> as <script type="math/tex"> \left[a,b\right) </script>.</p>
+<p>As a more complicated example, to typeset <code>u(A_k,k,1,inf)</code> as <script type="math/tex">{\bigcup_{k = 1}^{\infty } {A}_{k}}</script> you can use the following:</p>
 <pre><code>texput(u,lambda([ex],if length(ex)&lt;4 then return("\\bigcup_{?=?}^{?} ? ") else
     sconcat("\\bigcup_{" ,tex1(second(ex)), " = ", tex1(third(ex)), "}^{", tex1(fourth(ex)), "} ", tex1(first(ex)))));
 </code></pre>
@@ -220,6 +220,7 @@ This gives the opportunity to perform sophisticated mathematical operations.</p>
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

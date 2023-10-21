@@ -120,9 +120,9 @@
 <p>Maxima is a very weakly typed language.  However, in STACK we need the following "types" of expression:</p>
 <ol>
 <li>equations, i.e. an expression in which the top operation is an equality sign;</li>
-<li>inequalities, for example ( x&lt;1\mbox{, or }x\leq 1);</li>
-<li>sets, for example, ({1,2,3});</li>
-<li>lists, for example, ([1,2,3]).   In Maxima ordered lists are entered using square brackets, for example as <code>p:[1,1,2,x^2]</code>.
+<li>inequalities, for example <script type="math/tex"> x<1\mbox{, or }x\leq 1</script>;</li>
+<li>sets, for example, <script type="math/tex">\{1,2,3\}</script>;</li>
+<li>lists, for example, <script type="math/tex">[1,2,3]</script>.   In Maxima ordered lists are entered using square brackets, for example as <code>p:[1,1,2,x^2]</code>.
     An element is accessed using the syntax <code>p[1]</code>.</li>
 <li><a href="../Matrix/">matrices</a>.  The basic syntax for a matrix is <code>p:matrix([1,2],[3,4])</code>.  Each row is a list. Elements are accessed as <code>p[1,2]</code>, etc.</li>
 <li>logical expression.  This is a tree of other expressions connected by the logical <code>and</code> and <code>or</code>.  This is useful for expressing solutions to equations, such as <code>x=1 or x=2</code>.  Note, the support for these expressions is unique to STACK.</li>
@@ -136,7 +136,7 @@
 <pre><code>simplify := fullratsimp
 int := integrate
 </code></pre>
-<p>The absolute value function in Maxima is entered as <code>abs()</code>.  STACK also permits you to enter using <code>|</code> symbols, i.e.<code>|x|</code>.  This is an alias for <code>abs</code>.  Note that <code>abs(x)</code> will be displayed by STACK as (|x|).</p>
+<p>The absolute value function in Maxima is entered as <code>abs()</code>.  STACK also permits you to enter using <code>|</code> symbols, i.e.<code>|x|</code>.  This is an alias for <code>abs</code>.  Note that <code>abs(x)</code> will be displayed by STACK as <script type="math/tex">|x|</script>.</p>
 <p>STACK also redefined a small number of functions</p>
 <ul>
 <li>The plot command <code>plot2d</code> is not used in STACK questions.  Use <code>plot</code> instead, which is documented <a href="../Plots/">here</a>.  This ensures your image files are available on the server.</li>
@@ -175,7 +175,7 @@ int := integrate
 </tr>
 <tr>
 <td><code>zip_with(f,a,b)</code></td>
-<td>This function applies the binary function (f) to two lists (a) and (b) returning a list.  An example is given in adding matrices to <a href="../Matrix/#Showing_working">show working</a>.</td>
+<td>This function applies the binary function <script type="math/tex">f</script> to two lists <script type="math/tex">a</script> and <script type="math/tex">b</script> returning a list.  An example is given in adding matrices to <a href="../Matrix/#Showing_working">show working</a>.</td>
 </tr>
 <tr>
 <td><code>coeff_list(ex,v)</code></td>
@@ -187,7 +187,7 @@ int := integrate
 </tr>
 <tr>
 <td><code>divthru(ex)</code></td>
-<td>Takes an algebraic fraction, e.g. ((x^4-1)/(x+2)) and divides through by the denominator, to leave a polynomial and a proper fraction. Useful in feedback, or steps of a calculation.</td>
+<td>Takes an algebraic fraction, e.g. <script type="math/tex">(x^4-1)/(x+2)</script> and divides through by the denominator, to leave a polynomial and a proper fraction. Useful in feedback, or steps of a calculation.</td>
 </tr>
 <tr>
 <td><code>stack_strip_percent(ex,var)</code></td>
@@ -199,7 +199,7 @@ int := integrate
 </tr>
 <tr>
 <td><code>stack_reset_vars</code></td>
-<td>Resets constants, e.g. (i), as abstract symbols, see <a href="../Numbers/">Numbers</a>.</td>
+<td>Resets constants, e.g. <script type="math/tex">i</script>, as abstract symbols, see <a href="../Numbers/">Numbers</a>.</td>
 </tr>
 <tr>
 <td><code>safe_op(ex)</code></td>
@@ -235,7 +235,7 @@ int := integrate
 <tbody>
 <tr>
 <td><code>a:1</code></td>
-<td>Assignment of the value (1) to (a).</td>
+<td>Assignment of the value <script type="math/tex">1</script> to <script type="math/tex">a</script>.</td>
 </tr>
 <tr>
 <td><code>a=1</code></td>
@@ -254,41 +254,41 @@ p : (x-1)^n;
 <p>Of course, these assignments can make use of Maxima's functions to manipulate expressions.</p>
 <pre><code>p : expand( (x-3)*(x-4) );
 </code></pre>
-<p>Another common task is that of <em>substitution</em>. This can be performed with Maxima's <code>subst</code> command. This is quite useful, for example if we define (p)  as follows, in the then we can use this in response processing to determine if the student's answer is odd.</p>
+<p>Another common task is that of <em>substitution</em>. This can be performed with Maxima's <code>subst</code> command. This is quite useful, for example if we define <script type="math/tex">p</script>  as follows, in the then we can use this in response processing to determine if the student's answer is odd.</p>
 <pre><code>p : ans1 + subst(-x,x,ans1);
 </code></pre>
-<p>All sorts of properties can be checked for in this way. For example, interpolates. Another example is a stationary point of (f(x)) at (x=a), which can be checked for using</p>
+<p>All sorts of properties can be checked for in this way. For example, interpolates. Another example is a stationary point of <script type="math/tex">f(x)</script> at <script type="math/tex">x=a</script>, which can be checked for using</p>
 <pre><code>p : subst(a,x,diff(ans1,x));
 </code></pre>
-<p>Here we have assumed <code>a</code> is some point given to the student, <code>ans1</code> is the answer and that (p) will be used in the response processing tree.</p>
+<p>Here we have assumed <code>a</code> is some point given to the student, <code>ans1</code> is the answer and that <script type="math/tex">p</script> will be used in the response processing tree.</p>
 <p>You can use Maxima's looping structures within Question variables. For example</p>
 <pre><code>n : 1;
 for a:-3 thru 26 step 7 do n:n+a;
 </code></pre>
-<p>The result will be (n=56). It is also possible to define functions within the question variables for use within a question. </p>
+<p>The result will be <script type="math/tex">n=56</script>. It is also possible to define functions within the question variables for use within a question. </p>
 <pre><code>f(x) := x^2;
 n : f(4);
 </code></pre>
 <h2 id="logarithms">Logarithms</h2>
-<p>STACK loads the contributed Maxima package <code>log10</code>.  This defines logarithms to base (10) automatically. STACK also creates two aliases</p>
+<p>STACK loads the contributed Maxima package <code>log10</code>.  This defines logarithms to base <script type="math/tex">10</script> automatically. STACK also creates two aliases</p>
 <ol>
-<li><code>ln</code> is an alias for (\log), which are natural logarithms</li>
-<li><code>lg</code> is an alias for (\log_{10}), which are logarithms to base (10).
-    It is not possible to redefine the command <code>log</code> to be to the base (10).</li>
+<li><code>ln</code> is an alias for <script type="math/tex">\log</script>, which are natural logarithms</li>
+<li><code>lg</code> is an alias for <script type="math/tex">\log_{10}</script>, which are logarithms to base <script type="math/tex">10</script>.
+    It is not possible to redefine the command <code>log</code> to be to the base <script type="math/tex">10</script>.</li>
 </ol>
 <h2 id="sets-lists-sequences-n-tuples">Sets, lists, sequences, n-tuples</h2>
 <p>It is very useful to be able to display expressions such as comma separated lists, and n-tuples
-[ 1,2,3,4,\cdots ]
-[ (1,2,3,4) ]
-Maxima has in-built functions for lists, which are displayed with square brackets ([1,2,3,4]), and sets with curly braces ( {1,2,3,4} ).
+<script type="math/tex; mode=display"> 1,2,3,4,\cdots </script>
+<script type="math/tex; mode=display"> (1,2,3,4) </script>
+Maxima has in-built functions for lists, which are displayed with square brackets <script type="math/tex">[1,2,3,4]</script>, and sets with curly braces <script type="math/tex"> \{1,2,3,4\} </script>.
 Maxima has no default functions for n-tuples or for sequences.</p>
-<p>STACK provides an inert function <code>sequence</code>.  All this does is display its arguments without brackets. For example <code>sequence(1,2,3,4)</code> is displayed (1,2,3,4). STACK provides convenience functions.</p>
+<p>STACK provides an inert function <code>sequence</code>.  All this does is display its arguments without brackets. For example <code>sequence(1,2,3,4)</code> is displayed <script type="math/tex">1,2,3,4</script>. STACK provides convenience functions.</p>
 <ul>
 <li><code>sequenceify</code>, creates a sequence from the arguments of the expression.  This turns lists, sets etc. into a sequence.</li>
 <li><code>sequencep</code> is a predicate to decide if the expression is a sequence.</li>
-<li>The atom <code>dotdotdot</code> is displayed using the tex <code>\ldots</code> which looks like (\ldots).  This atom cannot be entered by students.</li>
+<li>The atom <code>dotdotdot</code> is displayed using the tex <code>\ldots</code> which looks like <script type="math/tex">\ldots</script>.  This atom cannot be entered by students.</li>
 </ul>
-<p>STACK provides an inert function <code>ntuple</code>.  All this does is display its arguments with round brackets. For example <code>ntuple(1,2,3,4)</code> is displayed ((1,2,3,4)).  <code>ntupleify</code> and <code>ntuplep</code> construct and test for ntuples. In strict Maxima syntax <code>(a,b,c)</code> is equivalent to <code>block(a,b,c)</code>.  If students type in <code>(a,b,c)</code> using a STACK input it is filtered to <code>ntuple(a,b,c)</code>. Teachers must use the <code>ntuple</code> function explicitly to construct question variables, teacher's answers, test cases and so on. The <code>ntuple</code> is useful for students to type in coordinates.</p>
+<p>STACK provides an inert function <code>ntuple</code>.  All this does is display its arguments with round brackets. For example <code>ntuple(1,2,3,4)</code> is displayed <script type="math/tex">(1,2,3,4)</script>.  <code>ntupleify</code> and <code>ntuplep</code> construct and test for ntuples. In strict Maxima syntax <code>(a,b,c)</code> is equivalent to <code>block(a,b,c)</code>.  If students type in <code>(a,b,c)</code> using a STACK input it is filtered to <code>ntuple(a,b,c)</code>. Teachers must use the <code>ntuple</code> function explicitly to construct question variables, teacher's answers, test cases and so on. The <code>ntuple</code> is useful for students to type in coordinates.</p>
 <p>If you want to use these functions, then you can create question variables as follows</p>
 <pre><code>L1:[a,b,c,d];
 D1:apply(ntuple, L1);
@@ -374,6 +374,7 @@ Internally, it applies <code>string</code> to the list of values (not TeX!).  Ho
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

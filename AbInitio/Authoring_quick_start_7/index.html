@@ -112,10 +112,10 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Et1O2dibsDI" frameborder="0" allowfullscreen></iframe>
 
 <h3 id="example-question">Example question</h3>
-<p>Given a complex number (z=ae^{ib}), determine (z^{n}).</p>
-<p>Where (a), (b) and (n) are randomly generated numbers.</p>
+<p>Given a complex number <script type="math/tex">z=ae^{ib}</script>, determine <script type="math/tex">z^{n}</script>.</p>
+<p>Where <script type="math/tex">a</script>, <script type="math/tex">b</script> and <script type="math/tex">n</script> are randomly generated numbers.</p>
 <h2 id="simplification-off">Simplification off</h2>
-<p>It is tempting when writing questions such as this to operate at the <em>level of display.</em>  We could randomly generate (a), (b) and (n) and insert them into the question text.  For example:</p>
+<p>It is tempting when writing questions such as this to operate at the <em>level of display.</em>  We could randomly generate <script type="math/tex">a</script>, <script type="math/tex">b</script> and <script type="math/tex">n</script> and insert them into the question text.  For example:</p>
 <pre><code> \(({@aa@}e^{{@bb@} i})^{@nn@}\)
 </code></pre>
 <p>What we are doing here is treating every variable separately instead of creating a single CAS object for the complex number.  This is ok, but causes problems and is difficult to read because it mixes CAS and LaTeX.</p>
@@ -149,7 +149,7 @@ simp : false;
 qq : (aa*%e^(bb*%i))^nn;
 </code></pre>
 <h3 id="unary-minus">Unary minus</h3>
-<p>The particular circumstances will dictate if it is better to have lots of variables and use the display, or whether to turn <code>simp:false</code> and work with this.  A common problem arises with the unary minus. Consider a question text such as <code>Find {@aa@}+{@bb@}</code>. If (<code>bb</code>&lt;0), the expression will be displayed as (3+-5), for example.  While simplification is "off", the display routines in Maxima will (often) cope with the unary minus in a sensible way.</p>
+<p>The particular circumstances will dictate if it is better to have lots of variables and use the display, or whether to turn <code>simp:false</code> and work with this.  A common problem arises with the unary minus. Consider a question text such as <code>Find {@aa@}+{@bb@}</code>. If <script type="math/tex"><code>bb</code>&lt;0</script>, the expression will be displayed as <script type="math/tex">3+-5</script>, for example.  While simplification is "off", the display routines in Maxima will (often) cope with the unary minus in a sensible way.</p>
 <h1 id="next-step">Next step</h1>
 <p>You should now be able to determine when it is sensible to turn off simplification. If you have been following this quick-start guide, you should already know some steps you can take to improve this question. For example, you could add <a href="../Authoring_quick_start_3/">more specific feedback</a>, <a href="../Authoring_quick_start_4/">randomise your question</a> and add <a href="../Authoring_quick_start_5/">question tests</a>.</p>
 <h5 id="the-next-part-of-the-authoring-quick-start-guide-looks-at-setting-up-a-quiz"><strong>The next part of the authoring quick start guide looks at <a href="../Authoring_quick_start_8/">setting up a quiz</a>.</strong></h5>
@@ -184,6 +184,7 @@ qq : (aa*%e^(bb*%i))^nn;
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

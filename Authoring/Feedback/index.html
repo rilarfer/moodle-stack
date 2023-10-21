@@ -139,7 +139,7 @@ it must be validated.  In particular, at each attempt, each input is assigned a 
 <li>score.  In this case, the answer is available to any potential response tree requiring it.</li>
 </ol>
 <p>Normally a student will view a displayed form of their expression and submit it again.  This default behaviour is inappropriate for multiple choice/selection interactions, and can be changed for each input using the option "Student must verify".  Whether the student's answer is echoed back and shown is controlled by a separate option "Show the validation".  Validation errors are always shown.</p>
-<p>Whether a string entered by the student is valid or invalid does not depend on the question. I.e. there <em>should</em> be a consistent mechanism for what constitutes a syntactically valid expression. However, in practice things are not quite so clean!  Some <a href="../Inputs/#Input_options">input options</a> do affect validity, such as <em>forbid floats</em>.   Some symbols, e.g. (i) and (j) change meaning in different contexts, e.g. (\sqrt{-1}) or vector components.  See details about <a href="../Options/">options</a>.</p>
+<p>Whether a string entered by the student is valid or invalid does not depend on the question. I.e. there <em>should</em> be a consistent mechanism for what constitutes a syntactically valid expression. However, in practice things are not quite so clean!  Some <a href="../Inputs/#Input_options">input options</a> do affect validity, such as <em>forbid floats</em>.   Some symbols, e.g. <script type="math/tex">i</script> and <script type="math/tex">j</script> change meaning in different contexts, e.g. <script type="math/tex">\sqrt{-1}</script> or vector components.  See details about <a href="../Options/">options</a>.</p>
 <h1 id="potential-response-trees">Potential response trees</h1>
 <p>Each <a href="../Potential_response_trees/">potential response tree</a> returns three outcomes:</p>
 <ol>
@@ -156,26 +156,31 @@ Hence it is not considered to be feedback to the student's work in the strict se
 <p>The numerical scores are assembled by traversing each potential response tree.</p>
 <ul>
 <li>Each branch of each node can add, subtract or set an absolute, score.</li>
-<li>The outcome at the end should be between 0 and 1.  If the score, (s), lies outside this range it is taken to be ( \min(\max(s,0),1) ) to bring it within range, then it is scaled by multiplying by the <a href="../Potential_response_trees/#Question_value">question value</a> for that potential response tree.</li>
+<li>The outcome at the end should be between 0 and 1.  If the score, <script type="math/tex">s</script>, lies outside this range it is taken to be <script type="math/tex"> \min(\max(s,0),1) </script> to bring it within range, then it is scaled by multiplying by the <a href="../Potential_response_trees/#Question_value">question value</a> for that potential response tree.</li>
 <li>A "penalty" may also set in the potential response tree for this attempt. Normally the penalty field in each branch of the potential response tree is empty, in which case the question level penalty value is used.  However, these fields are useful to <em>remove</em> any penalty for this outcome, by setting it to zero explicitly.</li>
 <li>After the whole tree has been traversed, if the score is 1 then the penalty is always assigned to 0.</li>
 </ul>
-<p>STACK adjusts the score for each potential response tree, based on the number of valid, different attempts.  The penalty scheme deducts from the score a small amount (default is (0.1=10\%)) for each different and valid attempt which is not completely correct.   It is designed to <em>reward persistence and diligence</em> when students initially get a question wrong, but they try again.</p>
-<p>It works in the following way. For each attempt (k), we let</p>
+<p>STACK adjusts the score for each potential response tree, based on the number of valid, different attempts.  The penalty scheme deducts from the score a small amount (default is <script type="math/tex">0.1=10\%</script>) for each different and valid attempt which is not completely correct.   It is designed to <em>reward persistence and diligence</em> when students initially get a question wrong, but they try again.</p>
+<p>It works in the following way. For each attempt <script type="math/tex">k</script>, we let</p>
 <ul>
-<li>(s_k) be the score from the potential response tree.</li>
-<li>(p_k) be the "penalty" as follows:</li>
-<li>If (s_k=1) then (p_k=0), else</li>
-<li>If the penalty (p) set in the <em>last branch</em> traversed before exiting the potential response tree is not <code>NULL</code> then (p_k=p), else</li>
-<li>(p_k) is the penalty set in the question options, (default (0.1=10\%) ).</li>
+<li>
+<script type="math/tex">s_k</script> be the score from the potential response tree.</li>
+<li>
+<script type="math/tex">p_k</script> be the "penalty" as follows:</li>
+<li>If <script type="math/tex">s_k=1</script> then <script type="math/tex">p_k=0</script>, else</li>
+<li>If the penalty <script type="math/tex">p</script> set in the <em>last branch</em> traversed before exiting the potential response tree is not <code>NULL</code> then <script type="math/tex">p_k=p</script>, else</li>
+<li>
+<script type="math/tex">p_k</script> is the penalty set in the question options, (default <script type="math/tex">0.1=10\%</script> ).</li>
 </ul>
 <p>The default penalty scheme takes the <em>maximum</em> score for each attempt, so that by accruing further penalties a student may never be worse off.</p>
 <p>To be specific</p>
 <ol>
-<li>Let ( (s_i,p_i) ) for (i=1,\cdots n) be the list of scores and penalties for a particular potential response tree, for each different valid attempt.</li>
-<li>The score for attempt (k) is defined to be</li>
+<li>Let <script type="math/tex"> (s_i,p_i) </script> for <script type="math/tex">i=1,\cdots n</script> be the list of scores and penalties for a particular potential response tree, for each different valid attempt.</li>
+<li>The score for attempt <script type="math/tex">k</script> is defined to be</li>
 </ol>
-<p>[ \mbox{Question value} \times \max\left{ s_i-\sum_{j=1}^i p_j,\ i=1,\cdots k \right}.]</p>
+<p>
+<script type="math/tex; mode=display"> \mbox{Question value} \times \max\left\{ s_i-\sum_{j=1}^i p_j,\ i=1,\cdots k \right\}.</script>
+</p>
 <p>Notice that this is purely a function of a list of (score, penalty) pairs.</p>
 <p>The score for that attempt is the sum of the marks for each potential response tree once penalties have been deducted from each tree.</p>
 <h2 id="text-for-the-student">Text for the student</h2>
@@ -183,7 +188,7 @@ Hence it is not considered to be feedback to the student's work in the strict se
 <ul>
 <li><em>Answer test feedback.</em> Many of the <a href="../Answer_Tests/">answer tests</a> generate feedback of their own. This can be suppressed using the quiet option. While this feedback is often not needed, it would be very difficult for the teacher to re-create this.</li>
 <li><em>Bespoke feedback.</em> Each branch of the <a href="../Potential_response_trees/">potential response trees</a> generates some feedback.</li>
-<li><em>Generic feedback.</em> Once the <a href="../Potential_response_trees/">potential response trees</a> has been traversed and all feedback assigned, the score is used to generate some generic feedback. If the raw score equals (0) then the default feedback is <em>Incorrect answer</em>.   If the raw score equals (1) then the default feedback is <em>Correct answer, well done</em>. Otherwise the generic feedback is <em>Your answer is partially correct</em>.  These strings can be modified in the <a href="../Options/">options</a>.</li>
+<li><em>Generic feedback.</em> Once the <a href="../Potential_response_trees/">potential response trees</a> has been traversed and all feedback assigned, the score is used to generate some generic feedback. If the raw score equals <script type="math/tex">0</script> then the default feedback is <em>Incorrect answer</em>.   If the raw score equals <script type="math/tex">1</script> then the default feedback is <em>Correct answer, well done</em>. Otherwise the generic feedback is <em>Your answer is partially correct</em>.  These strings can be modified in the <a href="../Options/">options</a>.</li>
 </ul>
               
             </div>
@@ -216,6 +221,7 @@ Hence it is not considered to be feedback to the student's work in the strict se
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

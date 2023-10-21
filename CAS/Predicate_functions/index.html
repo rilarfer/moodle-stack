@@ -128,27 +128,27 @@ functions.  Some are described here, others are in the relevant specific section
 <tbody>
 <tr>
 <td><code>floatnump(ex)</code></td>
-<td>Determines if (ex) is a float.</td>
+<td>Determines if <script type="math/tex">ex</script> is a float.</td>
 </tr>
 <tr>
 <td><code>numberp(ex)</code></td>
-<td>Determines if (ex) is a number.  <em>NOTE</em> <code>numberp</code> returns <code>false</code> if its argument is a symbol, even if the argument is a symbolic number such as (\sqrt{2}), (\pi) or (i), or declared to be even, odd, integer, rational, irrational, real, imaginary, or complex.   This function also does not work when <code>simp:false</code>, so see the dedicated page on <a href="../Numbers/">numbers</a>.</td>
+<td>Determines if <script type="math/tex">ex</script> is a number.  <em>NOTE</em> <code>numberp</code> returns <code>false</code> if its argument is a symbol, even if the argument is a symbolic number such as <script type="math/tex">\sqrt{2}</script>, <script type="math/tex">\pi</script> or <script type="math/tex">i</script>, or declared to be even, odd, integer, rational, irrational, real, imaginary, or complex.   This function also does not work when <code>simp:false</code>, so see the dedicated page on <a href="../Numbers/">numbers</a>.</td>
 </tr>
 <tr>
 <td><code>setp(ex)</code></td>
-<td>Determines if (ex) is a set.</td>
+<td>Determines if <script type="math/tex">ex</script> is a set.</td>
 </tr>
 <tr>
 <td><code>listp(ex)</code></td>
-<td>Determines if (ex) is a list.</td>
+<td>Determines if <script type="math/tex">ex</script> is a list.</td>
 </tr>
 <tr>
 <td><code>matrixp(ex)</code></td>
-<td>Determines if (ex) is a matrix.</td>
+<td>Determines if <script type="math/tex">ex</script> is a matrix.</td>
 </tr>
 <tr>
 <td><code>polynomialp(ex,[v])</code></td>
-<td>Determines if (ex) is a polynomial in the list of variables v.</td>
+<td>Determines if <script type="math/tex">ex</script> is a polynomial in the list of variables v.</td>
 </tr>
 </tbody>
 </table>
@@ -164,55 +164,55 @@ functions.  Some are described here, others are in the relevant specific section
 <tbody>
 <tr>
 <td><code>variablep(ex)</code></td>
-<td>Determines if (ex) is avariable, that is an atom but not a real numberm, (i) or a string.</td>
+<td>Determines if <script type="math/tex">ex</script> is avariable, that is an atom but not a real numberm, <script type="math/tex">i</script> or a string.</td>
 </tr>
 <tr>
 <td><code>equationp(ex)</code></td>
-<td>Determines if (ex) is an equation.</td>
+<td>Determines if <script type="math/tex">ex</script> is an equation.</td>
 </tr>
 <tr>
 <td><code>functionp(ex)</code></td>
-<td>Determines if (ex) is a function definition, using the operator <code>:=</code>.</td>
+<td>Determines if <script type="math/tex">ex</script> is a function definition, using the operator <code>:=</code>.</td>
 </tr>
 <tr>
 <td><code>inequalityp(ex)</code></td>
-<td>Determines if (ex) is an inequality.</td>
+<td>Determines if <script type="math/tex">ex</script> is an inequality.</td>
 </tr>
 <tr>
 <td><code>expressionp(ex)</code></td>
-<td>Determines if (ex) is <em>not</em> a matrix, list, set, equation, function or inequality.</td>
+<td>Determines if <script type="math/tex">ex</script> is <em>not</em> a matrix, list, set, equation, function or inequality.</td>
 </tr>
 <tr>
 <td><code>polynomialpsimp(ex)</code></td>
-<td>Determines if (ex) is a polynomial in its own variables.</td>
+<td>Determines if <script type="math/tex">ex</script> is a polynomial in its own variables.</td>
 </tr>
 <tr>
 <td><code>simp_numberp(ex)</code></td>
-<td>Determines if (ex) is a number when <code>simp:false</code>.</td>
+<td>Determines if <script type="math/tex">ex</script> is a number when <code>simp:false</code>.</td>
 </tr>
 <tr>
 <td><code>simp_integerp(ex)</code></td>
-<td>Determines if (ex) is an integer when <code>simp:false</code>.</td>
+<td>Determines if <script type="math/tex">ex</script> is an integer when <code>simp:false</code>.</td>
 </tr>
 <tr>
 <td><code>real_numberp(ex)</code></td>
-<td>Determines if (ex) is a real number.</td>
+<td>Determines if <script type="math/tex">ex</script> is a real number.</td>
 </tr>
 <tr>
 <td><code>rational_numberp(ex)</code></td>
-<td>Determines if (ex) is written as a fraction.  For a true mathematical rational number use <code>rational_numberp(ex) or simp_integerp(ex)</code></td>
+<td>Determines if <script type="math/tex">ex</script> is written as a fraction.  For a true mathematical rational number use <code>rational_numberp(ex) or simp_integerp(ex)</code></td>
 </tr>
 <tr>
 <td><code>lowesttermsp(ex)</code></td>
-<td>Determines if a fraction (ex) is in lowest terms.</td>
+<td>Determines if a fraction <script type="math/tex">ex</script> is in lowest terms.</td>
 </tr>
 <tr>
 <td><code>complex_exponentialp(ex)</code></td>
-<td>Determines if (ex) is written in complex exponential form, (r e^{i\theta} ).  Needs <code>simp:false</code>.</td>
+<td>Determines if <script type="math/tex">ex</script> is written in complex exponential form, <script type="math/tex">r e^{i\theta} </script>.  Needs <code>simp:false</code>.</td>
 </tr>
 <tr>
 <td><code>imag_numberp(ex)</code></td>
-<td>Determines if (ex) is a purely imaginary number.</td>
+<td>Determines if <script type="math/tex">ex</script> is a purely imaginary number.</td>
 </tr>
 </tbody>
 </table>
@@ -228,19 +228,19 @@ functions.  Some are described here, others are in the relevant specific section
 <tbody>
 <tr>
 <td><code>element_listp(ex,l)</code></td>
-<td><code>true</code> if <code>ex</code> is an element of the <em>list</em> (l).  (Sets have <code>elementp</code>, but lists don't)</td>
+<td><code>true</code> if <code>ex</code> is an element of the <em>list</em> <script type="math/tex">l</script>.  (Sets have <code>elementp</code>, but lists don't)</td>
 </tr>
 <tr>
 <td><code>all_listp(p,l)</code></td>
-<td><code>true</code> if all elements of (l) satisfy the predicate (p).</td>
+<td><code>true</code> if all elements of <script type="math/tex">l</script> satisfy the predicate <script type="math/tex">p</script>.</td>
 </tr>
 <tr>
 <td><code>any_listp(p,l)</code></td>
-<td><code>true</code> if any elements of (l) satisfy the predicate (p).</td>
+<td><code>true</code> if any elements of <script type="math/tex">l</script> satisfy the predicate <script type="math/tex">p</script>.</td>
 </tr>
 <tr>
 <td><code>sublist(l,p)</code></td>
-<td>Return a list containing only those elements of the list (l) for which the predicate p is true</td>
+<td>Return a list containing only those elements of the list <script type="math/tex">l</script> for which the predicate p is true</td>
 </tr>
 </tbody>
 </table>
@@ -256,19 +256,19 @@ functions.  Some are described here, others are in the relevant specific section
 <tbody>
 <tr>
 <td><code>expandp(ex)</code></td>
-<td>true if (ex) equals its expanded form.</td>
+<td>true if <script type="math/tex">ex</script> equals its expanded form.</td>
 </tr>
 <tr>
 <td><code>factorp(ex)</code></td>
-<td>true if (ex) equals its factored form.  Note, if you would like to know if an expression is factored you need to use the <a href="../../Authoring/Answer_Tests/#Form">FacForm</a> answer test.  Prime integers equal their factored form, composite integers do not.</td>
+<td>true if <script type="math/tex">ex</script> equals its factored form.  Note, if you would like to know if an expression is factored you need to use the <a href="../../Authoring/Answer_Tests/#Form">FacForm</a> answer test.  Prime integers equal their factored form, composite integers do not.</td>
 </tr>
 <tr>
 <td><code>continuousp(ex,v,xp)</code></td>
-<td>true if (ex) is continuous with respect to (v) at (xp) (unreliable).</td>
+<td>true if <script type="math/tex">ex</script> is continuous with respect to <script type="math/tex">v</script> at <script type="math/tex">xp</script> (unreliable).</td>
 </tr>
 <tr>
 <td><code>diffp(ex,v,xp,[n])</code></td>
-<td>true if (ex) is (optionally (n) times) differentiable with respect to (v) at (xp) (unreliable).</td>
+<td>true if <script type="math/tex">ex</script> is (optionally <script type="math/tex">n</script> times) differentiable with respect to <script type="math/tex">v</script> at <script type="math/tex">xp</script> (unreliable).</td>
 </tr>
 </tbody>
 </table>
@@ -280,16 +280,16 @@ functions.  Some are described here, others are in the relevant specific section
 <p>The teacher can then use this function to build more complex predicates such as the following</p>
 <pre><code>fouriertermp(ex) := if ((safe_op(ex)="cos" or safe_op(ex)="sin") and linear_term_p(first(args(ex)), variablep)) then true else false$
 </code></pre>
-<p>This predicate function decides if we have a term of the form (\sin(n\, v)) or (\cos(n\, v)) where (n) is any product of real numbers (e.g. (3\pi/2)) and (v) is any variable.  A teacher might prefer to specify a particular variable.</p>
+<p>This predicate function decides if we have a term of the form <script type="math/tex">\sin(n\, v)</script> or <script type="math/tex">\cos(n\, v)</script> where <script type="math/tex">n</script> is any product of real numbers (e.g. <script type="math/tex">3\pi/2</script>) and <script type="math/tex">v</script> is any variable.  A teacher might prefer to specify a particular variable.</p>
 <pre><code>fouriertermp(ex) := if ((safe_op(ex)="cos" or safe_op(ex)="sin") and linear_term_p(first(args(ex)), lambda([ex2], ex2=t))) then true else false$
 </code></pre>
-<p>So, if you want to decide if the student's answer looks like ( \sum_{k=1}{n} a_k\cos(k\pi t) + a_k\cos(k\pi t) ) the combined predicate <code>linear_combination_p(ex, fouriertermp)</code> can be used.</p>
-<p>Testing for form in this way is probably more reliable that the <code>substequiv</code> answer test which fails to match up expressions like (A\sin(t)+B\cos(t)) with (A\sin(t)-B\cos(t)).  As every, the minus sign is a problem.  However, the following predicate will work.</p>
+<p>So, if you want to decide if the student's answer looks like <script type="math/tex"> \sum_{k=1}{n} a_k\cos(k\pi t) + a_k\cos(k\pi t) </script> the combined predicate <code>linear_combination_p(ex, fouriertermp)</code> can be used.</p>
+<p>Testing for form in this way is probably more reliable that the <code>substequiv</code> answer test which fails to match up expressions like <script type="math/tex">A\sin(t)+B\cos(t)</script> with <script type="math/tex">A\sin(t)-B\cos(t)</script>.  As every, the minus sign is a problem.  However, the following predicate will work.</p>
 <pre><code>simpletrigp(ex) := if (ex=cos(t) or ex=sin(t)) then true else false$
 </code></pre>
 <p>and the test <code>linear_combination_p(ex, simpletrigp)</code> will be able to do this.</p>
 <h1 id="related-functions">Related functions</h1>
-<p>This is not, strictly speaking, a predicate function.  It is common to want to ensure that a student's expression is free of things like (\sqrt{2}), (a^{1/2}) or (1+\sqrt[3]{2}) in the denominator.  This include any complex numbers.</p>
+<p>This is not, strictly speaking, a predicate function.  It is common to want to ensure that a student's expression is free of things like <script type="math/tex">\sqrt{2}</script>, <script type="math/tex">a^{1/2}</script> or <script type="math/tex">1+\sqrt[3]{2}</script> in the denominator.  This include any complex numbers.</p>
 <p><code>rationalized(ex)</code> searches across the whole expression <code>ex</code> and looks in the denominators of any fractions.  If the denominators are free of such things the function returns <code>true</code> otherwise the function returns the list of offending expressions.  This design allows efficient feedback of the form ``the denominator in your expression should be free of the following: ...".</p>
 <h2 id="see-also">See also</h2>
 <p><a href="../#reference.md">Maxima reference topics</a></p>
@@ -324,6 +324,7 @@ functions.  Some are described here, others are in the relevant specific section
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

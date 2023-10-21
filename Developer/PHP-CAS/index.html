@@ -154,12 +154,12 @@ is a significant efficienty  boost for more complex questions.</p>
 <p>Some answer tests rely on "unsimplified" expressions with a "what you see 
 is what you get" approach.</p>
 <p>This example illustrates the issue.  The teacher computes the answer to their 
-question, e.g. find (\int_{0}^{1} {\frac{{\left(1-x\right)}^4\cdot x^4}{x^2+1}} \mathrm{d}x), 
+question, e.g. find <script type="math/tex">\int_{0}^{1} {\frac{{\left(1-x\right)}^4\cdot x^4}{x^2+1}} \mathrm{d}x</script>, 
 with the Maxima code</p>
 <pre><code>p1:int(x^4*(1-x)^4/(1+x^2),x,0,1);
 </code></pre>
 <p>using simplification (obviously) at the start of the quetion variables, and this simplified expression is used
-by the PRT. The answer,  (\frac{22}{7}-\pi), is held internally in "simplified" form. 
+by the PRT. The answer,  <script type="math/tex">\frac{22}{7}-\pi</script>, is held internally in "simplified" form. 
 The Maxima string output is <code>22/7-%pi</code> but internally the answer is actually the following </p>
 <pre><code>((MPLUS SIMP) ((RAT SIMP) 22 7) ((MTIMES SIMP) -1 $%PI))
 </code></pre>
@@ -210,6 +210,7 @@ answer tests, e.g. <code>EqualComAss</code> and <code>CasEqual</code>, are desig
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

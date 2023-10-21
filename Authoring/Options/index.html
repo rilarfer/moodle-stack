@@ -115,50 +115,53 @@
 <pre><code>assume_pos
 </code></pre>
 <p>variable.</p>
-<p>If <code>true</code> and the sign of a parameter (x) cannot be determined from the current context or
+<p>If <code>true</code> and the sign of a parameter <script type="math/tex">x</script> cannot be determined from the current context or
 other considerations, <code>sign</code> and <code>asksign(x)</code> return <code>true</code>. This may forestall some automatically-generated
 asksign queries, such as may arise from integrate or other computations</p>
 <p>Default is False</p>
 <h3 id="question-penalty-question_penalty">Question Penalty ### {#Question_penalty}</h3>
 <p>This is the percentage of the marks deducted from each different and valid attempt which is not
 completely correct, when the penalty mark modification scheme is in use.
-The default is (10\%) of the marks available for this question, entered at (0.1).</p>
-<p>Note that Moodle stores scores to 7 decimal places, so, (1/3) should be entered as (0.3333333),
-and (2/3) as (0.6666667). If you input any number close to (1/3), but with less precision,
+The default is <script type="math/tex">10\%</script> of the marks available for this question, entered at <script type="math/tex">0.1</script>.</p>
+<p>Note that Moodle stores scores to 7 decimal places, so, <script type="math/tex">1/3</script> should be entered as <script type="math/tex">0.3333333</script>,
+and <script type="math/tex">2/3</script> as <script type="math/tex">0.6666667</script>. If you input any number close to <script type="math/tex">1/3</script>, but with less precision,
 then the extra digits will automatically be added. The exact range affected is that
-any penalty (\ge 0.33) and (\le 0.34) is changed to (0.3333333), and
-any penalty (\ge 0.66) and (\le 0.67) is changed to (0.6666667).</p>
+any penalty <script type="math/tex">\ge 0.33</script> and <script type="math/tex">\le 0.34</script> is changed to <script type="math/tex">0.3333333</script>, and
+any penalty <script type="math/tex">\ge 0.66</script> and <script type="math/tex">\le 0.67</script> is changed to <script type="math/tex">0.6666667</script>.</p>
 <h2 id="output">Output</h2>
 <p>The following options affect how mathematics is displayed.</p>
 <h3 id="multiplication-sign-multiplication">Multiplication Sign ### {#multiplication}</h3>
 <ul>
-<li>(none), e.g. (x(x+1))</li>
-<li>Dot, e.g. (x\cdot(x+1))</li>
-<li>Cross, e.g. (x\times (x+1))</li>
-<li>Numbers only, e.g. (3\times 5\, x).</li>
+<li>(none), e.g. <script type="math/tex">x(x+1)</script>
+</li>
+<li>Dot, e.g. <script type="math/tex">x\cdot(x+1)</script>
+</li>
+<li>Cross, e.g. <script type="math/tex">x\times (x+1)</script>
+</li>
+<li>Numbers only, e.g. <script type="math/tex">3\times 5\, x</script>.</li>
 </ul>
 <p>In practice it is very helpful to have some kind of multiplication sign displayed to the student.  The difference between
-[ xe^x \mbox{ and } x\,e^x]
-is very subtle.  Notice the spacing?  The first means <code>xe^x=(xe)^x</code> the second is <code>x*e^x</code>.  Could be quite confusing to students if there is no multiplication sign.  Using (x\cdot e^x) neatly solves this problem.</p>
+<script type="math/tex; mode=display"> xe^x \mbox{ and } x\,e^x</script>
+is very subtle.  Notice the spacing?  The first means <code>xe^x=(xe)^x</code> the second is <code>x*e^x</code>.  Could be quite confusing to students if there is no multiplication sign.  Using <script type="math/tex">x\cdot e^x</script> neatly solves this problem.</p>
 <p>Internally the display of multiplication signs is controlled by the STACK function <code>make_multsgn(ex)</code>, where the argument can be one of the strings <code>"cross"</code>, <code>"dot"</code> or <code>"blank"</code>.  This can be switched part-way through a session. E.g. consider the following castext.</p>
 <pre><code>Default: {@a*b@}.
 Switch to cross: {@(make_multsgn("cross"), a*b)@}.
 Cross remains: {@a*b@}.
 </code></pre>
-<p>The expression <code>(make_multsgn("cross"), a*b)</code> uses parentheses as an abbreviation for Maxima's <code>block</code> command.  So, the first expression <code>make_multsgn("cross")</code> is evaluated which changes the display option to a cross.  Then the second expression is evaluated and displayed as (a\times b).  The new option persists in the next expression.</p>
-<p>The value of this option <code>onum</code> will only put a multiplication sign between numbers.  This means you will see (3\times 5\, x) and not (3\, 5\, x) as you would if you have "none".</p>
+<p>The expression <code>(make_multsgn("cross"), a*b)</code> uses parentheses as an abbreviation for Maxima's <code>block</code> command.  So, the first expression <code>make_multsgn("cross")</code> is evaluated which changes the display option to a cross.  Then the second expression is evaluated and displayed as <script type="math/tex">a\times b</script>.  The new option persists in the next expression.</p>
+<p>The value of this option <code>onum</code> will only put a multiplication sign between numbers.  This means you will see <script type="math/tex">3\times 5\, x</script> and not <script type="math/tex">3\, 5\, x</script> as you would if you have "none".</p>
 <p>There is a special atom which controls the multiplication symbol.  If you would like a dot then define</p>
 <pre><code>texput(multsgnonlyfornumberssym, "\\times");
 </code></pre>
 <p>in the question variables.</p>
 <h3 id="logic-symbols-logicsymbol">Logic symbols ### {#logicsymbol}</h3>
-<p>How logical symbols should be displayed. The values are language, e.g. (A \mbox{ and } B) or symbol, e.g. (A\land B).</p>
+<p>How logical symbols should be displayed. The values are language, e.g. <script type="math/tex">A \mbox{ and } B</script> or symbol, e.g. <script type="math/tex">A\land B</script>.</p>
 <h3 id="surd-for-square-root-surd">Surd for Square Root ### {#surd}</h3>
 <p>This option sets the value of <a href="../../CAS/Maxima/">Maxima</a>'s</p>
 <pre><code>sqrtdispflag
 </code></pre>
-<p>When false the prefix function <code>sqrt(x)</code> will be displayed as (x^{1/2}).
-Please note that Maxima (by default) does not like to use the (\sqrt{}) symbol.
+<p>When false the prefix function <code>sqrt(x)</code> will be displayed as <script type="math/tex">x^{1/2}</script>.
+Please note that Maxima (by default) does not like to use the <script type="math/tex">\sqrt{}</script> symbol.
 The internal representation favours fractional powers, for very good reasons.
 In  Maxima 5.19.1 we get:</p>
 <pre><code>(%i1) 4*sqrt(2);
@@ -166,15 +169,16 @@ In  Maxima 5.19.1 we get:</p>
 (%i2) 6*sqrt(2);
 (%o2) 3*2^(3/2)
 </code></pre>
-<p>Do you really want to continue using (\sqrt{}) in your teaching?  In his <em>Elements of Algebra</em>, L. Euler wrote the following.</p>
+<p>Do you really want to continue using <script type="math/tex">\sqrt{}</script> in your teaching?  In his <em>Elements of Algebra</em>, L. Euler wrote the following.</p>
 <blockquote>
-<p>(\S 200) We may therefore entirely reject the radical signs at present made use of, and employ in their stead
+<p>
+<script type="math/tex">\S 200</script> We may therefore entirely reject the radical signs at present made use of, and employ in their stead
 the fractional exponents which we have just explained: but as we have been long accustomed to
 those signs, and meet with them in most books of Algebra, it might be wrong to banish them entirely from 
 calculations; there is, however, sufficient reason also to employ, as is now frequently done, the other method of 
 notation, because it manifestly corresponds with the nature of the thing. In fact we see immediately
-that (a^\frac12) is the square root of (a), because we know that the square of (a^\frac12), that is to say 
-(a^\frac12) multiplied by (a^\frac12) is equal to (a^1), or (a).</p>
+that <script type="math/tex">a^\frac12</script> is the square root of <script type="math/tex">a</script>, because we know that the square of <script type="math/tex">a^\frac12</script>, that is to say 
+<script type="math/tex">a^\frac12</script> multiplied by <script type="math/tex">a^\frac12</script> is equal to <script type="math/tex">a^1</script>, or <script type="math/tex">a</script>.</p>
 </blockquote>
 <p>A lot of elementary mathematics involves converting from one form to another and back again.  Sometimes these forms have important differences of use, e.g. factored form or completed square form for a quadratic.  However, sometimes these equivalent forms are more customary than because it <em>"manifestly corresponds with the nature of the thing"</em> in question.  I digress...</p>
 <h3 id="sqrt-1-sqrt_minus_one">sqrt(-1) {#sqrt_minus_one}</h3>
@@ -256,7 +260,7 @@ and affects the way they are displayed.</p>
 <h3 id="matrix-parentheses">Matrix parentheses</h3>
 <p>See the entry on <a href="../../CAS/Matrix/#matrixparens">matrices</a>.</p>
 <h3 id="inline-and-displayed-fractions">Inline and displayed fractions.</h3>
-<p>The display of fractions can take two forms: inline ( 1/x ) and displayed ( \frac{1}{x} ).</p>
+<p>The display of fractions can take two forms: inline <script type="math/tex"> 1/x </script> and displayed <script type="math/tex"> \frac{1}{x} </script>.</p>
 <p>The default behaviour is displayed, i.e. using LaTeX <code>\frac{}{}</code>.</p>
 <p>The function <code>stack_disp_fractions(ex)</code> can be used to control the display.</p>
 <ul>
@@ -297,6 +301,7 @@ and affects the way they are displayed.</p>
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

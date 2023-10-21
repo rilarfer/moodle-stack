@@ -164,7 +164,7 @@ fx:sin(x)+a;
 </code></pre>
 <p>In this example the student can interact with a dynamic diagram to help them understand what is going on.</p>
 <h2 id="an-example-with-a-slider">An example with a slider</h2>
-<p>In this example we provide a simple slider.  Notice in this example we use the JavaScript notation <code>a**x</code> for (a^x) and not Maxima's <code>a^x</code>.</p>
+<p>In this example we provide a simple slider.  Notice in this example we use the JavaScript notation <code>a**x</code> for <script type="math/tex">a^x</script> and not Maxima's <code>a^x</code>.</p>
 <pre><code>[[jsxgraph]]
   // boundingbox:[left, top, right, bottom]
   var board = JXG.JSXGraph.initBoard(divid, {boundingbox: [-5, 10, 5, -10], axis: true, showCopyright: false});
@@ -308,6 +308,7 @@ Internally, it applies <code>string</code> to the list of values (not TeX!).  Ho
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

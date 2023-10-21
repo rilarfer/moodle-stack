@@ -115,7 +115,7 @@
 <li>It is ok to add nodes to an existing PRT and "regrade".  However, the Moodle DB caches outcomes, so unless the score changes you will not see new stats.  If you are using the basic question usage report to generate stats you might need to change the marks, regrade, change the marks back and regrade again to update the usage report stats.</li>
 </ol>
 <p>If you cannot apply a patch, then create a copy of the question and put it in a new category "for next year".  It is normally best to fix it now!</p>
-<p>It is possible to change the weight of an individual question within a live quiz and re-grade. If the live question is impossible to fix you do have the option to disregard the question by assigning it a mark of (0) in the quiz.</p>
+<p>It is possible to change the weight of an individual question within a live quiz and re-grade. If the live question is impossible to fix you do have the option to disregard the question by assigning it a mark of <script type="math/tex">0</script> in the quiz.</p>
 <h2 id="fixing-broken-mathjax-and-javascript">Fixing broken MathJax and Javascript</h2>
 <p>A relatively common problem is that MathJax stops working half way through a question resulting in an equation showing up as a <code>[Math Error]</code> or similar error message, (or just showing the source).</p>
 <p>MathJax is a javascript library, and sometimes when it encounters malformed HTML it gives up.</p>
@@ -187,6 +187,7 @@ question-attempt and it is picked at the initiation of the quiz either from depl
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

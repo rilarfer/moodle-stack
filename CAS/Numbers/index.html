@@ -124,7 +124,7 @@ pi: %pi
 <pre><code>i: %i
 j: %i
 </code></pre>
-<p>Sometimes you need to use (e), or other constants, as an abstract symbol not a number.  The Maxima solution is to use the <code>kill()</code> command, but for security reasons users of STACK are not permitted to use this function. Instead use <code>stack_reset_vars(true)</code> in the question variables.  This resets all the special constants defined by STACK so the symbols can be redefined in an individual STACK question.  (On Maxima 5.42.1 (and possibly others) <code>stack_reset_vars(true)</code> also resets <code>ordergreat</code>, so if you need to use <code>stack_reset_vars(true)</code> it must be the first command the question variables.  Since this has been fixed in Maxima 5.44.0, it was probably a bug in Maxima.)</p>
+<p>Sometimes you need to use <script type="math/tex">e</script>, or other constants, as an abstract symbol not a number.  The Maxima solution is to use the <code>kill()</code> command, but for security reasons users of STACK are not permitted to use this function. Instead use <code>stack_reset_vars(true)</code> in the question variables.  This resets all the special constants defined by STACK so the symbols can be redefined in an individual STACK question.  (On Maxima 5.42.1 (and possibly others) <code>stack_reset_vars(true)</code> also resets <code>ordergreat</code>, so if you need to use <code>stack_reset_vars(true)</code> it must be the first command the question variables.  Since this has been fixed in Maxima 5.44.0, it was probably a bug in Maxima.)</p>
 <h2 id="modular-arithmetic">Modular arithmetic</h2>
 <p>The function <code>recursemod(ex, n)</code> recurses over an expression tree, and applies the function <code>mod(?, n)</code> to any numbers as identified by <code>numberp</code>.  This works on any expression, whereas <code>polymod</code> only applies to polynomials.</p>
 <h2 id="internal-representation-of-numbers">Internal representation of numbers</h2>
@@ -138,10 +138,10 @@ The option <a href="../../Authoring/Options/#sqrt_minus_one">sqrt(-1)</a> is set
 <li>To convert to a float use Maxima's <code>float(ex)</code> command.</li>
 <li>To convert a float to an exact representation use <code>rat(x)</code> to rationalise the decimal.</li>
 </ul>
-<p>The variable (e) has been defined as <code>e:exp(1)</code>.  This now potentially conflicts with scientific notation <code>2e3</code> which means <code>2*10^3</code>.    </p>
-<p>If you expect students to use scientific notation for numbers, e.g. <code>3e4</code> (which means (3\times 10^{4}) ), then you may want to use the <a href="../../Authoring/Inputs/#Strict_Syntax">option for strict syntax</a>.  </p>
+<p>The variable <script type="math/tex">e</script> has been defined as <code>e:exp(1)</code>.  This now potentially conflicts with scientific notation <code>2e3</code> which means <code>2*10^3</code>.    </p>
+<p>If you expect students to use scientific notation for numbers, e.g. <code>3e4</code> (which means <script type="math/tex">3\times 10^{4}</script> ), then you may want to use the <a href="../../Authoring/Inputs/#Strict_Syntax">option for strict syntax</a>.  </p>
 <p>Internally Maxima represents floats in binary, and so even simple calculations which would be exact in base ten (e.g. adding 0.16 to 0.12) might end up in a recurring decimal float which is not exactly equal to the result you would type in directly.  </p>
-<p>Try <code>452-4.52*10^2</code> in desktop Maxima, which is not zero, therefore <code>ATAlgEquiv(452,4.52*10^2)</code> fails. (Maxima 5.44.0, November 2022).  (4.52\times 10^2) ends up with recurring 9s when represented as a binary float, so it is not algebraically equivalent to the integer (452).</p>
+<p>Try <code>452-4.52*10^2</code> in desktop Maxima, which is not zero, therefore <code>ATAlgEquiv(452,4.52*10^2)</code> fails. (Maxima 5.44.0, November 2022).  <script type="math/tex">4.52\times 10^2</script> ends up with recurring 9s when represented as a binary float, so it is not algebraically equivalent to the integer <script type="math/tex">452</script>.</p>
 <p>Rounding like this can also occur in calculations, for example</p>
 <pre><code>p1:0.29;
 p2:0.18;
@@ -149,9 +149,9 @@ p3:0.35;
 v0:1-(p1+p2+p3);
 v1:0.18;
 </code></pre>
-<p>Then Maxima returns <code>0.18</code> for <code>v0</code>, (as expected) but <code>v0-v1</code> equals (5.551115123125783*10^-17) and so <code>ATAlgEquiv(v0,v1)</code> will give false.  Please always use a <a href="../../Authoring/Answer_Tests/Numerical/">numerical test</a> when testing floats.</p>
+<p>Then Maxima returns <code>0.18</code> for <code>v0</code>, (as expected) but <code>v0-v1</code> equals <script type="math/tex">5.551115123125783*10^-17</script> and so <code>ATAlgEquiv(v0,v1)</code> will give false.  Please always use a <a href="../../Authoring/Answer_Tests/Numerical/">numerical test</a> when testing floats.</p>
 <h2 id="maxima-and-floats-with-trailing-zeros">Maxima and floats with trailing zeros</h2>
-<p>For its internal representation, Maxima always truncates trailing zeros from a floating point number.  For example, the Maxima expression <code>0.01000</code> will be converted internally to <code>0.01</code>.  Actually this is a byproduct of the process of converting a decimal input to an internal binary float, and back again.  Similarly, when a number is a "float" datatype, Maxima always prints at least one decimal digit to indicate the number is a float.  For example, the floating point representation of the number ten is (10.0).  This does <em>not</em> indicate significant figures, rather it indicates data type.  In situations where the number of significant figures is crucial this is problematic.</p>
+<p>For its internal representation, Maxima always truncates trailing zeros from a floating point number.  For example, the Maxima expression <code>0.01000</code> will be converted internally to <code>0.01</code>.  Actually this is a byproduct of the process of converting a decimal input to an internal binary float, and back again.  Similarly, when a number is a "float" datatype, Maxima always prints at least one decimal digit to indicate the number is a float.  For example, the floating point representation of the number ten is <script type="math/tex">10.0</script>.  This does <em>not</em> indicate significant figures, rather it indicates data type.  In situations where the number of significant figures is crucial this is problematic.</p>
 <p>Display of numbers in STACK is controlled with LaTeX, and the underlying LISP provides flexible ways to represent numbers.</p>
 <p>Note, that apart from the units input, all other input types truncate the display of unnecessary trailing zeros in floating point numbers, loosing information about significant figures.  So, when the student's answer is a floating point number, trailing zeros will not be displayed.  If you want to specifically test for significant figures, use the <a href="../../Topics/Units/">units input type</a>, with the teacher's answer having no units.  The units input type should display the same number of significant figures as typed in by the student.  </p>
 <h2 id="display-of-numbers-with-latex">Display of numbers with LaTeX</h2>
@@ -165,7 +165,7 @@ stackfltfmt:"~a";
 <p>These variables can be defined in the question variables, for global effect.  They can also be defined inside a Maxima block to control the display on the fly, and for individual expressions.  For example, consider the following CASText.</p>
 <pre><code>The decimal number {@n:73@} is written in base \(2\) as {@(stackintfmt:"~2r",n)@}, in base \(7\) as {@(stackintfmt:"~7r",n)@}, in scientific notation as {@(stackintfmt:"~e",n)@} and in rhetoric as {@(stackintfmt:"~r",n)@}.
 </code></pre>
-<p>The result should be "The decimal number (73) is written in base (2) as (1001001), in base (7) as (133), in scientific notation as (7.3E+1) and in rhetoric as (seventy-three)."</p>
+<p>The result should be "The decimal number <script type="math/tex">73</script> is written in base <script type="math/tex">2</script> as <script type="math/tex">1001001</script>, in base <script type="math/tex">7</script> as <script type="math/tex">133</script>, in scientific notation as <script type="math/tex">7.3E+1</script> and in rhetoric as <script type="math/tex">seventy-three</script>."</p>
 <p>To force all floating point numbers to scientific notation use</p>
 <pre><code>stackfltfmt:"~e";
 </code></pre>
@@ -186,61 +186,81 @@ stackfltfmt:"~a";
 <tr>
 <td><code>"~,4f"</code></td>
 <td><code>0.12349</code></td>
-<td>(0.1235)</td>
+<td>
+<script type="math/tex">0.1235</script>
+</td>
 <td>Output four decimal places: floating point.</td>
 </tr>
 <tr>
 <td></td>
 <td><code>0.12345</code></td>
-<td>(0.1234)</td>
+<td>
+<script type="math/tex">0.1234</script>
+</td>
 <td>Note the rounding.</td>
 </tr>
 <tr>
 <td></td>
 <td><code>0.12</code></td>
-<td>(0.1200)</td>
+<td>
+<script type="math/tex">0.1200</script>
+</td>
 <td></td>
 </tr>
 <tr>
 <td><code>"~,5e"</code></td>
 <td><code>100.34</code></td>
-<td>(1.00340e+2)</td>
+<td>
+<script type="math/tex">1.00340e+2</script>
+</td>
 <td>Output five decimal places: scientific notation.</td>
 </tr>
 <tr>
 <td><code>"~:d"</code></td>
 <td><code>10000000</code></td>
-<td>(10,000,000)</td>
+<td>
+<script type="math/tex">10,000,000</script>
+</td>
 <td>Separate decimal groups of three digits with commas.</td>
 </tr>
 <tr>
 <td><code>~r</code></td>
 <td><code>9</code></td>
-<td>(\mbox{nine})</td>
+<td>
+<script type="math/tex">\mbox{nine}</script>
+</td>
 <td>Rhetoric.</td>
 </tr>
 <tr>
 <td><code>~:r</code></td>
 <td><code>9</code></td>
-<td>(\mbox{ninth})</td>
+<td>
+<script type="math/tex">\mbox{ninth}</script>
+</td>
 <td>Ordinal rhetoric.</td>
 </tr>
 <tr>
 <td><code>~7r</code></td>
 <td><code>9</code></td>
-<td>(12)</td>
+<td>
+<script type="math/tex">12</script>
+</td>
 <td>Base 7.</td>
 </tr>
 <tr>
 <td><code>~@r</code></td>
 <td><code>9</code></td>
-<td>(IX)</td>
+<td>
+<script type="math/tex">IX</script>
+</td>
 <td>Roman numerals.</td>
 </tr>
 <tr>
 <td><code>~:@r</code></td>
 <td><code>9</code></td>
-<td>(VIIII)</td>
+<td>
+<script type="math/tex">VIIII</script>
+</td>
 <td>Old style Roman numerals.</td>
 </tr>
 </tbody>
@@ -252,11 +272,11 @@ stackfltfmt:"~a";
 fpprintprec:12,     /* Print only 12 digits. */
 </code></pre>
 <h2 id="notes-about-numerical-rounding">Notes about numerical rounding</h2>
-<p>There are two ways to round numbers ending in a digit (5).  </p>
+<p>There are two ways to round numbers ending in a digit <script type="math/tex">5</script>.  </p>
 <ul>
-<li>Always round up, so that (0.5\rightarrow 1), (1.5 \rightarrow 2), (2.5 \rightarrow 3) etc.</li>
-<li>Another common system is to use ``Bankers' Rounding". Bankers Rounding is an algorithm for rounding quantities to integers, in which numbers which are equidistant from the two nearest integers are rounded to the nearest even integer. (0.5\rightarrow 0), (1.5 \rightarrow 2), (2.5 \rightarrow 2) etc.  The supposed advantage to bankers rounding is that in the limit it is unbiased, and so produces better results with some statistical processes that involve rounding.</li>
-<li>In experimental work, the number of significant figures requires sometimes depends on the first digits of the number.  For example, if the first digit is a (1) or (2) then we need to take an extra significant figure to ensure the relative error is suitably small.  The maxima string functions can be used to check the first digit of a number until we have bespoke internal functions to make this check.</li>
+<li>Always round up, so that <script type="math/tex">0.5\rightarrow 1</script>, <script type="math/tex">1.5 \rightarrow 2</script>, <script type="math/tex">2.5 \rightarrow 3</script> etc.</li>
+<li>Another common system is to use ``Bankers' Rounding". Bankers Rounding is an algorithm for rounding quantities to integers, in which numbers which are equidistant from the two nearest integers are rounded to the nearest even integer. <script type="math/tex">0.5\rightarrow 0</script>, <script type="math/tex">1.5 \rightarrow 2</script>, <script type="math/tex">2.5 \rightarrow 2</script> etc.  The supposed advantage to bankers rounding is that in the limit it is unbiased, and so produces better results with some statistical processes that involve rounding.</li>
+<li>In experimental work, the number of significant figures requires sometimes depends on the first digits of the number.  For example, if the first digit is a <script type="math/tex">1</script> or <script type="math/tex">2</script> then we need to take an extra significant figure to ensure the relative error is suitably small.  The maxima string functions can be used to check the first digit of a number until we have bespoke internal functions to make this check.</li>
 </ul>
 <p>Maxima's <code>round(ex)</code> command rounds multiples of 1/2 to the nearest even integer, i.e. Maxima implements Bankers' Rounding.  We do not currently have an option to always round up.</p>
 <p>STACK has defined the function <code>significantfigures(x,n)</code> to conform to convention of rounding up.</p>
@@ -272,11 +292,11 @@ fpprintprec:12,     /* Print only 12 digits. */
 <tbody>
 <tr>
 <td><code>significantfigures(x,n)</code></td>
-<td>Truncate (x) to (n) significant figures (does perform rounding).</td>
+<td>Truncate <script type="math/tex">x</script> to <script type="math/tex">n</script> significant figures (does perform rounding).</td>
 </tr>
 <tr>
 <td><code>decimalplaces(x,n)</code></td>
-<td>Truncate (x) to (n) decimal places  (does perform rounding).</td>
+<td>Truncate <script type="math/tex">x</script> to <script type="math/tex">n</script> decimal places  (does perform rounding).</td>
 </tr>
 <tr>
 <td><code>commonfaclist(l)</code></td>
@@ -288,19 +308,19 @@ fpprintprec:12,     /* Print only 12 digits. */
 </tr>
 <tr>
 <td><code>coeff_list(ex,v)</code></td>
-<td>This function takes an expression (ex) and returns a list of coefficients of (v).</td>
+<td>This function takes an expression <script type="math/tex">ex</script> and returns a list of coefficients of <script type="math/tex">v</script>.</td>
 </tr>
 <tr>
 <td><code>coeff_list_nz(ex,v)</code></td>
-<td>This function takes an expression (ex) and returns a list of nonzero coefficients of (v).</td>
+<td>This function takes an expression <script type="math/tex">ex</script> and returns a list of nonzero coefficients of <script type="math/tex">v</script>.</td>
 </tr>
 <tr>
 <td><code>numabsolutep(sa,ta,tol)</code></td>
-<td>Is (sa) within (tol) of (ta)? I.e. (</td>
+<td>Is <script type="math/tex">sa</script> within <script type="math/tex">tol</script> of <script type="math/tex">ta</script>? I.e. (</td>
 </tr>
 <tr>
 <td><code>numrelativep(sa,ta,tol)</code></td>
-<td>Is (sa) within (tol\times ta) of (ta)? I.e. (</td>
+<td>Is <script type="math/tex">sa</script> within <script type="math/tex">tol\times ta</script> of <script type="math/tex">ta</script>? I.e. (</td>
 </tr>
 </tbody>
 </table>
@@ -315,23 +335,23 @@ fpprintprec:12,     /* Print only 12 digits. */
 <tbody>
 <tr>
 <td><code>dispdp(x,n)</code></td>
-<td>Truncate (x) to (n) decimal places and display with trailing digits.  Note, this always prints as a float (or integer), and not in scientific notation.</td>
+<td>Truncate <script type="math/tex">x</script> to <script type="math/tex">n</script> decimal places and display with trailing digits.  Note, this always prints as a float (or integer), and not in scientific notation.</td>
 </tr>
 <tr>
 <td><code>dispsf(x,n)</code></td>
-<td>Truncate (x) to (n) significant figures and display with trailing digits.  Note, this always prints as a float, and not in scientific notation.</td>
+<td>Truncate <script type="math/tex">x</script> to <script type="math/tex">n</script> significant figures and display with trailing digits.  Note, this always prints as a float, and not in scientific notation.</td>
 </tr>
 <tr>
 <td><code>scientific_notation(x,n)</code></td>
-<td>Write (x) in the form (m10^e).   Only works reliably with <code>simp:false</code> (e.g. try 9000).  The optional second argument applies <code>displaysci(m,n)</code> to the mantissa to control the display of trailing zeros.</td>
+<td>Write <script type="math/tex">x</script> in the form <script type="math/tex">m10^e</script>.   Only works reliably with <code>simp:false</code> (e.g. try 9000).  The optional second argument applies <code>displaysci(m,n)</code> to the mantissa to control the display of trailing zeros.</td>
 </tr>
 <tr>
 <td><code>displaydp(x,n)</code></td>
-<td>An inert internal function to record that (x) should be displayed to (n) decimal places with trailing digits.  This function does no rounding.</td>
+<td>An inert internal function to record that <script type="math/tex">x</script> should be displayed to <script type="math/tex">n</script> decimal places with trailing digits.  This function does no rounding.</td>
 </tr>
 <tr>
 <td><code>displaysci(x,n,expo)</code></td>
-<td>An inert internal function to record that (x) should be displayed to (n) decimal places with trailing digits, in scientific notation.  E.g. (x\times 10^{expo}).</td>
+<td>An inert internal function to record that <script type="math/tex">x</script> should be displayed to <script type="math/tex">n</script> decimal places with trailing digits, in scientific notation.  E.g. <script type="math/tex">x\times 10^{expo}</script>.</td>
 </tr>
 </tbody>
 </table>
@@ -349,7 +369,7 @@ fpprintprec:12,     /* Print only 12 digits. */
 </tr>
 <tr>
 <td><code>real_numberp(ex)</code></td>
-<td>Determines if (ex) is a real number.  This includes surds and symbolic numbers such as (\pi).</td>
+<td>Determines if <script type="math/tex">ex</script> is a real number.  This includes surds and symbolic numbers such as <script type="math/tex">\pi</script>.</td>
 </tr>
 <tr>
 <td><code>lowesttermsp(ex)</code></td>
@@ -361,7 +381,7 @@ fpprintprec:12,     /* Print only 12 digits. */
 </tr>
 <tr>
 <td><code>scientific_notationp(ex)</code></td>
-<td>Determines if (ex) is written in the form (a10^n) where (a) is an integer or float, and (n) is an integer.</td>
+<td>Determines if <script type="math/tex">ex</script> is written in the form <script type="math/tex">a10^n</script> where <script type="math/tex">a</script> is an integer or float, and <script type="math/tex">n</script> is an integer.</td>
 </tr>
 </tbody>
 </table>
@@ -398,6 +418,7 @@ fpprintprec:12,     /* Print only 12 digits. */
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

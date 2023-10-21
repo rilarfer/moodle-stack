@@ -107,12 +107,12 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="inequalities">Inequalities</h1>
-<p>The non-strict inequalities (\geq) and (\leq) are created as infix operators with the respective syntax</p>
+<p>The non-strict inequalities <script type="math/tex">\geq</script> and <script type="math/tex">\leq</script> are created as infix operators with the respective syntax</p>
 <pre><code>&gt;=,  &lt;=
 </code></pre>
-<p>Maxima allows single inequalities, such as (x-1&gt;y), and also support for inequalities connected by logical operators, e.g. ( x&gt;1 \mbox{ and } x&lt;=5).</p>
+<p>Maxima allows single inequalities, such as <script type="math/tex">x-1>y</script>, and also support for inequalities connected by logical operators, e.g. <script type="math/tex"> x>1 \mbox{ and } x<=5</script>.</p>
 <p>You can test if two inequalities are the same using the algebraic equivalence test, see the comments on this below.  </p>
-<p>Chained inequalities, for example (1\leq x \leq2\mbox{,}) are not permitted.  They must be joined by logical connectives, e.g. "(x&gt;1) and (x&lt;7)". 
+<p>Chained inequalities, for example <script type="math/tex">1\leq x \leq2\mbox{,}</script> are not permitted.  They must be joined by logical connectives, e.g. "<script type="math/tex">x>1</script> and <script type="math/tex">x<7</script>". 
 As <code>and</code> and <code>or</code> are converted to <code>nounand</code> and <code>nounor</code> in student answers, you may need to use these forms in the teacher's answer as well.
 For more information, see <a href="../../Topics/Propositional_Logic/">Propositional Logic</a>.</p>
 <p>From version 3.6, support for inequalities in Maxima (particularly single variable real inequalities) was substantially improved.</p>
@@ -169,6 +169,7 @@ For more information, see <a href="../../Topics/Propositional_Logic/">Propositio
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

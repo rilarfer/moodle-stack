@@ -303,7 +303,7 @@
 <li>Add support for using JSXGraph  <code>http://jsxgraph.org</code> for better support of interactive graphics, and as part of an input type.  See <a href="../../Authoring/JSXGraph/">JSXGraph</a></li>
 <li>Add in a version number to STACK questions.</li>
 <li>Update reasoning by equivalence.  This includes the following.</li>
-<li>Equating coefficients as a step in reasoning by equivalence. E.g. ( a x^2+b x+c=r x^2+s x+t \leftrightarrow a=r \mbox{ and } b=s \mbox{ and } c=t). See <code>poly_equate_coeffs</code> in assessment.mac</li>
+<li>Equating coefficients as a step in reasoning by equivalence. E.g. <script type="math/tex"> a x^2+b x+c=r x^2+s x+t \leftrightarrow a=r \mbox{ and } b=s \mbox{ and } c=t</script>. See <code>poly_equate_coeffs</code> in assessment.mac</li>
 <li>Solving simple simultaneous equations.  (Interface)</li>
 <li>Include simple calculus operations (but constant of integration needs some further thought.)</li>
 <li>Refactor internal question validation away from Moodle editing, and into the question type.  Add in a "warning" system.</li>
@@ -364,7 +364,7 @@
 <ul>
 <li>Modify the text area input so that each line is validated separately.</li>
 <li>Add a "scratch working" input type in which students can record their thinking etc. alongside the final answer.</li>
-<li>Support for intervals in STACK, using the Maxima syntax <code>oo(a,b)</code> for an open interval ((a,b)), <code>cc(a,b)</code> for an open interval ([a,b]) and <code>oc(a,b)</code>, <code>co(a,b)</code> for the half open intervals.</li>
+<li>Support for intervals in STACK, using the Maxima syntax <code>oo(a,b)</code> for an open interval <script type="math/tex">(a,b)</script>, <code>cc(a,b)</code> for an open interval <script type="math/tex">[a,b]</script> and <code>oc(a,b)</code>, <code>co(a,b)</code> for the half open intervals.</li>
 <li>Much better support for solving and dealing with single variable inequalities.</li>
 </ul>
 <h2 id="version-357">Version 3.5.7</h2>
@@ -691,6 +691,7 @@ Released: Easter 2010 session.</p>
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

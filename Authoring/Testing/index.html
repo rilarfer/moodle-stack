@@ -139,7 +139,7 @@ Question variables can be included in the tests; indeed these are needed to defi
 <li>You may add as many test cases are you need.  It is sensible to add in the following.<ol>
 <li>The correct response.  There is a button which will copy the expression used as the "Teacher's answer" in the input as a basis for a test case to help create this test.</li>
 <li>One example of each distinction you wish to make, i.e. if you have added specific feedback then provide an answer you expect to trigger this.</li>
-<li>Some "invalid" responses, especially if these are syntactically-valid expressions.  E.g. If the answer is an equation such as (y=2x+1), then (2x+1) might be invalid if you have chosen the input option "check types".  Adding a test case is useful to confirm this potential problem is caught by the question.  Leave the fields empty and the answer note <code>NULL</code> to indicate this.</li>
+<li>Some "invalid" responses, especially if these are syntactically-valid expressions.  E.g. If the answer is an equation such as <script type="math/tex">y=2x+1</script>, then <script type="math/tex">2x+1</script> might be invalid if you have chosen the input option "check types".  Adding a test case is useful to confirm this potential problem is caught by the question.  Leave the fields empty and the answer note <code>NULL</code> to indicate this.</li>
 <li>Add a totally incorrect answer.</li>
 </ol>
 </li>
@@ -190,7 +190,7 @@ f:x*sin(1/x);
 <li>Globally in the question.</li>
 <li>In each potential response tree.</li>
 </ol>
-<p>Regardless of what settings you use here the expressions you enter for inputs in question tests are <em>not</em> simplified.  This is necessary.  For example, if your question is "what is ({@a@}+{@b@})?" where {@a@} and {@b@} are randomly generated.  You will need to set the question level option <code>simplify:false</code> to prevent the student typing in the sum itself as an answer.  Then you will probably need separate tests for the expressions <code>a+b</code> and <code>ev(a+b,simp)</code> to make sure the student hasn't typed in the sum instead of the value of the sum.  For this reason, to enable "unsimplified" expressions to be included as question tests we do not simplify test inputs regardless of the options used in the question.</p>
+<p>Regardless of what settings you use here the expressions you enter for inputs in question tests are <em>not</em> simplified.  This is necessary.  For example, if your question is "what is <script type="math/tex">{@a@}+{@b@}</script>?" where {@a@} and {@b@} are randomly generated.  You will need to set the question level option <code>simplify:false</code> to prevent the student typing in the sum itself as an answer.  Then you will probably need separate tests for the expressions <code>a+b</code> and <code>ev(a+b,simp)</code> to make sure the student hasn't typed in the sum instead of the value of the sum.  For this reason, to enable "unsimplified" expressions to be included as question tests we do not simplify test inputs regardless of the options used in the question.</p>
 <p>If you have set <code>simplify:true</code> everywhere in your question, and you are only establishing algebraic equivalence of your answers anyway, "un-simplified" expressions as inputs to the tests will not matter.</p>
 <h2 id="next-steps">Next steps</h2>
 <p>When you are done testing a question which uses randomization, you need to <a href="../Deploying/">deploy variants</a> of the question.</p>
@@ -225,6 +225,7 @@ f:x*sin(1/x);
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -119,7 +119,7 @@ However, there are some special rules for the tex display.</p>
 <li>There are currently no options for customising printing of borders, etc.</li>
 <li>You can highlight entries in the table using the command <code>texcolor("col", ex)</code>.  Note however, this will also underline any entries (as colour alone is poor accessibility practice.).</li>
 </ol>
-<p>The table <code>T0</code> is displayed as [ {\begin{array}{c|c} x &amp; x^3\ \hline -1 &amp; -1 \ 0 &amp; 0 \ 1 &amp; 1 \ 2 &amp; 8 \ 3 &amp; 27\end{array}} ].</p>
+<p>The table <code>T0</code> is displayed as <script type="math/tex; mode=display"> {\begin{array}{c|c} x & x^3\\ \hline -1 & -1 \\ 0 & 0 \\ 1 & 1 \\ 2 & 8 \\ 3 & 27\end{array}} </script>.</p>
 <p><code>table_bool_abbreviate:true</code> is a boolean variable.  If set to <code>true</code> (the default) boolean entries <code>true/false</code> will be abbreviated to <code>T/F</code> respectively when creating the LaTeX for display, to keep the table small and tidy looking.  All other entries in the table are typeset normally.  This only affects the LaTeX display, and table entries remain boolean.</p>
 <p><code>table_zip_with(fn, T1, T2)</code> combines two tables, using the binary function <code>fn</code> (much as <code>zip_with</code> combines two lists).</p>
 <p>It is instructive to look at the code for <code>table_difference</code> which colours entries which differ in red.</p>
@@ -141,9 +141,10 @@ T0:apply(table, append([[x,fn(x)]], zip_with("[", vals, maplist(fn, vals))));
 T2:table_difference(truth_table(a xor b), truth_table(a implies b));
 </code></pre>
 <p>Here we have two tables <code>T1</code> is displayed as</p>
-<p>[ {\begin{array}{c|c|c} a &amp; b &amp; a\rightarrow b\ \hline \mathbf{F} &amp; \mathbf{F} &amp; \mathbf{T} \ \mathbf{F} &amp; \mathbf{T} &amp; \mathbf{T} \ \mathbf{T} &amp; \mathbf{F} &amp; \mathbf{F} \ \mathbf{T} &amp; \mathbf{T} &amp; \mathbf{T} \end{array}} ]
+<p>
+<script type="math/tex; mode=display"> {\begin{array}{c|c|c} a & b & a\rightarrow b\\ \hline \mathbf{F} & \mathbf{F} & \mathbf{T} \\ \mathbf{F} & \mathbf{T} & \mathbf{T} \\ \mathbf{T} & \mathbf{F} & \mathbf{F} \\ \mathbf{T} & \mathbf{T} & \mathbf{T} \end{array}} </script>
 and <code>T2</code> gives
-[ {\begin{array}{c|c|c} a &amp; b &amp; \color{red}{\underline{a\oplus b}}\ \hline \mathbf{F} &amp; \mathbf{F} &amp; \color{red}{\underline{\mathbf{F} }} \ \mathbf{F} &amp; \mathbf{T} &amp; \mathbf{T} \ \mathbf{T} &amp; \mathbf{F} &amp; \color{red}{\underline{\mathbf{T} }} \ \mathbf{T} &amp; \mathbf{T} &amp; \color{red}{\underline{\mathbf{F} }}\end{array}} ]
+<script type="math/tex; mode=display"> {\begin{array}{c|c|c} a & b & \color{red}{\underline{a\oplus b}}\\ \hline \mathbf{F} & \mathbf{F} & \color{red}{\underline{\mathbf{F} }} \\ \mathbf{F} & \mathbf{T} & \mathbf{T} \\ \mathbf{T} & \mathbf{F} & \color{red}{\underline{\mathbf{T} }} \\ \mathbf{T} & \mathbf{T} & \color{red}{\underline{\mathbf{F} }}\end{array}} </script>
 Notice in both the effect of <code>table_bool_abbreviate:true</code>.</p>
               
             </div>
@@ -176,6 +177,7 @@ Notice in both the effect of <code>table_bool_abbreviate:true</code>.</p>
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

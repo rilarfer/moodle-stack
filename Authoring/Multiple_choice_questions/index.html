@@ -108,7 +108,7 @@
               
                 <h1 id="multiple-choice-questions">Multiple choice questions</h1>
 <p>The whole point of STACK is not to use multiple-choice questions, but instead to have the student enter an algebraic expression!  That said there are occasions where it is very useful, if not necessary, to use multiple-choice questions in their various forms.  STACK's use of a CAS is then very helpful to generate random variants of multiple-choice questions based on the mathematical values.</p>
-<p>This can also be one input in a multi-part randomly generated question. E.g. you might say "which method do you need to integrate ( \sin(x)\cos(x) )?" and give students the choice of (i) trig functions first, 
+<p>This can also be one input in a multi-part randomly generated question. E.g. you might say "which method do you need to integrate <script type="math/tex"> \sin(x)\cos(x) </script>?" and give students the choice of (i) trig functions first, 
 (ii) parts, (iii) substitution, (iv) replace with complex exponentials.  (Yes, this is a joke: all these methods can be made to work here!)  Another algebraic input can then be used for the answer.</p>
 <p>Please read the section on <a href="../Inputs/">inputs</a> first.  If you are new to STACK please note that in STACK MCQs are <em>not</em> the place to start learning how to author questions.  Please look at the <a href="../Authoring_quick_start/">authoring quick-start guide</a>.</p>
 <p>Multiple choice input types return a CAS object which is then assessed by the potential response tree.  For this reason, these inputs do not provide "feedback" fields for each possible answer, as does the Moodle multiple choice input type.</p>
@@ -145,7 +145,7 @@ In this respect, this input type is unique, and the "model answer" field does <e
 <p>Normally we don't permit duplicate values in the values of the teacher's answer.  If the input type receives duplicate values STACK will throw an error.  This probably arises from poor randomization.  However it may be needed.  If duplicate entries are permitted use the display option to create unique value keys with the same display. <em>This behaviour is a design decision may change in the future.</em></p>
 <p>When STACK displays the "teacher's answer", e.g. after a quiz is due, this will be constructed from the <code>display</code> fields corresponding to those elements for which <code>correct</code> is <code>true</code>.  I.e. the "teacher's answer" will be a list of things which the student could actually select.  Whether the student is able to select more than one, or if more than one is actually included, is not checked.  The teacher must indicate at least one choice as <code>true</code>.  </p>
 <p>If you need "none of these" you must include this as an explicit option, and not rely on the student not checking any boxes in the checkbox type.  Indeed, it would be impossible to distinguish the active selection of "none of these" from a passive failure to respond to the question.</p>
-<p>If one of the responses is (x=1 \mbox{ or } x=2) then it is probably best to use <code>nounor</code> which is commutative and associative.  Do not use <code>or</code> which always simplifies its arguments.  In this example <code>x=1 or x=2</code> evaluates to <code>false</code>.</p>
+<p>If one of the responses is <script type="math/tex">x=1 \mbox{ or } x=2</script> then it is probably best to use <code>nounor</code> which is commutative and associative.  Do not use <code>or</code> which always simplifies its arguments.  In this example <code>x=1 or x=2</code> evaluates to <code>false</code>.</p>
 <p>HTML dropdowns cannot display LaTeX within the options.  This is a restriction of HTML/MathJax (not of STACK).  You can use HTML-entities within a string field.  For example </p>
 <pre><code>ta1:[[0,false,"n/a"],[1,true,"&amp;ge;"],[2,false,"&amp;le;"],[3,false,"="],[4,false,"?"]];
 </code></pre>
@@ -245,7 +245,7 @@ ta:append(ta1,ta2);
 /* If you want to shuffle the responses then use the next line. */
 ta:random_permutation(ta);
 </code></pre>
-<p>Also, you can use STACK's <code>rand_selection(L, n)</code> to select (n) different elements from the list (L).<br />
+<p>Also, you can use STACK's <code>rand_selection(L, n)</code> to select <script type="math/tex">n</script> different elements from the list <script type="math/tex">L</script>.<br />
 Say you have the following list of wrong answers and you want to take only 3 out of 5.</p>
 <pre><code>ta2:[x^2,w^2,w^6,z^4,2*z^4];
 ta2:rand_selection(ta2, 3);
@@ -296,7 +296,7 @@ variant = [-2*a*x*cos(a*x^2+b),-sin(2*a*x),a*cos(a*x^2+b),-2*a*x*sin(a*x^2+b)];
 <pre><code>ta = [[3,false,2*a*x*sin(a*x^2+b)],[2,false,a*sin(a*x^2+b)],[5,false,cos(2*a*x)],[1,true,2*a*x*cos(a*x^2+b)]]
 variant = [3,2,5,1]
 </code></pre>
-<p>The function <code>multiselqndisplay</code> automatically assigns numbers (1,\cdots, k) to the <code>corbase</code> entries, and then (k+1,\cdots, n) to the <code>wrongbase</code> entries so that the numbers returned by the input type uniquely map to the entries in the two lists regardless of which random variant is generated.  These numbers are useful internally, but not for students.</p>
+<p>The function <code>multiselqndisplay</code> automatically assigns numbers <script type="math/tex">1,\cdots, k</script> to the <code>corbase</code> entries, and then <script type="math/tex">k+1,\cdots, n</script> to the <code>wrongbase</code> entries so that the numbers returned by the input type uniquely map to the entries in the two lists regardless of which random variant is generated.  These numbers are useful internally, but not for students.</p>
 <p>The function <code>multiselqnalpha</code> automatically selects the appropriate number of correct and incorrect entries, permutes the list and then assigns strings <code>"(a)"</code>, <code>"(b)"</code>, <code>"(c)"</code> etc. in the correct order. The student's answer will thus be a list of strings (somewhat subverting the whole purpose of STACK in returning a genuine mathematical expression, but this has its place...).  </p>
 <pre><code>[ta, variant] = multiselqnalpha(corbase, numcor, wrongbase, numwrong, [dispstyle])
 </code></pre>
@@ -408,6 +408,7 @@ ta:[[1,true,i1],[2,false,i2],[3,false,i3]]
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

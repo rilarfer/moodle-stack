@@ -115,7 +115,7 @@
 <p>Suponemos lo siguiente:</p>
 <ol>
 <li>Tienes acceso a un curso con STACK instalado.</li>
-<li>Está familiarizado con el formato (\LaTeX) simple para matemáticas. Algunos ejemplos básicos se proporcionan en la documentación <a href="../../Authoring/CASText/">CASText</a>.</li>
+<li>Está familiarizado con el formato <script type="math/tex">\LaTeX</script> simple para matemáticas. Algunos ejemplos básicos se proporcionan en la documentación <a href="../../Authoring/CASText/">CASText</a>.</li>
 </ol>
 <h2 id="creando-una-pregunta-stack-minima">Creando una pregunta STACK mínima</h2>
 <p>Vaya a su curso, navegue hasta el <a href="../../Moodle/Question_bank/">banco de preguntas</a> y cree una nueva pregunta con el tipo de pregunta "STACK".</p>
@@ -130,7 +130,7 @@
 <h3 id="nombre-de-la-pregunta">Nombre de la pregunta</h3>
 <p>Debes darle un nombre a la pregunta, por ejemplo <code>pregunta1</code>.</p>
 <h3 id="enunciado-de-la-pregunta">Enunciado de la pregunta</h3>
-<p>Centrémonos en el problema de derivar ((x-1)^3) con respecto a (x). Necesitamos escribir el texto de la pregunta en sí. Copie lo siguiente en el cuadro de texto Pregunta:</p>
+<p>Centrémonos en el problema de derivar <script type="math/tex">(x-1)^3</script> con respecto a <script type="math/tex">x</script>. Necesitamos escribir el texto de la pregunta en sí. Copie lo siguiente en el cuadro de texto Pregunta:</p>
 <pre><code>Diferenciar \((x-1)^3\) con respecto a x.
 [[input:ans1]] [[validation:ans1]]
 </code></pre>
@@ -238,6 +238,7 @@
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

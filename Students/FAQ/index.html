@@ -111,7 +111,7 @@
 <h2 id="how-do-i-enter-my-answers">How do I enter my answers?</h2>
 <p>You often need to enter an answer which is an algebraic expression. Details and examples are given on the <a href="../Answer_input/">answer input</a> page. The short answer to this question is that you should type in your answers using the same syntax as that used in the symbolic mathematics package <a href="../../CAS/Maxima/">Maxima</a> (this page is written for teachers, but you may find it interesting).</p>
 <h2 id="why-is-my-answer-invalid">Why is my answer "invalid"?</h2>
-<p>STACK validates students' answers before they are graded, checking if the answers are in an acceptable syntax and giving the student a chance to confirm their answer is correct. By default, answers not explicitly specifying multiplication (fx. (2x) instead of (2*x)) are not accepted. This is linked to a core <a href="../../About/The_philosophy_of_STACK/">philosophy of STACK</a>; students should not be penalized for poor computer syntax. It is better to bug students until their answer is unambiguous, than to risk students being marking wrong for typic in "sinx" instead of "sin(x)" and having the computer interpret it as "s*i*n*x".</p>
+<p>STACK validates students' answers before they are graded, checking if the answers are in an acceptable syntax and giving the student a chance to confirm their answer is correct. By default, answers not explicitly specifying multiplication (fx. <script type="math/tex">2x</script> instead of <script type="math/tex">2*x</script>) are not accepted. This is linked to a core <a href="../../About/The_philosophy_of_STACK/">philosophy of STACK</a>; students should not be penalized for poor computer syntax. It is better to bug students until their answer is unambiguous, than to risk students being marking wrong for typic in "sinx" instead of "sin(x)" and having the computer interpret it as "s*i*n*x".</p>
 <p>That being said, there are options in STACK to be less strict with student syntax, so that the system may accept "2x" as a valid input. The question author has to activate this function, so contact your teacher if you think they should choose this option.</p>
 <p>There may be other reasons your answer is not allowed. By default, STACK does not allow variables that are longer than two characters, and your teacher may also have forbidden names and functions they do not want you to use in your answer.</p>
 <h2 id="why-is-my-quiz-acting-differently">Why is my quiz acting differently?</h2>
@@ -162,6 +162,7 @@
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

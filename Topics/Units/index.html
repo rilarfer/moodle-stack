@@ -107,7 +107,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="scientific-units">Scientific Units</h1>
-<p>It is quite common in science subjects to need to accept an answer which has <em>units</em>, for example using (m/s).</p>
+<p>It is quite common in science subjects to need to accept an answer which has <em>units</em>, for example using <script type="math/tex">m/s</script>.</p>
 <p>Currently STACK only support SI units.   See International Bureau of Weights and Measures (2006), (The International System of Units (SI)) <a href="http://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf">PDF</a> (8th ed.), ISBN 92-822-2213-6.</p>
 <h2 id="maxima-packages-for-the-support-of-scientific-units">Maxima packages for the support of scientific units</h2>
 <p>In Maxima there are a number of separate packages which enable a user to manipulate physical units.</p>
@@ -117,7 +117,7 @@
 <li><code>load(ezunits);</code> the code is in <code>...\share\ezunits\ezunits.mac</code></li>
 </ol>
 <p><strong>WE DO NOT USE THESE PACKAGES</strong> as they are too slow to load and have a variety of side effects.  Instead we have a lightweight package of our own.</p>
-<p>By default in Maxima, letters such as <code>k</code> are unbound variables.  If you would like to give these prefix values (10^3) so that <code>km</code> literally means <code>10^3*m</code> then you will need to add the following to the question variables field.</p>
+<p>By default in Maxima, letters such as <code>k</code> are unbound variables.  If you would like to give these prefix values <script type="math/tex">10^3</script> so that <code>km</code> literally means <code>10^3*m</code> then you will need to add the following to the question variables field.</p>
 <pre><code>stack_unit_si_declare(true);
 </code></pre>
 <p>The units input and units answer test automatically execute this command.  More details are given below.</p>
@@ -156,7 +156,7 @@
 <h3 id="extra-options">Extra Options</h3>
 <p>The extra options to the input should be a comma separated list of tags.  This input type makes use of the additional options in two ways:</p>
 <ol>
-<li>Units can be displayed using inline fractions (m/s) or negative powers (m\,s^{-1}).  Add <code>negpow</code> to the Extra Options field to use negative powers.</li>
+<li>Units can be displayed using inline fractions <script type="math/tex">m/s</script> or negative powers <script type="math/tex">m\,s^{-1}</script>.  Add <code>negpow</code> to the Extra Options field to use negative powers.</li>
 </ol>
 <h2 id="answer-tests">Answer tests</h2>
 <p>STACK provides a number of answer tests for dealing with units.  These are designed to accept an answer which is a dimensional numerical quantity, that is a floating-point number with units such as <code>12.3*m/s</code>.  This will not work with sets, lists, matrices, equations, etc.</p>
@@ -164,7 +164,7 @@
 <p>The units answer tests will happily accept a <code>stackunits</code> expression.  Otherwise, the answer test splits up both arguments into this form first.</p>
 <p>There are three decisions to be made:</p>
 <ol>
-<li>Does the written precision matter?  I.e. should the student use certain significant figures?  If so, should we take a strict interpretation of significant figures ((100) has 1 sig fig, (1.00e2) has 3) or not ((100) has somewhere between 1 and 3 sig figs)?  See the <code>NumSigFigs</code> and <code>SigFigsStrict</code> answer tests.</li>
+<li>Does the written precision matter?  I.e. should the student use certain significant figures?  If so, should we take a strict interpretation of significant figures (<script type="math/tex">100</script> has 1 sig fig, <script type="math/tex">1.00e2</script> has 3) or not (<script type="math/tex">100</script> has somewhere between 1 and 3 sig figs)?  See the <code>NumSigFigs</code> and <code>SigFigsStrict</code> answer tests.</li>
 <li>How does numerical precision matter?  A number might be written using significant figures, but is it the right number?  See the <code>NumSigFigs</code>, <code>NumRelative</code> and <code>NumAbsolute</code> answer tests.</li>
 <li>Do we convert to compatible units, or require strict units which match those given by the teacher exactly?</li>
 </ol>
@@ -182,8 +182,8 @@
 <li>The units system accepts both <code>l</code> and <code>L</code> for litres, and the display respects the way they are typed in.</li>
 <li>Only abbreviations are accepted, not full names.  I.e. students may not use <code>meter</code>, instead they must use <code>m</code>.</li>
 <li>Currently there is no localisation (i.e. language support) for unit names/spellings.</li>
-<li>The letter <code>u</code> is the prefix for micro, and is displayed as (\mu) when the student validates.</li>
-<li>The string <code>xi</code> is the Greek letter (\xi).  If you assume single variable letter names this might clash with <code>x*i</code> which is a relatively common pattern.</li>
+<li>The letter <code>u</code> is the prefix for micro, and is displayed as <script type="math/tex">\mu</script> when the student validates.</li>
+<li>The string <code>xi</code> is the Greek letter <script type="math/tex">\xi</script>.  If you assume single variable letter names this might clash with <code>x*i</code> which is a relatively common pattern.</li>
 </ol>
 <h2 id="conversion-to-base-units-and-numerical-accuracy">Conversion to base units and numerical accuracy</h2>
 <p>This only applies to the "non-strict" versions of the tests.  If the units in the student's answer do not match those of the teacher, then both the student's and teacher's answer is converted to base scientific units and the numerical test applied again.  Note, the student's answer is <em>not</em> converted to the units used by the teacher.</p>
@@ -197,7 +197,7 @@
 <pre><code>stackunits(num, units)
 </code></pre>
 <p>In particular, if we just represented scientific units as a product there would be no way to distinguish between <code>stackunits(0, m)</code> and <code>stackunits(0, s)</code>.  As a product both would evaluate to <code>0</code>, which would appear dimensionless.  A teacher is still likely to want to make comments on units when the numerical part is zero.</p>
-<p>The function <code>stack_unit_si_declare(true)</code> declares variables as units.  (Note the argument to this function is not used.)  For example, this changes the TeX output of <code>m</code> to Roman (\mathrm{m}) and not the normal (m).  (That units are displayed in Roman is lost to most students!).  Note that the symbols are <em>only</em> declared to be units by using <code>stack_unit_si_declare(true)</code> first somewhere else in the question, or feedback variables.</p>
+<p>The function <code>stack_unit_si_declare(true)</code> declares variables as units.  (Note the argument to this function is not used.)  For example, this changes the TeX output of <code>m</code> to Roman <script type="math/tex">\mathrm{m}</script> and not the normal <script type="math/tex">m</script>.  (That units are displayed in Roman is lost to most students!).  Note that the symbols are <em>only</em> declared to be units by using <code>stack_unit_si_declare(true)</code> first somewhere else in the question, or feedback variables.</p>
 <ul>
 <li><code>unitsp(ex)</code> is a predicate which decides if STACK considers the expression to represent a dimensional numerical quantity <code>stackunits</code>.</li>
 <li><code>listofnonunits(ex)</code> lists all variables in the expression <code>ex</code> considered not to be units however they appear.  Use of this function auto-loads <code>stack_unit_si_declare(true)</code>.</li>
@@ -205,7 +205,7 @@
 <li>If you do not declare <code>stack_unit_si_declare(true)</code> in the question variables you may need to do so in the feedback text itself.</li>
 <li>If you are manipulating two expressions and you want to ensure they both use the same units use <code>stack_unit_si_to_si_base(ex)</code> on each.  This ensures only the base units of SI are used.  E.g. <code>stack_unit_si_to_si_base(stackunits(12.1,km))</code> gives <code>stackunits(12100.0,m)</code>.</li>
 </ul>
-<p>This function declares all units in one go, and there is no way to declare only a subset. Indeed, using only a subset would disrupt the conversion logic.  Defining all the units restricts the number of variable names available in a particular question, e.g. (F) is assumed to represent Farad, and all units are typeset in Roman type, e.g. ( \mathrm{F} ) rather than the normal ( F ). If you need to fine-tune the display how do to so if explained in the atoms and subscripts section of the more general <a href="../../CAS/Maxima/">Maxima</a> documentation.</p>
+<p>This function declares all units in one go, and there is no way to declare only a subset. Indeed, using only a subset would disrupt the conversion logic.  Defining all the units restricts the number of variable names available in a particular question, e.g. <script type="math/tex">F</script> is assumed to represent Farad, and all units are typeset in Roman type, e.g. <script type="math/tex"> \mathrm{F} </script> rather than the normal <script type="math/tex"> F </script>. If you need to fine-tune the display how do to so if explained in the atoms and subscripts section of the more general <a href="../../CAS/Maxima/">Maxima</a> documentation.</p>
 <p>The function <code>stackunits_make(ex)</code> takes the expression <code>ex</code> and, if this is a product of numbers and units, it returns an inert function <code>stackunits</code> with arguments <code>stackunits(numbers, symbols)</code>.  Note, symbols will include a mix of variables, and symbols which are considered to be units. Use of this function autoloads <code>stack_unit_si_declare(true)</code>.</p>
 <p>The function <code>stackunits_to_product(ex)</code> turns a <code>stackunits</code> object into a product of number and units.</p>
 <p>It might be helpful in the feedback variables field to separate units from numerical parts prior to building your own potential response tree.  However, do not do the following.</p>
@@ -234,7 +234,7 @@ stack_units_nums(ex);
 declare(diamonds, units);
 texput(diamonds, "\\diamond");
 </code></pre>
-<p>The symbol <code>diamonds</code> will then be treated as units in code such as <code>unitsp(ex)</code> and displayed with the TeX (\diamond) symbol.</p>
+<p>The symbol <code>diamonds</code> will then be treated as units in code such as <code>unitsp(ex)</code> and displayed with the TeX <script type="math/tex">\diamond</script> symbol.</p>
 <p>You will need to put <code>diamonds</code> in the allow words of the input in the question.</p>
 <h2 id="tips-for-dealing-with-units-in-stack">Tips for dealing with units in STACK</h2>
 <p>CAS variables are tricky.</p>
@@ -273,6 +273,7 @@ texput(diamonds, "\\diamond");
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

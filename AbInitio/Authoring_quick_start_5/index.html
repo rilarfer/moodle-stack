@@ -146,8 +146,8 @@ score = 0
 penalty = 0.1
 answernote = prt1-F
 </code></pre>
-<p>We are testing that if we multiply by (-nn+1) instead of dividing, we should be given a score of 0. If students are required this knowledge for <em>all</em> variants, then all variants should pass this test. Click  <code>Run all tests on all deployed variants</code> to check this. </p>
-<p>You will see that not all deployed versions pass all tests, and if you click on a variant that failed a test, you will see why! Essentially, when (nn=2), (-nn+1=-1) multiplication and division are equivalent. Essentially, these random variants are "easier" than the others. This illustrates another key use of question tests - ensuring that all variants are the same difficulty and test the knowledge they are supposed to. In light of this, you may want to change <code>nn</code> again to <code>3+rand(4)</code> . Now all variants should pass all question tests.</p>
+<p>We are testing that if we multiply by <script type="math/tex">-nn+1</script> instead of dividing, we should be given a score of 0. If students are required this knowledge for <em>all</em> variants, then all variants should pass this test. Click  <code>Run all tests on all deployed variants</code> to check this. </p>
+<p>You will see that not all deployed versions pass all tests, and if you click on a variant that failed a test, you will see why! Essentially, when <script type="math/tex">nn=2</script>, <script type="math/tex">-nn+1=-1</script> multiplication and division are equivalent. Essentially, these random variants are "easier" than the others. This illustrates another key use of question tests - ensuring that all variants are the same difficulty and test the knowledge they are supposed to. In light of this, you may want to change <code>nn</code> again to <code>3+rand(4)</code> . Now all variants should pass all question tests.</p>
 <p>Quality control is essential, and more information is given in the page on <a href="/Authoring/Testing.md">testing</a>.</p>
 <h2 id="aside-forbidden-words">Aside: forbidden words</h2>
 <p>STACK allows students to use standard mathematical functions, such as <code>sin</code>, <code>cos</code>, etc. Perhaps surprisingly, it also allows students to use <code>int</code>. So in theory, students could input <code>int(...)+c</code>, and the system would mark it correct!</p>
@@ -187,6 +187,7 @@ answernote = prt1-F
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {

@@ -122,7 +122,7 @@
 <p>The source code, and development discussion, is on <a href="http://github.com/maths/moodle-qtype_stack/issues">github</a>, with an additional <a href="https://github.com/ilifau/assStackQuestion/">ILIAS</a> site.</p>
 <h1 id="main-stack-features">Main STACK Features</h1>
 <h3 id="equivalent-answers-of-the-right-form">Equivalent answers of the right form</h3>
-<p>STACK can accept equivalent expressions, for example ((x+1)^2 = x^2+2x+1). STACK can also establish the form of an answer, for example if it is factorised.  STACK is designed to let teachers specify independent properties required in an answer.</p>
+<p>STACK can accept equivalent expressions, for example <script type="math/tex">(x+1)^2 = x^2+2x+1</script>. STACK can also establish the form of an answer, for example if it is factorised.  STACK is designed to let teachers specify independent properties required in an answer.</p>
 <h3 id="ask-for-examples">Ask for examples</h3>
 <p>The system can mark questions that ask the student to provide an example.</p>
 <pre><code>Give an example of a function f(x) with a minimum at x=0 and a maximum at x=2.
@@ -134,14 +134,16 @@
 <p>Consider a question like:
 Give an example of a cubic polynomial with the following properties:</p>
 <ul>
-<li>(p(0)=1),</li>
-<li>(p(x)=0) at (x=2) and at (x=3).</li>
+<li>
+<script type="math/tex">p(0)=1</script>,</li>
+<li>
+<script type="math/tex">p(x)=0</script> at <script type="math/tex">x=2</script> and at <script type="math/tex">x=3</script>.</li>
 </ul>
-<p>Here, STACK can check each condition separately on the student's answer and assign partial credit accordingly. If the student gave the answer (p(x) = x^2-5x+6) for example, then STACK could reply: <em>Your answer does have zeros at the required points but its value at zero is not equal to 1. You received 2 out of 3 points. Please try again.</em> There are a variety of ways in which <a href="../Authoring/Feedback/">feedback</a> can be given, including <a href="../CAS/Plots/">plotting</a> the students' answer against the teacher's answer.</p>
+<p>Here, STACK can check each condition separately on the student's answer and assign partial credit accordingly. If the student gave the answer <script type="math/tex">p(x) = x^2-5x+6</script> for example, then STACK could reply: <em>Your answer does have zeros at the required points but its value at zero is not equal to 1. You received 2 out of 3 points. Please try again.</em> There are a variety of ways in which <a href="../Authoring/Feedback/">feedback</a> can be given, including <a href="../CAS/Plots/">plotting</a> the students' answer against the teacher's answer.</p>
 <h3 id="multipart-questions">Multipart questions</h3>
 <p>STACK supports multipart questions, like the following:</p>
-<p>(a) differentiate (x^2+5x) with respect to x.</p>
-<p>(b) substitute (x=5) into your answer.</p>
+<p>(a) differentiate <script type="math/tex">x^2+5x</script> with respect to x.</p>
+<p>(b) substitute <script type="math/tex">x=5</script> into your answer.</p>
 <p>You can have follow-through marking for situations where, for example, the student enters a wrong expression to part (a), but correctly substitutes in values into their expression in part (b). Here, STACK can recognise the work the student put into part (b), even though their answer is different from the "correct" answer.</p>
 <h3 id="support-for-many-types-of-questions">Support for many types of questions</h3>
 <p>STACK has a large number of <a href="../Authoring/Inputs/">inputs</a> and <a href="../Authoring/Answer_Tests/">answer tests</a> to support the diverse needs of users across mathematics and science. This includes support for questions about <a href="../Authoring/Answer_Tests/Numerical/">numerical accuracy</a>, <a href="../Authoring/Answer_Tests/Numerical/#Significant_figure_testing">significant figures</a> and <a href="../Topics/Units/">scientific units</a>. You can also assess students' ability to reason line-by-line with <a href="../Authoring/Equivalence_reasoning/">equivalence reasoning</a>. </p>
@@ -191,6 +193,7 @@ Give an example of a cubic polynomial with the following properties:</p>
     <script>var base_url = "..";</script>
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       <script src="../search/main.js"></script>
     <script>
         jQuery(function () {
