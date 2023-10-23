@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="es" >
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,14 +33,14 @@
           <a href=".." class="icon icon-home"> STACK
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Escriba el término de búsqueda aquí" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegación">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Inicio</a>
                 </li>
               </ul>
               <ul>
@@ -58,15 +58,11 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">CAS</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#maxima-in-stack-reference">Maxima in STACK {#reference}</a>
+    <li class="toctree-l2"><a class="reference internal" href="#maxima-en-stack-reference">Maxima en STACK {#reference}</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#developer-information-and-other-topics-developer">Developer information, and other topics {#developer}</a>
+    <li class="toctree-l2"><a class="reference internal" href="#informacion-para-desarrolladores-y-otros-temas-developer">Información para desarrolladores, y otros temas {#developer}</a>
     </li>
     </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Developer/">Desarrollador</a>
                 </li>
               </ul>
               <ul>
@@ -94,7 +90,7 @@
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menú de navegación en móvil">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="..">STACK</a>
         
@@ -102,7 +98,7 @@
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+    <li><a href=".." class="icon icon-home" aria-label="Documentos"></a></li>
       <li class="breadcrumb-item active">CAS</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -112,38 +108,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="maxima-and-computer-algebra-use-in-stack">Maxima and computer algebra use in STACK</h1>
-<p>STACK uses the computer algebra system (CAS) <a href="Maxima/">Maxima</a> and a graphical desktop interface like <a href="http://andrejv.github.com/wxmaxima/">wxMaxima</a> can be helpful for ofline editing, including a <a href="STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> for testing question code on the desktop.</p>
-<p>Computer algebra systems are most often designed for either the research mathematician, or the student <em>to do calculations</em>. For the purposes of assessment our calculation <em>establish some relevant properties</em> of the students' answers.  Establishing properties in this way, and on the basis of this creating outcomes such as feedback, is something particular to assessment systems. Such properties include things like</p>
+                <h1 id="uso-de-maxima-y-algebra-computacional-en-stack">Uso de Maxima y álgebra computacional en STACK</h1>
+<p>STACK utiliza el sistema de álgebra computacional (CAS) <a href="Maxima/">Maxima</a> y una interfaz gráfica de escritorio como <a href="https://wxmaxima-developers.github.io/wxmaxima/index.html">wxMaxima</a> puede ser útil para la edición de líneas, incluyendo un <a href="STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> para probar código de preguntas en el escritorio.</p>
+<p>Los sistemas de álgebra computacional suelen estar diseñados para que el matemático investigador o el estudiante <em>hagan cálculos</em>. A efectos de evaluación, nuestros cálculos <em>establecen algunas propiedades relevantes</em> de las respuestas de los estudiantes.  Establecer propiedades de esta manera, y en base a ello crear resultados como la retroalimentación, es algo particular de los sistemas de evaluación. Tales propiedades incluyen cosas como</p>
 <ul>
-<li>is the expression algebraically equivalent to the correct answer?</li>
-<li>is the expression fully simplified?</li>
-<li>is the expression written a particular conventional form, (e.g. factored, partial fraction)?</li>
-<li>are all the numbers in the expression written as fractions in the lowest terms?</li>
+<li>¿Es la expresión algebraicamente equivalente a la respuesta correcta?</li>
+<li>¿La expresión está totalmente simplificada?</li>
+<li>¿la expresión está escrita de una forma convencional determinada (por ejemplo, factorizada, fracción parcial)?</li>
+<li>¿todos los números de la expresión están escritos como fracciones en los términos más bajos?</li>
 </ul>
-<h2 id="maxima-in-stack-reference">Maxima in STACK {#reference}</h2>
+<h2 id="maxima-en-stack-reference">Maxima en STACK {#reference}</h2>
 <ul>
-<li><a href="Predicate_functions/">Predicate functions</a>, which are useful to test expressions.</li>
-<li><a href="Numbers/">Numbers</a>, including floating point and complex numbers.</li>
-<li><a href="Simplification/">Simplification</a> can be switched on and off in Maxima.</li>
-<li><a href="Inequalities/">Inequalities</a>.</li>
-<li><a href="Matrix/">Matrices and vectors</a>.</li>
-<li><a href="Statistics/">Statistics</a>.</li>
-<li><a href="Random/">Randomly generated objects</a>.</li>
-<li><a href="Plots/">Plots</a> and graphics.</li>
-<li><a href="Buggy_rules/">Buggy rules</a> implements rules which are not always valid!</li>
+<li><a href="Predicate_functions/">Funciones de predicado</a>, que son útiles para probar expresiones.</li>
+<li><a href="Numbers/">Números</a>, incluyendo números de coma flotante y complejos.</li>
+<li><a href="Simplification/">Simplificación</a> puede activarse y desactivarse en Maxima.</li>
+<li><a href="Inequalities/">Desigualdades</a>.</li>
+<li><a href="Matrix/">Matrices y vectores</a>.</li>
+<li><a href="Statistics/">Estadísticas</a>.</li>
+<li><a href="Random/">Objetos generados aleatoriamente</a>.</li>
+<li><a href="Plots/">Trazados</a> y gráficos.</li>
+<li><a href="Buggy_rules/">Reglas con errores</a> implementa reglas que no siempre son válidas.</li>
 </ul>
-<h2 id="developer-information-and-other-topics-developer">Developer information, and other topics {#developer}</h2>
+<h2 id="informacion-para-desarrolladores-y-otros-temas-developer">Información para desarrolladores, y otros temas {#developer}</h2>
 <ul>
-<li>Setting up a <a href="STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> for testing code on the desktop.</li>
-<li><a href="../Installation/Optimising_Maxima/">Optimising Maxima</a>.</li>
+<li>Configuración de un <a href="STACK-Maxima_sandbox/">STACK-Maxima sandbox</a> para probar código en el escritorio.</li>
+<li><a href="../Installation/Optimising_Maxima/">Optimizando Maxima</a>.</li>
 </ul>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Authoring/" class="btn btn-neutral float-left" title="Autoría"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Developer/" class="btn btn-neutral float-right" title="Desarrollador">Next <span class="icon icon-circle-arrow-right"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegación de pie de página">
+        <a href="../Authoring/" class="btn btn-neutral float-left" title="Autoría"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+        <a href="../Installation/" class="btn btn-neutral float-right" title="Instalación">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -152,7 +148,7 @@
     <!-- Copyright etc -->
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Construído con <a href="https://www.mkdocs.org/">MkDocs</a> usando <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provisto por <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
           
         </div>
@@ -162,14 +158,14 @@
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="Versions">
+  <div class="rst-versions" role="note" aria-label="Versiones">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Authoring/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Authoring/" style="color: #fcfcfc">&laquo; Anterior</a></span>
     
     
-      <span><a href="../Developer/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Installation/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
     
   </span>
 </div>
@@ -178,6 +174,7 @@
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../javascripts/removeCredits.js"></script>
       <script src="../search/main.js"></script>
     <script>
         jQuery(function () {
