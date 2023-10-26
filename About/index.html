@@ -43,14 +43,62 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Inicio</a>
                 </li>
               </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#caracteristicas-principales-de-stack">Características principales de STACK</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#respuestas-equivalentes-de-la-forma-correcta">Respuestas equivalentes de la forma correcta</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pedir-ejemplos">Pedir ejemplos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aleatorizacion-inteligente">Aleatorización inteligente</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dar-retroalimentacion-y-credito-parcial">Dar retroalimentación y crédito parcial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#preguntas-con-varias-partes">Preguntas con varias partes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#soporte-para-muchos-tipos-de-preguntas">Soporte para muchos tipos de preguntas</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../AbInitio/">Guía Autoría inicio rápido</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_1/">1 Una pregunta básica</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_2/">2 Variables de la pregunta</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_3/">3 Mejorando la retroalimentación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_4/">4 Aleatorización</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_5/">5 Test de Preguntas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_6/">6 Preguntas matemáticas de varias partes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_7/">7 Desactivar la simplificación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../AbInitio/Authoring_quick_start_8/">8 Importación y cuestionarios</a>
                 </li>
               </ul>
               <ul>
@@ -63,6 +111,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Developer/">Desarrolladores</a>
                 </li>
               </ul>
               <ul>
@@ -116,7 +168,7 @@
 <li>Un servidor de demostración está disponible en Edimburgo:  <a href="https://stack-demo.maths.ed.ac.uk/demo/">https://stack-demo.maths.ed.ac.uk/demo/</a></li>
 </ul>
 <p>El código fuente, y discusión de desarrollo, está en <a href="http://github.com/maths/moodle-qtype_stack/issues">github</a>, con un sitio adicional <a href="https://github.com/ilifau/assStackQuestion/">ILIAS</a>.</p>
-<h1 id="caracteristicas-principales-de-stack">Características principales de STACK</h1>
+<h2 id="caracteristicas-principales-de-stack">Características principales de STACK</h2>
 <h3 id="respuestas-equivalentes-de-la-forma-correcta">Respuestas equivalentes de la forma correcta</h3>
 <p>STACK puede aceptar expresiones equivalentes, por ejemplo <script type="math/tex">(x+1)^2 = x^2+2x+1</script>. STACK también puede establecer la forma de una respuesta, por ejemplo si está factorizada.  STACK está diseñado para permitir a los profesores especificar propiedades independientes requeridas en una respuesta.</p>
 <h3 id="pedir-ejemplos">Pedir ejemplos</h3>
@@ -127,19 +179,15 @@
 <h3 id="aleatorizacion-inteligente">Aleatorización inteligente</h3>
 <p>La aleatorización de las preguntas tiene un valor incalculable para garantizar que los alumnos puedan practicar y reducir el intercambio de respuestas. El truco consiste en aplicar ingeniería inversa a la pregunta aleatoria a partir de una respuesta aleatoria. El álgebra computacional es de gran ayuda en este proceso.</p>
 <h3 id="dar-retroalimentacion-y-credito-parcial">Dar retroalimentación y crédito parcial</h3>
-<p>Considera una pregunta como
-Dé un ejemplo de un polinomio cúbico con las siguientes propiedades:</p>
-<ul>
-<li>
-<script type="math/tex">p(0)=1</script>,</li>
-<li>
-<script type="math/tex">p(x)=0</script> en <script type="math/tex">x=2</script> y en <script type="math/tex">x=3</script>.</li>
-</ul>
+<p>Considera una pregunta como:</p>
+<p>Dé un ejemplo de un polinomio cúbico con las siguientes propiedades:
+  * <script type="math/tex">p(0)=1</script>,
+  * <script type="math/tex">p(x)=0</script> en <script type="math/tex">x=2</script> y en <script type="math/tex">x=3</script>.</p>
 <p>Aquí, STACK puede comprobar cada condición por separado en la respuesta del alumno y asignar un crédito parcial en consecuencia. Si el alumno diera la respuesta <script type="math/tex">p(x) = x^2-5x+6</script> por ejemplo, entonces STACK podría responder: <em>Tu respuesta tiene ceros en los puntos requeridos pero su valor en cero no es igual a 1. Has recibido 2 de 3 puntos. Por favor, inténtelo de nuevo.</em> Hay una variedad de maneras en las que se puede dar <a href="../Authoring/Feedback/">retroalimentación</a>, incluyendo <a href="../CAS/Plots/">graficar</a> la respuesta de los estudiantes contra la respuesta del profesor.</p>
 <h3 id="preguntas-con-varias-partes">Preguntas con varias partes</h3>
 <p>STACK soporta preguntas multiparte, como las siguientes:</p>
-<p>(a) diferenciar <script type="math/tex">x^2+5x</script> con respecto a x.</p>
-<p>(b) sustituir <script type="math/tex">x=5</script> en su respuesta.</p>
+<p>(a) diferenciar <script type="math/tex">x^2+5x</script> con respecto a x.
+  (b) sustituir <script type="math/tex">x=5</script> en su respuesta.</p>
 <p>Se pueden marcar situaciones en las que, por ejemplo, el alumno introduce una expresión incorrecta en la parte (a), pero sustituye correctamente los valores en su expresión en la parte (b). En este caso, STACK puede reconocer el trabajo realizado por el alumno en la parte (b), aunque su respuesta sea diferente de la respuesta "correcta".</p>
 <h3 id="soporte-para-muchos-tipos-de-preguntas">Soporte para muchos tipos de preguntas</h3>
 <p>STACK dispone de un gran número de <a href="../Authoring/Inputs/">entradas</a> y <a href="../Authoring/Answer_Tests/">tests de respuesta</a> para satisfacer las diversas necesidades de los usuarios de matemáticas y ciencias. Esto incluye preguntas sobre <a href="../Authoring/Answer_Tests/Numerical/">precisión numérica</a>, <a href="../Authoring/Answer_Tests/Numerical/#Significant_figure_testing">cifras significativas</a> y <a href="../Topics/Units/">unidades científicas</a>. También puede evaluar la capacidad de los alumnos para razonar línea por línea con <a href="../Authoring/Equivalence_reasoning/">razonamiento por equivalencia</a>. </p>
@@ -154,14 +202,15 @@ Dé un ejemplo de un polinomio cúbico con las siguientes propiedades:</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Navegación de pie de página">
-        <a href="../AbInitio/" class="btn btn-neutral float-left" title="Guía Autoría inicio rápido"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
-        <a href="../Authoring/" class="btn btn-neutral float-right" title="Autoría">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
+        <a href=".." class="btn btn-neutral float-left" title="Inicio"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+        <a href="../AbInitio/" class="btn btn-neutral float-right" title="Guía Autoría inicio rápido">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
+      <p>Copyright &copy; 2023 Ricardo Largaespada</p>
   </div>
 
   Construído con <a href="https://www.mkdocs.org/">MkDocs</a> usando <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provisto por <a href="https://readthedocs.org">Read the Docs</a>.
@@ -178,10 +227,10 @@ Dé un ejemplo de un polinomio cúbico con las siguientes propiedades:</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../AbInitio/" style="color: #fcfcfc">&laquo; Anterior</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Anterior</a></span>
     
     
-      <span><a href="../Authoring/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
+      <span><a href="../AbInitio/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
     
   </span>
 </div>

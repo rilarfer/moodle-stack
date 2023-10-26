@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://rilarfer.stack-moodle.com/AbInitio/Authoring_quick_start_5/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Autoría inicio rápido 5: test de preguntas - STACK</title>
+    <title>5 Test de Preguntas - STACK</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Autor\u00eda inicio r\u00e1pido 5: test de preguntas";
+        var mkdocs_page_name = "5 Test de Preguntas";
         var mkdocs_page_input_path = "AbInitio\\Authoring_quick_start_5.md";
         var mkdocs_page_url = "/AbInitio/Authoring_quick_start_5/";
       </script>
@@ -44,11 +44,51 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../">Guía Autoría inicio rápido</a>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../About/">About</a>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_1/">1 Una pregunta básica</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_2/">2 Variables de la pregunta</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_3/">3 Mejorando la retroalimentación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_4/">4 Aleatorización</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">5 Test de Preguntas</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduccion">Introducción</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comprobacion-de-preguntas">Comprobación de preguntas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#aparte-palabras-prohibidas">Aparte: palabras prohibidas</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_6/">6 Preguntas matemáticas de varias partes</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_7/">7 Desactivar la simplificación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Authoring_quick_start_8/">8 Importación y cuestionarios</a>
                 </li>
               </ul>
               <ul>
@@ -61,6 +101,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../../Installation/">Instalación</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../Developer/">Desarrolladores</a>
                 </li>
               </ul>
               <ul>
@@ -93,7 +137,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Documentos"></a></li>
-      <li class="breadcrumb-item active">Autoría inicio rápido 5: test de preguntas</li>
+      <li class="breadcrumb-item active">5 Test de Preguntas</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -104,62 +148,67 @@
               
                 <h1 id="autoria-inicio-rapido-5-test-de-preguntas">Autoría inicio rápido 5: test de preguntas</h1>
 <p><a href="../Authoring_quick_start_1/">1 - Primera pregunta</a> | <a href="../Authoring_quick_start_2/">2 - Variables de pregunta</a> | <a href="../Authoring_quick_start_3/">3 - Retroalimentación</a> | <a href="../Authoring_quick_start_4/">4 - Aleatorización</a> | 5 - Test de preguntas | <a href="../Authoring_quick_start_6/">6 - Preguntas de varias partes</a> | <a href="../Authoring_quick_start_7/">7 - Simplificación</a> | <a href="../Authoring_quick_start_8/">8 - Cuestionarios</a></p>
-<p>This part of the authoring quick start guide deals with using question tests. The following video explains the process:</p>
+<p>Esta parte de la guía rápida de creación trata sobre el uso de los test de preguntas. El siguiente vídeo explica el proceso:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wnvsc-v9svE" frameborder="0" allowfullscreen></iframe>
 
-<h2 id="introduction">Introduction</h2>
-<p>In the last couple of parts, we have been working with a simple integration question. Before you continue, confirm that your question variables are set up as follows:</p>
+<h2 id="introduccion">Introducción</h2>
+<p>En las dos últimas partes, hemos estado trabajando con una pregunta de integración simple. Antes de continuar, confirma que las variables de tu pregunta están configuradas como sigue:</p>
 <pre><code>a1 : 1+rand(6);
 a2 : 1+rand(6);
 nn : 2+rand(4);
 exp : a1*(x-a2)^(-nn);
 ta: int(exp, x)+c;
 </code></pre>
-<p>Testing questions is time consuming and tedious, but important to ensure questions work.  To help with this process, STACK enables teachers to define "question tests".  The principle is the same as "unit testing" in software engineering.</p>
-<h2 id="question-testing">Question testing</h2>
-<p>Scroll to the top of your question in the preview window and click on <code>Question tests &amp; deployed variants</code>. In the last part we used this window to deploy random variants.</p>
-<p>Click <code>Add a test case</code> to add a test to your question. A test case takes a student input. You then specify what the expected outcome is for that input, namely the score, penalty and answer note you expect to land on. Recall from the last part that the <code>Answer note</code> is the name for a specific outcome on a potential response tree.</p>
-<p>The penalty is a number deducted from the total mark for each incorrect attempt the student has. By default, it is set to 0.1. You can change the penalty in the <code>General section</code> under <code>Penalty</code>. Note that this feature is only used in the question behaviours <code>Interactive with multiple tries</code> and <code>Adaptive mode</code>, as they are the only ones that allow multiple attempts. We will discuss question behaviours in a later part. </p>
-<p>Fill in the following information for your first test case:</p>
+<p>Probar las preguntas lleva mucho tiempo y es tedioso, pero es importante para asegurarse de que las preguntas funcionan.  Para ayudar en este proceso, STACK permite a los profesores definir " test de preguntas".  El principio es el mismo que el de las "pruebas unitarias" en ingeniería de software.</p>
+<h2 id="comprobacion-de-preguntas">Comprobación de preguntas</h2>
+<p>Desplácese hasta la parte superior de su pregunta en la ventana de vista previa y haga clic en <code>Pruebas de preguntas y variantes desplegadas</code>. En la última parte utilizamos esta ventana para desplegar variantes aleatorias.</p>
+<p>Haga clic en <code>Añadir un caso de prueba</code> para añadir una prueba a su pregunta. Un caso de prueba toma una entrada del estudiante. A continuación, especifique cuál es el resultado esperado para esa entrada, es decir, la puntuación, la penalización y la nota de respuesta que espera obtener. Recuerde de la última parte que la <code>nota de respuesta</code> es el nombre de un resultado específico en un árbol de respuestas potenciales.</p>
+<p>La penalización es un número que se deduce de la nota total por cada intento incorrecto del alumno. Por defecto, está fijada en 0.1. Puede cambiar la penalización en la <code>Sección General</code> en <code>Penalización</code>. Tenga en cuenta que esta característica sólo se utiliza en los comportamientos de pregunta <code>Interactivo con múltiples intentos</code> y <code>Modo adaptativo</code>, ya que son los únicos que permiten múltiples intentos. Hablaremos de los comportamientos de las preguntas más adelante. </p>
+<p>Rellena la siguiente información para tu primer caso de prueba:</p>
 <pre><code>ans1 = ta
-score = 1
-penalty = 0
-answernote = prt1-2-T
+puntuación = 1
+penalización = 0
+nota de respuesta = prt1-2-T
 </code></pre>
-<p>I.e., if the student puts in the model answer they should pass the first node (checks if they have integrated correctly) and pass the second node (tests that their answer is factored) and end up with a score of 1 and no penalty. </p>
-<p>Note that the input is evaluated before the test is conducted. Students are not allowed to enter the variable  <code>ta</code> because it is a teacher-defined variable, however the evaluated form, fx.  <code>-1*(x-1)^(-3)+c</code>, is an allowed input. For each test case, you can see the un-evaluated input under <code>Test input</code>, and the actual input tested under <code>Value entered</code>. </p>
-<p>You can run the test on all deployed versions by clicking on  <code>Run all tests on all deployed variants</code> .</p>
-<p>You can add as many tests as you think is needed, and it is usually a sensible idea to add one for each case you anticipate.  Add in another test case for</p>
+<p>Es decir, si el alumno pone la respuesta modelo debería pasar el primer nodo (comprueba si ha integrado correctamente) y pasar el segundo nodo (comprueba que su respuesta está factorizada) y terminar con una puntuación de 1 y ninguna penalización. </p>
+<p>Tenga en cuenta que la entrada se evalúa antes de realizar la prueba. Los estudiantes no pueden introducir la variable <code>ta</code> porque es una variable definida por el profesor, sin embargo la forma evaluada, fx.  <code>1*(x-1)^(-3)+c</code>, es una entrada permitida. Para cada caso de prueba, puede ver la entrada no evaluada en <code>Entrada de prueba</code>, y la entrada real probada en <code>Valor introducido</code>. </p>
+<p>Puede ejecutar la prueba en todas las versiones desplegadas haciendo clic en <code>Ejecutar todas las pruebas en todas las variantes desplegadas</code>.</p>
+<p>Puedes añadir tantas pruebas como creas necesarias, y suele ser una buena idea añadir una por cada caso que preveas.  Añada otro caso de prueba para</p>
 <pre><code>ans1 = int(exp,x)
-score = 0
-penalty = 0.1
-answernote = prt1-1-F
+puntuación = 0
+penalización = 0.1
+nota de respuesta = prt1-1-F
 </code></pre>
-<p>Here we create a test case without a constant of integration. In this case STACK should fail to give students any marks, indicating the test passes!</p>
-<p>You should also use question tests to check that solving every variant requires the competences that you desire. For example, in this question we want students to know (1) increase the power by 1 and (2) divide by the new power. They should not be able to get away with, for example, increasing the power and <em>multiplying</em> by the new power. Let's add a test case to check this.</p>
+<p>Aquí creamos un caso de prueba sin constante de integración. En este caso, STACK no debería puntuar a los alumnos, ¡lo que indica que la prueba ha sido superada!</p>
+<p>También debería utilizar pruebas de preguntas para comprobar que la resolución de cada variante requiere las competencias que usted desea. Por ejemplo, en esta pregunta queremos que los alumnos sepan (1) aumentar la potencia en 1 y (2) dividir por la nueva potencia. No deberían poder salirse con la suya, por ejemplo, aumentando la potencia y <em>multiplicando</em> por la nueva potencia. Añadamos un caso de prueba para comprobarlo.</p>
 <pre><code>ans1 = (a1*(-nn+1))*(x-a2)^(-nn+1)+c
-score = 0
-penalty = 0.1
-answernote = prt1-F
+puntuación = 0
+penalización = 0.1
+nota de respuesta = prt1-F
 </code></pre>
-<p>We are testing that if we multiply by <script type="math/tex">-nn+1</script> instead of dividing, we should be given a score of 0. If students are required this knowledge for <em>all</em> variants, then all variants should pass this test. Click  <code>Run all tests on all deployed variants</code> to check this. </p>
-<p>You will see that not all deployed versions pass all tests, and if you click on a variant that failed a test, you will see why! Essentially, when <script type="math/tex">nn=2</script>, <script type="math/tex">-nn+1=-1</script> multiplication and division are equivalent. Essentially, these random variants are "easier" than the others. This illustrates another key use of question tests - ensuring that all variants are the same difficulty and test the knowledge they are supposed to. In light of this, you may want to change <code>nn</code> again to <code>3+rand(4)</code> . Now all variants should pass all question tests.</p>
-<p>Quality control is essential, and more information is given in the page on <a href="/Authoring/Testing.md">testing</a>.</p>
-<h2 id="aside-forbidden-words">Aside: forbidden words</h2>
-<p>STACK allows students to use standard mathematical functions, such as <code>sin</code>, <code>cos</code>, etc. Perhaps surprisingly, it also allows students to use <code>int</code>. So in theory, students could input <code>int(...)+c</code>, and the system would mark it correct!</p>
-<p>To stop this, go to <code>input:ans1</code> and under forbidden words, enter <code>int</code>. Forbidden words will render words that are normally allowed invalid.</p>
-<p>This example nicely illustrates the way validity can be used to help students.  An answer <code>int(p,x)+c</code> is a correct response to the question, but it is invalid.  In this example we want them to perform integration, not have the CAS do it!</p>
+<p>Estamos probando que si multiplicamos por <script type="math/tex">-nn+1</script> en lugar de dividir, se nos debería dar una puntuación de 0. Si a los alumnos se les exige este conocimiento para <em>todas</em> las variantes, entonces todas las variantes deberían pasar esta prueba. Haga clic en <code>Ejecutar todas las pruebas en todas las variantes desplegadas</code> para comprobarlo. </p>
+<p>Verá que no todas las versiones desplegadas pasan todas las pruebas, y si hace clic en una variante que ha fallado una prueba, ¡verá por qué! Esencialmente, cuando <script type="math/tex">nn=2</script>, <script type="math/tex">-nn+1=-1</script> la multiplicación y la división son equivalentes. Esencialmente, estas variantes aleatorias son "más fáciles" que las otras. Esto ilustra otro uso clave de los tests de preguntas: garantizar que todas las variantes tengan la misma dificultad y pongan a prueba los conocimientos que se supone que deben poner a prueba. A la luz de esto, es posible que desee cambiar <code>nn</code> de nuevo a <code>3+rand(4)</code> . Ahora todas las variantes deberían superar las pruebas de todas las preguntas.</p>
+<p>El control de calidad es esencial, y encontrará más información en la página sobre <a href="../../Authoring/Testing/">testing</a>.</p>
+<h2 id="aparte-palabras-prohibidas">Aparte: palabras prohibidas</h2>
+<p>STACK permite a los estudiantes utilizar funciones matemáticas estándar, como <code>sin</code>, <code>cos</code>, etc. Sorprendentemente, también permite usar <code>int</code>. Así que, en teoría, los estudiantes podrían introducir <code>int(...)+c</code>, ¡y el sistema lo marcaría como correcto!</p>
+<p>Para evitarlo, vaya a "entrada:ans1" y en "palabras prohibidas" introduzca "int". Las palabras prohibidas harán que las palabras que normalmente están permitidas no sean válidas.</p>
+<p>Este ejemplo ilustra muy bien cómo se puede utilizar la validez para ayudar a los alumnos.  Una respuesta <code>int(p,x)+c</code> es una respuesta correcta a la pregunta, pero no es válida.  En este ejemplo queremos que realicen la integración, ¡no que lo haga el CAS!</p>
 <h1 id="proximo-paso">Próximo paso</h1>
-<p>You should now be able to use question tests in STACK.</p>
-<h5 id="the-next-part-of-the-authoring-quick-start-guide-looks-at-multipart-questions">The next part of the authoring quick start guide looks at <a href="../Authoring_quick_start_6/">multipart questions</a>.</h5>
+<p>Ahora debería ser capaz de utilizar los tests de preguntas en STACK.</p>
+<h5 id="la-siguiente-parte-de-la-guia-de-inicio-rapido-de-autoria-trata-sobre-preguntas-de-varias-partes">La siguiente parte de la guía de inicio rápido de autoría trata sobre <a href="../Authoring_quick_start_6/">preguntas de varias partes</a>.</h5>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegación de pie de página">
+        <a href="../Authoring_quick_start_4/" class="btn btn-neutral float-left" title="4 Aleatorización"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+        <a href="../Authoring_quick_start_6/" class="btn btn-neutral float-right" title="6 Preguntas matemáticas de varias partes">Siguiente <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
+      <p>Copyright &copy; 2023 Ricardo Largaespada</p>
   </div>
 
   Construído con <a href="https://www.mkdocs.org/">MkDocs</a> usando <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provisto por <a href="https://readthedocs.org">Read the Docs</a>.
@@ -176,6 +225,10 @@ answernote = prt1-F
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../Authoring_quick_start_4/" style="color: #fcfcfc">&laquo; Anterior</a></span>
+    
+    
+      <span><a href="../Authoring_quick_start_6/" style="color: #fcfcfc">Siguiente &raquo;</a></span>
     
   </span>
 </div>
